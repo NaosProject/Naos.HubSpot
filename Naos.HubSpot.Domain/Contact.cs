@@ -39,6 +39,7 @@ namespace Naos.HubSpot.Domain
             IReadOnlyDictionary<string, string> properties)
         {
             email.MustForArg(nameof(email)).NotBeNullNorWhiteSpace();
+            vid.MustForArg(nameof(vid)).BeNullOrNotWhiteSpace();
             properties.MustForArg(nameof(properties)).NotBeNullNorEmptyDictionary();
             properties.ContainsKey(FirstNamePropertyKey).MustForArg().NotBeFalse(Invariant($"Must have a {FirstNamePropertyKey} property."));
             properties.ContainsKey(LastNamePropertyKey).MustForArg().NotBeFalse(Invariant($"Must have a {LastNamePropertyKey} property."));

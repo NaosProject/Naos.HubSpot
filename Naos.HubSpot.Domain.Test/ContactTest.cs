@@ -64,24 +64,24 @@ namespace Naos.HubSpot.Domain.Test
                     ExpectedExceptionType = typeof(ArgumentException),
                     ExpectedExceptionMessageContains = new[] { "email", "white space" },
                 })
-            //.AddScenario(() =>
-            //    new ConstructorArgumentValidationTestScenario<Contact>
-            //    {
-            //        Name = "constructor should throw ArgumentException when parameter 'vid' is white space scenario",
-            //        ConstructionFunc = () =>
-            //        {
-            //            var referenceObject = A.Dummy<Contact>();
+            .AddScenario(() =>
+                new ConstructorArgumentValidationTestScenario<Contact>
+                {
+                    Name = "constructor should throw ArgumentException when parameter 'vid' is white space scenario",
+                    ConstructionFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<Contact>();
 
-            //            var result = new Contact(
-            //                                 referenceObject.Email,
-            //                                 Invariant($"  {Environment.NewLine}  "),
-            //                                 referenceObject.Properties);
+                        var result = new Contact(
+                                             referenceObject.Email,
+                                             Invariant($"  {Environment.NewLine}  "),
+                                             referenceObject.Properties);
 
-            //            return result;
-            //        },
-            //        ExpectedExceptionType = typeof(ArgumentException),
-            //        ExpectedExceptionMessageContains = new[] { "vid", "white space" },
-            //    })
+                        return result;
+                    },
+                    ExpectedExceptionType = typeof(ArgumentException),
+                    ExpectedExceptionMessageContains = new[] { "vid", "white space" },
+                })
             .AddScenario(() =>
                 new ConstructorArgumentValidationTestScenario<Contact>
                 {
