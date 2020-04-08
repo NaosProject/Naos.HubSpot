@@ -10,7 +10,7 @@
 namespace Naos.HubSpot.Domain.Test
 {
     using System;
-
+    using System.Collections.Generic;
     using FakeItEasy;
 
     using OBeautifulCode.AutoFakeItEasy;
@@ -27,6 +27,17 @@ namespace Naos.HubSpot.Domain.Test
         public HubSpotDummyFactory()
         {
             /* Add any overriding or custom registrations here. */
+            AutoFixtureBackedDummyFactory.AddDummyCreator(
+                () =>
+                {
+                    var readOnlyDictionary = A.Dummy<Dictionary<string, string>>();
+                    readOnlyDictionary.Add(Contact.FirstNamePropertyKey, A.Dummy<string>());
+                    readOnlyDictionary.Add(Contact.LastNamePropertyKey, A.Dummy<string>());
+                    return new Contact(
+                        A.Dummy<string>(),
+                        A.Dummy<string>(),
+                        readOnlyDictionary);
+                });
         }
     }
 }

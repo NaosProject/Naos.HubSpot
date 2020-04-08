@@ -8,7 +8,7 @@ namespace Naos.HubSpot.Serialization.Bson
 {
     using System;
     using System.Collections.Generic;
-
+    using Naos.HubSpot.Domain;
     using OBeautifulCode.Serialization.Bson;
 
     /// <inheritdoc />
@@ -17,7 +17,7 @@ namespace Naos.HubSpot.Serialization.Bson
         /// <inheritdoc />
         protected override IReadOnlyCollection<Type> TypesToAutoRegister => new Type[]
         {
-            // ADD TYPES TO REGISTER HERE
+            typeof(Contact),
         };
     }
 }

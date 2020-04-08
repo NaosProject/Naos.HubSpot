@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0"?>
 <package>
   <metadata>
-    <description>BSON Serialization Configuration for types in Naos.HubSpot</description>
+    <description>BSON Serialization Configuration for types in Naos.HubSpot.</description>
     <tags>bson serialization configuration HubSpot</tags>
   </metadata>
 </package>

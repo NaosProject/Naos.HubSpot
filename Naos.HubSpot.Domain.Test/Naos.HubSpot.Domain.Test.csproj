@@ -167,6 +167,29 @@
     <Compile Include=".recipes\OBeautifulCode.Assertion\Verifications.Workflow.cs" />
     <Compile Include=".recipes\OBeautifulCode.Assertion\WorkflowExtensions.cs" />
     <Compile Include=".recipes\OBeautifulCode.AutoFakeItEasy\AutoFakeItEasyBootstrapper.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\Comparable\ComparableTestScenarios{T}.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\Comparable\ComparableTestScenario{T}.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\Comparable\ValidatedComparableTestScenario{T}.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\ConstructorArgumentValidation\ConstructorArgumentValidationTestScenarios{T}.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\ConstructorArgumentValidation\ConstructorArgumentValidationTestScenario{T}.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\ConstructorArgumentValidation\ValidatedConstructorArgumentValidationTestScenario{T}.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\ConstructorPropertyAssignment\CompareActualToExpectedUsing.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\ConstructorPropertyAssignment\ConstructorPropertyAssignmentTestScenarios{T}.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\ConstructorPropertyAssignment\ConstructorPropertyAssignmentTestScenario{T}.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\ConstructorPropertyAssignment\SystemUnderTestExpectedPropertyValue{T}.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\ConstructorPropertyAssignment\ValidatedConstructorPropertyAssignmentTestScenario{T}.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\DeepCloneWith\DeepCloneWithTestScenarios{T}.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\DeepCloneWith\DeepCloneWithTestScenario{T}.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\DeepCloneWith\SystemUnderTestDeepCloneWithValue{T}.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\DeepCloneWith\ValidatedDeepCloneWithTestScenario{T}.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\Equatable\EquatableTestScenarios{T}.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\Equatable\EquatableTestScenario{T}.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\Equatable\ValidatedEquatableTestScenario{T}.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\StringRepresentation\StringRepresentationTestScenarios{T}.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\StringRepresentation\StringRepresentationTestScenario{T}.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\StringRepresentation\SystemUnderTestExpectedStringRepresentation{T}.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\StringRepresentation\ValidatedStringRepresentationTestScenario{T}.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeGen\SuppressBecause.cs" />
     <Compile Include=".recipes\OBeautifulCode.Collection\EnumerableExtensions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Collection\SuppressBecause.cs" />
     <Compile Include=".recipes\OBeautifulCode.Compression\CompressorFactory.cs" />
@@ -182,6 +205,8 @@
     <Compile Include=".recipes\OBeautifulCode.Equality\HashCodeHelper.cs" />
     <Compile Include=".recipes\OBeautifulCode.Equality\ReadOnlyDictionaryEqualityComparer.cs" />
     <Compile Include=".recipes\OBeautifulCode.Equality\SuppressBecause.cs" />
+    <Compile Include=".recipes\OBeautifulCode.Math\SuppressBecause.cs" />
+    <Compile Include=".recipes\OBeautifulCode.Math\ThreadSafeRandom.cs" />
     <Compile Include=".recipes\OBeautifulCode.Reflection\AssemblyHelper.cs" />
     <Compile Include=".recipes\OBeautifulCode.Reflection\CompressionMethod.cs" />
     <Compile Include=".recipes\OBeautifulCode.Reflection\SuppressBecause.cs" />
@@ -195,9 +220,15 @@
     <Compile Include=".recipes\OBeautifulCode.Type\ToStringReadableOptions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Type\TypeExtensions.cs" />
     <Compile Include="ConsoleAbstraction.cs" />
+    <Compile Include="ContactTest.cs" />
+    <Compile Include="ContactTest.designer.cs">
+      <DependentUpon>ContactTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HubSpotDummyFactoryTest.designer.cs">
+      <DependentUpon>HubSpotDummyFactoryTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Class1Test.cs" />
     <Compile Include="SerializationConfigurationTypes.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="HubSpotDummyFactory.cs" />
