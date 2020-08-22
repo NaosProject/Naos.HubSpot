@@ -16,7 +16,11 @@ namespace OBeautifulCode.String.Recipes
     using System.Text;
     using System.Text.RegularExpressions;
 
+<<<<<<< HEAD
     using static System.FormattableString;
+=======
+    using OBeautifulCode.Assertion.Recipes;
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
     /// <summary>
     /// Adds some convenient extension methods to strings.
@@ -38,12 +42,15 @@ namespace OBeautifulCode.String.Recipes
 
         private static readonly Regex CsvParsingRegex = new Regex("(?:,\"|^\")(\"\"|[\\w\\W]*?)(?=\",|\"$)|(?:,(?!\")|^(?!\"))([^,]*?)(?=$|,)|(\r\n|\n)", RegexOptions.Compiled);
 
+<<<<<<< HEAD
         private static readonly HashSet<char> AlphabeticCharactersHashSet =
             new HashSet<char>(
                 new char[0]
                     .Concat(Enumerable.Range(65, 26).Select(Convert.ToChar))
                     .Concat(Enumerable.Range(97, 26).Select(Convert.ToChar)));
 
+=======
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
         /// <summary>
         /// Appends one string to the another (base) if the base string
         /// doesn't already end with the string to append.
@@ -62,6 +69,7 @@ namespace OBeautifulCode.String.Recipes
             this string value,
             string shouldEndWith)
         {
+<<<<<<< HEAD
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value));
@@ -71,6 +79,10 @@ namespace OBeautifulCode.String.Recipes
             {
                 throw new ArgumentNullException(nameof(shouldEndWith));
             }
+=======
+            new { value }.AsArg().Must().NotBeNull();
+            new { shouldEndWith }.AsArg().Must().NotBeNull();
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
             if (!value.EndsWith(shouldEndWith, StringComparison.CurrentCulture))
             {
@@ -137,10 +149,14 @@ namespace OBeautifulCode.String.Recipes
         public static bool IsAlphanumeric(
             this string value)
         {
+<<<<<<< HEAD
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value));
             }
+=======
+            new { value }.AsArg().Must().NotBeNull();
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
             var result = value.All(
                 _ =>
@@ -152,6 +168,7 @@ namespace OBeautifulCode.String.Recipes
         }
 
         /// <summary>
+<<<<<<< HEAD
         /// Determines if a string is alphabetic.
         /// </summary>
         /// <param name="value">The string to evaluate.</param>
@@ -176,6 +193,8 @@ namespace OBeautifulCode.String.Recipes
         }
 
         /// <summary>
+=======
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
         /// Determines if a string is in the ASCII printable character set.
         /// </summary>
         /// <param name="value">The string to evaluate.</param>
@@ -189,10 +208,14 @@ namespace OBeautifulCode.String.Recipes
         public static bool IsAsciiPrintable(
             this string value)
         {
+<<<<<<< HEAD
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value));
             }
+=======
+            new { value }.AsArg().Must().NotBeNull();
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
             var result = value.All(_ => ((int)_ >= 32) && ((int)_ <= 126));
 
@@ -220,6 +243,7 @@ namespace OBeautifulCode.String.Recipes
             string oldValue,
             string newValue)
         {
+<<<<<<< HEAD
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value));
@@ -234,6 +258,10 @@ namespace OBeautifulCode.String.Recipes
             {
                 throw new ArgumentException(Invariant($"'{nameof(oldValue)}' is an empty string"));
             }
+=======
+            new { value }.AsArg().Must().NotBeNull();
+            new { oldValue }.AsArg().Must().NotBeNull().And().NotBeEmptyString();
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
             if (newValue == null)
             {
@@ -293,6 +321,7 @@ namespace OBeautifulCode.String.Recipes
             this string value,
             int lengthPerChunk)
         {
+<<<<<<< HEAD
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value));
@@ -302,6 +331,10 @@ namespace OBeautifulCode.String.Recipes
             {
                 throw new ArgumentOutOfRangeException(Invariant($"'{nameof(lengthPerChunk)}' <= '{0}'"), (Exception)null);
             }
+=======
+            new { value }.AsArg().Must().NotBeNull();
+            new { lengthPerChunk }.AsArg().Must().BeGreaterThan(0);
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
             var result = new List<string>((value.Length / lengthPerChunk) + 1);
 
@@ -329,10 +362,14 @@ namespace OBeautifulCode.String.Recipes
         public static string ToAlphanumeric(
             this string value)
         {
+<<<<<<< HEAD
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value));
             }
+=======
+            new { value }.AsArg().Must().NotBeNull();
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
             var result =
                 string.Concat(
@@ -354,7 +391,10 @@ namespace OBeautifulCode.String.Recipes
             this string value)
         {
             var result = value.ToBytes(AsciiEncoding);
+<<<<<<< HEAD
 
+=======
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
             return result;
         }
 
@@ -370,6 +410,7 @@ namespace OBeautifulCode.String.Recipes
             this string value,
             Encoding encoding)
         {
+<<<<<<< HEAD
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value));
@@ -379,6 +420,10 @@ namespace OBeautifulCode.String.Recipes
             {
                 throw new ArgumentNullException(nameof(encoding));
             }
+=======
+            new { value }.AsArg().Must().NotBeNull();
+            new { encoding }.AsArg().Must().NotBeNull();
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
             var result = encoding.GetBytes(value);
             return result;
@@ -400,10 +445,14 @@ namespace OBeautifulCode.String.Recipes
         public static string ToCsvSafe(
             this string value)
         {
+<<<<<<< HEAD
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value));
             }
+=======
+            new { value }.AsArg().Must().NotBeNull();
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
             if (string.IsNullOrEmpty(value))
             {
@@ -458,6 +507,7 @@ namespace OBeautifulCode.String.Recipes
             this string value,
             CultureInfo cultureInfo)
         {
+<<<<<<< HEAD
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value));
@@ -467,6 +517,10 @@ namespace OBeautifulCode.String.Recipes
             {
                 throw new ArgumentNullException(nameof(cultureInfo));
             }
+=======
+            new { value }.AsArg().Must().NotBeNull();
+            new { cultureInfo }.AsArg().Must().NotBeNull();
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
             var result = value.ToLower(cultureInfo).Trim();
 
@@ -501,6 +555,7 @@ namespace OBeautifulCode.String.Recipes
             this string value,
             CultureInfo cultureInfo)
         {
+<<<<<<< HEAD
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value));
@@ -510,6 +565,10 @@ namespace OBeautifulCode.String.Recipes
             {
                 throw new ArgumentNullException(nameof(cultureInfo));
             }
+=======
+            new { value }.AsArg().Must().NotBeNull();
+            new { cultureInfo }.AsArg().Must().NotBeNull();
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
             var result = value.ToUpper(cultureInfo).Trim();
 
@@ -542,6 +601,7 @@ namespace OBeautifulCode.String.Recipes
             this string value,
             CultureInfo cultureInfo)
         {
+<<<<<<< HEAD
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value));
@@ -551,6 +611,10 @@ namespace OBeautifulCode.String.Recipes
             {
                 throw new ArgumentNullException(nameof(cultureInfo));
             }
+=======
+            new { value }.AsArg().Must().NotBeNull();
+            new { cultureInfo }.AsArg().Must().NotBeNull();
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
             string result;
 
@@ -592,6 +656,7 @@ namespace OBeautifulCode.String.Recipes
             this string value,
             CultureInfo cultureInfo)
         {
+<<<<<<< HEAD
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value));
@@ -601,6 +666,10 @@ namespace OBeautifulCode.String.Recipes
             {
                 throw new ArgumentNullException(nameof(cultureInfo));
             }
+=======
+            new { value }.AsArg().Must().NotBeNull();
+            new { cultureInfo }.AsArg().Must().NotBeNull();
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
             string result;
 

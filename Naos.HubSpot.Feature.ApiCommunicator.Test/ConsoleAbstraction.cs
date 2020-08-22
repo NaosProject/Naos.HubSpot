@@ -33,8 +33,16 @@ namespace Naos.HubSpot.Feature.ApiCommunicator.Test
     ConsoleAbstractionBaseStandin
 #endif
     {
+<<<<<<< HEAD
         /// <inheritdoc />
         public override IReadOnlyCollection<TypeRepresentation> ExceptionTypeRepresentationsToOnlyPrintMessage => new[] { typeof(TestFailedException).ToRepresentation() };
+=======
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1810:InitializeReferenceTypeStaticFieldsInline", Justification = "Newing the serializer in a field initializer is fine.")]
+        static ConsoleAbstraction()
+        {
+            ExceptionTypeRepresentationsToOnlyPrintMessage = new[] { typeof(TestFailedException).ToRepresentation() };
+        }
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
         /// <summary>
         /// Runs the tests in the specified type.

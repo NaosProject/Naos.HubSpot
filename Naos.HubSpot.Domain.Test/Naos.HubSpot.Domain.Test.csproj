@@ -15,6 +15,7 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -226,9 +227,6 @@
     <Compile Include=".recipes\OBeautifulCode.Type\TypeExtensions.cs" />
     <Compile Include="ConsoleAbstraction.cs" />
     <Compile Include="ContactTest.cs" />
-    <Compile Include="ContactTest.designer.cs">
-      <DependentUpon>ContactTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="HubSpotDummyFactoryTest.designer.cs">
       <DependentUpon>HubSpotDummyFactoryTest.cs</DependentUpon>
     </Compile>
@@ -243,6 +241,7 @@
     <Compile Include="HubSpotDummyFactoryTest.cs" />
     <AdditionalFiles Include=".analyzers\stylecop.json" />
     <None Include=".analyzers\test.ruleset" />
+    <None Include="app.config" />
     <None Include="DummyFactory.recipe-nuspec" />
     <None Include="packages.config" />
   </ItemGroup>

@@ -10,9 +10,14 @@
 namespace OBeautifulCode.Serialization.Recipes
 {
     using System;
+<<<<<<< HEAD
     using System.Collections.Concurrent;
 
     using OBeautifulCode.Compression;
+=======
+
+    using OBeautifulCode.Assertion.Recipes;
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
     using OBeautifulCode.Representation.System;
     using OBeautifulCode.Serialization.Bson;
     using OBeautifulCode.Serialization.Json;
@@ -30,6 +35,7 @@ namespace OBeautifulCode.Serialization.Recipes
 #else
     public
 #endif
+<<<<<<< HEAD
     sealed class SerializerFactory : SerializerFactoryBase
     {
         private static readonly SerializerFactory InternalInstance = new SerializerFactory();
@@ -45,6 +51,17 @@ namespace OBeautifulCode.Serialization.Recipes
             ICompressorFactory compressorFactory = null)
             : base(compressorFactory)
         {
+=======
+    sealed class SerializerFactory : ISerializerFactory
+    {
+        private static readonly SerializerFactory InternalInstance = new SerializerFactory();
+
+        private readonly object sync = new object();
+
+        private SerializerFactory()
+        {
+            /* no-op to make sure this can only be accessed via instance property */
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
         }
 
         /// <summary>
@@ -53,6 +70,7 @@ namespace OBeautifulCode.Serialization.Recipes
         public static ISerializerFactory Instance => InternalInstance;
 
         /// <inheritdoc />
+<<<<<<< HEAD
         public override ISerializer BuildSerializer(
             SerializerRepresentation serializerRepresentation,
             AssemblyMatchStrategy assemblyMatchStrategy = AssemblyMatchStrategy.AnySingleVersion)
@@ -99,6 +117,24 @@ namespace OBeautifulCode.Serialization.Recipes
             SerializerCache[serializerRepresentation].TryAdd(assemblyMatchStrategy, result);
 
             return result;
+=======
+        public ISerializeAndDeserialize BuildSerializer(SerializationDescription serializationDescription, TypeMatchStrategy typeMatchStrategy = TypeMatchStrategy.NamespaceAndName, MultipleMatchStrategy multipleMatchStrategy = MultipleMatchStrategy.ThrowOnMultiple, UnregisteredTypeEncounteredStrategy unregisteredTypeEncounteredStrategy = UnregisteredTypeEncounteredStrategy.Default)
+        {
+            new { serializationDescription }.AsArg().Must().NotBeNull();
+
+            lock (this.sync)
+            {
+                var configurationType = serializationDescription.ConfigurationTypeRepresentation?.ResolveFromLoadedTypes(typeMatchStrategy, multipleMatchStrategy);
+
+                switch (serializationDescription.SerializationKind)
+                {
+                    case SerializationKind.Bson: return new ObcBsonSerializer(configurationType, unregisteredTypeEncounteredStrategy);
+                    case SerializationKind.Json: return new ObcJsonSerializer(configurationType, unregisteredTypeEncounteredStrategy);
+                    case SerializationKind.PropertyBag: return new ObcPropertyBagSerializer(configurationType, unregisteredTypeEncounteredStrategy);
+                    default: throw new NotSupportedException(Invariant($"{nameof(serializationDescription)} from enumeration {nameof(SerializationKind)} of {serializationDescription.SerializationKind} is not supported."));
+                }
+            }
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
         }
     }
 }

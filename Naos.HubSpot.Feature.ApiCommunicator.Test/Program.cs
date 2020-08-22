@@ -14,9 +14,16 @@ namespace Naos.HubSpot.Feature.ApiCommunicator.Test
 #endif
 {
     using System;
+<<<<<<< HEAD
     using CLAP;
     using Its.Log.Instrumentation;
     using Naos.Bootstrapper;
+=======
+
+    using CLAP;
+
+    using Its.Log.Instrumentation;
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
     /// <summary>
     /// Main entry point of application.
@@ -37,6 +44,7 @@ namespace Naos.HubSpot.Feature.ApiCommunicator.Test
             {
                 WriteAsciiArt(Console.WriteLine);
 
+<<<<<<< HEAD
                 var consoleAbstraction = new ConsoleAbstraction();
 
                 // ConsoleAbstraction must derive from ConsoleAbstractionBase which is provided in the Bootstrapper recipes, it contains the implementation of this method.
@@ -44,6 +52,10 @@ namespace Naos.HubSpot.Feature.ApiCommunicator.Test
 
                 // Need to register the exception types to the static context.
                 ConsoleAbstractionBase.UpdateTypeRepresentationsOfExceptionsToOmitStackTraceFrom(consoleAbstraction.ExceptionTypeRepresentationsToOnlyPrintMessage);
+=======
+                // ConsoleAbstraction must derive from ConsoleAbstractionBase which is provided in the Bootstrapper recipes, it contains the implementation of this method.
+                new ConsoleAbstraction().PerformEntryPointPreChecks();
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
                 /*---------------------------------------------------------------------------*
                  * This is just a pass through to the CLAP implementation of the harness,    *

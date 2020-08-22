@@ -11,13 +11,19 @@ namespace Naos.Diagnostics.Recipes
 {
     using System;
     using System.Collections.Generic;
+<<<<<<< HEAD
     using System.Diagnostics;
+=======
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
     using System.Linq;
 
     using Microsoft.VisualBasic.Devices;
 
     using Naos.Diagnostics.Domain;
+<<<<<<< HEAD
     using OBeautifulCode.Process.Recipes;
+=======
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
     /// <summary>
     /// Factory methods for domain objects.
@@ -90,13 +96,21 @@ namespace Naos.Diagnostics.Recipes
         /// <returns>New <see cref="ProcessDetails" />.</returns>
         public static ProcessDetails CreateProcessDetails()
         {
+<<<<<<< HEAD
             var process = ProcessHelper.GetRunningProcess();
+=======
+            var process = ProcessHelpers.GetRunningProcess();
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
             var result = new ProcessDetails(
                 process.GetName(),
                 process.GetFilePath(),
                 process.GetFileVersion(),
                 process.GetProductVersion(),
+<<<<<<< HEAD
                 ProcessHelper.IsCurrentlyRunningAsAdmin());
+=======
+                ProcessHelpers.IsCurrentlyRunningAsAdmin());
+>>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
             return result;
         }

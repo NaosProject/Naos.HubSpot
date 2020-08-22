@@ -4,7 +4,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Naos.HubSpot.Domain
+namespace Naos.HubSpot.Domain.Model
 {
     using System.Collections.Generic;
     using OBeautifulCode.Assertion.Recipes;
