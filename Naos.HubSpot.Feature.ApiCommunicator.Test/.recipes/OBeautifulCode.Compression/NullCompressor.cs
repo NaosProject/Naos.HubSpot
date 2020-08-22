@@ -19,11 +19,7 @@ namespace OBeautifulCode.Compression.Recipes
 #else
     public
 #endif
-<<<<<<< HEAD
     class NullCompressor : ICompressor
-=======
-    class NullCompressor : ICompressAndDecompress
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
     {
         /// <inheritdoc cref="ICompressAndDecompress"/>
         public CompressionKind CompressionKind => CompressionKind.None;

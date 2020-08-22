@@ -366,7 +366,6 @@ namespace OBeautifulCode.Type.Recipes
         }
 
         /// <summary>
-<<<<<<< HEAD
         /// Determines if the specified type has a default (public parameterless) constructor.
         /// </summary>
         /// <param name="type">Type to check.</param>
@@ -396,8 +395,6 @@ namespace OBeautifulCode.Type.Recipes
         }
 
         /// <summary>
-=======
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
         /// Determines if <see cref="Comparer{T}.Default"/> will return a
         /// working (non-throwing) comparer for the specified type.
         /// </summary>
@@ -671,7 +668,6 @@ namespace OBeautifulCode.Type.Recipes
         }
 
         /// <summary>
-<<<<<<< HEAD
         /// Determines if the specified type is a closed generic type.
         /// </summary>
         /// <param name="type">The type.</param>
@@ -692,8 +688,6 @@ namespace OBeautifulCode.Type.Recipes
         }
 
         /// <summary>
-=======
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
         /// Determines if the specified type is a class type, that's not anonymous, and is closed.
         /// </summary>
         /// <remarks>
@@ -916,7 +910,6 @@ namespace OBeautifulCode.Type.Recipes
         }
 
         /// <summary>
-<<<<<<< HEAD
         /// Determines if the specified type is in the <see cref="System"/> namespace.
         /// </summary>
         /// <remarks>
@@ -943,8 +936,6 @@ namespace OBeautifulCode.Type.Recipes
         }
 
         /// <summary>
-=======
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
         /// Gets a compilable, readability-optimized string representation of the specified type.
         /// </summary>
         /// <remarks>

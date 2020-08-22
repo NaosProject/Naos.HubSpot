@@ -11,11 +11,6 @@ namespace OBeautifulCode.Compression.Recipes
 {
     using System;
 
-<<<<<<< HEAD
-=======
-    using OBeautifulCode.Assertion.Recipes;
-
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
     using static System.FormattableString;
 
     /// <summary>
@@ -43,7 +38,6 @@ namespace OBeautifulCode.Compression.Recipes
         public static ICompressorFactory Instance => InternalInstance;
 
         /// <inheritdoc />
-<<<<<<< HEAD
         public ICompressor BuildCompressor(
             CompressionKind compressionKind)
         {
@@ -53,14 +47,6 @@ namespace OBeautifulCode.Compression.Recipes
             }
 
             ICompressor result;
-=======
-        public ICompressAndDecompress BuildCompressor(
-            CompressionKind compressionKind)
-        {
-            new { compressionKind }.AsArg().Must().NotBeEqualTo(CompressionKind.Invalid);
-
-            ICompressAndDecompress result;
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
             switch (compressionKind)
             {

@@ -9,18 +9,11 @@
 
 namespace OBeautifulCode.Compression.Recipes
 {
-<<<<<<< HEAD
     using System;
-=======
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.IO.Compression;
 
-<<<<<<< HEAD
-=======
-    using OBeautifulCode.Assertion.Recipes;
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
     using OBeautifulCode.Compression.Recipes.Internal;
 
     /// <summary>
@@ -34,11 +27,7 @@ namespace OBeautifulCode.Compression.Recipes
 #else
     public
 #endif
-<<<<<<< HEAD
     class DotNetZipCompressor : ICompressor
-=======
-    class DotNetZipCompressor : ICompressAndDecompress
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
     {
         /// <inheritdoc />
         public CompressionKind CompressionKind => CompressionKind.DotNetZip;
@@ -55,14 +44,10 @@ namespace OBeautifulCode.Compression.Recipes
         public static byte[] CompressBytes(
             byte[] uncompressedBytes)
         {
-<<<<<<< HEAD
             if (uncompressedBytes == null)
             {
                 throw new ArgumentNullException(nameof(uncompressedBytes));
             }
-=======
-            new { uncompressedBytes }.AsArg().Must().NotBeNull();
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
             byte[] result;
 
@@ -93,14 +78,10 @@ namespace OBeautifulCode.Compression.Recipes
         public static byte[] DecompressBytes(
             byte[] compressedBytes)
         {
-<<<<<<< HEAD
             if (compressedBytes == null)
             {
                 throw new ArgumentNullException(nameof(compressedBytes));
             }
-=======
-            new { compressedBytes }.AsArg().Must().NotBeNull();
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
             byte[] result;
 
@@ -124,14 +105,10 @@ namespace OBeautifulCode.Compression.Recipes
         byte[] ICompress.CompressBytes(
             byte[] uncompressedBytes)
         {
-<<<<<<< HEAD
             if (uncompressedBytes == null)
             {
                 throw new ArgumentNullException(nameof(uncompressedBytes));
             }
-=======
-            new { uncompressedBytes }.AsArg().Must().NotBeNull();
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
             var result = CompressBytes(uncompressedBytes);
 
@@ -142,14 +119,10 @@ namespace OBeautifulCode.Compression.Recipes
         byte[] IDecompress.DecompressBytes(
             byte[] compressedBytes)
         {
-<<<<<<< HEAD
             if (compressedBytes == null)
             {
                 throw new ArgumentNullException(nameof(compressedBytes));
             }
-=======
-            new { compressedBytes }.AsArg().Must().NotBeNull();
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
             var result = DecompressBytes(compressedBytes);
 

@@ -14,10 +14,6 @@ namespace OBeautifulCode.Collection.Recipes
     using System.Collections.Generic;
     using System.Linq;
 
-<<<<<<< HEAD
-=======
-    using OBeautifulCode.Assertion.Recipes;
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
     using OBeautifulCode.Equality.Recipes;
     using OBeautifulCode.String.Recipes;
     
@@ -56,7 +52,6 @@ namespace OBeautifulCode.Collection.Recipes
             int minimumItems = 1,
             int maximumItems = int.MaxValue)
         {
-<<<<<<< HEAD
             if (values == null)
             {
                 throw new ArgumentNullException(nameof(values));
@@ -71,12 +66,6 @@ namespace OBeautifulCode.Collection.Recipes
             {
                 throw new ArgumentOutOfRangeException(Invariant($"{nameof(maximumItems)} < {nameof(minimumItems)}."), (Exception)null);
             }
-=======
-            // ReSharper disable once PossibleMultipleEnumeration
-            new { values }.AsArg().Must().NotBeNull();
-            new { minimumItems }.AsArg().Must().BeGreaterThanOrEqualTo(1);
-            new { maximumItems }.AsArg().Must().BeGreaterThanOrEqualTo(minimumItems, Invariant($"{nameof(maximumItems)} < {nameof(minimumItems)}."));
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
 
             // ReSharper disable once PossibleMultipleEnumeration
             var valuesList = values.Distinct().ToArray();
@@ -137,7 +126,6 @@ namespace OBeautifulCode.Collection.Recipes
             IEnumerable<TSource> secondSet,
             IEqualityComparer<TSource> comparer = null)
         {
-<<<<<<< HEAD
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value));
@@ -151,14 +139,6 @@ namespace OBeautifulCode.Collection.Recipes
             var equalityComparerToUse = EqualityComparerHelper.GetEqualityComparerToUse(comparer);
 
             // ReSharper disable PossibleMultipleEnumeration
-=======
-            // ReSharper disable PossibleMultipleEnumeration
-            new { value }.AsArg().Must().NotBeNull();
-            new { secondSet }.AsArg().Must().NotBeNull();
-
-            var equalityComparerToUse = EqualityComparerHelper.GetEqualityComparerToUse(comparer);
-
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
             var result = value.Except(secondSet, equalityComparerToUse).Union(secondSet.Except(value, equalityComparerToUse), equalityComparerToUse);
 
             return result;
@@ -185,7 +165,6 @@ namespace OBeautifulCode.Collection.Recipes
             this IEnumerable<string> value,
             string nullValueEncoding = "")
         {
-<<<<<<< HEAD
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value));
@@ -193,13 +172,6 @@ namespace OBeautifulCode.Collection.Recipes
 
             var result = value.Select(item => item == null ? nullValueEncoding : item.ToCsvSafe()).ToDelimitedString(",");
 
-=======
-            // ReSharper disable once PossibleMultipleEnumeration
-            new { value }.AsArg().Must().NotBeNull();
-
-            // ReSharper disable once PossibleMultipleEnumeration
-            var result = value.Select(item => item == null ? nullValueEncoding : item.ToCsvSafe()).ToDelimitedString(",");
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
             return result;
         }
 
@@ -222,7 +194,6 @@ namespace OBeautifulCode.Collection.Recipes
             this IEnumerable<string> value,
             string delimiter)
         {
-<<<<<<< HEAD
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value));
@@ -236,14 +207,6 @@ namespace OBeautifulCode.Collection.Recipes
             // ReSharper disable once PossibleMultipleEnumeration
             var valueAsList = value.ToList();
 
-=======
-            // ReSharper disable once PossibleMultipleEnumeration
-            new { value }.AsArg().Must().NotBeNull();
-            new { delimiter }.AsArg().Must().NotBeNull();
-
-            // ReSharper disable once PossibleMultipleEnumeration
-            var valueAsList = value.ToList();
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
             if (valueAsList.Count == 0)
             {
                 return null;
@@ -251,10 +214,7 @@ namespace OBeautifulCode.Collection.Recipes
 
             // ReSharper disable once PossibleMultipleEnumeration
             var result = string.Join(delimiter, value);
-<<<<<<< HEAD
 
-=======
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
             return result;
         }
 
@@ -274,10 +234,7 @@ namespace OBeautifulCode.Collection.Recipes
             this IEnumerable<string> value)
         {
             var result = value.ToDelimitedString(Environment.NewLine);
-<<<<<<< HEAD
 
-=======
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
             return result;
         }
 
@@ -295,7 +252,6 @@ namespace OBeautifulCode.Collection.Recipes
         public static IDictionary ToNonGenericDictionary<TKey, TValue>(
             this IEnumerable<KeyValuePair<TKey, TValue>> value)
         {
-<<<<<<< HEAD
             if (value == null)
             {
                 throw new ArgumentNullException(nameof(value));
@@ -303,12 +259,6 @@ namespace OBeautifulCode.Collection.Recipes
 
             var result = new Hashtable();
 
-=======
-            // ReSharper disable PossibleMultipleEnumeration
-            new { value }.AsArg().Must().NotBeNull();
-
-            var result = new Hashtable();
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
             foreach (var item in value)
             {
                 if (result.ContainsKey(item.Key))
@@ -320,11 +270,6 @@ namespace OBeautifulCode.Collection.Recipes
             }
 
             return result;
-<<<<<<< HEAD
-=======
-
-            // ReSharper restore PossibleMultipleEnumeration
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
         }
 
         private static IEnumerable<T[]> GetCombinations<T>(

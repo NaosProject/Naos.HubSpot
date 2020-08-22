@@ -26,10 +26,7 @@
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <DocumentationFile>bin\Debug\Naos.HubSpot.Feature.ApiCommunicator.xml</DocumentationFile>
-<<<<<<< HEAD
     <CodeAnalysisRuleSet />
-=======
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -41,7 +38,6 @@
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <DocumentationFile>bin\Release\Naos.HubSpot.Feature.ApiCommunicator.xml</DocumentationFile>
-<<<<<<< HEAD
     <CodeAnalysisRuleSet />
   </PropertyGroup>
   <ItemGroup>
@@ -51,10 +47,6 @@
     <Reference Include="OBeautifulCode.Type, Version=1.0.51.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\OBeautifulCode.Type.1.0.51\lib\net462\OBeautifulCode.Type.dll</HintPath>
     </Reference>
-=======
-  </PropertyGroup>
-  <ItemGroup>
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
@@ -122,19 +114,11 @@
     <Content Include=".analyzers\dictionary.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-<<<<<<< HEAD
   <Import Project="..\packages\Naos.Build.Analyzers.1.55.31\build\Naos.Build.Analyzers.targets" Condition="Exists('..\packages\Naos.Build.Analyzers.1.55.31\build\Naos.Build.Analyzers.targets')" />
-=======
-  <Import Project="..\packages\Naos.Build.Analyzers.1.55.30\build\Naos.Build.Analyzers.targets" Condition="Exists('..\packages\Naos.Build.Analyzers.1.55.30\build\Naos.Build.Analyzers.targets')" />
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-<<<<<<< HEAD
     <Error Condition="!Exists('..\packages\Naos.Build.Analyzers.1.55.31\build\Naos.Build.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Naos.Build.Analyzers.1.55.31\build\Naos.Build.Analyzers.targets'))" />
-=======
-    <Error Condition="!Exists('..\packages\Naos.Build.Analyzers.1.55.30\build\Naos.Build.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Naos.Build.Analyzers.1.55.30\build\Naos.Build.Analyzers.targets'))" />
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
   </Target>
 </Project>

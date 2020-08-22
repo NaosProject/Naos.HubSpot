@@ -21,10 +21,7 @@ namespace Naos.Diagnostics.Recipes
     /// Model of a sampled performance counter.
     /// </summary>
 #if NaosDiagnosticsRecipes
-<<<<<<< HEAD
     [Serializable]
-=======
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
     public class RecipePerformanceCounterSample : IEquatable<RecipePerformanceCounterSample>
     {
         /// <summary>
@@ -92,10 +89,7 @@ namespace Naos.Diagnostics.Recipes
             .Hash(this.Value)
             .Value;
 #elif NaosDiagnosticsDomain
-<<<<<<< HEAD
     [Serializable]
-=======
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
     public class PerformanceCounterSample : IEquatable<PerformanceCounterSample>
     {
         /// <summary>
@@ -165,10 +159,7 @@ namespace Naos.Diagnostics.Recipes
 #else
     [System.CodeDom.Compiler.GeneratedCode("Naos.Diagnostics", "See package version number")]
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
-<<<<<<< HEAD
     [Serializable]
-=======
->>>>>>> f299d8dbc5dc7e0abcb0c85480e26493b239856a
     internal class RecipePerformanceCounterSample : IEquatable<RecipePerformanceCounterSample>
     {
         /// <summary>
