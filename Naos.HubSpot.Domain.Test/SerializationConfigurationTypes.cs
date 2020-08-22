@@ -12,16 +12,18 @@ namespace Naos.HubSpot.Domain.Test
     using System;
     using System.CodeDom.Compiler;
     using System.Diagnostics.CodeAnalysis;
-
+    using MongoDB.Bson;
     using Naos.HubSpot.Serialization.Bson;
     using Naos.HubSpot.Serialization.Json;
+    using OBeautifulCode.Serialization.Bson;
+    using OBeautifulCode.Serialization.Json;
 
     [ExcludeFromCodeCoverage]
     [GeneratedCode("Naos.Build.Conventions.VisualStudioProjectTemplates.Domain.Test", "1.55.30")]
     public static class SerializationConfigurationTypes
     {
-        public static Type BsonConfigurationType => typeof(HubSpotBsonSerializationConfiguration);
+        public static BsonSerializationConfigurationType BsonConfigurationType => typeof(HubSpotBsonSerializationConfiguration).ToBsonSerializationConfigurationType();
 
-        public static Type JsonConfigurationType => typeof(HubSpotJsonSerializationConfiguration);
+        public static JsonSerializationConfigurationType JsonConfigurationType => typeof(HubSpotJsonSerializationConfiguration).ToJsonSerializationConfigurationType();
     }
 }

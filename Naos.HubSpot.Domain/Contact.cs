@@ -34,8 +34,8 @@ namespace Naos.HubSpot.Domain
         /// <param name="vid">The vid.</param>
         /// <param name="properties">The properties.</param>
         public Contact(
-            string                              email,
-            string                              vid,
+            string email,
+            string vid,
             IReadOnlyDictionary<string, string> properties)
         {
             email.MustForArg(nameof(email)).NotBeNullNorWhiteSpace();

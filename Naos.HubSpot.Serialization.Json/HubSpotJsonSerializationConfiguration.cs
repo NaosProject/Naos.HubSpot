@@ -12,12 +12,12 @@ namespace Naos.HubSpot.Serialization.Json
     using OBeautifulCode.Serialization.Json;
 
     /// <inheritdoc />
-    public class HubSpotJsonSerializationConfiguration : JsonConfigurationBase
+    public class HubSpotJsonSerializationConfiguration : JsonSerializationConfigurationBase
     {
         /// <inheritdoc />
-        protected override IReadOnlyCollection<Type> TypesToAutoRegister => new Type[]
+        protected override IReadOnlyCollection<TypeToRegisterForJson> TypesToRegisterForJson => new[]
         {
-            typeof(Contact),
+            typeof(Contact).ToTypeToRegisterForJson(),
         };
     }
 }

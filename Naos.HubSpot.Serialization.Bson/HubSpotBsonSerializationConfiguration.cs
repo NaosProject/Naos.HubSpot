@@ -12,12 +12,12 @@ namespace Naos.HubSpot.Serialization.Bson
     using OBeautifulCode.Serialization.Bson;
 
     /// <inheritdoc />
-    public class HubSpotBsonSerializationConfiguration : BsonConfigurationBase
+    public class HubSpotBsonSerializationConfiguration : BsonSerializationConfigurationBase
     {
         /// <inheritdoc />
-        protected override IReadOnlyCollection<Type> TypesToAutoRegister => new Type[]
+        protected override IReadOnlyCollection<TypeToRegisterForBson> TypesToRegisterForBson => new[]
         {
-            typeof(Contact),
+            typeof(Contact).ToTypeToRegisterForBson(),
         };
     }
 }
