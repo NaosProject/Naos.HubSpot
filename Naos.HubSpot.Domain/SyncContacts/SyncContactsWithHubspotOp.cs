@@ -19,5 +19,9 @@ namespace Naos.HubSpot.Domain
     /// </summary>
     public partial class SyncContactsWithHubspotOp : ReturningOperationBase<SyncContactsWithHubspotResult>, IModelViaCodeGen
     {
+        public SyncContactsWithHubspotOp(IReadOnlyCollection<Contact> contacts)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

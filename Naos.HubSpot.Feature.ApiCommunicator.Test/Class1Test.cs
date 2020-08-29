@@ -7,7 +7,8 @@
 namespace Naos.HubSpot.Feature.ApiCommunicator.Test
 {
     using System;
-
+    using System.Collections.Generic;
+    using Naos.HubSpot.Domain;
     using OBeautifulCode.Assertion.Recipes;
 
     using Xunit;
@@ -21,6 +22,10 @@ namespace Naos.HubSpot.Feature.ApiCommunicator.Test
         public static void Method___Should_do_something___When_called()
         {
             // Arrange
+            var contacts = new List<Contact>(); // this is where you would get the contacts from the DB
+            var protocol = new HubspotProtocol();
+            var operation = new SyncContactsWithHubspotOp(contacts); // <- contact goes here.
+            var result = protocol.Execute(operation);
 
             // Act
 

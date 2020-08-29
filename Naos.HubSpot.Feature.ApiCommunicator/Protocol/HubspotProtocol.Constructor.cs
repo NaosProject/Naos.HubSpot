@@ -13,17 +13,11 @@ namespace Naos.HubSpot.Feature.ApiCommunicator
     /// <summary>
     /// TODO: Starting point for new project.
     /// </summary>
-    public partial class HubspotProtocol : ISyncAndAsyncReturningProtocol<SyncCompaniesWithHubspotOp, SyncCompaniesWithHubspotResult>
+    public partial class HubspotProtocol : ISyncAndAsyncReturningProtocol<SyncWithHubspotOp, SyncWithHubspotResult>
     {
-        public SyncCompaniesWithHubspotResult Execute(SyncCompaniesWithHubspotOp operation)
+        public HubspotProtocol()
         {
-            throw new System.NotImplementedException();
-            var result = 
-        }
-
-        public Task<SyncCompaniesWithHubspotResult> ExecuteAsync(SyncCompaniesWithHubspotOp operation)
-        {
-            throw new System.NotImplementedException();
+            
         }
     }
 }
