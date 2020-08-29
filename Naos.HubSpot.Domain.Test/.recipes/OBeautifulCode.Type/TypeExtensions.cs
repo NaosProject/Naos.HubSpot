@@ -717,7 +717,6 @@ namespace OBeautifulCode.Type.Recipes
         /// <summary>
         /// Determines if the specified type is a closed <see cref="Nullable{T}"/> type.
         /// </summary>
-        /// <remarks>Adapted from: <a href="https://stackoverflow.com/a/41281601/356790" />.</remarks>
         /// <param name="type">The type.</param>
         /// <returns>
         /// true if the specified type is a closed <see cref="Nullable{T}"/> type, otherwise false.
@@ -731,7 +730,12 @@ namespace OBeautifulCode.Type.Recipes
                 throw new ArgumentNullException(nameof(type));
             }
 
-            var result = Nullable.GetUnderlyingType(type) != null;
+            if (type.ContainsGenericParameters)
+            {
+                return false;
+            }
+
+            var result = type.IsNullableType();
 
             return result;
         }
@@ -759,14 +763,7 @@ namespace OBeautifulCode.Type.Recipes
                 return false;
             }
 
-            if (!type.IsGenericType)
-            {
-                return false;
-            }
-
-            var genericTypeDefinition = type.GetGenericTypeDefinition();
-
-            var result = SystemCollectionGenericTypeDefinitions.Contains(genericTypeDefinition);
+            var result = type.IsSystemCollectionType();
 
             return result;
         }
@@ -794,14 +791,7 @@ namespace OBeautifulCode.Type.Recipes
                 return false;
             }
 
-            if (!type.IsGenericType)
-            {
-                return false;
-            }
-
-            var genericTypeDefinition = type.GetGenericTypeDefinition();
-
-            var result = SystemDictionaryGenericTypeDefinitions.Contains(genericTypeDefinition);
+            var result = type.IsSystemDictionaryType();
 
             return result;
         }
@@ -827,14 +817,7 @@ namespace OBeautifulCode.Type.Recipes
                 return false;
             }
 
-            if (!type.IsGenericType)
-            {
-                return false;
-            }
-
-            var genericTypeDefinition = type.GetGenericTypeDefinition();
-
-            var result = genericTypeDefinition == EnumerableInterfaceGenericTypeDefinition;
+            var result = type.IsSystemEnumerableType();
 
             return result;
         }
@@ -862,14 +845,7 @@ namespace OBeautifulCode.Type.Recipes
                 return false;
             }
 
-            if (!type.IsGenericType)
-            {
-                return false;
-            }
-
-            var genericTypeDefinition = type.GetGenericTypeDefinition();
-
-            var result = SystemOrderedCollectionGenericTypeDefinitions.Contains(genericTypeDefinition);
+            var result = type.IsSystemOrderedCollectionType();
 
             return result;
         }
@@ -897,14 +873,29 @@ namespace OBeautifulCode.Type.Recipes
                 return false;
             }
 
-            if (!type.IsGenericType)
+            var result = type.IsSystemUnorderedCollectionType();
+
+            return result;
+        }
+
+        /// <summary>
+        /// Determines if the specified type is an open or closed <see cref="Nullable{T}"/> type.
+        /// </summary>
+        /// <remarks>Adapted from: <a href="https://stackoverflow.com/a/41281601/356790" />.</remarks>
+        /// <param name="type">The type.</param>
+        /// <returns>
+        /// true if the specified type is an open or closed <see cref="Nullable{T}"/> type, otherwise false.
+        /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="type"/> is null.</exception>
+        public static bool IsNullableType(
+            this Type type)
+        {
+            if (type == null)
             {
-                return false;
+                throw new ArgumentNullException(nameof(type));
             }
 
-            var genericTypeDefinition = type.GetGenericTypeDefinition();
-
-            var result = SystemUnorderedCollectionGenericTypeDefinitions.Contains(genericTypeDefinition);
+            var result = (type == typeof(Nullable<>)) || (Nullable.GetUnderlyingType(type) != null);
 
             return result;
         }
@@ -931,6 +922,154 @@ namespace OBeautifulCode.Type.Recipes
             }
 
             var result = type.IsArray || type.IsGenericParameter || (type.Namespace?.StartsWith(nameof(System), StringComparison.Ordinal) ?? false);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Determines if the specified type is an open or closed version of one of the
+        /// following <see cref="System"/> Collection generic type definitions:
+        /// <see cref="SystemCollectionGenericTypeDefinitions"/>.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>
+        /// true if the specified type is a closed <see cref="System"/> collection type; otherwise false.
+        /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="type"/> is null.</exception>
+        public static bool IsSystemCollectionType(
+            this Type type)
+        {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
+            if (!type.IsGenericType)
+            {
+                return false;
+            }
+
+            var genericTypeDefinition = type.GetGenericTypeDefinition();
+
+            var result = SystemCollectionGenericTypeDefinitions.Contains(genericTypeDefinition);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Determines if the specified type is an open or closed version one of one of the
+        /// following <see cref="System"/> Dictionary generic type definitions:
+        /// <see cref="SystemDictionaryGenericTypeDefinitions"/>.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>
+        /// true if the specified type is a closed <see cref="System"/> dictionary type; otherwise false.
+        /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="type"/> is null.</exception>
+        public static bool IsSystemDictionaryType(
+            this Type type)
+        {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
+            if (!type.IsGenericType)
+            {
+                return false;
+            }
+
+            var genericTypeDefinition = type.GetGenericTypeDefinition();
+
+            var result = SystemDictionaryGenericTypeDefinitions.Contains(genericTypeDefinition);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Determines if the specified type is an open or closed <see cref="IEnumerable{T}"/>.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>
+        /// true if the specified type is a closed <see cref="IEnumerable{T}"/>; otherwise false.
+        /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="type"/> is null.</exception>
+        public static bool IsSystemEnumerableType(
+            this Type type)
+        {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
+            if (!type.IsGenericType)
+            {
+                return false;
+            }
+
+            var genericTypeDefinition = type.GetGenericTypeDefinition();
+
+            var result = genericTypeDefinition == EnumerableInterfaceGenericTypeDefinition;
+
+            return result;
+        }
+
+        /// <summary>
+        /// Determines if the specified type is an open or closed version of one of the
+        /// following ordered <see cref="System"/> Collection generic type definitions:
+        /// <see cref="SystemOrderedCollectionGenericTypeDefinitions"/>.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>
+        /// true if the specified type is a closed, ordered <see cref="System"/> Collection type; otherwise false.
+        /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="type"/> is null.</exception>
+        public static bool IsSystemOrderedCollectionType(
+            this Type type)
+        {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
+            if (!type.IsGenericType)
+            {
+                return false;
+            }
+
+            var genericTypeDefinition = type.GetGenericTypeDefinition();
+
+            var result = SystemOrderedCollectionGenericTypeDefinitions.Contains(genericTypeDefinition);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Determines if the specified type is an open or closed version of one of the
+        /// following unordered <see cref="System"/> Collection generic type definitions:
+        /// <see cref="SystemUnorderedCollectionGenericTypeDefinitions"/>.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>
+        /// true if the specified type is a closed, unordered <see cref="System"/> Collection type; otherwise false.
+        /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="type"/> is null.</exception>
+        public static bool IsSystemUnorderedCollectionType(
+            this Type type)
+        {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
+            if (!type.IsGenericType)
+            {
+                return false;
+            }
+
+            var genericTypeDefinition = type.GetGenericTypeDefinition();
+
+            var result = SystemUnorderedCollectionGenericTypeDefinitions.Contains(genericTypeDefinition);
 
             return result;
         }
@@ -1067,6 +1206,102 @@ namespace OBeautifulCode.Type.Recipes
             if (includeAssemblyDetails && assemblyDetailsTypes.Any())
             {
                 result = result + " || " + string.Join(" | ", assemblyDetailsTypes.Select(_ => _.ToAssemblyDetails()).ToArray());
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Gets an XML-doc compatible string representation of the specified type.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <param name="throwIfNoCompatibleStringExists">Optional value indicating whether to throw a <see cref="NotSupportedException"/> if there's no compatible string representation of the specified type.</param>
+        /// <param name="options">The options to use when generating the string representation.</param>
+        /// <returns>
+        /// A XML-doc compatible string representation of the specified type.
+        /// </returns>
+        /// <exception cref="ArgumentNullException"><paramref name="type"/> is null.</exception>
+        public static string ToStringXmlDoc(
+            this Type type,
+            bool throwIfNoCompatibleStringExists = false,
+            ToStringXmlDocOptions options = ToStringXmlDocOptions.None)
+        {
+            if (type == null)
+            {
+                throw new ArgumentNullException(nameof(type));
+            }
+
+            string result;
+
+            if (type.IsAnonymousType())
+            {
+                if (throwIfNoCompatibleStringExists)
+                {
+                    throw new NotSupportedException("Anonymous types are not supported.");
+                }
+                else
+                {
+                    result = null;
+                }
+            }
+            else if (type.IsGenericParameter)
+            {
+                if (throwIfNoCompatibleStringExists)
+                {
+                    // note that IsGenericParameter and ContainsGenericParameters will return true for generic parameters,
+                    // hence we order the IsGenericParameter check first.
+                    throw new NotSupportedException("Generic parameters not supported.");
+                }
+                else
+                {
+                    result = null;
+                }
+            }
+            else if (type.IsArray)
+            {
+                result = options.HasFlag(ToStringXmlDocOptions.IncludeNamespace) ? typeof(Array).FullName : nameof(Array);
+            }
+            else if (ValueTypeToAliasMap.ContainsKey(type))
+            {
+                result = ValueTypeToAliasMap[type];
+            }
+            else
+            {
+                result = CodeDomProvider.GetTypeOutput(new CodeTypeReference(type.FullName?.Replace(type.Namespace + ".", string.Empty) ?? type.Name));
+
+                var includeNamespace = options.HasFlag(ToStringXmlDocOptions.IncludeNamespace);
+
+                if (includeNamespace && (type.Namespace != null))
+                {
+                    result = type.Namespace + "." + result;
+                }
+
+                // as far as we can tell, you can't namespace qualify generic arguments
+                // also multiple-levels of generics are not allow (e.g. List<List<string>> is represented as List{List})
+                if (type.IsGenericType)
+                {
+                    var genericArgumentStrings = new List<string>();
+
+                    foreach (var genericArgument in type.GetGenericArguments())
+                    {
+                        string genericArgumentString;
+
+                        if (genericArgument.IsArray)
+                        {
+                            genericArgumentString = nameof(Array);
+                        }
+                        else
+                        {
+                            var genericTickIndex = genericArgument.Name.IndexOf('`');
+
+                            genericArgumentString = genericTickIndex == -1 ? genericArgument.Name : genericArgument.Name.Substring(0, genericTickIndex);
+                        }
+
+                        genericArgumentStrings.Add(genericArgumentString);
+                    }
+
+                    result = GenericBracketsRegex.Replace(result, "{" + string.Join(", ", genericArgumentStrings) + "}");
+                }
             }
 
             return result;

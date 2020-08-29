@@ -12,7 +12,7 @@ namespace OBeautifulCode.Type.Recipes
     using System;
 
     /// <summary>
-    /// Options for generating a readability-optimized string representation of a type.
+    /// Options for generating a XML doc compatible string representation of a type.
     /// </summary>
     [Flags]
 #if !OBeautifulCodeTypeRecipesProject
@@ -20,7 +20,7 @@ namespace OBeautifulCode.Type.Recipes
 #else
     public
 #endif
-        enum ToStringReadableOptions
+        enum ToStringXmlDocOptions
     {
         /// <summary>
         /// None (default).
@@ -32,13 +32,6 @@ namespace OBeautifulCode.Type.Recipes
         /// Include the namespace of the type.
         /// If the type is generic then also include the namespace of all generic argument types.
         /// </summary>
-        IncludeNamespace = 1,
-
-        /// <summary>
-        /// Include details (name and version) about the assembly that contains the type.
-        /// If the type is generic then also include details about the assembly that contains
-        /// all of the generic argument types.
-        /// </summary>
-        IncludeAssemblyDetails,
+        IncludeNamespace = 1
     }
 }

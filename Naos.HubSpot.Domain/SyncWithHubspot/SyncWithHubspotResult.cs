@@ -1,15 +1,15 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Class1.cs" company="Naos Project">
+// <copyright file="Contact.cs" company="Naos Project">
 //    Copyright (c) Naos Project 2019. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Naos.HubSpot.Feature.ApiCommunicator
+namespace Naos.HubSpot.Domain
 {
     /// <summary>
-    /// TODO: Starting point for new project.
+    /// The output object of the op.
     /// </summary>
-    public partial class Class1
+    public class SyncWithHubspotResult
     {
     }
 }
