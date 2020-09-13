@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naos.HubSpot.Feature.ApiCom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naos.HubSpot.Feature.ApiCommunicator.Test", "Naos.HubSpot.Feature.ApiCommunicator.Test\Naos.HubSpot.Feature.ApiCommunicator.Test.csproj", "{0D15C303-FEF9-4C5C-9AB9-9634E2394B87}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naos.HubSpot.Protocol.Client", "Naos.HubSpot.Protocol.Client\Naos.HubSpot.Protocol.Client.csproj", "{17C44375-0093-49A1-8D77-36D52A08F12C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naos.HubSpot.Protocol.Client.Test", "Naos.HubSpot.Protocol.Client.Test\Naos.HubSpot.Protocol.Client.Test.csproj", "{31E018CC-21D7-4E53-87C3-2D74AA78D348}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,14 @@ Global
 		{0D15C303-FEF9-4C5C-9AB9-9634E2394B87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D15C303-FEF9-4C5C-9AB9-9634E2394B87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D15C303-FEF9-4C5C-9AB9-9634E2394B87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17C44375-0093-49A1-8D77-36D52A08F12C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17C44375-0093-49A1-8D77-36D52A08F12C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17C44375-0093-49A1-8D77-36D52A08F12C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17C44375-0093-49A1-8D77-36D52A08F12C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31E018CC-21D7-4E53-87C3-2D74AA78D348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31E018CC-21D7-4E53-87C3-2D74AA78D348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31E018CC-21D7-4E53-87C3-2D74AA78D348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31E018CC-21D7-4E53-87C3-2D74AA78D348}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
