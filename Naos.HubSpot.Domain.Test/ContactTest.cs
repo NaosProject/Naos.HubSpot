@@ -10,7 +10,7 @@ namespace Naos.HubSpot.Domain.Test
     using System.Collections.Generic;
     using System.Linq;
     using FakeItEasy;
-    using Naos.HubSpot.Domain.Test.Internal;
+    using Naos.CodeAnalysis.Recipes;
     using OBeautifulCode.AutoFakeItEasy;
     using OBeautifulCode.CodeGen.ModelObject.Recipes;
     using OBeautifulCode.Collection.Recipes;
@@ -37,6 +37,7 @@ namespace Naos.HubSpot.Domain.Test
                         var referenceObject = A.Dummy<Contact>();
 
                         var result = new Contact(
+                                             referenceObject.EntityId,
                                              null,
                                              referenceObject.Vid,
                                              referenceObject.Properties);
@@ -55,6 +56,7 @@ namespace Naos.HubSpot.Domain.Test
                         var referenceObject = A.Dummy<Contact>();
 
                         var result = new Contact(
+                                             referenceObject.EntityId,
                                              Invariant($"  {Environment.NewLine}  "),
                                              referenceObject.Vid,
                                              referenceObject.Properties);
@@ -73,6 +75,7 @@ namespace Naos.HubSpot.Domain.Test
                         var referenceObject = A.Dummy<Contact>();
 
                         var result = new Contact(
+                                             referenceObject.EntityId,
                                              referenceObject.Email,
                                              Invariant($"  {Environment.NewLine}  "),
                                              referenceObject.Properties);
@@ -91,6 +94,7 @@ namespace Naos.HubSpot.Domain.Test
                         var referenceObject = A.Dummy<Contact>();
 
                         var result = new Contact(
+                                             referenceObject.EntityId,
                                              referenceObject.Email,
                                              referenceObject.Vid,
                                              null);
@@ -109,6 +113,7 @@ namespace Naos.HubSpot.Domain.Test
                         var referenceObject = A.Dummy<Contact>();
 
                         var result = new Contact(
+                                             referenceObject.EntityId,
                                              referenceObject.Email,
                                              referenceObject.Vid,
                                              new Dictionary<string, string>());
@@ -127,6 +132,7 @@ namespace Naos.HubSpot.Domain.Test
                         var referenceObject = A.Dummy<Contact>();
 
                         var result = new Contact(
+                            referenceObject.EntityId,
                             referenceObject.Email,
                             referenceObject.Vid,
                             new Dictionary<string, string>
@@ -148,6 +154,7 @@ namespace Naos.HubSpot.Domain.Test
                         var referenceObject = A.Dummy<Contact>();
 
                         var result = new Contact(
+                                             referenceObject.EntityId,
                                              referenceObject.Email,
                                              referenceObject.Vid,
                                              new Dictionary<string, string>

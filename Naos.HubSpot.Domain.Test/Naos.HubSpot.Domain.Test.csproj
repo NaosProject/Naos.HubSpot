@@ -77,8 +77,8 @@
     <Reference Include="Naos.Logging.Persistence, Version=1.0.73.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Naos.Logging.Persistence.1.0.73\lib\net462\Naos.Logging.Persistence.dll</HintPath>
     </Reference>
-    <Reference Include="Naos.Protocol.Domain, Version=1.0.56.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Naos.Protocol.Domain.1.0.56\lib\net462\Naos.Protocol.Domain.dll</HintPath>
+    <Reference Include="Naos.Protocol.Domain, Version=1.0.61.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Naos.Protocol.Domain.1.0.61\lib\net462\Naos.Protocol.Domain.dll</HintPath>
     </Reference>
     <Reference Include="Naos.Telemetry.Domain, Version=1.0.24.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Naos.Telemetry.Domain.1.0.24\lib\net462\Naos.Telemetry.Domain.dll</HintPath>
@@ -86,29 +86,29 @@
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="OBeautifulCode.AutoFakeItEasy, Version=1.0.128.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OBeautifulCode.AutoFakeItEasy.1.0.128\lib\net462\OBeautifulCode.AutoFakeItEasy.dll</HintPath>
+    <Reference Include="OBeautifulCode.AutoFakeItEasy, Version=1.0.129.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBeautifulCode.AutoFakeItEasy.1.0.129\lib\net462\OBeautifulCode.AutoFakeItEasy.dll</HintPath>
     </Reference>
-    <Reference Include="OBeautifulCode.Compression, Version=1.0.16.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OBeautifulCode.Compression.1.0.16\lib\net462\OBeautifulCode.Compression.dll</HintPath>
+    <Reference Include="OBeautifulCode.Compression, Version=1.0.17.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBeautifulCode.Compression.1.0.17\lib\net462\OBeautifulCode.Compression.dll</HintPath>
     </Reference>
-    <Reference Include="OBeautifulCode.Representation.System, Version=1.0.52.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OBeautifulCode.Representation.System.1.0.52\lib\net462\OBeautifulCode.Representation.System.dll</HintPath>
+    <Reference Include="OBeautifulCode.Representation.System, Version=1.0.53.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBeautifulCode.Representation.System.1.0.53\lib\net462\OBeautifulCode.Representation.System.dll</HintPath>
     </Reference>
-    <Reference Include="OBeautifulCode.Serialization, Version=1.0.73.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OBeautifulCode.Serialization.1.0.73\lib\net462\OBeautifulCode.Serialization.dll</HintPath>
+    <Reference Include="OBeautifulCode.Serialization, Version=1.0.74.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBeautifulCode.Serialization.1.0.74\lib\net462\OBeautifulCode.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="OBeautifulCode.Serialization.Bson, Version=1.0.73.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OBeautifulCode.Serialization.Bson.1.0.73\lib\net462\OBeautifulCode.Serialization.Bson.dll</HintPath>
+    <Reference Include="OBeautifulCode.Serialization.Bson, Version=1.0.74.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBeautifulCode.Serialization.Bson.1.0.74\lib\net462\OBeautifulCode.Serialization.Bson.dll</HintPath>
     </Reference>
-    <Reference Include="OBeautifulCode.Serialization.Json, Version=1.0.73.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OBeautifulCode.Serialization.Json.1.0.73\lib\net462\OBeautifulCode.Serialization.Json.dll</HintPath>
+    <Reference Include="OBeautifulCode.Serialization.Json, Version=1.0.74.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBeautifulCode.Serialization.Json.1.0.74\lib\net462\OBeautifulCode.Serialization.Json.dll</HintPath>
     </Reference>
-    <Reference Include="OBeautifulCode.Serialization.PropertyBag, Version=1.0.73.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OBeautifulCode.Serialization.PropertyBag.1.0.73\lib\net462\OBeautifulCode.Serialization.PropertyBag.dll</HintPath>
+    <Reference Include="OBeautifulCode.Serialization.PropertyBag, Version=1.0.74.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBeautifulCode.Serialization.PropertyBag.1.0.74\lib\net462\OBeautifulCode.Serialization.PropertyBag.dll</HintPath>
     </Reference>
-    <Reference Include="OBeautifulCode.Type, Version=1.0.62.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OBeautifulCode.Type.1.0.62\lib\net462\OBeautifulCode.Type.dll</HintPath>
+    <Reference Include="OBeautifulCode.Type, Version=1.0.69.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBeautifulCode.Type.1.0.69\lib\net462\OBeautifulCode.Type.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
@@ -131,11 +131,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include=".analyzers\SuppressBecause.cs" />
     <Compile Include=".recipes\Naos.Bootstrapper\ConsoleAbstractionBase.cs" />
     <Compile Include=".recipes\Naos.Bootstrapper\TestFailedException.cs" />
     <Compile Include=".recipes\Naos.Bootstrapper\TestRunner.cs" />
     <Compile Include=".recipes\Naos.Bootstrapper\WellKnownConsoleVerb.cs" />
+    <Compile Include=".recipes\Naos.CodeAnalysis\NaosSuppressBecause.cs" />
     <Compile Include=".recipes\Naos.Diagnostics\DomainFactory.cs" />
     <Compile Include=".recipes\Naos.Diagnostics\MachineMemory.cs" />
     <Compile Include=".recipes\Naos.Diagnostics\MachineMemoryKind.cs" />
@@ -155,7 +155,6 @@
     <Compile Include=".recipes\OBeautifulCode.Assertion\Delegates.cs" />
     <Compile Include=".recipes\OBeautifulCode.Assertion\ImproperUseOfAssertionFrameworkException.cs" />
     <Compile Include=".recipes\OBeautifulCode.Assertion\Range.cs" />
-    <Compile Include=".recipes\OBeautifulCode.Assertion\SuppressBecause.cs" />
     <Compile Include=".recipes\OBeautifulCode.Assertion\TestAssertionVerificationFailedException.cs" />
     <Compile Include=".recipes\OBeautifulCode.Assertion\TypeValidation.cs" />
     <Compile Include=".recipes\OBeautifulCode.Assertion\ValidatedNotNullAttribute.cs" />
@@ -170,6 +169,7 @@
     <Compile Include=".recipes\OBeautifulCode.Assertion\Verifications.Workflow.cs" />
     <Compile Include=".recipes\OBeautifulCode.Assertion\WorkflowExtensions.cs" />
     <Compile Include=".recipes\OBeautifulCode.AutoFakeItEasy\AutoFakeItEasyBootstrapper.cs" />
+    <Compile Include=".recipes\OBeautifulCode.CodeAnalysis\ObcSuppressBecause.cs" />
     <Compile Include=".recipes\OBeautifulCode.CodeGen\Comparable\ComparableTestScenarios{T}.cs" />
     <Compile Include=".recipes\OBeautifulCode.CodeGen\Comparable\ComparableTestScenario{T}.cs" />
     <Compile Include=".recipes\OBeautifulCode.CodeGen\Comparable\ValidatedComparableTestScenario{T}.cs" />
@@ -192,13 +192,10 @@
     <Compile Include=".recipes\OBeautifulCode.CodeGen\StringRepresentation\StringRepresentationTestScenario{T}.cs" />
     <Compile Include=".recipes\OBeautifulCode.CodeGen\StringRepresentation\SystemUnderTestExpectedStringRepresentation{T}.cs" />
     <Compile Include=".recipes\OBeautifulCode.CodeGen\StringRepresentation\ValidatedStringRepresentationTestScenario{T}.cs" />
-    <Compile Include=".recipes\OBeautifulCode.CodeGen\SuppressBecause.cs" />
     <Compile Include=".recipes\OBeautifulCode.Collection\EnumerableExtensions.cs" />
-    <Compile Include=".recipes\OBeautifulCode.Collection\SuppressBecause.cs" />
     <Compile Include=".recipes\OBeautifulCode.Compression\CompressorFactory.cs" />
     <Compile Include=".recipes\OBeautifulCode.Compression\DotNetZipCompressor.cs" />
     <Compile Include=".recipes\OBeautifulCode.Compression\NullCompressor.cs" />
-    <Compile Include=".recipes\OBeautifulCode.Compression\SuppressBecause.cs" />
     <Compile Include=".recipes\OBeautifulCode.Equality\DateTimeEqualityComparer.cs" />
     <Compile Include=".recipes\OBeautifulCode.Equality\DictionaryEqualityComparer.cs" />
     <Compile Include=".recipes\OBeautifulCode.Equality\EnumerableEqualityComparer.cs" />
@@ -207,21 +204,14 @@
     <Compile Include=".recipes\OBeautifulCode.Equality\EqualityExtensions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Equality\HashCodeHelper.cs" />
     <Compile Include=".recipes\OBeautifulCode.Equality\ReadOnlyDictionaryEqualityComparer.cs" />
-    <Compile Include=".recipes\OBeautifulCode.Equality\SuppressBecause.cs" />
-    <Compile Include=".recipes\OBeautifulCode.Math\SuppressBecause.cs" />
     <Compile Include=".recipes\OBeautifulCode.Math\ThreadSafeRandom.cs" />
     <Compile Include=".recipes\OBeautifulCode.Process\ProcessHelper.cs" />
-    <Compile Include=".recipes\OBeautifulCode.Process\SuppressBecause.cs" />
     <Compile Include=".recipes\OBeautifulCode.Reflection\AssemblyHelper.cs" />
     <Compile Include=".recipes\OBeautifulCode.Reflection\CompressionMethod.cs" />
-    <Compile Include=".recipes\OBeautifulCode.Reflection\SuppressBecause.cs" />
     <Compile Include=".recipes\OBeautifulCode.Serialization\FactoryExtensions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Serialization\SerializerFactory.cs" />
-    <Compile Include=".recipes\OBeautifulCode.Serialization\SuppressBecause.cs" />
     <Compile Include=".recipes\OBeautifulCode.String\StringExtensions.cs" />
-    <Compile Include=".recipes\OBeautifulCode.String\SuppressBecause.cs" />
     <Compile Include=".recipes\OBeautifulCode.Type\ArrayKind.cs" />
-    <Compile Include=".recipes\OBeautifulCode.Type\SuppressBecause.cs" />
     <Compile Include=".recipes\OBeautifulCode.Type\ToStringReadableOptions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Type\ToStringXmlDocOptions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Type\TypeExtensions.cs" />
@@ -276,8 +266,8 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\xunit.core.2.4.1\build\xunit.core.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\xunit.core.2.4.1\build\xunit.core.props'))" />
     <Error Condition="!Exists('..\packages\xunit.core.2.4.1\build\xunit.core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\xunit.core.2.4.1\build\xunit.core.targets'))" />
-    <Error Condition="!Exists('..\packages\Naos.Build.Analyzers.1.55.31\build\Naos.Build.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Naos.Build.Analyzers.1.55.31\build\Naos.Build.Analyzers.targets'))" />
+    <Error Condition="!Exists('..\packages\Naos.Build.Analyzers.1.55.34\build\Naos.Build.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Naos.Build.Analyzers.1.55.34\build\Naos.Build.Analyzers.targets'))" />
   </Target>
   <Import Project="..\packages\xunit.core.2.4.1\build\xunit.core.targets" Condition="Exists('..\packages\xunit.core.2.4.1\build\xunit.core.targets')" />
-  <Import Project="..\packages\Naos.Build.Analyzers.1.55.31\build\Naos.Build.Analyzers.targets" Condition="Exists('..\packages\Naos.Build.Analyzers.1.55.31\build\Naos.Build.Analyzers.targets')" />
+  <Import Project="..\packages\Naos.Build.Analyzers.1.55.34\build\Naos.Build.Analyzers.targets" Condition="Exists('..\packages\Naos.Build.Analyzers.1.55.34\build\Naos.Build.Analyzers.targets')" />
 </Project>

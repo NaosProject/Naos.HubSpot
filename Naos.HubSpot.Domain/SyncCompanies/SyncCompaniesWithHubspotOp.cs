@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SyncCompaniesWithHubspotOp.cs" company="Naos Project">
+// <copyright file="SyncCompaniesWithHubSpotOp.cs" company="Naos Project">
 //    Copyright (c) Naos Project 2019. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -12,12 +12,11 @@ namespace Naos.HubSpot.Domain
     using OBeautifulCode.Type;
 
     using static System.FormattableString;
-    // TODO: GET GHOSTDOC
 
     /// <summary>
     /// The parameter object for the OP.
     /// </summary>
-    public partial class SyncCompaniesWithHubspotOp : ReturningOperationBase<SyncCompaniesWithHubspotResult>, IModelViaCodeGen
+    public partial class SyncCompaniesWithHubSpotOp : ReturningOperationBase<SyncCompaniesWithHubSpotResult>, IModelViaCodeGen
     {
     }
 }

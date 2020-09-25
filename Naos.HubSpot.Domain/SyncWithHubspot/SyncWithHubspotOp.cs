@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SyncWithHubspotOp.cs" company="Naos Project">
+// <copyright file="SyncWithHubSpotOp.cs" company="Naos Project">
 //    Copyright (c) Naos Project 2019. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -16,8 +16,7 @@ namespace Naos.HubSpot.Domain
     /// <summary>
     /// The parameter object for the OP.
     /// </summary>
-    public partial class SyncWithHubspotOp : ReturningOperationBase<SyncWithHubspotResult>, IModelViaCodeGen
+    public partial class SyncWithHubSpotOp : ReturningOperationBase<SyncWithHubSpotResult>, IModelViaCodeGen
     {
-       
     }
 }

@@ -36,6 +36,7 @@ namespace Naos.HubSpot.Domain.Test
                     return new Contact(
                         A.Dummy<string>(),
                         A.Dummy<string>(),
+                        A.Dummy<string>(),
                         readOnlyDictionary);
                 });
         }

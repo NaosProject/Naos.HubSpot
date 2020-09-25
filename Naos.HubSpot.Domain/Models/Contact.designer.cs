@@ -91,6 +91,7 @@ namespace Naos.HubSpot.Domain
         public Contact DeepClone()
         {
             var result = new Contact(
+                                 this.EntityId?.Clone().ToString(),
                                  this.Email?.Clone().ToString(),
                                  this.Vid?.Clone().ToString(),
                                  this.Properties?.ToDictionary(k => k.Key?.Clone().ToString(), v => v.Value?.Clone().ToString()));
@@ -120,9 +121,10 @@ namespace Naos.HubSpot.Domain
         public Contact DeepCloneWithEmail(string email)
         {
             var result = new Contact(
-                                 email,
-                                 this.Vid?.Clone().ToString(),
-                                 this.Properties?.ToDictionary(k => k.Key?.Clone().ToString(), v => v.Value?.Clone().ToString()));
+                this.EntityId.Clone().ToString(),
+                email,
+                this.Vid?.Clone().ToString(),
+                this.Properties?.ToDictionary(k => k.Key?.Clone().ToString(), v => v.Value?.Clone().ToString()));
 
             return result;
         }
@@ -149,9 +151,10 @@ namespace Naos.HubSpot.Domain
         public Contact DeepCloneWithVid(string vid)
         {
             var result = new Contact(
-                                 this.Email?.Clone().ToString(),
-                                 vid,
-                                 this.Properties?.ToDictionary(k => k.Key?.Clone().ToString(), v => v.Value?.Clone().ToString()));
+                this.EntityId.Clone().ToString(),
+                this.Email?.Clone().ToString(),
+                vid,
+                this.Properties?.ToDictionary(k => k.Key?.Clone().ToString(), v => v.Value?.Clone().ToString()));
 
             return result;
         }
@@ -178,9 +181,10 @@ namespace Naos.HubSpot.Domain
         public Contact DeepCloneWithProperties(IReadOnlyDictionary<string, string> properties)
         {
             var result = new Contact(
-                                 this.Email?.Clone().ToString(),
-                                 this.Vid?.Clone().ToString(),
-                                 properties);
+                this.EntityId.Clone().ToString(),
+                this.Email?.Clone().ToString(),
+                this.Vid?.Clone().ToString(),
+                properties);
 
             return result;
         }

@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SyncContactsWithHubspotOp.cs" company="Naos Project">
+// <copyright file="SyncContactsWithHubSpotOp.cs" company="Naos Project">
 //    Copyright (c) Naos Project 2019. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -18,15 +18,15 @@ namespace Naos.HubSpot.Domain
     /// <summary>
     /// The parameter object for the OP.
     /// </summary>
-    public partial class SyncContactsWithHubspotOp : ReturningOperationBase<SyncContactsWithHubspotResult>, IModelViaCodeGen
+    public partial class SyncContactsWithHubSpotOp : ReturningOperationBase<SyncContactsWithHubSpotResult>, IModelViaCodeGen
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SyncContactsWithHubspotOp"/> class.
+        /// Initializes a new instance of the <see cref="SyncContactsWithHubSpotOp"/> class.
         /// </summary>
-        /// <param name="contacts"></param>
-        /// <exception cref="NotImplementedException"></exception>
-        public SyncContactsWithHubspotOp(IReadOnlyCollection<Contact> contacts)
+        /// <param name="contacts">The contacts.</param>
+        public SyncContactsWithHubSpotOp(IReadOnlyCollection<Contact> contacts)
         {
+            contacts.MustForArg(nameof(contacts)).NotBeNull();
             throw new System.NotImplementedException();
         }
     }

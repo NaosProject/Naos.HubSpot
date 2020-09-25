@@ -68,6 +68,7 @@ namespace Naos.HubSpot.Domain.Test
                         var referenceObject = A.Dummy<Contact>();
 
                         var result = new Contact(
+                                             referenceObject.EntityId,
                                              null,
                                              referenceObject.Vid,
                                              referenceObject.Properties);
@@ -86,6 +87,7 @@ namespace Naos.HubSpot.Domain.Test
                         var referenceObject = A.Dummy<Contact>();
 
                         var result = new Contact(
+                                             referenceObject.EntityId,
                                              Invariant($"  {Environment.NewLine}  "),
                                              referenceObject.Vid,
                                              referenceObject.Properties);
@@ -104,6 +106,7 @@ namespace Naos.HubSpot.Domain.Test
                         var referenceObject = A.Dummy<Contact>();
 
                         var result = new Contact(
+                                             referenceObject.EntityId,
                                              referenceObject.Email,
                                              null,
                                              referenceObject.Properties);
@@ -122,9 +125,10 @@ namespace Naos.HubSpot.Domain.Test
                         var referenceObject = A.Dummy<Contact>();
 
                         var result = new Contact(
-                                             referenceObject.Email,
-                                             Invariant($"  {Environment.NewLine}  "),
-                                             referenceObject.Properties);
+                            referenceObject.EntityId,
+                            referenceObject.Email,
+                            Invariant($"  {Environment.NewLine}  "),
+                            referenceObject.Properties);
 
                         return result;
                     },
@@ -140,9 +144,10 @@ namespace Naos.HubSpot.Domain.Test
                         var referenceObject = A.Dummy<Contact>();
 
                         var result = new Contact(
-                                             referenceObject.Email,
-                                             referenceObject.Vid,
-                                             null);
+                            referenceObject.EntityId,
+                            referenceObject.Email,
+                            referenceObject.Vid,
+                            null);
 
                         return result;
                     },
@@ -158,9 +163,10 @@ namespace Naos.HubSpot.Domain.Test
                         var referenceObject = A.Dummy<Contact>();
 
                         var result = new Contact(
-                                             referenceObject.Email,
-                                             referenceObject.Vid,
-                                             new Dictionary<string, string>());
+                            referenceObject.EntityId,
+                            referenceObject.Email,
+                            referenceObject.Vid,
+                            new Dictionary<string, string>());
 
                         return result;
                     },
@@ -182,9 +188,10 @@ namespace Naos.HubSpot.Domain.Test
                         dictionaryWithNullValue[randomKey] = null;
 
                         var result = new Contact(
-                                             referenceObject.Email,
-                                             referenceObject.Vid,
-                                             dictionaryWithNullValue);
+                            referenceObject.EntityId,
+                            referenceObject.Email,
+                            referenceObject.Vid,
+                            dictionaryWithNullValue);
 
                         return result;
                     },
@@ -202,13 +209,14 @@ namespace Naos.HubSpot.Domain.Test
                         var referenceObject = A.Dummy<Contact>();
 
                         var result = new SystemUnderTestExpectedPropertyValue<Contact>
-                        {
-                            SystemUnderTest = new Contact(
-                                                      referenceObject.Email,
-                                                      referenceObject.Vid,
-                                                      referenceObject.Properties),
-                            ExpectedPropertyValue = referenceObject.Email,
-                        };
+                                     {
+                                         SystemUnderTest = new Contact(
+                                             referenceObject.EntityId,
+                                             referenceObject.Email,
+                                             referenceObject.Vid,
+                                             referenceObject.Properties),
+                                         ExpectedPropertyValue = referenceObject.Email,
+                                     };
 
                         return result;
                     },
@@ -223,13 +231,14 @@ namespace Naos.HubSpot.Domain.Test
                         var referenceObject = A.Dummy<Contact>();
 
                         var result = new SystemUnderTestExpectedPropertyValue<Contact>
-                        {
-                            SystemUnderTest = new Contact(
-                                                      referenceObject.Email,
-                                                      referenceObject.Vid,
-                                                      referenceObject.Properties),
-                            ExpectedPropertyValue = referenceObject.Vid,
-                        };
+                                     {
+                                         SystemUnderTest = new Contact(
+                                             referenceObject.EntityId,
+                                             referenceObject.Email,
+                                             referenceObject.Vid,
+                                             referenceObject.Properties),
+                                         ExpectedPropertyValue = referenceObject.Vid,
+                                     };
 
                         return result;
                     },
@@ -244,13 +253,14 @@ namespace Naos.HubSpot.Domain.Test
                         var referenceObject = A.Dummy<Contact>();
 
                         var result = new SystemUnderTestExpectedPropertyValue<Contact>
-                        {
-                            SystemUnderTest = new Contact(
-                                                      referenceObject.Email,
-                                                      referenceObject.Vid,
-                                                      referenceObject.Properties),
-                            ExpectedPropertyValue = referenceObject.Properties,
-                        };
+                                     {
+                                         SystemUnderTest = new Contact(
+                                             referenceObject.EntityId,
+                                             referenceObject.Email,
+                                             referenceObject.Vid,
+                                             referenceObject.Properties),
+                                         ExpectedPropertyValue = referenceObject.Properties,
+                                     };
 
                         return result;
                     },
@@ -322,42 +332,62 @@ namespace Naos.HubSpot.Domain.Test
         private static readonly Contact ReferenceObjectForEquatableTestScenarios = A.Dummy<Contact>();
 
         private static readonly EquatableTestScenarios<Contact> EquatableTestScenarios = new EquatableTestScenarios<Contact>()
-            .AddScenario(() =>
-                new EquatableTestScenario<Contact>
-                {
-                    Name = "Default Code Generated Scenario",
-                    ReferenceObject = ReferenceObjectForEquatableTestScenarios,
-                    ObjectsThatAreEqualToButNotTheSameAsReferenceObject = new Contact[]
+           .AddScenario(
+                () =>
+                    new EquatableTestScenario<Contact>
                     {
-                        new Contact(
-                                ReferenceObjectForEquatableTestScenarios.Email,
-                                ReferenceObjectForEquatableTestScenarios.Vid,
-                                ReferenceObjectForEquatableTestScenarios.Properties),
-                    },
-                    ObjectsThatAreNotEqualToReferenceObject = new Contact[]
-                    {
-                        new Contact(
-                                A.Dummy<Contact>().Whose(_ => !_.Email.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Email)).Email,
-                                ReferenceObjectForEquatableTestScenarios.Vid,
-                                ReferenceObjectForEquatableTestScenarios.Properties),
-                        new Contact(
-                                ReferenceObjectForEquatableTestScenarios.Email,
-                                A.Dummy<Contact>().Whose(_ => !_.Vid.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Vid)).Vid,
-                                ReferenceObjectForEquatableTestScenarios.Properties),
-                        new Contact(
-                                ReferenceObjectForEquatableTestScenarios.Email,
-                                ReferenceObjectForEquatableTestScenarios.Vid,
-                                A.Dummy<Contact>().Whose(_ => !_.Properties.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Properties)).Properties),
-                    },
-                    ObjectsThatAreNotOfTheSameTypeAsReferenceObject = new object[]
-                    {
-                        A.Dummy<object>(),
-                        A.Dummy<string>(),
-                        A.Dummy<int>(),
-                        A.Dummy<int?>(),
-                        A.Dummy<Guid>(),
-                    },
-                });
+                        Name = "Default Code Generated Scenario",
+                        ReferenceObject = ReferenceObjectForEquatableTestScenarios,
+                        ObjectsThatAreEqualToButNotTheSameAsReferenceObject = new Contact[]
+                                                                              {
+                                                                                  new Contact(
+                                                                                      ReferenceObjectForEquatableTestScenarios.EntityId,
+                                                                                      ReferenceObjectForEquatableTestScenarios.Email,
+                                                                                      ReferenceObjectForEquatableTestScenarios.Vid,
+                                                                                      ReferenceObjectForEquatableTestScenarios.Properties),
+                                                                              },
+                        ObjectsThatAreNotEqualToReferenceObject = new Contact[]
+                                                                  {
+                                                                      new Contact(
+                                                                          A.Dummy<string>(),
+                                                                          ReferenceObjectForEquatableTestScenarios.Email,
+                                                                          ReferenceObjectForEquatableTestScenarios.Vid,
+                                                                          ReferenceObjectForEquatableTestScenarios.Properties),
+                                                                      new Contact(
+                                                                          ReferenceObjectForEquatableTestScenarios.EntityId,
+                                                                          A.Dummy<Contact>()
+                                                                           .Whose(
+                                                                                _ => !_.Email.IsEqualTo(
+                                                                                    ReferenceObjectForEquatableTestScenarios.Email))
+                                                                           .Email,
+                                                                          ReferenceObjectForEquatableTestScenarios.Vid,
+                                                                          ReferenceObjectForEquatableTestScenarios.Properties),
+                                                                      new Contact(
+                                                                          ReferenceObjectForEquatableTestScenarios.EntityId,
+                                                                          ReferenceObjectForEquatableTestScenarios.Email,
+                                                                          A.Dummy<Contact>()
+                                                                           .Whose(_ => !_.Vid.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Vid))
+                                                                           .Vid,
+                                                                          ReferenceObjectForEquatableTestScenarios.Properties),
+                                                                      new Contact(
+                                                                          ReferenceObjectForEquatableTestScenarios.EntityId,
+                                                                          ReferenceObjectForEquatableTestScenarios.Email,
+                                                                          ReferenceObjectForEquatableTestScenarios.Vid,
+                                                                          A.Dummy<Contact>()
+                                                                           .Whose(
+                                                                                _ => !_.Properties.IsEqualTo(
+                                                                                    ReferenceObjectForEquatableTestScenarios.Properties))
+                                                                           .Properties),
+                                                                  },
+                        ObjectsThatAreNotOfTheSameTypeAsReferenceObject = new object[]
+                                                                          {
+                                                                              A.Dummy<object>(),
+                                                                              A.Dummy<string>(),
+                                                                              A.Dummy<int>(),
+                                                                              A.Dummy<int?>(),
+                                                                              A.Dummy<Guid>(),
+                                                                          },
+                    });
 
         [SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
         [SuppressMessage("Microsoft.Naming", "CA1724:TypeNamesShouldNotMatchNamespaces")]

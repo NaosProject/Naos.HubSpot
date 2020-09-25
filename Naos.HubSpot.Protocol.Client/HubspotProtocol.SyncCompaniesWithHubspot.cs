@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="HubspotProtocol.SyncCompaniesWithHubspot.cs" company="Naos Project">
+// <copyright file="HubSpotProtocol.SyncCompaniesWithHubSpot.cs" company="Naos Project">
 //    Copyright (c) Naos Project 2019. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -14,16 +14,18 @@ namespace Naos.HubSpot.Protocol.Client
     /// <summary>
     /// TODO: Starting point for new project.
     /// </summary>
-    public partial class HubspotProtocol : ISyncAndAsyncReturningProtocol<SyncCompaniesWithHubspotOp, SyncCompaniesWithHubspotResult>
+    public partial class HubSpotProtocol : ISyncAndAsyncReturningProtocol<SyncCompaniesWithHubSpotOp, SyncCompaniesWithHubSpotResult>
     {
-        public SyncCompaniesWithHubspotResult Execute(SyncCompaniesWithHubspotOp operation)
+        /// <inheritdoc />
+        public SyncCompaniesWithHubSpotResult Execute(SyncCompaniesWithHubSpotOp operation)
         {
             var task = this.ExecuteAsync(operation);
             var result = Run.TaskUntilCompletion(task);
             return result;
         }
 
-        public Task<SyncCompaniesWithHubspotResult> ExecuteAsync(SyncCompaniesWithHubspotOp operation)
+        /// <inheritdoc />
+        public Task<SyncCompaniesWithHubSpotResult> ExecuteAsync(SyncCompaniesWithHubSpotOp operation)
         {
             throw new System.NotImplementedException();
         }

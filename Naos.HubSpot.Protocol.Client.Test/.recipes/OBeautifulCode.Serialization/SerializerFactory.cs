@@ -9,10 +9,9 @@
 
 namespace OBeautifulCode.Serialization.Recipes
 {
-    using System;
-    using System.Collections.Concurrent;
+    using global::System;
+    using global::System.Collections.Concurrent;
 
-    using OBeautifulCode.Assertion.Recipes;
     using OBeautifulCode.Compression;
     using OBeautifulCode.Representation.System;
     using OBeautifulCode.Serialization.Bson;
@@ -24,9 +23,9 @@ namespace OBeautifulCode.Serialization.Recipes
     /// <summary>
     /// Default implementation of <see cref="ISerializerFactory" />.
     /// </summary>
-#if !OBeautifulCodeSerializationRecipesProject
-    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
-    [System.CodeDom.Compiler.GeneratedCode("OBeautifulCode.Serialization.Recipes", "See package version number")]
+#if !OBeautifulCodeSerializationSolution
+    [global::System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+    [global::System.CodeDom.Compiler.GeneratedCode("OBeautifulCode.Serialization.Recipes", "See package version number")]
     internal
 #else
     public
@@ -58,7 +57,10 @@ namespace OBeautifulCode.Serialization.Recipes
             SerializerRepresentation serializerRepresentation,
             AssemblyMatchStrategy assemblyMatchStrategy = AssemblyMatchStrategy.AnySingleVersion)
         {
-            new { serializerRepresentation }.AsArg().Must().NotBeNull();
+            if (serializerRepresentation == null)
+            {
+                throw new ArgumentNullException(nameof(serializerRepresentation));
+            }
 
             ISerializer result;
 

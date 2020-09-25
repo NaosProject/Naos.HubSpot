@@ -30,24 +30,34 @@ namespace Naos.HubSpot.Domain
         /// <summary>
         /// Initializes a new instance of the <see cref="Contact"/> class.
         /// </summary>
+        /// <param name="entityId">The entity identifier.</param>
         /// <param name="email">The email.</param>
         /// <param name="vid">The vid.</param>
         /// <param name="properties">The properties.</param>
         public Contact(
+            string entityId,
             string email,
             string vid,
             IReadOnlyDictionary<string, string> properties)
         {
+            entityId.MustForArg(nameof(entityId)).NotBeNullNorWhiteSpace();
             email.MustForArg(nameof(email)).NotBeNullNorWhiteSpace();
             vid.MustForArg(nameof(vid)).BeNullOrNotWhiteSpace();
             properties.MustForArg(nameof(properties)).NotBeNullNorEmptyDictionary();
             properties.ContainsKey(FirstNamePropertyKey).MustForArg().NotBeFalse(Invariant($"Must have a {FirstNamePropertyKey} property."));
             properties.ContainsKey(LastNamePropertyKey).MustForArg().NotBeFalse(Invariant($"Must have a {LastNamePropertyKey} property."));
 
+            this.EntityId = entityId;
             this.Email = email;
             this.Vid = vid;
             this.Properties = properties;
         }
+
+        /// <summary>
+        /// Gets the custom entity identifier.
+        /// </summary>
+        /// <value>The custom entity identifier.</value>
+        public string EntityId { get; private set; }
 
         /// <summary>
         /// Gets the email.
