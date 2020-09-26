@@ -7,10 +7,10 @@
     <dependencies>
       <dependency id="Naos.HubSpot.Domain" version="$version$" />
       <dependency id="OBeautifulCode.AutoFakeItEasy" version="1.0.129" />
+      <dependency id="Naos.CodeAnalysis.Recipes.SuppressBecause" version="1.0.125" />
     </dependencies>
   </metadata>
   <files>
-    <file src=".analyzers\SuppressBecause.cs" target="content\net462\.recipes\Naos.HubSpot\SuppressBecause.cs" />
     <file src="HubSpotDummyFactory.cs" target="content\net462\.recipes\Naos.HubSpot\HubSpotDummyFactory.cs" />
     <file src="HubSpotDummyFactory.designer.cs" target="content\net462\.recipes\Naos.HubSpot\HubSpotDummyFactory.designer.cs" />
   </files>

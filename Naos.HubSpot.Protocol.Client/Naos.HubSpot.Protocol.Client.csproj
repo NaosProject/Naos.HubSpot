@@ -127,7 +127,6 @@
     <Compile Include="GlobalSuppressions.cs" />
     <AdditionalFiles Include=".analyzers\stylecop.json" />
     <None Include=".analyzers\release.ruleset" />
-    <None Include="app.config" />
     <None Include="Naos.HubSpot.Protocol.Client.override-nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
