@@ -20,12 +20,12 @@ namespace Naos.HubSpot.Domain
         /// <summary>
         /// The first name key for the properties dictionary.
         /// </summary>
-        public const string FirstNamePropertyKey = "firstName";
+        public const string FirstNamePropertyKey = "firstname";
 
         /// <summary>
         /// The last name key for the properties dictionary.
         /// </summary>
-        public const string LastNamePropertyKey = "lastName";
+        public const string LastNamePropertyKey = "lastname";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Contact"/> class.
@@ -38,7 +38,7 @@ namespace Naos.HubSpot.Domain
             string entityId,
             string email,
             string vid,
-            IReadOnlyDictionary<string, string> properties)
+            IReadOnlyDictionary<string, object> properties)
         {
             entityId.MustForArg(nameof(entityId)).NotBeNullNorWhiteSpace();
             email.MustForArg(nameof(email)).NotBeNullNorWhiteSpace();
@@ -75,6 +75,6 @@ namespace Naos.HubSpot.Domain
         /// Gets the properties.
         /// </summary>
         /// <value>The properties.</value>
-        public IReadOnlyDictionary<string, string> Properties { get; private set; }
+        public IReadOnlyDictionary<string, object> Properties { get; private set; }
     }
 }

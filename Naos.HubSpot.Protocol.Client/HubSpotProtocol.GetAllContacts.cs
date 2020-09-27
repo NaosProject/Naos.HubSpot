@@ -6,7 +6,9 @@
 
 namespace Naos.HubSpot.Protocol.Client
 {
+    using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Threading.Tasks;
     using Naos.FluentUri;
     using Naos.HubSpot.Domain;
@@ -41,8 +43,53 @@ namespace Naos.HubSpot.Protocol.Client
                 var batchUri = uri.AppendQueryStringParam("after", vidOffset.ToString());
                 var serializer = new ObcJsonSerializer();
                 var contactBatch = batchUri.WithSerializer(serializer).Get<dynamic>();
-                // after = dynamic.paging.after the skip value for the next transaction
-                contacts.AddRange(new List<Contact>()); // cast dynamic.results to list of Contact
+                dynamic dynHasMore = contactBatch["has-more"];
+                hasMore = (bool) dynHasMore;
+                vidOffset = (int) contactBatch["vid-offset"];
+                dynamic dynContacts = contactBatch["contacts"];
+                foreach (var dynContact in dynContacts)
+                {
+                    var properties = ((dynamic) dynContact).properties;
+                    var entId = dynContact["entityID"];
+                    var vid = dynContact["vid"];
+                    string email = null;
+                    Dictionary<string, Object> propsDict = new Dictionary<string, object>();
+                    foreach (var prop in properties)
+                    {
+                        dynamic dynProp = (dynamic) prop;
+                        var name = dynProp.Name;
+                        var val = dynProp.Value["value"].Value;
+                        propsDict.Add(name, val);
+                    }
+
+                    dynamic identitiesProfiles = (dynamic) dynContact["identity-profiles"];
+                    if (identitiesProfiles.Count != 1)
+                    {
+                        throw new InvalidOperationException(
+                            "Received more than one identity profile for contact vid: " + vid);
+                    }
+
+                    dynamic identitiesProfile = (dynamic) identitiesProfiles[0];
+                    var identities = identitiesProfile["identities"];
+                    foreach (var identity in identities)
+                    {
+                        dynamic dynIdent = (dynamic) identity;
+                        if (dynIdent.type == "EMAIL")
+                        {
+                            if (email != null)
+                            {
+                                throw new InvalidOperationException("Found more than one email for contact vid: " +
+                                                                    vid);
+                            }
+
+                            email = dynIdent.value.Value;
+                        }
+                    }
+
+                    var contact = new Contact(entId?.ToString() ?? "missing", email?.ToString(), vid?.ToString(),
+                        propsDict);
+                    contacts.Add(contact);
+                }
             }
 
             return await Task.FromResult(contacts);

@@ -94,7 +94,7 @@ namespace Naos.HubSpot.Domain
                                  this.EntityId?.Clone().ToString(),
                                  this.Email?.Clone().ToString(),
                                  this.Vid?.Clone().ToString(),
-                                 this.Properties?.ToDictionary(k => k.Key?.Clone().ToString(), v => v.Value?.Clone().ToString()));
+                                 this.Properties?.ToDictionary(k => k.Key?.Clone().ToString(), v => v.Value));
 
             return result;
         }
@@ -124,7 +124,7 @@ namespace Naos.HubSpot.Domain
                 this.EntityId.Clone().ToString(),
                 email,
                 this.Vid?.Clone().ToString(),
-                this.Properties?.ToDictionary(k => k.Key?.Clone().ToString(), v => v.Value?.Clone().ToString()));
+                this.Properties?.ToDictionary(k => k.Key?.Clone().ToString(), v => v.Value));
 
             return result;
         }
@@ -154,7 +154,7 @@ namespace Naos.HubSpot.Domain
                 this.EntityId.Clone().ToString(),
                 this.Email?.Clone().ToString(),
                 vid,
-                this.Properties?.ToDictionary(k => k.Key?.Clone().ToString(), v => v.Value?.Clone().ToString()));
+                this.Properties?.ToDictionary(k => k.Key?.Clone().ToString(), v => v.Value));
 
             return result;
         }
@@ -178,7 +178,7 @@ namespace Naos.HubSpot.Domain
         [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
         [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
         [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-        public Contact DeepCloneWithProperties(IReadOnlyDictionary<string, string> properties)
+        public Contact DeepCloneWithProperties(IReadOnlyDictionary<string, object> properties)
         {
             var result = new Contact(
                 this.EntityId.Clone().ToString(),

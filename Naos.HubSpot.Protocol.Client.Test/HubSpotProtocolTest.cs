@@ -17,7 +17,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
     /// </summary>
     public static partial class HubSpotProtocolTest
     {
-        [Fact]
+        [Fact(Skip = "Skipping because this uses external resources")]
         public static void GetAllContactsOp___Returns_nonempty_list_of_contacts___When_executed()
         {
             // Arrange
