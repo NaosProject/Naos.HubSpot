@@ -32,7 +32,7 @@ namespace Naos.HubSpot.Domain.Test
                     A.Dummy<string>(),
                     A.Dummy<string>(),
                     A.Dummy<string>(),
-                    A.Dummy<IReadOnlyDictionary<string, string>>()));
+                    A.Dummy<IReadOnlyDictionary<string, object>>()));
         }
 
         /// <inheritdoc />

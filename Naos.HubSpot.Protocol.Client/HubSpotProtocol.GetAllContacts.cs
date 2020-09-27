@@ -44,36 +44,36 @@ namespace Naos.HubSpot.Protocol.Client
                 var serializer = new ObcJsonSerializer();
                 var contactBatch = batchUri.WithSerializer(serializer).Get<dynamic>();
                 dynamic dynHasMore = contactBatch["has-more"];
-                hasMore = (bool) dynHasMore;
-                vidOffset = (int) contactBatch["vid-offset"];
+                hasMore = (bool)dynHasMore;
+                vidOffset = (int)contactBatch["vid-offset"];
                 dynamic dynContacts = contactBatch["contacts"];
                 foreach (var dynContact in dynContacts)
                 {
-                    var properties = ((dynamic) dynContact).properties;
+                    var properties = ((dynamic)dynContact).properties;
                     var entId = dynContact["entityID"];
                     var vid = dynContact["vid"];
                     string email = null;
-                    Dictionary<string, Object> propsDict = new Dictionary<string, object>();
+                    Dictionary<string, object> propsDict = new Dictionary<string, object>();
                     foreach (var prop in properties)
                     {
-                        dynamic dynProp = (dynamic) prop;
+                        dynamic dynProp = (dynamic)prop;
                         var name = dynProp.Name;
                         var val = dynProp.Value["value"].Value;
                         propsDict.Add(name, val);
                     }
 
-                    dynamic identitiesProfiles = (dynamic) dynContact["identity-profiles"];
+                    dynamic identitiesProfiles = (dynamic)dynContact["identity-profiles"];
                     if (identitiesProfiles.Count != 1)
                     {
                         throw new InvalidOperationException(
                             "Received more than one identity profile for contact vid: " + vid);
                     }
 
-                    dynamic identitiesProfile = (dynamic) identitiesProfiles[0];
+                    dynamic identitiesProfile = (dynamic)identitiesProfiles[0];
                     var identities = identitiesProfile["identities"];
                     foreach (var identity in identities)
                     {
-                        dynamic dynIdent = (dynamic) identity;
+                        dynamic dynIdent = (dynamic)identity;
                         if (dynIdent.type == "EMAIL")
                         {
                             if (email != null)
@@ -86,7 +86,10 @@ namespace Naos.HubSpot.Protocol.Client
                         }
                     }
 
-                    var contact = new Contact(entId?.ToString() ?? "missing", email?.ToString(), vid?.ToString(),
+                    var contact = new Contact(
+                        entId?.ToString() ?? "missing",
+                        email?.ToString(),
+                        vid?.ToString(),
                         propsDict);
                     contacts.Add(contact);
                 }

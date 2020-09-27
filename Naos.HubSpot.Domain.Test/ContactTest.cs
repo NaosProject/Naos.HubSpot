@@ -116,7 +116,7 @@ namespace Naos.HubSpot.Domain.Test
                                              referenceObject.EntityId,
                                              referenceObject.Email,
                                              referenceObject.Vid,
-                                             new Dictionary<string, string>());
+                                             new Dictionary<string, object>());
 
                         return result;
                     },
@@ -135,7 +135,7 @@ namespace Naos.HubSpot.Domain.Test
                             referenceObject.EntityId,
                             referenceObject.Email,
                             referenceObject.Vid,
-                            new Dictionary<string, string>
+                            new Dictionary<string, object>
                             {
                                 { Contact.LastNamePropertyKey, A.Dummy<string>() },
                             });
@@ -157,7 +157,7 @@ namespace Naos.HubSpot.Domain.Test
                                              referenceObject.EntityId,
                                              referenceObject.Email,
                                              referenceObject.Vid,
-                                             new Dictionary<string, string>
+                                             new Dictionary<string, object>
                                              {
                                                  { Contact.FirstNamePropertyKey, A.Dummy<string>() },
                                              });

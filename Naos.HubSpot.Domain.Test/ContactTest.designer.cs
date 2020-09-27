@@ -166,7 +166,7 @@ namespace Naos.HubSpot.Domain.Test
                             referenceObject.EntityId,
                             referenceObject.Email,
                             referenceObject.Vid,
-                            new Dictionary<string, string>());
+                            new Dictionary<string, object>());
 
                         return result;
                     },
