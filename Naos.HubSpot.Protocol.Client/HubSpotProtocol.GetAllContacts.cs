@@ -1,5 +1,5 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="HubSpotProtocol..GetAllContacts.cs" company="Naos Project">
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="HubSpotProtocol.GetAllContacts.cs" company="Naos Project">
 //    Copyright (c) Naos Project 2019. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -12,6 +12,7 @@ namespace Naos.HubSpot.Protocol.Client
     using Naos.HubSpot.Domain;
     using Naos.Protocol.Domain;
     using Naos.Recipes.RunWithRetry;
+    using OBeautifulCode.Serialization.Json;
 
     /// <summary>
     /// TODO: Starting point for new project.
@@ -30,16 +31,16 @@ namespace Naos.HubSpot.Protocol.Client
         public async Task<IReadOnlyCollection<Contact>> ExecuteAsync(GetAllContactsOp operation)
         {
             var uri = this.baseUri;
-            uri = uri.AppendPathSegment("/crm/v3/objects/contacts")
-                .AppendQueryStringParam("limit", "1000");
-            string after = string.Empty;
+            uri = uri.AppendPathSegment("contacts/v1/lists/all/contacts/all")
+                .AppendQueryStringParam("count", "100");
             var contacts = new List<Contact>();
-            var furtherContacts = true;
-
-            while (furtherContacts)
+            var hasMore = true;
+            var vidOffset = 0;
+            while (hasMore)
             {
-                var batchUri = uri.AppendQueryStringParam("after", after);
-                var contactBatch = batchUri.Get<dynamic>();
+                var batchUri = uri.AppendQueryStringParam("after", vidOffset.ToString());
+                var serializer = new ObcJsonSerializer();
+                var contactBatch = batchUri.WithSerializer(serializer).Get<dynamic>();
                 // after = dynamic.paging.after the skip value for the next transaction
                 contacts.AddRange(new List<Contact>()); // cast dynamic.results to list of Contact
             }

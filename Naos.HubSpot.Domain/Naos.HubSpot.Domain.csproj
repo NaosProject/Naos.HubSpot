@@ -102,6 +102,7 @@
     <Compile Include="Operations\Company\GetAllCompaniesOp.cs" />
     <Compile Include="Operations\Company\GetCompaniesByCustomEntityIdsOp.cs" />
     <Compile Include="Operations\Company\RemoveCompaniesByCustomEntityIdOp.cs" />
+    <Compile Include="Operations\Contact\GetAllContactsOnlyInHubSpotOp.cs" />
     <Compile Include="Operations\Contact\RemoveContactsByCustomEntityIdOp.cs" />
     <Compile Include="Operations\Contact\AddContactsOp.cs" />
     <Compile Include="Operations\Contact\GetContactsByCustomEntityIdsOp.cs" />

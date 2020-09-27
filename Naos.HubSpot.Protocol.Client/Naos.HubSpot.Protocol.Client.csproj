@@ -41,8 +41,8 @@
     <CodeAnalysisRuleSet />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Naos.FluentUri, Version=1.0.38.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Naos.FluentUri.1.0.38\lib\net462\Naos.FluentUri.dll</HintPath>
+    <Reference Include="Naos.FluentUri, Version=1.0.39.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Naos.FluentUri.1.0.39\lib\net462\Naos.FluentUri.dll</HintPath>
     </Reference>
     <Reference Include="Naos.Protocol.Domain, Version=1.0.63.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Naos.Protocol.Domain.1.0.63\lib\net462\Naos.Protocol.Domain.dll</HintPath>
@@ -64,9 +64,6 @@
     </Reference>
     <Reference Include="OBeautifulCode.Type, Version=1.0.69.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\OBeautifulCode.Type.1.0.69\lib\net462\OBeautifulCode.Type.dll</HintPath>
-    </Reference>
-    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
@@ -119,8 +116,9 @@
     <Compile Include=".recipes\Spritely.Redo\RetriableFunctionAsync.cs" />
     <Compile Include=".recipes\Spritely.Redo\Using.cs" />
     <Compile Include="HubSpotProtocol.Constructor.cs" />
+    <Compile Include="HubSpotProtocol.GetAllContactsOnlyInHubSpot.cs" />
     <Compile Include="HubSpotProtocol.SyncCompaniesWithHubSpot.cs" />
-    <Compile Include="HubSpotProtocol..GetAllContacts.cs" />
+    <Compile Include="HubSpotProtocol.GetAllContacts.cs" />
     <Compile Include="HubSpotProtocol.SyncContactsWithHubSpot.cs" />
     <Compile Include="HubSpotProtocol.SyncWithHubSpot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

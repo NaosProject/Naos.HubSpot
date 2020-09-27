@@ -17,11 +17,11 @@ namespace Naos.HubSpot.Protocol.Client.Test
     /// </summary>
     public static partial class HubSpotProtocolTest
     {
-        [Fact(Skip = "Direct API Test")]
+        [Fact]
         public static void GetAllContactsOp___Returns_nonempty_list_of_contacts___When_executed()
         {
             // Arrange
-            var apiKey = "Get API Key from https://app.hubspot.com/api-key";
+            var apiKey = "Get HubSpot Api Key from https://app.hubspot.com/api-key/";
             var baseUri = new Uri("https://api.hubapi.com/");
             var protocol = new HubSpotProtocol("entitiyId", baseUri, apiKey);
             var op = new GetAllContactsOp();

@@ -36,12 +36,12 @@ namespace Naos.HubSpot.Protocol.Client
         {
             customEntityIdMetadataKey.MustForArg(nameof(customEntityIdMetadataKey)).NotBeNullNorWhiteSpace();
             this.customEntityIdMetadataKey = customEntityIdMetadataKey;
-            baseUri.MustForArg(nameof(baseUri)).NotBeNullNorWhiteSpace();
+            baseUri.MustForArg(nameof(baseUri)).NotBeNull();
             this.baseUri = baseUri;
             apiKey.MustForArg(nameof(apiKey)).NotBeNullNorWhiteSpace();
             this.apiKey = apiKey;
 
-            baseUri.AppendQueryStringParam("apikey", this.apiKey);
+            this.baseUri = baseUri.AppendQueryStringParam("hapikey", this.apiKey);
         }
     }
 }

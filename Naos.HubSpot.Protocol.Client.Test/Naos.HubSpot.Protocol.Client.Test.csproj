@@ -71,8 +71,8 @@
     <Reference Include="Naos.Diagnostics.Domain, Version=1.3.33.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Naos.Diagnostics.Domain.1.3.33\lib\net462\Naos.Diagnostics.Domain.dll</HintPath>
     </Reference>
-    <Reference Include="Naos.FluentUri, Version=1.0.38.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Naos.FluentUri.1.0.38\lib\net462\Naos.FluentUri.dll</HintPath>
+    <Reference Include="Naos.FluentUri, Version=1.0.39.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Naos.FluentUri.1.0.39\lib\net462\Naos.FluentUri.dll</HintPath>
     </Reference>
     <Reference Include="Naos.Logging.Domain, Version=1.0.73.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Naos.Logging.Domain.1.0.73\lib\net462\Naos.Logging.Domain.dll</HintPath>
