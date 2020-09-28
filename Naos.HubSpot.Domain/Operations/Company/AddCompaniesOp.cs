@@ -22,14 +22,11 @@ namespace Naos.HubSpot.Domain
         /// Initializes a new instance of the <see cref="AddCompaniesOp"/> class.
         /// </summary>
         /// <param name="companiesToAdd">The companies to add.</param>
-        /// <param name="entityExistsStrategy">The entity exists strategy.</param>
         public AddCompaniesOp(
-            IReadOnlyCollection<Company> companiesToAdd,
-            EntityExistsStrategy entityExistsStrategy = EntityExistsStrategy.Throw)
+            IReadOnlyCollection<Company> companiesToAdd)
         {
             companiesToAdd.MustForArg(nameof(companiesToAdd)).NotBeNull();
             this.CompaniesToAdd = companiesToAdd;
-            this.EntityExistsStrategy = entityExistsStrategy;
         }
 
         /// <summary>
@@ -37,11 +34,5 @@ namespace Naos.HubSpot.Domain
         /// </summary>
         /// <value>The companies to add.</value>
         public IReadOnlyCollection<Company> CompaniesToAdd { get; private set; }
-
-        /// <summary>
-        /// Gets the entity exists strategy.
-        /// </summary>
-        /// <value>The entity exists strategy.</value>
-        public EntityExistsStrategy EntityExistsStrategy { get; private set; }
     }
 }

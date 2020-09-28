@@ -14,18 +14,18 @@ namespace Naos.HubSpot.Protocol.Client
     /// <summary>
     /// TODO: Starting point for new project.
     /// </summary>
-    public partial class HubSpotProtocol : ISyncAndAsyncReturningProtocol<SyncCompaniesWithHubSpotOp, SyncCompaniesWithHubSpotResult>
+    public partial class HubSpotProtocol : ISyncAndAsyncVoidProtocol<AssociateContactWithCompanyOp>
     {
         /// <inheritdoc />
-        public SyncCompaniesWithHubSpotResult Execute(SyncCompaniesWithHubSpotOp operation)
+        public void Execute(AssociateContactWithCompanyOp operation)
         {
             var task = this.ExecuteAsync(operation);
-            var result = Run.TaskUntilCompletion(task);
-            return result;
+            Run.TaskUntilCompletion(task);
         }
 
         /// <inheritdoc />
-        public Task<SyncCompaniesWithHubSpotResult> ExecuteAsync(SyncCompaniesWithHubSpotOp operation)
+        /// Link to API: https://legacydocs.hubspot.com/docs/methods/crm-associations/associate-objects
+        public Task ExecuteAsync(AssociateContactWithCompanyOp operation)
         {
             throw new System.NotImplementedException();
         }

@@ -30,13 +30,19 @@ namespace Naos.HubSpot.Domain.Test
             AutoFixtureBackedDummyFactory.AddDummyCreator(
                 () =>
                 {
-                    var readOnlyDictionary = A.Dummy<Dictionary<string, object>>();
-                    readOnlyDictionary.Add(Contact.FirstNamePropertyKey, A.Dummy<string>());
-                    readOnlyDictionary.Add(Contact.LastNamePropertyKey, A.Dummy<string>());
+                    var readOnlyDictionary = A.Dummy<Dictionary<string, string>>();
+                    readOnlyDictionary.Add(StandardContactPropertyName.FirstName.ToString(), A.Dummy<string>());
+                    readOnlyDictionary.Add(StandardContactPropertyName.LastName.ToString(), A.Dummy<string>());
+                    readOnlyDictionary.Add(StandardContactPropertyName.EmailAddress.ToString(), A.Dummy<string>());
                     return new Contact(
-                        A.Dummy<string>(),
-                        A.Dummy<string>(),
-                        A.Dummy<string>(),
+                        readOnlyDictionary);
+                });
+            AutoFixtureBackedDummyFactory.AddDummyCreator(
+                () =>
+                {
+                    var readOnlyDictionary = A.Dummy<Dictionary<string, string>>();
+                    readOnlyDictionary.Add(StandardCompanyPropertyName.CompanyName.ToString(), A.Dummy<string>());
+                    return new Company(
                         readOnlyDictionary);
                 });
         }

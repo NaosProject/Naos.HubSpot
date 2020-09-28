@@ -29,10 +29,7 @@ namespace Naos.HubSpot.Domain.Test
         {
             AutoFixtureBackedDummyFactory.AddDummyCreator(
                 () => new Contact(
-                    A.Dummy<string>(),
-                    A.Dummy<string>(),
-                    A.Dummy<string>(),
-                    A.Dummy<IReadOnlyDictionary<string, object>>()));
+                    A.Dummy<IReadOnlyDictionary<string, string>>()));
         }
 
         /// <inheritdoc />

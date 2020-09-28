@@ -85,6 +85,7 @@
     <Compile Include=".recipes\OBeautifulCode.Assertion\WorkflowExtensions.cs" />
     <Compile Include=".recipes\OBeautifulCode.CodeAnalysis\ObcSuppressBecause.cs" />
     <Compile Include=".recipes\OBeautifulCode.Collection\EnumerableExtensions.cs" />
+    <Compile Include=".recipes\OBeautifulCode.Enum\EnumExtensions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Equality\DateTimeEqualityComparer.cs" />
     <Compile Include=".recipes\OBeautifulCode.Equality\DictionaryEqualityComparer.cs" />
     <Compile Include=".recipes\OBeautifulCode.Equality\EnumerableEqualityComparer.cs" />
@@ -98,29 +99,18 @@
     <Compile Include=".recipes\OBeautifulCode.Type\ToStringReadableOptions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Type\ToStringXmlDocOptions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Type\TypeExtensions.cs" />
+    <Compile Include="Model\StandardCompanyPropertyName.cs" />
+    <Compile Include="Model\StandardContactPropertyName.cs" />
     <Compile Include="Operations\Company\AddCompaniesOp.cs" />
     <Compile Include="Operations\Company\GetAllCompaniesOp.cs" />
-    <Compile Include="Operations\Company\GetCompaniesByCustomEntityIdsOp.cs" />
-    <Compile Include="Operations\Company\RemoveCompaniesByCustomEntityIdOp.cs" />
-    <Compile Include="Operations\Contact\GetAllContactsOnlyInHubSpotOp.cs" />
-    <Compile Include="Operations\Contact\RemoveContactsByCustomEntityIdOp.cs" />
-    <Compile Include="Operations\Contact\AddContactsOp.cs" />
-    <Compile Include="Operations\Contact\GetContactsByCustomEntityIdsOp.cs" />
+    <Compile Include="Operations\Contact\AddOrUpdateContactsOp.cs" />
+    <Compile Include="Operations\SyncWithHubSpot\AssociateContactWithCompanyOp.cs" />
     <Compile Include="Operations\Contact\GetAllContactsOp.cs" />
     <Compile Include="Model\Company.cs" />
-    <Compile Include="Model\EntityDoesNotExistStrategy.cs" />
-    <Compile Include="Model\EntityExistsStrategy.cs" />
-    <Compile Include="Operations\SyncCompanies\SyncCompaniesWithHubSpotOp.cs" />
-    <Compile Include="Operations\SyncContacts\SyncContactsWithHubSpotOp.cs" />
     <Compile Include="Operations\SyncWithHubSpot\SyncWithHubSpotOp.cs" />
-    <Compile Include="Model\Contact.designer.cs">
-      <DependentUpon>Contact.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Contact.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Operations\SyncContacts\SyncContactsWithHubSpotResult.cs" />
-    <Compile Include="Operations\SyncCompanies\SyncCompaniesWithHubSpotResult.cs" />
     <Compile Include="Operations\SyncWithHubSpot\SyncWithHubSpotResult.cs" />
     <AdditionalFiles Include=".analyzers\stylecop.json" />
     <None Include=".analyzers\release.ruleset" />

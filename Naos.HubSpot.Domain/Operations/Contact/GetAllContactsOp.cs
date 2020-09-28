@@ -7,8 +7,10 @@
 namespace Naos.HubSpot.Domain
 {
     using System.Collections.Generic;
+    using System.Linq;
     using Naos.Protocol.Domain;
     using OBeautifulCode.Assertion.Recipes;
+    using OBeautifulCode.Enum.Recipes;
     using OBeautifulCode.Type;
 
     using static System.FormattableString;
@@ -18,5 +20,21 @@ namespace Naos.HubSpot.Domain
     /// </summary>
     public partial class GetAllContactsOp : ReturningOperationBase<IReadOnlyCollection<Contact>>, IModelViaCodeGen
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GetAllContactsOp"/> class.
+        /// </summary>
+        /// <param name="propertyNamesToInclude">The HubSpot-readable property names to include in the response.</param>
+        public GetAllContactsOp(IReadOnlyCollection<string> propertyNamesToInclude = null)
+        {
+            this.PropertyNamesToInclude = propertyNamesToInclude ?? typeof(StandardContactPropertyName)
+                .GetDefinedEnumValues()
+                .Select(_ => _.ToString())
+                .ToList();
+        }
+
+        /// <summary>
+        /// Gets the HubSpot-readable property names to include in the response.
+        /// </summary>
+        public IReadOnlyCollection<string> PropertyNamesToInclude { get; private set; }
     }
 }

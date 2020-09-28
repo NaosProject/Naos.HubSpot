@@ -26,6 +26,7 @@ namespace Naos.HubSpot.Domain.Test
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1505:AvoidUnmaintainableCode", Justification = "Not a big deal in this situation.")]
         static ContactTest()
         {
+            /*
             ConstructorArgumentValidationTestScenarios.RemoveAllScenarios();
             ConstructorArgumentValidationTestScenarios
                .AddScenario(() =>
@@ -166,7 +167,7 @@ namespace Naos.HubSpot.Domain.Test
                     },
                     ExpectedExceptionType = typeof(ArgumentException),
                     ExpectedExceptionMessageContains = new[] { "Must have a lastName property.  Provided value is false." },
-                });
-        }
+                }); */
+        } 
     }
 }

@@ -9,11 +9,13 @@ namespace Naos.HubSpot.Protocol.Client
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Threading.Tasks;
     using Naos.FluentUri;
     using Naos.HubSpot.Domain;
     using Naos.Protocol.Domain;
     using Naos.Recipes.RunWithRetry;
+    using OBeautifulCode.Enum.Recipes;
     using OBeautifulCode.Serialization.Json;
 
     /// <summary>
@@ -35,6 +37,21 @@ namespace Naos.HubSpot.Protocol.Client
             var uri = this.baseUri;
             uri = uri.AppendPathSegment("contacts/v1/lists/all/contacts/all")
                 .AppendQueryStringParam("count", "100");
+            foreach (var propName in operation.PropertyNamesToInclude)
+            {
+                var isStandardPropertyName = typeof(StandardContactPropertyName).GetDefinedEnumValues()
+                    .Select(_ => _.ToString())
+                    .Contains(propName);
+                var adjustedName = propName;
+                if (isStandardPropertyName)
+                {
+                    var enumName = (StandardContactPropertyName)Enum.Parse(typeof(StandardContactPropertyName), propName);
+                    adjustedName = enumName.ToContactPropertyName();
+                }
+
+                uri = uri.AppendQueryStringParam("Property", adjustedName);
+            }
+
             var contacts = new List<Contact>();
             var hasMore = true;
             var vidOffset = 0;
@@ -49,19 +66,30 @@ namespace Naos.HubSpot.Protocol.Client
                 dynamic dynContacts = contactBatch["contacts"];
                 foreach (var dynContact in dynContacts)
                 {
+                    var contactProperties = new Dictionary<string, string>();
                     var properties = ((dynamic)dynContact).properties;
-                    var entId = dynContact["entityID"];
                     var vid = dynContact["vid"];
-                    string email = null;
-                    Dictionary<string, object> propsDict = new Dictionary<string, object>();
+                    contactProperties.Add(StandardContactPropertyName.HubSpotId.ToString(), vid);
                     foreach (var prop in properties)
                     {
                         dynamic dynProp = (dynamic)prop;
-                        var name = dynProp.Name;
-                        var val = dynProp.Value["value"].Value;
-                        propsDict.Add(name, val);
+                        string rawName = dynProp.Name?.ToString();
+                        var name = HubSpotContactPropertyNames.AllNames.Contains(rawName)
+                            ? rawName.FromContactPropertyName().ToString()
+                            : rawName;
+                        if (name == null)
+                        {
+                            throw new InvalidOperationException("The property name cannot be null for contact vid: " + vid);
+                        }
+
+                        if (operation.PropertyNamesToInclude.Contains(name))
+                        {
+                            var val = dynProp.Value["value"].Value;
+                            contactProperties.Add(name, val);
+                        }
                     }
 
+                    string email = null;
                     dynamic identitiesProfiles = (dynamic)dynContact["identity-profiles"];
                     if (identitiesProfiles.Count != 1)
                     {
@@ -83,14 +111,12 @@ namespace Naos.HubSpot.Protocol.Client
                             }
 
                             email = dynIdent.value.Value;
+                            contactProperties.Add(StandardContactPropertyName.EmailAddress.ToString(), email);
                         }
                     }
 
                     var contact = new Contact(
-                        entId?.ToString() ?? "missing",
-                        email?.ToString(),
-                        vid?.ToString(),
-                        propsDict);
+                        contactProperties);
                     contacts.Add(contact);
                 }
             }

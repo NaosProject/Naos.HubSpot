@@ -96,6 +96,7 @@
     <Compile Include=".recipes\OBeautifulCode.Assertion\WorkflowExtensions.cs" />
     <Compile Include=".recipes\OBeautifulCode.CodeAnalysis\ObcSuppressBecause.cs" />
     <Compile Include=".recipes\OBeautifulCode.Collection\EnumerableExtensions.cs" />
+    <Compile Include=".recipes\OBeautifulCode.Enum\EnumExtensions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Equality\DateTimeEqualityComparer.cs" />
     <Compile Include=".recipes\OBeautifulCode.Equality\DictionaryEqualityComparer.cs" />
     <Compile Include=".recipes\OBeautifulCode.Equality\EnumerableEqualityComparer.cs" />
@@ -116,10 +117,9 @@
     <Compile Include=".recipes\Spritely.Redo\RetriableFunctionAsync.cs" />
     <Compile Include=".recipes\Spritely.Redo\Using.cs" />
     <Compile Include="HubSpotProtocol.Constructor.cs" />
-    <Compile Include="HubSpotProtocol.GetAllContactsOnlyInHubSpot.cs" />
+    <Compile Include="HubSpotProtocol.GetAllCompanies.cs" />
     <Compile Include="HubSpotProtocol.SyncCompaniesWithHubSpot.cs" />
     <Compile Include="HubSpotProtocol.GetAllContacts.cs" />
-    <Compile Include="HubSpotProtocol.SyncContactsWithHubSpot.cs" />
     <Compile Include="HubSpotProtocol.SyncWithHubSpot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GlobalSuppressions.cs" />

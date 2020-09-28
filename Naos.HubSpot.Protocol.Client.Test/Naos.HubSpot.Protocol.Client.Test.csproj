@@ -202,6 +202,7 @@
     <Compile Include=".recipes\OBeautifulCode.Compression\CompressorFactory.cs" />
     <Compile Include=".recipes\OBeautifulCode.Compression\DotNetZipCompressor.cs" />
     <Compile Include=".recipes\OBeautifulCode.Compression\NullCompressor.cs" />
+    <Compile Include=".recipes\OBeautifulCode.Enum\EnumExtensions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Equality\DateTimeEqualityComparer.cs" />
     <Compile Include=".recipes\OBeautifulCode.Equality\DictionaryEqualityComparer.cs" />
     <Compile Include=".recipes\OBeautifulCode.Equality\EnumerableEqualityComparer.cs" />
