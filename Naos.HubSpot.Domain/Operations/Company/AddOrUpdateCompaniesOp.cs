@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AddCompaniesOp.cs" company="Naos Project">
+// <copyright file="AddOrUpdateCompaniesOp.cs" company="Naos Project">
 //    Copyright (c) Naos Project 2019. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -16,13 +16,13 @@ namespace Naos.HubSpot.Domain
     /// <summary>
     /// Operation to add a company.
     /// </summary>
-    public partial class AddCompaniesOp : VoidOperationBase, IModelViaCodeGen
+    public partial class AddOrUpdateCompaniesOp : VoidOperationBase, IModelViaCodeGen
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AddCompaniesOp"/> class.
+        /// Initializes a new instance of the <see cref="AddOrUpdateCompaniesOp"/> class.
         /// </summary>
         /// <param name="companiesToAdd">The companies to add.</param>
-        public AddCompaniesOp(
+        public AddOrUpdateCompaniesOp(
             IReadOnlyCollection<Company> companiesToAdd)
         {
             companiesToAdd.MustForArg(nameof(companiesToAdd)).NotBeNull();

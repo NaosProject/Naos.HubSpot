@@ -101,7 +101,7 @@
     <Compile Include=".recipes\OBeautifulCode.Type\TypeExtensions.cs" />
     <Compile Include="Model\StandardCompanyPropertyName.cs" />
     <Compile Include="Model\StandardContactPropertyName.cs" />
-    <Compile Include="Operations\Company\AddCompaniesOp.cs" />
+    <Compile Include="Operations\Company\AddOrUpdateCompaniesOp.cs" />
     <Compile Include="Operations\Company\GetAllCompaniesOp.cs" />
     <Compile Include="Operations\Contact\AddOrUpdateContactsOp.cs" />
     <Compile Include="Operations\SyncWithHubSpot\AssociateContactWithCompanyOp.cs" />

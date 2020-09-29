@@ -9,12 +9,12 @@ namespace Naos.HubSpot.Protocol.Client
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Threading.Tasks;
     using Naos.FluentUri;
     using Naos.HubSpot.Domain;
     using Naos.Protocol.Domain;
     using Naos.Recipes.RunWithRetry;
-    using OBeautifulCode.Serialization.Json;
 
     /// <summary>
     /// TODO: Starting point for new project.
@@ -32,21 +32,69 @@ namespace Naos.HubSpot.Protocol.Client
         /// <inheritdoc />
         public async Task<IReadOnlyCollection<Company>> ExecuteAsync(GetAllCompaniesOp operation)
         {
-            /*
             var uri = this.baseUri;
             uri = uri.AppendPathSegment("companies/v2/companies/paged")
                 .AppendQueryStringParam("limit", "250");
             var companies = new List<Company>();
+            string offset = string.Empty;
             var hasMore = true;
+            foreach (var propName in operation.PropertyNamesToInclude)
+            {
+                uri = uri.AppendQueryStringParam("Property", propName);
+            }
+
             while (hasMore)
             {
-                //var batchUri = uri.app
+                var batchUri = uri;
+                if (!string.IsNullOrEmpty(offset))
+                {
+                    batchUri = batchUri.AppendQueryStringParam("offset", offset);
+                }
+
+                dynamic result = batchUri.Get<dynamic>();
+                dynamic dynHasMore = result["has-more"];
+                hasMore = (bool)dynHasMore;
+                offset = (string)result["offset"];
+                dynamic dynCompanies = result["companies"];
+                foreach (var dynCompany in dynCompanies)
+                {
+                    try
+                    {
+                        var vid = dynCompany["vid"];
+                        var propertiesDict = new Dictionary<string,string>();
+                        dynamic dyncompanyProperties = dynCompany["properties"];
+                        if (dyncompanyProperties.Count == 0)
+                        {
+                            continue;
+                        }
+
+                        foreach (var dynProp in dyncompanyProperties)
+                        {
+                            string rawName = dynProp.Name?.ToString();
+                            var name = HubSpotCompanyPropertyNames.AllNames.Contains(rawName)
+                                ? rawName.FromCompanyPropertyName().ToString()
+                                : rawName;
+                            if (name == null)
+                            {
+                                throw new InvalidOperationException("The property name cannot be null for contact vid: " + vid);
+                            }
+
+                            if (operation.PropertyNamesToInclude.Contains(name))
+                            {
+                                var val = dynProp.Value["value"].Value;
+                                propertiesDict.Add(name, val);
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
+                }
             }
 
             return await Task.FromResult(companies);
-            */
-            await Task.FromResult(new List<Company>());
-            throw new NotImplementedException();
         }
     }
 }
