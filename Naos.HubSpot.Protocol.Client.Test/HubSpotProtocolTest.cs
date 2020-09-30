@@ -8,6 +8,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
 {
     using System;
     using System.Linq;
+    using System.Web;
     using Naos.HubSpot.Domain;
     using OBeautifulCode.Assertion.Recipes;
     using OBeautifulCode.Enum.Recipes;
@@ -48,6 +49,29 @@ namespace Naos.HubSpot.Protocol.Client.Test
 
             // Assert
             companies.MustForTest().NotBeNullNorEmptyEnumerableNorContainAnyNulls();
+        }
+
+        [Fact(Skip = "Skipping because this uses external resources")]
+        public static void AssociateContactWithCompanyOp___Does_not_return_http_error___When_executed()
+        {
+            // Arrange
+            var apiKey = "Get HubSpot Api Key from https://app.hubspot.com/api-key/";
+            var baseUri = new Uri("https://api.hubapi.com/");
+            var protocol = new HubSpotProtocol("entitiyId", baseUri, apiKey);
+            var op = new AssociateContactWithCompanyOp(1, 1);
+            HttpException exception = null;
+            // Act
+            try
+            {
+                protocol.Execute(op);
+            }
+            catch (HttpException e)
+            {
+                exception = e;
+            }
+            
+            // Assert
+            exception.MustForTest().BeNull();
         }
     }
 }

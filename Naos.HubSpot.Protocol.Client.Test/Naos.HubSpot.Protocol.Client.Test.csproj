@@ -80,8 +80,8 @@
     <Reference Include="Naos.Logging.Persistence, Version=1.0.73.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Naos.Logging.Persistence.1.0.73\lib\net462\Naos.Logging.Persistence.dll</HintPath>
     </Reference>
-    <Reference Include="Naos.Protocol.Domain, Version=1.0.63.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Naos.Protocol.Domain.1.0.63\lib\net462\Naos.Protocol.Domain.dll</HintPath>
+    <Reference Include="Naos.Protocol.Domain, Version=1.0.66.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Naos.Protocol.Domain.1.0.66\lib\net462\Naos.Protocol.Domain.dll</HintPath>
     </Reference>
     <Reference Include="Naos.Telemetry.Domain, Version=1.0.24.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Naos.Telemetry.Domain.1.0.24\lib\net462\Naos.Telemetry.Domain.dll</HintPath>
@@ -120,6 +120,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Web" />
     <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <HintPath>..\packages\xunit.abstractions.2.0.3\lib\net35\xunit.abstractions.dll</HintPath>
     </Reference>

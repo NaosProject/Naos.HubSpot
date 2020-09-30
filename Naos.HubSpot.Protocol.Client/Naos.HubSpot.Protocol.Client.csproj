@@ -44,8 +44,8 @@
     <Reference Include="Naos.FluentUri, Version=1.0.39.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Naos.FluentUri.1.0.39\lib\net462\Naos.FluentUri.dll</HintPath>
     </Reference>
-    <Reference Include="Naos.Protocol.Domain, Version=1.0.63.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Naos.Protocol.Domain.1.0.63\lib\net462\Naos.Protocol.Domain.dll</HintPath>
+    <Reference Include="Naos.Protocol.Domain, Version=1.0.66.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Naos.Protocol.Domain.1.0.66\lib\net462\Naos.Protocol.Domain.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -117,8 +117,8 @@
     <Compile Include=".recipes\Spritely.Redo\RetriableFunctionAsync.cs" />
     <Compile Include=".recipes\Spritely.Redo\Using.cs" />
     <Compile Include="HubSpotProtocol.Constructor.cs" />
+    <Compile Include="HubSpotProtocol.AssociateContactWithCompany.cs" />
     <Compile Include="HubSpotProtocol.GetAllCompanies.cs" />
-    <Compile Include="HubSpotProtocol.SyncCompaniesWithHubSpot.cs" />
     <Compile Include="HubSpotProtocol.GetAllContacts.cs" />
     <Compile Include="HubSpotProtocol.SyncWithHubSpot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

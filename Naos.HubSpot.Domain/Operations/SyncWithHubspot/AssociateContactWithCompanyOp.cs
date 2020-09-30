@@ -7,6 +7,7 @@
 namespace Naos.HubSpot.Domain
 {
     using System.Collections.Generic;
+    using Naos.HubSpot.Domain.Model;
     using Naos.Protocol.Domain;
     using OBeautifulCode.Assertion.Recipes;
     using OBeautifulCode.Type;
@@ -22,8 +23,8 @@ namespace Naos.HubSpot.Domain
         /// Initializes a new instance of the <see cref="AssociateContactWithCompanyOp"/> class.
         /// </summary>
         /// <param name="contactHubSpotId">The ID of the contact to be associated.</param>
-        /// <param name="companyHubSpotId">The id of the company with which the contact is to be associated.</param>
-        public AssociateContactWithCompanyOp(string contactHubSpotId, string companyHubSpotId)
+        /// <param name="companyHubSpotId">The ID of the company with which the contact is to be associated.</param>
+        public AssociateContactWithCompanyOp(int contactHubSpotId, int companyHubSpotId)
         {
             this.ContactHubSpotId = contactHubSpotId;
             this.CompanyHubSpotId = companyHubSpotId;
@@ -32,11 +33,21 @@ namespace Naos.HubSpot.Domain
         /// <summary>
         /// Gets the Contact to be associated.
         /// </summary>
-        public string ContactHubSpotId { get; private set; }
+        public int ContactHubSpotId { get; private set; }
 
         /// <summary>
         /// Gets the Company with which the contact should be associated.
         /// </summary>
-        public string CompanyHubSpotId { get; private set; }
+        public int CompanyHubSpotId { get; private set; }
+
+        /// <summary>
+        /// Creates the payload of a HubSpot request representing the request to associate the client
+        /// in this object to the company in this object.
+        /// </summary>
+        /// <returns cref="AssociateContactToCompanyRequest">The payload for a association API request.</returns>
+        public AssociateContactToCompanyRequest CreateRequest()
+        {
+            return new AssociateContactToCompanyRequest(this.ContactHubSpotId, this.CompanyHubSpotId, "HUBSPOT_DEFINED", 1);
+        }
     }
 }

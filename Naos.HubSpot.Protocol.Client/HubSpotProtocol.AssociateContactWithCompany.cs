@@ -1,13 +1,19 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="HubSpotProtocol.SyncCompaniesWithHubSpot.cs" company="Naos Project">
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="HubSpotProtocol.AssociateContactWithCompany.cs" company="Naos Project">
 //    Copyright (c) Naos Project 2019. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace Naos.HubSpot.Protocol.Client
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Linq;
     using System.Threading.Tasks;
+    using Naos.FluentUri;
     using Naos.HubSpot.Domain;
+    using Naos.HubSpot.Domain.Model;
     using Naos.Protocol.Domain;
     using Naos.Recipes.RunWithRetry;
 
@@ -24,10 +30,12 @@ namespace Naos.HubSpot.Protocol.Client
         }
 
         /// <inheritdoc />
-        /// Link to API: https://legacydocs.hubspot.com/docs/methods/crm-associations/associate-objects
-        public Task ExecuteAsync(AssociateContactWithCompanyOp operation)
+        public async Task ExecuteAsync(AssociateContactWithCompanyOp operation)
         {
-            throw new System.NotImplementedException();
+            var uri = this.baseUri;
+            uri = uri.AppendPathSegment("crm-associations/v1/associations");
+            uri.WithBody(operation.CreateRequest()).Put();
+            await Task.Run(() => true);
         }
     }
 }

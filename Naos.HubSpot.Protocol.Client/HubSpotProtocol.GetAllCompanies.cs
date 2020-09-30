@@ -61,7 +61,7 @@ namespace Naos.HubSpot.Protocol.Client
                     try
                     {
                         var vid = dynCompany["vid"];
-                        var propertiesDict = new Dictionary<string,string>();
+                        var propertiesDict = new Dictionary<string, string>();
                         dynamic dyncompanyProperties = dynCompany["properties"];
                         if (dyncompanyProperties.Count == 0)
                         {
