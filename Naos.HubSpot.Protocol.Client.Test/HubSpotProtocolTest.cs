@@ -7,6 +7,7 @@
 namespace Naos.HubSpot.Protocol.Client.Test
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Web;
     using Naos.HubSpot.Domain;
@@ -25,7 +26,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             // Arrange
             var apiKey = "Get API key from here: ";
             var baseUri = new Uri("https://api.hubapi.com/");
-            var protocol = new HubSpotProtocol("entitiyId", baseUri, apiKey);
+            var protocol = new HubSpotProtocol("entityId", baseUri, apiKey);
             var op = new GetAllContactsOp();
             
             // Act
@@ -41,7 +42,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             // Arrange
             var apiKey = "Get HubSpot Api Key from https://app.hubspot.com/api-key/";
             var baseUri = new Uri("https://api.hubapi.com/");
-            var protocol = new HubSpotProtocol("entitiyId", baseUri, apiKey);
+            var protocol = new HubSpotProtocol("entityId", baseUri, apiKey);
             var op = new GetAllCompaniesOp();
 
             // Act
@@ -57,7 +58,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             // Arrange
             var apiKey = "Get HubSpot Api Key from https://app.hubspot.com/api-key/";
             var baseUri = new Uri("https://api.hubapi.com/");
-            var protocol = new HubSpotProtocol("entitiyId", baseUri, apiKey);
+            var protocol = new HubSpotProtocol("entityId", baseUri, apiKey);
             var op = new AssociateContactWithCompanyOp(1, 1);
             HttpException exception = null;
             // Act
@@ -70,6 +71,29 @@ namespace Naos.HubSpot.Protocol.Client.Test
                 exception = e;
             }
             
+            // Assert
+            exception.MustForTest().BeNull();
+        }
+
+        [Fact(Skip = "Skipping because this uses external resources")]
+        public static void AddOrUpdateContactsOp___Does_not_return_http_error___When_executed()
+        {
+            // Arrange
+            var apiKey = "Get HubSpot Api Key from https://app.hubspot.com/api-key/";
+            var baseUri = new Uri("https://api.hubapi.com/");
+            var protocol = new HubSpotProtocol("entityId", baseUri, apiKey);
+            var op = new AddOrUpdateContactsOp(new List<Contact>());
+            HttpException exception = null;
+            // Act
+            try
+            {
+                protocol.Execute(op);
+            }
+            catch (HttpException e)
+            {
+                exception = e;
+            }
+
             // Assert
             exception.MustForTest().BeNull();
         }
