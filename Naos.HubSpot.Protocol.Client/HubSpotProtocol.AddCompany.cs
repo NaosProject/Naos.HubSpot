@@ -33,8 +33,8 @@ namespace Naos.HubSpot.Protocol.Client
         {
             var uri = this.baseUri;
             uri = uri.AppendPathSegment("companies/v2/companies");
-            dynamic addedComapny = await Task.FromResult(uri.WithBody(new AddCompanyRequest(operation.CompanyToAdd)).Post<dynamic>());
-            dynamic dynCompanyProps = addedComapny["properties"];
+            dynamic addedCompany = await Task.FromResult(uri.WithBody(new AddCompanyRequest(operation.CompanyToAdd)).Post<dynamic>());
+            dynamic dynCompanyProps = addedCompany["properties"];
             var companyPropertiesDictionary = new Dictionary<string, string>();
             foreach (var property in dynCompanyProps)
             {
