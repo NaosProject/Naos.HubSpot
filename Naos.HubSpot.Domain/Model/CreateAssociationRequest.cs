@@ -1,4 +1,4 @@
-﻿// <copyright file="AssociateContactToCompanyRequest.cs" company="Naos Project">
+﻿// <copyright file="CreateAssociationRequest.cs" company="Naos Project">
 //    Copyright (c) Naos Project 2019. All rights reserved.
 // </copyright>
 
@@ -9,16 +9,16 @@ namespace Naos.HubSpot.Domain.Model
     /// <summary>
     /// This class represents the response from the HubSpot API after a successful Association.
     /// </summary>
-    public class AssociateContactToCompanyRequest : IModelViaCodeGen
+    public class CreateAssociationRequest : IModelViaCodeGen
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AssociateContactToCompanyRequest"/> class.
+        /// Initializes a new instance of the <see cref="CreateAssociationRequest"/> class.
         /// </summary>
         /// <param name="fromObjectId">The HubSpot ID of the client that is being associated.</param>
         /// <param name="toObjectId">The HubSpot ID of the company to which the client is being associated.</param>
         /// <param name="category">The category field currently only supports one value which is supplied by HubSpot.</param>
         /// <param name="definitionId">The ID of the definition of the of the association type.</param>
-        public AssociateContactToCompanyRequest(int fromObjectId, int toObjectId, string category, int definitionId)
+        public CreateAssociationRequest(int fromObjectId, int toObjectId, string category, int definitionId)
         {
             this.FromObjectId = fromObjectId;
             this.ToObjectId = toObjectId;

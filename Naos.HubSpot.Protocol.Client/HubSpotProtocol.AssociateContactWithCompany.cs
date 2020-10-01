@@ -34,8 +34,18 @@ namespace Naos.HubSpot.Protocol.Client
         {
             var uri = this.baseUri;
             uri = uri.AppendPathSegment("crm-associations/v1/associations");
-            uri.WithBody(operation.CreateRequest()).Put();
+            uri.WithBody(CreateRequest(operation)).Put();
             await Task.Run(() => true);
+        }
+
+        /// <summary>
+        /// Creates the payload of a HubSpot request representing the request to associate the client
+        /// in this object to the company in this object.
+        /// </summary>
+        /// <returns cref="CreateAssociationRequest">The payload for a association API request.</returns>
+        private static  CreateAssociationRequest CreateRequest(AssociateContactWithCompanyOp op)
+        {
+            return new CreateAssociationRequest(op.ContactHubSpotId, op.CompanyHubSpotId, "HUBSPOT_DEFINED", 1);
         }
     }
 }

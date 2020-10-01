@@ -39,15 +39,5 @@ namespace Naos.HubSpot.Domain
         /// Gets the Company with which the contact should be associated.
         /// </summary>
         public int CompanyHubSpotId { get; private set; }
-
-        /// <summary>
-        /// Creates the payload of a HubSpot request representing the request to associate the client
-        /// in this object to the company in this object.
-        /// </summary>
-        /// <returns cref="AssociateContactToCompanyRequest">The payload for a association API request.</returns>
-        public AssociateContactToCompanyRequest CreateRequest()
-        {
-            return new AssociateContactToCompanyRequest(this.ContactHubSpotId, this.CompanyHubSpotId, "HUBSPOT_DEFINED", 1);
-        }
     }
 }

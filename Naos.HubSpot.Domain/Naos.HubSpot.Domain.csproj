@@ -99,7 +99,7 @@
     <Compile Include=".recipes\OBeautifulCode.Type\ToStringReadableOptions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Type\ToStringXmlDocOptions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Type\TypeExtensions.cs" />
-    <Compile Include="Model\AssociateContactToCompanyRequest.cs" />
+    <Compile Include="Model\CreateAssociationRequest.cs" />
     <Compile Include="Model\StandardCompanyPropertyName.cs" />
     <Compile Include="Model\StandardContactPropertyName.cs" />
     <Compile Include="Operations\Company\AddOrUpdateCompaniesOp.cs" />
