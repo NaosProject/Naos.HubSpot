@@ -31,7 +31,7 @@ namespace Naos.HubSpot.Protocol.Client
             while (sourceList.Any())
             {
                 yield return sourceList.Take(chunkSize);
-                source = sourceList.Skip(chunkSize);
+                sourceList = sourceList.Skip(chunkSize).ToList();
             }
         }
     }
