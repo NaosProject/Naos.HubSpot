@@ -118,6 +118,7 @@
     <Compile Include=".recipes\Spritely.Redo\Using.cs" />
     <Compile Include="HubSpotProtocol.Constructor.cs" />
     <Compile Include="HubSpotProtocol.AssociateContactWithCompany.cs" />
+    <Compile Include="HubSpotProtocol.AddCompany.cs" />
     <Compile Include="HubSpotProtocol.GetAllCompanies.cs" />
     <Compile Include="HubSpotProtocol.AddOrUpdateContacts.cs" />
     <Compile Include="HubSpotProtocol.GetAllContacts.cs" />

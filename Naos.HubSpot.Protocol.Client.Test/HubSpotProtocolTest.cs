@@ -97,5 +97,24 @@ namespace Naos.HubSpot.Protocol.Client.Test
             // Assert
             exception.MustForTest().BeNull();
         }
+
+        [Fact(Skip = "Skipping because this uses external resources")]
+        public static void AddCompany___Does_not_return_null_contact___When_executed()
+        {
+            // Arrange
+            var apiKey = "Get HubSpot Api Key from https://app.hubspot.com/api-key/";
+            var baseUri = new Uri("https://api.hubapi.com/");
+            var protocol = new HubSpotProtocol("entityId", baseUri, apiKey);
+            var companyProps = new Dictionary<string, string>();
+            companyProps.Add("name", "testCompany");
+            var companyToAdd = new Company(companyProps);
+            var op = new AddCompanyOp(companyToAdd);
+            
+            // Act
+            var company = protocol.Execute(op);
+
+            // Assert
+            company.MustForTest(nameof(company)).NotBeNull();
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace Naos.HubSpot.Domain.Model
         /// <param name="properties">The properties of the HubSpot contact.</param>
         public AddOrUpdateContactsRequest(IReadOnlyCollection<PropertyModel> properties)
         {
-            properties.MustForArg(nameof(properties)).ContainElement("email");
+            properties.MustForArg(nameof(properties)).ContainElement("email", "A HubSpot contact must have an email address.");
             if (properties.Any(_ => _.Property == "vid"))
             {
                 this.Vid = Convert.ToInt32(properties.Single(_ => _.Property == "vid").Value, CultureInfo.InvariantCulture);

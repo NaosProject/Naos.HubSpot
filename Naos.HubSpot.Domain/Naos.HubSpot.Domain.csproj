@@ -99,12 +99,13 @@
     <Compile Include=".recipes\OBeautifulCode.Type\ToStringReadableOptions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Type\ToStringXmlDocOptions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Type\TypeExtensions.cs" />
+    <Compile Include="Model\AddCompanyRequest.cs" />
     <Compile Include="Model\AddOrUpdateContactsRequest.cs" />
     <Compile Include="Model\CreateAssociationRequest.cs" />
     <Compile Include="Model\PropertyModel.cs" />
     <Compile Include="Model\StandardCompanyPropertyName.cs" />
     <Compile Include="Model\StandardContactPropertyName.cs" />
-    <Compile Include="Operations\Company\AddOrUpdateCompaniesOp.cs" />
+    <Compile Include="Operations\Company\AddCompanyOp.cs" />
     <Compile Include="Operations\Company\GetAllCompaniesOp.cs" />
     <Compile Include="Operations\Contact\AddOrUpdateContactsOp.cs" />
     <Compile Include="Operations\SyncWithHubSpot\AssociateContactWithCompanyOp.cs" />
