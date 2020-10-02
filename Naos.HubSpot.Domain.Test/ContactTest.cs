@@ -40,7 +40,7 @@ namespace Naos.HubSpot.Domain.Test
                         var result = new Contact(
                                              referenceObject.EntityId,
                                              null,
-                                             referenceObject.Vid,
+                                             referenceObject.ObjectId,
                                              referenceObject.Properties);
 
                         return result;
@@ -59,7 +59,7 @@ namespace Naos.HubSpot.Domain.Test
                         var result = new Contact(
                                              referenceObject.EntityId,
                                              Invariant($"  {Environment.NewLine}  "),
-                                             referenceObject.Vid,
+                                             referenceObject.ObjectId,
                                              referenceObject.Properties);
 
                         return result;
@@ -97,7 +97,7 @@ namespace Naos.HubSpot.Domain.Test
                         var result = new Contact(
                                              referenceObject.EntityId,
                                              referenceObject.Email,
-                                             referenceObject.Vid,
+                                             referenceObject.ObjectId,
                                              null);
 
                         return result;
@@ -116,7 +116,7 @@ namespace Naos.HubSpot.Domain.Test
                         var result = new Contact(
                                              referenceObject.EntityId,
                                              referenceObject.Email,
-                                             referenceObject.Vid,
+                                             referenceObject.ObjectId,
                                              new Dictionary<string, object>());
 
                         return result;
@@ -135,7 +135,7 @@ namespace Naos.HubSpot.Domain.Test
                         var result = new Contact(
                             referenceObject.EntityId,
                             referenceObject.Email,
-                            referenceObject.Vid,
+                            referenceObject.ObjectId,
                             new Dictionary<string, object>
                             {
                                 { Contact.LastNamePropertyKey, A.Dummy<string>() },
@@ -157,7 +157,7 @@ namespace Naos.HubSpot.Domain.Test
                         var result = new Contact(
                                              referenceObject.EntityId,
                                              referenceObject.Email,
-                                             referenceObject.Vid,
+                                             referenceObject.ObjectId,
                                              new Dictionary<string, object>
                                              {
                                                  { Contact.FirstNamePropertyKey, A.Dummy<string>() },

@@ -18,7 +18,7 @@ namespace Naos.HubSpot.Domain
         /// <summary>
         /// The HubSpot ID of the company.
         /// </summary>
-        HubSpotId,
+        ObjectId,
 
         /// <summary>
         /// The name of the company.
@@ -47,8 +47,8 @@ namespace Naos.HubSpot.Domain
         {
             switch (propertyNameEnum)
             {
-                case StandardCompanyPropertyName.HubSpotId:
-                    return HubSpotCompanyPropertyNames.Vid;
+                case StandardCompanyPropertyName.ObjectId:
+                    return HubSpotCompanyPropertyNames.ObjectId;
                 case StandardCompanyPropertyName.CompanyName:
                     return HubSpotCompanyPropertyNames.CompanyName;
                 case StandardCompanyPropertyName.CustomId:
@@ -67,8 +67,8 @@ namespace Naos.HubSpot.Domain
         {
             switch (propertyName)
             {
-                case HubSpotCompanyPropertyNames.Vid:
-                    return StandardCompanyPropertyName.HubSpotId;
+                case HubSpotCompanyPropertyNames.ObjectId:
+                    return StandardCompanyPropertyName.ObjectId;
                 case HubSpotCompanyPropertyNames.CompanyName:
                     return StandardCompanyPropertyName.CompanyName;
                 case HubSpotCompanyPropertyNames.CustomId:
@@ -87,7 +87,7 @@ namespace Naos.HubSpot.Domain
         /// <summary>
         /// The vid of the company.
         /// </summary>
-        public const string Vid = "vid";
+        public const string ObjectId = "objectId";
 
         /// <summary>
         /// The name of the company.
@@ -105,7 +105,7 @@ namespace Naos.HubSpot.Domain
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification = NaosSuppressBecause.CA2104_DoNotDeclareReadOnlyMutableReferenceTypes_TypeIsImmutable)]
         public static readonly IReadOnlyCollection<string> AllNames = new[]
         {
-            Vid,
+            ObjectId,
             CompanyName,
             CustomId,
         };
