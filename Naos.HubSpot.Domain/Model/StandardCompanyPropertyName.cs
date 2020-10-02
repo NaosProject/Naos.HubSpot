@@ -8,7 +8,9 @@ namespace Naos.HubSpot.Domain
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Naos.CodeAnalysis.Recipes;
+    using OBeautifulCode.Enum.Recipes;
 
     /// <summary>
     /// Object to describe a company in HubSpot.
@@ -109,5 +111,25 @@ namespace Naos.HubSpot.Domain
             CompanyName,
             CustomId,
         };
+
+        /// <summary>
+        /// Converts a string to a specific company property if that property is already defined.
+        /// </summary>
+        /// <param name="proposedName">The string that is to be converted.</param>
+        /// <returns>Converted property name if applicable.</returns>
+        public static string ConvertIfStandardCompanyName(this string proposedName)
+        {
+            var isStandardPropertyName = typeof(StandardCompanyPropertyName).GetDefinedEnumValues()
+                .Select(_ => _.ToString())
+                .Contains(proposedName);
+            var adjustedName = proposedName;
+            if (isStandardPropertyName)
+            {
+                var enumName = (StandardCompanyPropertyName)Enum.Parse(typeof(StandardCompanyPropertyName), proposedName);
+                adjustedName = enumName.ToCompanyPropertyName();
+            }
+
+            return adjustedName;
+        }
     }
 }

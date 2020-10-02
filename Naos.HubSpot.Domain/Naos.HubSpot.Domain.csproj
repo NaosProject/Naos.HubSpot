@@ -100,20 +100,62 @@
     <Compile Include=".recipes\OBeautifulCode.Type\ToStringXmlDocOptions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Type\TypeExtensions.cs" />
     <Compile Include="Model\AddCompanyRequest.cs" />
+    <Compile Include="Model\AddCompanyRequest.designer.cs">
+      <DependentUpon>AddCompanyRequest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\AddOrUpdateContactsRequest.cs" />
+    <Compile Include="Model\AddOrUpdateContactsRequest.designer.cs">
+      <DependentUpon>AddOrUpdateContactsRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Company.designer.cs">
+      <DependentUpon>Company.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Contact.designer.cs">
+      <DependentUpon>Contact.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\CreateAssociationRequest.cs" />
+    <Compile Include="Model\CreateAssociationRequest.designer.cs">
+      <DependentUpon>CreateAssociationRequest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\PropertyModel.cs" />
+    <Compile Include="Model\PropertyModel.designer.cs">
+      <DependentUpon>PropertyModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\StandardCompanyPropertyName.cs" />
     <Compile Include="Model\StandardContactPropertyName.cs" />
     <Compile Include="Model\UpdateCompanyModel.cs" />
+    <Compile Include="Model\UpdateCompanyModel.designer.cs">
+      <DependentUpon>UpdateCompanyModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Operations\Company\AddCompanyOp.designer.cs">
+      <DependentUpon>AddCompanyOp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Operations\Company\GetAllCompaniesOp.designer.cs">
+      <DependentUpon>GetAllCompaniesOp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operations\Company\UpdateCompanyOp.cs" />
     <Compile Include="Operations\Company\AddCompanyOp.cs" />
     <Compile Include="Operations\Company\GetAllCompaniesOp.cs" />
+    <Compile Include="Operations\Company\UpdateCompanyOp.designer.cs">
+      <DependentUpon>UpdateCompanyOp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operations\Contact\AddOrUpdateContactsOp.cs" />
+    <Compile Include="Operations\Contact\AddOrUpdateContactsOp.designer.cs">
+      <DependentUpon>AddOrUpdateContactsOp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Operations\Contact\GetAllContactsOp.designer.cs">
+      <DependentUpon>GetAllContactsOp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operations\SyncWithHubSpot\AssociateContactWithCompanyOp.cs" />
     <Compile Include="Operations\Contact\GetAllContactsOp.cs" />
     <Compile Include="Model\Company.cs" />
+    <Compile Include="Operations\SyncWithHubSpot\AssociateContactWithCompanyOp.designer.cs">
+      <DependentUpon>AssociateContactWithCompanyOp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operations\SyncWithHubSpot\SyncWithHubSpotOp.cs" />
+    <Compile Include="Operations\SyncWithHubSpot\SyncWithHubspotOp.designer.cs">
+      <DependentUpon>SyncWithHubSpotOp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Contact.cs" />
     <Compile Include="GlobalSuppressions.cs" />

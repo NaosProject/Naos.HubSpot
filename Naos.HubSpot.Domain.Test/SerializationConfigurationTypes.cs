@@ -22,8 +22,8 @@ namespace Naos.HubSpot.Domain.Test
     [GeneratedCode("Naos.Build.Conventions.VisualStudioProjectTemplates.Domain.Test", "1.55.30")]
     public static class SerializationConfigurationTypes
     {
-        public static BsonSerializationConfigurationType BsonConfigurationType => typeof(HubSpotBsonSerializationConfiguration).ToBsonSerializationConfigurationType();
+        public static BsonSerializationConfigurationType BsonSerializationConfigurationType => typeof(HubSpotBsonSerializationConfiguration).ToBsonSerializationConfigurationType();
 
-        public static JsonSerializationConfigurationType JsonConfigurationType => typeof(HubSpotJsonSerializationConfiguration).ToJsonSerializationConfigurationType();
+        public static JsonSerializationConfigurationType JsonSerializationConfigurationType => typeof(HubSpotJsonSerializationConfiguration).ToJsonSerializationConfigurationType();
     }
 }

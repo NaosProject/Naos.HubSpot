@@ -18,7 +18,7 @@ namespace Naos.HubSpot.Domain.Test
     /// <summary>
     /// A Dummy Factory for types in <see cref="Naos.HubSpot.Domain"/>.
     /// </summary>
-#if !NaosHubSpotRecipesProject
+#if !NaosHubSpotSolution
     [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     [System.CodeDom.Compiler.GeneratedCode("Naos.HubSpot.Domain.Test", "See package version number")]
 #endif

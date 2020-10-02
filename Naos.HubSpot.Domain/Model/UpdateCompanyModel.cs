@@ -2,16 +2,17 @@
 //    Copyright (c) Naos Project 2019. All rights reserved.
 // </copyright>
 
-namespace Naos.HubSpot.Domain.Model
+namespace Naos.HubSpot.Domain
 {
     using System.Collections.Generic;
     using System.Globalization;
     using OBeautifulCode.Assertion.Recipes;
+    using OBeautifulCode.Type;
 
     /// <summary>
     /// Represents the body of an update company post request.
     /// </summary>
-    public class UpdateCompanyModel
+    public partial class UpdateCompanyModel : IModelViaCodeGen
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateCompanyModel"/> class.
@@ -27,13 +28,13 @@ namespace Naos.HubSpot.Domain.Model
         }
 
         /// <summary>
-        /// Gets or sets the object ID of the company that is to be updated.
+        /// Gets the object ID of the company that is to be updated.
         /// </summary>
-        public int ObjectId { get; set; }
+        public int ObjectId { get; private set; }
 
         /// <summary>
-        /// Gets or sets the list of properties of the company to be updated.
+        /// Gets the list of properties of the company to be updated.
         /// </summary>
-        public IReadOnlyCollection<PropertyModel> Properties { get; set; }
+        public IReadOnlyCollection<PropertyModel> Properties { get; private set; }
     }
 }

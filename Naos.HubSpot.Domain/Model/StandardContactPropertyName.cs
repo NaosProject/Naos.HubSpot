@@ -8,7 +8,9 @@ namespace Naos.HubSpot.Domain
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Naos.CodeAnalysis.Recipes;
+    using OBeautifulCode.Enum.Recipes;
 
     /// <summary>
     ///     Object to describe a contact in HubSpot.
@@ -156,5 +158,25 @@ namespace Naos.HubSpot.Domain
             CustomId,
             PhoneNumber,
         };
+
+        /// <summary>
+        /// Converts a string to a specific company property if that property is already defined.
+        /// </summary>
+        /// <param name="proposedName">The string that is to be converted.</param>
+        /// <returns>Converted property name if applicable.</returns>
+        public static string ConvertIfStandardContactName(this string proposedName)
+        {
+            var isStandardPropertyName = typeof(StandardContactPropertyName).GetDefinedEnumValues()
+                .Select(_ => _.ToString())
+                .Contains(proposedName);
+            var adjustedName = proposedName;
+            if (isStandardPropertyName)
+            {
+                var enumName = (StandardContactPropertyName)Enum.Parse(typeof(StandardContactPropertyName), proposedName);
+                adjustedName = enumName.ToContactPropertyName();
+            }
+
+            return adjustedName;
+        }
     }
 }

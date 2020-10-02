@@ -11,7 +11,6 @@ namespace Naos.HubSpot.Protocol.Client
     using System.Threading.Tasks;
     using Naos.FluentUri;
     using Naos.HubSpot.Domain;
-    using Naos.HubSpot.Domain.Model;
     using Naos.Protocol.Domain;
     using Naos.Recipes.RunWithRetry;
 
@@ -33,7 +32,8 @@ namespace Naos.HubSpot.Protocol.Client
         {
             var uri = this.baseUri;
             uri = uri.AppendPathSegment("companies/v2/companies");
-            dynamic addedCompany = await Task.FromResult(uri.WithBody(new AddCompanyRequest(operation.CompanyToAdd)).Post<dynamic>());
+            var request = operation.CompanyToAdd.ToAddCompanyRequest();
+            dynamic addedCompany = await Task.FromResult(uri.WithBody(request).Post<dynamic>());
             dynamic dynCompanyProps = addedCompany["properties"];
             var companyPropertiesDictionary = new Dictionary<string, string>();
             foreach (var property in dynCompanyProps)

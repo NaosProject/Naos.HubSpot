@@ -10,7 +10,6 @@ namespace Naos.HubSpot.Protocol.Client
     using System.Threading.Tasks;
     using Naos.FluentUri;
     using Naos.HubSpot.Domain;
-    using Naos.HubSpot.Domain.Model;
     using Naos.Protocol.Domain;
     using Naos.Recipes.RunWithRetry;
 
@@ -34,7 +33,7 @@ namespace Naos.HubSpot.Protocol.Client
             var contactChunks = operation.ContactsToAddOrUpdate.Chunk(1000).Select(_ => _.ToList()).ToList();
             foreach (var contactChunk in contactChunks)
             {
-                uri.WithBody(contactChunk.Select(_ => new AddOrUpdateContactsRequest(_))).Put();
+                uri.WithBody(contactChunk.Select(_ => _.BuildAddOrUpdateContactsRequest())).Put();
             }
 
             await Task.Factory.StartNew(() => true);

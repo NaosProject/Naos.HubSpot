@@ -7,7 +7,6 @@
 namespace Naos.HubSpot.Protocol.Client
 {
     using System;
-    using Naos.CodeAnalysis.Recipes;
     using Naos.FluentUri;
     using Naos.HubSpot.Domain;
     using Naos.Protocol.Domain;

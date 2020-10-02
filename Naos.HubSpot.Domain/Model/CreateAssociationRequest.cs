@@ -2,14 +2,14 @@
 //    Copyright (c) Naos Project 2019. All rights reserved.
 // </copyright>
 
-namespace Naos.HubSpot.Domain.Model
+namespace Naos.HubSpot.Domain
 {
     using OBeautifulCode.Type;
 
     /// <summary>
     /// This class represents the response from the HubSpot API after a successful Association.
     /// </summary>
-    public class CreateAssociationRequest : IModelViaCodeGen
+    public partial class CreateAssociationRequest : IModelViaCodeGen
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateAssociationRequest"/> class.
@@ -27,23 +27,23 @@ namespace Naos.HubSpot.Domain.Model
         }
 
         /// <summary>
-        /// Gets or sets the HubSpot ID of the client that is the subject of the association.
+        /// Gets the HubSpot ID of the client that is the subject of the association.
         /// </summary>
-        public int FromObjectId { get; set; }
+        public int FromObjectId { get; private set; }
 
         /// <summary>
-        /// Gets or sets the HubSpot ID of the company to which the client has been associated.
+        /// Gets the HubSpot ID of the company to which the client has been associated.
         /// </summary>
-        public int  ToObjectId { get; set; }
+        public int  ToObjectId { get; private set; }
 
         /// <summary>
-        /// Gets or sets the category currently only supports one value.
+        /// Gets the category currently only supports one value.
         /// </summary>
-        public string Category { get; set; }
+        public string Category { get; private set; }
 
         /// <summary>
-        /// Gets or sets the definition of the type of association that was performed.
+        /// Gets the definition of the type of association that was performed.
         /// </summary>
-        public int DefinitionId { get; set; }
+        public int DefinitionId { get; private set; }
     }
 }

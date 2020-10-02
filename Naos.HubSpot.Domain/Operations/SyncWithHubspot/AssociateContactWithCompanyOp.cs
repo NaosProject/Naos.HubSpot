@@ -7,7 +7,7 @@
 namespace Naos.HubSpot.Domain
 {
     using System.Collections.Generic;
-    using Naos.HubSpot.Domain.Model;
+    using Naos.HubSpot.Domain;
     using Naos.Protocol.Domain;
     using OBeautifulCode.Assertion.Recipes;
     using OBeautifulCode.Type;
