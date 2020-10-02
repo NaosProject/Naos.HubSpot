@@ -8,6 +8,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Linq;
     using System.Web;
     using Naos.HubSpot.Domain;
@@ -20,13 +21,14 @@ namespace Naos.HubSpot.Protocol.Client.Test
     /// </summary>
     public static partial class HubSpotProtocolTest
     {
+        private const string ApiKey = "Get API key from here: https://app.hubspot.com/api-key/";
+        private static readonly Uri BaseUri = new Uri("https://api.hubapi.com/");
+
         [Fact(Skip = "Skipping because this uses external resources")]
         public static void GetAllContactsOp___Returns_nonempty_list_of_contacts___When_executed()
         {
             // Arrange
-            var apiKey = "Get API key from here: ";
-            var baseUri = new Uri("https://api.hubapi.com/");
-            var protocol = new HubSpotProtocol("entityId", baseUri, apiKey);
+            var protocol = new HubSpotProtocol(BaseUri, ApiKey);
             var op = new GetAllContactsOp();
             
             // Act
@@ -40,9 +42,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
         public static void GetAllCompaniesOp___Returns_nonempty_list_of_companies___When_executed()
         {
             // Arrange
-            var apiKey = "Get HubSpot Api Key from https://app.hubspot.com/api-key/";
-            var baseUri = new Uri("https://api.hubapi.com/");
-            var protocol = new HubSpotProtocol("entityId", baseUri, apiKey);
+            var protocol = new HubSpotProtocol(BaseUri, ApiKey);
             var op = new GetAllCompaniesOp();
 
             // Act
@@ -56,55 +56,42 @@ namespace Naos.HubSpot.Protocol.Client.Test
         public static void AssociateContactWithCompanyOp___Does_not_return_http_error___When_executed()
         {
             // Arrange
-            var apiKey = "Get HubSpot Api Key from https://app.hubspot.com/api-key/";
-            var baseUri = new Uri("https://api.hubapi.com/");
-            var protocol = new HubSpotProtocol("entityId", baseUri, apiKey);
+            var protocol = new HubSpotProtocol(BaseUri, ApiKey);
             var op = new AssociateContactWithCompanyOp(1, 1);
-            HttpException exception = null;
-            // Act
-            try
-            {
-                protocol.Execute(op);
-            }
-            catch (HttpException e)
-            {
-                exception = e;
-            }
-            
-            // Assert
-            exception.MustForTest().BeNull();
+
+            // Act & Assert - Will throw exception on failure
+            protocol.Execute(op);
         }
 
-        [Fact(Skip = "Skipping because this uses external resources")]
+        [Fact]
         public static void AddOrUpdateContactsOp___Does_not_return_http_error___When_executed()
         {
             // Arrange
-            var apiKey = "Get HubSpot Api Key from https://app.hubspot.com/api-key/";
-            var baseUri = new Uri("https://api.hubapi.com/");
-            var protocol = new HubSpotProtocol("entityId", baseUri, apiKey);
-            var op = new AddOrUpdateContactsOp(new List<Contact>());
-            HttpException exception = null;
-            // Act
-            try
+            var protocol = new HubSpotProtocol(BaseUri, ApiKey);
+            var contactDict = new Dictionary<string, string>
             {
-                protocol.Execute(op);
-            }
-            catch (HttpException e)
-            {
-                exception = e;
-            }
+                { HubSpotContactPropertyNames.EmailAddress, "testemail@email.com" },
+                { HubSpotContactPropertyNames.FirstName, "Dave" },
+                { HubSpotContactPropertyNames.LastName, "C" },
+            };
 
-            // Assert
-            exception.MustForTest().BeNull();
+            var contactToAdd = new Contact(contactDict);
+            var contactList = new[]
+            {
+                contactToAdd,
+            };
+
+            var op = new AddOrUpdateContactsOp(contactList);
+
+            // Act & Assert - Will throw exception on failure
+            protocol.Execute(op);
         }
 
         [Fact(Skip = "Skipping because this uses external resources")]
         public static void AddCompany___Does_not_return_null_contact___When_executed()
         {
             // Arrange
-            var apiKey = "Get HubSpot Api Key from https://app.hubspot.com/api-key/";
-            var baseUri = new Uri("https://api.hubapi.com/");
-            var protocol = new HubSpotProtocol("entityId", baseUri, apiKey);
+            var protocol = new HubSpotProtocol(BaseUri, ApiKey);
             var companyProps = new Dictionary<string, string>();
             companyProps.Add("name", "testCompany");
             var companyToAdd = new Company(companyProps);
@@ -121,9 +108,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
         public static void UpdateCompany___Does_not_return_http_error___When_executed()
         {
             // Arrange
-            var apiKey = "Get HubSpot Api Key from https://app.hubspot.com/api-key/";
-            var baseUri = new Uri("https://api.hubapi.com/");
-            var protocol = new HubSpotProtocol("entityId", baseUri, apiKey);
+            var protocol = new HubSpotProtocol(BaseUri, ApiKey);
             var companyProps = new Dictionary<string, string>
             {
                 { "name", "testCompany" },
@@ -131,19 +116,9 @@ namespace Naos.HubSpot.Protocol.Client.Test
             };
             var companyList = new List<Company> { new Company(companyProps)  };
             var op = new UpdateCompanyOp(companyList);
-            HttpException exception = null;
-            // Act
-            try
-            {
-                protocol.Execute(op);
-            }
-            catch (HttpException e)
-            {
-                exception = e;
-            }
 
-            // Assert
-            exception.MustForTest().BeNull();
+            // Act & Assert - Will throw exception on failure
+            protocol.Execute(op);
         }
     }
 }
