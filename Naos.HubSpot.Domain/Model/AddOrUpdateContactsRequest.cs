@@ -24,8 +24,10 @@ namespace Naos.HubSpot.Domain
         /// <param name="properties">The properties of the HubSpot contact.</param>
         public AddOrUpdateContactsRequest(int? vid, string email, IReadOnlyCollection<PropertyModel> properties)
         {
-            properties.MustForArg(nameof(properties)).ContainElement(HubSpotContactPropertyNames.EmailAddress, "A HubSpot contact must have an email address.");
-            (!vid.HasValue && !string.IsNullOrEmpty(email)).MustForArg("BothCannotBeNull").NotBeTrue();
+            properties
+                .MustForArg(nameof(properties))
+                .NotBeEmptyEnumerable("A HubSpot contact must have an email address.");
+            (!vid.HasValue && string.IsNullOrEmpty(email)).MustForArg("BothCannotBeNull").NotBeTrue();
             this.Vid = vid;
             this.Email = email;
             this.Properties = properties;
@@ -60,18 +62,18 @@ namespace Naos.HubSpot.Domain
         public static AddOrUpdateContactsRequest BuildAddOrUpdateContactsRequest(this Contact contact)
         {
             var properties = contact.Properties.Select(_ => new PropertyModel(_.Key, _.Value)).ToList();
-            properties.MustForArg(nameof(properties)).ContainElement("email");
-            if (properties.Any(_ => _.Name == "vid"))
+            properties.Any(_ => _.Property == HubSpotContactPropertyNames.EmailAddress && !string.IsNullOrEmpty(_.Value)).MustForArg().BeTrue("HubSpot contact must contain an email address.");
+            if (properties.Any(_ => _.Property == "vid"))
             {
-                var vid = Convert.ToInt32(properties.Single(_ => _.Name == "vid").Value, CultureInfo.InvariantCulture);
-                var filteredProperties = properties.Where(_ => _.Name != "vid").ToList();
+                var vid = Convert.ToInt32(properties.Single(_ => _.Property == "vid").Value, CultureInfo.InvariantCulture);
+                var filteredProperties = properties.Where(_ => _.Property != "vid").ToList();
                 var contactProperties = filteredProperties;
                 return new AddOrUpdateContactsRequest(vid, null, contactProperties);
             }
             else
             {
-                var email = properties.Single(_ => _.Name == "email").Value;
-                var filteredProperties = properties.Where(_ => _.Name != "email").ToList();
+                var email = properties.Single(_ => _.Property == "email").Value;
+                var filteredProperties = properties.Where(_ => _.Property != "email").ToList();
                 var contactProperties = filteredProperties;
                 return new AddOrUpdateContactsRequest(null, email, contactProperties);
             }

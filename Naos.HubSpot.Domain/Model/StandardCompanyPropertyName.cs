@@ -31,6 +31,11 @@ namespace Naos.HubSpot.Domain
         /// The custom ID of the company.
         /// </summary>
         CustomId,
+
+        /// <summary>
+        /// The description
+        /// </summary>
+        Description,
     }
 
     /// <summary>
@@ -50,11 +55,13 @@ namespace Naos.HubSpot.Domain
             switch (propertyNameEnum)
             {
                 case StandardCompanyPropertyName.ObjectId:
-                    return HubSpotCompanyPropertyNames.ObjectId;
+                    return HubSpotCompanyPropertyNames.CompanyId;
                 case StandardCompanyPropertyName.CompanyName:
                     return HubSpotCompanyPropertyNames.CompanyName;
                 case StandardCompanyPropertyName.CustomId:
                     return HubSpotCompanyPropertyNames.CustomId;
+                case StandardCompanyPropertyName.Description:
+                    return HubSpotCompanyPropertyNames.Description;
                 default:
                     throw new NotSupportedException("The standard company property name is not supported: " + propertyNameEnum);
             }
@@ -69,12 +76,14 @@ namespace Naos.HubSpot.Domain
         {
             switch (propertyName)
             {
-                case HubSpotCompanyPropertyNames.ObjectId:
+                case HubSpotCompanyPropertyNames.CompanyId:
                     return StandardCompanyPropertyName.ObjectId;
                 case HubSpotCompanyPropertyNames.CompanyName:
                     return StandardCompanyPropertyName.CompanyName;
                 case HubSpotCompanyPropertyNames.CustomId:
                     return StandardCompanyPropertyName.CustomId;
+                case HubSpotCompanyPropertyNames.Description:
+                    return StandardCompanyPropertyName.Description;
                 default:
                     throw new NotSupportedException("The standard company property name is not supported: " + propertyName);
             }
@@ -89,7 +98,7 @@ namespace Naos.HubSpot.Domain
         /// <summary>
         /// The vid of the company.
         /// </summary>
-        public const string ObjectId = "objectId";
+        public const string CompanyId = "companyId";
 
         /// <summary>
         /// The name of the company.
@@ -102,14 +111,20 @@ namespace Naos.HubSpot.Domain
         public const string CustomId = "customid";
 
         /// <summary>
+        /// The description of the company.
+        /// </summary>
+        public const string Description = "description";
+
+        /// <summary>
         /// Represents the HubSpot-recognized, natively supported company property names.
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification = NaosSuppressBecause.CA2104_DoNotDeclareReadOnlyMutableReferenceTypes_TypeIsImmutable)]
         public static readonly IReadOnlyCollection<string> AllNames = new[]
         {
-            ObjectId,
+            CompanyId,
             CompanyName,
             CustomId,
+            Description,
         };
 
         /// <summary>

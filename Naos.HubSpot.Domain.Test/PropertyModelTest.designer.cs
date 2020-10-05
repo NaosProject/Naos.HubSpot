@@ -46,7 +46,7 @@ namespace Naos.HubSpot.Domain.Test
                         var result = new SystemUnderTestExpectedStringRepresentation<PropertyModel>
                         {
                             SystemUnderTest = systemUnderTest,
-                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.PropertyModel: Name = {systemUnderTest.Name?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Value = {systemUnderTest.Value?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}."),
+                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.PropertyModel: Property = {systemUnderTest.Property?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Value = {systemUnderTest.Value?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}."),
                         };
 
                         return result;
@@ -57,7 +57,7 @@ namespace Naos.HubSpot.Domain.Test
             .AddScenario(() =>
                 new ConstructorArgumentValidationTestScenario<PropertyModel>
                 {
-                    Name = "constructor should throw ArgumentNullException when parameter 'name' is null scenario",
+                    Name = "constructor should throw ArgumentNullException when parameter 'property' is null scenario",
                     ConstructionFunc = () =>
                     {
                         var referenceObject = A.Dummy<PropertyModel>();
@@ -69,12 +69,12 @@ namespace Naos.HubSpot.Domain.Test
                         return result;
                     },
                     ExpectedExceptionType = typeof(ArgumentNullException),
-                    ExpectedExceptionMessageContains = new[] { "name" },
+                    ExpectedExceptionMessageContains = new[] { "property" },
                 })
             .AddScenario(() =>
                 new ConstructorArgumentValidationTestScenario<PropertyModel>
                 {
-                    Name = "constructor should throw ArgumentException when parameter 'name' is white space scenario",
+                    Name = "constructor should throw ArgumentException when parameter 'property' is white space scenario",
                     ConstructionFunc = () =>
                     {
                         var referenceObject = A.Dummy<PropertyModel>();
@@ -86,7 +86,7 @@ namespace Naos.HubSpot.Domain.Test
                         return result;
                     },
                     ExpectedExceptionType = typeof(ArgumentException),
-                    ExpectedExceptionMessageContains = new[] { "name", "white space" },
+                    ExpectedExceptionMessageContains = new[] { "property", "white space" },
                 })
             .AddScenario(() =>
                 new ConstructorArgumentValidationTestScenario<PropertyModel>
@@ -97,7 +97,7 @@ namespace Naos.HubSpot.Domain.Test
                         var referenceObject = A.Dummy<PropertyModel>();
 
                         var result = new PropertyModel(
-                                             referenceObject.Name,
+                                             referenceObject.Property,
                                              null);
 
                         return result;
@@ -114,7 +114,7 @@ namespace Naos.HubSpot.Domain.Test
                         var referenceObject = A.Dummy<PropertyModel>();
 
                         var result = new PropertyModel(
-                                             referenceObject.Name,
+                                             referenceObject.Property,
                                              Invariant($"  {Environment.NewLine}  "));
 
                         return result;
@@ -127,7 +127,7 @@ namespace Naos.HubSpot.Domain.Test
             .AddScenario(() =>
                 new ConstructorPropertyAssignmentTestScenario<PropertyModel>
                 {
-                    Name = "Name should return same 'name' parameter passed to constructor when getting",
+                    Name = "Property should return same 'property' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
                         var referenceObject = A.Dummy<PropertyModel>();
@@ -135,14 +135,14 @@ namespace Naos.HubSpot.Domain.Test
                         var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
                         {
                             SystemUnderTest = new PropertyModel(
-                                                      referenceObject.Name,
+                                                      referenceObject.Property,
                                                       referenceObject.Value),
-                            ExpectedPropertyValue = referenceObject.Name,
+                            ExpectedPropertyValue = referenceObject.Property,
                         };
 
                         return result;
                     },
-                    PropertyName = "Name",
+                    PropertyName = "Property",
                 })
             .AddScenario(() =>
                 new ConstructorPropertyAssignmentTestScenario<PropertyModel>
@@ -155,7 +155,7 @@ namespace Naos.HubSpot.Domain.Test
                         var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
                         {
                             SystemUnderTest = new PropertyModel(
-                                                      referenceObject.Name,
+                                                      referenceObject.Property,
                                                       referenceObject.Value),
                             ExpectedPropertyValue = referenceObject.Value,
                         };
@@ -169,18 +169,18 @@ namespace Naos.HubSpot.Domain.Test
             .AddScenario(() =>
                 new DeepCloneWithTestScenario<PropertyModel>
                 {
-                    Name = "DeepCloneWithName should deep clone object and replace Name with the provided name",
-                    WithPropertyName = "Name",
+                    Name = "DeepCloneWithProperty should deep clone object and replace Property with the provided property",
+                    WithPropertyName = "Property",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
                         var systemUnderTest = A.Dummy<PropertyModel>();
 
-                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.Name.IsEqualTo(_.Name));
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.Property.IsEqualTo(_.Property));
 
                         var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
                         {
                             SystemUnderTest = systemUnderTest,
-                            DeepCloneWithValue = referenceObject.Name,
+                            DeepCloneWithValue = referenceObject.Property,
                         };
 
                         return result;
@@ -218,16 +218,16 @@ namespace Naos.HubSpot.Domain.Test
                     ObjectsThatAreEqualToButNotTheSameAsReferenceObject = new PropertyModel[]
                     {
                         new PropertyModel(
-                                ReferenceObjectForEquatableTestScenarios.Name,
+                                ReferenceObjectForEquatableTestScenarios.Property,
                                 ReferenceObjectForEquatableTestScenarios.Value),
                     },
                     ObjectsThatAreNotEqualToReferenceObject = new PropertyModel[]
                     {
                         new PropertyModel(
-                                A.Dummy<PropertyModel>().Whose(_ => !_.Name.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Name)).Name,
+                                A.Dummy<PropertyModel>().Whose(_ => !_.Property.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Property)).Property,
                                 ReferenceObjectForEquatableTestScenarios.Value),
                         new PropertyModel(
-                                ReferenceObjectForEquatableTestScenarios.Name,
+                                ReferenceObjectForEquatableTestScenarios.Property,
                                 A.Dummy<PropertyModel>().Whose(_ => !_.Value.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Value)).Value),
                     },
                     ObjectsThatAreNotOfTheSameTypeAsReferenceObject = new object[]
@@ -522,7 +522,7 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
             public static void DeepCloneWith___Should_deep_clone_object_and_replace_the_associated_property_with_the_provided_value___When_called()
             {
-                var propertyNames = new string[] { "Name", "Value" };
+                var propertyNames = new string[] { "Property", "Value" };
 
                 var scenarios = DeepCloneWithTestScenarios.ValidateAndPrepareForTesting();
 

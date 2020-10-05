@@ -116,7 +116,7 @@
     <Compile Include=".recipes\Spritely.Redo\RetriableFunction.cs" />
     <Compile Include=".recipes\Spritely.Redo\RetriableFunctionAsync.cs" />
     <Compile Include=".recipes\Spritely.Redo\Using.cs" />
-    <Compile Include="HubSpotProtocol.UpdateCompany.cs" />
+    <Compile Include="HubSpotProtocol.UpdateCompanies.cs" />
     <Compile Include="HubSpotProtocol.Constructor.cs" />
     <Compile Include="HubSpotProtocol.AssociateContactWithCompany.cs" />
     <Compile Include="HubSpotProtocol.AddCompany.cs" />

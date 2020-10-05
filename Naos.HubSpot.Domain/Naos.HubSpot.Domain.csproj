@@ -133,11 +133,11 @@
     <Compile Include="Operations\Company\GetAllCompaniesOp.designer.cs">
       <DependentUpon>GetAllCompaniesOp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Operations\Company\UpdateCompanyOp.cs" />
+    <Compile Include="Operations\Company\UpdateCompaniesOp.cs" />
     <Compile Include="Operations\Company\AddCompanyOp.cs" />
     <Compile Include="Operations\Company\GetAllCompaniesOp.cs" />
-    <Compile Include="Operations\Company\UpdateCompanyOp.designer.cs">
-      <DependentUpon>UpdateCompanyOp.cs</DependentUpon>
+    <Compile Include="Operations\Company\UpdateCompaniesOp.designer.cs">
+      <DependentUpon>UpdateCompaniesOp.cs</DependentUpon>
     </Compile>
     <Compile Include="Operations\Contact\AddOrUpdateContactsOp.cs" />
     <Compile Include="Operations\Contact\AddOrUpdateContactsOp.designer.cs">

@@ -19,9 +19,8 @@ namespace Naos.HubSpot.Domain
         /// </summary>
         /// <param name="objectId">The object ID of the company to be updated.</param>
         /// <param name="properties">The properties of the company to be updated.</param>
-        public UpdateCompanyModel(int objectId, IReadOnlyCollection<PropertyModel> properties)
+        public UpdateCompanyModel(long objectId, IReadOnlyCollection<PropertyModel> properties)
         {
-            objectId.MustForArg(nameof(objectId)).NotBeLessThan(1, "Object ID must be greater than 0.: " + objectId.ToString(CultureInfo.InvariantCulture));
             properties.MustForArg(nameof(properties)).NotBeEmptyEnumerable("Company must contain at least one property.  Current: " + properties.Count.ToString(CultureInfo.InvariantCulture));
             this.ObjectId = objectId;
             this.Properties = properties;
@@ -30,7 +29,7 @@ namespace Naos.HubSpot.Domain
         /// <summary>
         /// Gets the object ID of the company that is to be updated.
         /// </summary>
-        public int ObjectId { get; private set; }
+        public long ObjectId { get; private set; }
 
         /// <summary>
         /// Gets the list of properties of the company to be updated.

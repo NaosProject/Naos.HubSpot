@@ -80,7 +80,7 @@ namespace Naos.HubSpot.Domain.Test
                                  A.Dummy<IReadOnlyCollection<string>>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new UpdateCompanyOp(
+                () => new UpdateCompaniesOp(
                                  A.Dummy<IReadOnlyCollection<Company>>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(

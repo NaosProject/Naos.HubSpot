@@ -140,7 +140,7 @@ namespace Naos.HubSpot.Domain.Test
                         A.Dummy<int?>(),
                         A.Dummy<Guid>(),
                         A.Dummy<GetAllCompaniesOp>(),
-                        A.Dummy<UpdateCompanyOp>(),
+                        A.Dummy<UpdateCompaniesOp>(),
                         A.Dummy<AddOrUpdateContactsOp>(),
                         A.Dummy<GetAllContactsOp>(),
                         A.Dummy<AssociateContactWithCompanyOp>(),

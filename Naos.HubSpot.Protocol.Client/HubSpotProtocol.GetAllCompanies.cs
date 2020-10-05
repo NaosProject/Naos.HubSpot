@@ -59,31 +59,28 @@ namespace Naos.HubSpot.Protocol.Client
                 {
                     try
                     {
-                        var vid = dynCompany["vid"];
+                        var companyId = (string)dynCompany[HubSpotCompanyPropertyNames.CompanyId];
                         var propertiesDict = new Dictionary<string, string>();
-                        dynamic dyncompanyProperties = dynCompany["properties"];
-                        if (dyncompanyProperties.Count == 0)
+                        dynamic dynCompanyProperties = dynCompany["properties"];
+                        if (dynCompanyProperties.Count == 0)
                         {
                             continue;
                         }
 
-                        foreach (var dynProp in dyncompanyProperties)
+                        propertiesDict.Add(HubSpotCompanyPropertyNames.CompanyId, companyId);
+                        foreach (var dynProp in dynCompanyProperties)
                         {
                             string rawName = dynProp.Name?.ToString();
                             var name = HubSpotCompanyPropertyNames.AllNames.Contains(rawName)
                                 ? rawName.FromCompanyPropertyName().ToString()
                                 : rawName;
-                            if (name == null)
-                            {
-                                throw new InvalidOperationException("The property name cannot be null for contact vid: " + vid);
-                            }
 
-                            if (operation.PropertyNamesToInclude.Contains(name))
-                            {
-                                var val = dynProp.Value["value"].Value;
-                                propertiesDict.Add(name, val);
-                            }
+                            var val = dynProp.Value["value"].Value;
+                            propertiesDict.Add(name, val);
                         }
+
+                        var comapny = new Company(propertiesDict);
+                        companies.Add(comapny);
                     }
                     catch (Exception e)
                     {

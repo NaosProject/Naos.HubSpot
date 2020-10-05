@@ -33,7 +33,8 @@ namespace Naos.HubSpot.Protocol.Client
             var contactChunks = operation.ContactsToAddOrUpdate.Chunk(1000).Select(_ => _.ToList()).ToList();
             foreach (var contactChunk in contactChunks)
             {
-                uri.WithBody(contactChunk.Select(_ => _.BuildAddOrUpdateContactsRequest())).Put();
+                var chunk = contactChunk.Select(_ => _.BuildAddOrUpdateContactsRequest());
+                uri.WithBody(chunk).Post();
             }
 
             await Task.Factory.StartNew(() => true);

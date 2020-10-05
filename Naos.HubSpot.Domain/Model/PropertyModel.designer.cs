@@ -68,7 +68,7 @@ namespace Naos.HubSpot.Domain
                 return false;
             }
 
-            var result = this.Name.IsEqualTo(other.Name, StringComparer.Ordinal)
+            var result = this.Property.IsEqualTo(other.Property, StringComparer.Ordinal)
                       && this.Value.IsEqualTo(other.Value, StringComparer.Ordinal);
 
             return result;
@@ -79,7 +79,7 @@ namespace Naos.HubSpot.Domain
 
         /// <inheritdoc />
         public override int GetHashCode() => HashCodeHelper.Initialize()
-            .Hash(this.Name)
+            .Hash(this.Property)
             .Hash(this.Value)
             .Value;
 
@@ -90,17 +90,17 @@ namespace Naos.HubSpot.Domain
         public PropertyModel DeepClone()
         {
             var result = new PropertyModel(
-                                 this.Name?.Clone().ToString(),
+                                 this.Property?.Clone().ToString(),
                                  this.Value?.Clone().ToString());
 
             return result;
         }
 
         /// <summary>
-        /// Deep clones this object with a new <see cref="Name" />.
+        /// Deep clones this object with a new <see cref="Property" />.
         /// </summary>
-        /// <param name="name">The new <see cref="Name" />.  This object will NOT be deep cloned; it is used as-is.</param>
-        /// <returns>New <see cref="PropertyModel" /> using the specified <paramref name="name" /> for <see cref="Name" /> and a deep clone of every other property.</returns>
+        /// <param name="property">The new <see cref="Property" />.  This object will NOT be deep cloned; it is used as-is.</param>
+        /// <returns>New <see cref="PropertyModel" /> using the specified <paramref name="property" /> for <see cref="Property" /> and a deep clone of every other property.</returns>
         [SuppressMessage("Microsoft.Design", "CA1002: DoNotExposeGenericLists")]
         [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly")]
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly")]
@@ -116,10 +116,10 @@ namespace Naos.HubSpot.Domain
         [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
         [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
-        public PropertyModel DeepCloneWithName(string name)
+        public PropertyModel DeepCloneWithProperty(string property)
         {
             var result = new PropertyModel(
-                                 name,
+                                 property,
                                  this.Value?.Clone().ToString());
 
             return result;
@@ -148,7 +148,7 @@ namespace Naos.HubSpot.Domain
         public PropertyModel DeepCloneWithValue(string value)
         {
             var result = new PropertyModel(
-                                 this.Name?.Clone().ToString(),
+                                 this.Property?.Clone().ToString(),
                                  value);
 
             return result;
@@ -158,7 +158,7 @@ namespace Naos.HubSpot.Domain
         [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         public override string ToString()
         {
-            var result = Invariant($"Naos.HubSpot.Domain.PropertyModel: Name = {this.Name?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Value = {this.Value?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}.");
+            var result = Invariant($"Naos.HubSpot.Domain.PropertyModel: Property = {this.Property?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Value = {this.Value?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}.");
 
             return result;
         }

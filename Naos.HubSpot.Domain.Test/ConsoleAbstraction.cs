@@ -39,12 +39,12 @@ namespace Naos.HubSpot.Domain.Test
         /// <summary>
         /// Runs the tests in the specified type.
         /// </summary>
-        /// <param name="typeName">Name of the type.</param>
+        /// <param name="typeName">Property of the type.</param>
         /// <param name="debug">Optional value indicating that the debugger should be started; DEFAULT is false.</param>
         /// <exception cref="Naos.Bootstrapper.TestFailedException"></exception>
         [Verb(Aliases = "run", IsDefault = false, Description = "Runs the specified type's xUnit tests.")]
         public static void RunTestsInType(
-            [Aliases("")] [Description("Name of type to run tests in.")] string typeName,
+            [Aliases("")] [Description("Property of type to run tests in.")] string typeName,
             [Aliases("")] [Description("Launches the debugger.")] [DefaultValue(false)] bool debug)
         {
             if (debug)

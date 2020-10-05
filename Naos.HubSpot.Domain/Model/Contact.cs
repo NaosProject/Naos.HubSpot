@@ -6,7 +6,9 @@
 
 namespace Naos.HubSpot.Domain
 {
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
     using OBeautifulCode.Assertion.Recipes;
     using OBeautifulCode.Type;
 
@@ -24,10 +26,14 @@ namespace Naos.HubSpot.Domain
         public Contact(
             IReadOnlyDictionary<string, string> properties)
         {
-            properties.MustForArg(nameof(properties)).NotBeNullNorEmptyDictionary();
-            properties.ContainsKey(nameof(StandardContactPropertyName.FirstName)).MustForArg().NotBeFalse(Invariant($"Must have a {nameof(StandardContactPropertyName.FirstName)} property."));
-            properties.ContainsKey(nameof(StandardContactPropertyName.LastName)).MustForArg().NotBeFalse(Invariant($"Must have a {nameof(StandardContactPropertyName.LastName)} property."));
-            properties.ContainsKey(nameof(StandardContactPropertyName.EmailAddress)).MustForArg().NotBeFalse(Invariant($"Must have a {nameof(StandardContactPropertyName.EmailAddress)} property."));
+            var notNullProps = properties.MustForArg(nameof(properties));
+            notNullProps.NotBeNullNorEmptyDictionary();
+            var containsFirstName = properties.Any(_ => _.Key == HubSpotContactPropertyNames.FirstName).MustForArg();
+            containsFirstName.BeTrue(Invariant($"Must have a {nameof(HubSpotContactPropertyNames.FirstName)} property."));
+            var cotnainsLastName = properties.Any(_ => _.Key == HubSpotContactPropertyNames.LastName && !string.IsNullOrEmpty(_.Value)).MustForArg();
+            cotnainsLastName.BeTrue(Invariant($"Must have a {nameof(HubSpotContactPropertyNames.LastName)} property."));
+            var containsEmail = properties.Any(_ => _.Key == HubSpotContactPropertyNames.EmailAddress && !string.IsNullOrWhiteSpace(_.Value)).MustForArg();
+            containsEmail.BeTrue(Invariant($"Must have a {nameof(HubSpotContactPropertyNames.EmailAddress)} property."));
 
             this.Properties = properties;
         }

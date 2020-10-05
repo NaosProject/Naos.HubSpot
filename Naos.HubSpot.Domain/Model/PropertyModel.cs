@@ -15,20 +15,20 @@ namespace Naos.HubSpot.Domain
         /// <summary>
         /// Initializes a new instance of the <see cref="PropertyModel"/> class.
         /// </summary>
-        /// <param name="name">The name of the property to pass to HubSpot.</param>
+        /// <param name="property">The property of the property to pass to HubSpot.</param>
         /// <param name="value">The value of the property to pass to HubSpot.</param>
-        public PropertyModel(string name, string value)
+        public PropertyModel(string property, string value)
         {
-            name.MustForArg().NotBeNullNorWhiteSpace();
+            property.MustForArg().NotBeNullNorWhiteSpace();
             value.MustForArg().NotBeNullNorWhiteSpace();
-            this.Name = name;
+            this.Property = property;
             this.Value = value;
         }
 
         /// <summary>
-        /// Gets the name of the property.
+        /// Gets the property of the property.
         /// </summary>
-        public string Name { get; private set; }
+        public string Property { get; private set; }
 
         /// <summary>
         /// Gets the value of the property.

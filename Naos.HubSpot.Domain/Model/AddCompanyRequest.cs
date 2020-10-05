@@ -20,10 +20,8 @@ namespace Naos.HubSpot.Domain
         /// <param name="properties">The properties of the company to be added.</param>
         public AddCompanyRequest(IReadOnlyCollection<PropertyModel> properties)
         {
-            properties.MustForArg(nameof(properties))
-                .NotBeNullNorEmptyDictionaryNorContainAnyNullValues("A company must have properties.");
-            properties.Any(_ => _.Name == HubSpotCompanyPropertyNames.CompanyName).MustForArg(nameof(properties))
-                .BeTrue("Properties must contain an entry for company name.");
+            // properties.MustForArg(nameof(properties))
+            //    .NotBeNullNorEmptyDictionaryNorContainAnyNullValues("A company must have properties.");
             this.Properties = properties;
         }
 
@@ -47,10 +45,7 @@ namespace Naos.HubSpot.Domain
         {
             company.MustForArg(nameof(company)).NotBeNull("The company cannot be null.");
             var properties = company.Properties;
-            properties.MustForArg(nameof(properties))
-                .NotBeNullNorEmptyDictionaryNorContainAnyNullValues("A company must have properties.");
-            properties.Keys.MustForArg(nameof(properties.Keys))
-                .ContainString("name", "A company name must be provided.");
+            // TODO: Check if company name is present.
             var propertiesModel = properties.Select(_ => new PropertyModel(_.Key.ConvertIfStandardCompanyName(), _.Value)).ToList();
             var result = new AddCompanyRequest(propertiesModel);
             return result;

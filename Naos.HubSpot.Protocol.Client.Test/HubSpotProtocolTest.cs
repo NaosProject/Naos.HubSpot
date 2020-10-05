@@ -21,7 +21,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
     /// </summary>
     public static partial class HubSpotProtocolTest
     {
-        private const string ApiKey = "Get API key from here: https://app.hubspot.com/api-key/";
+        private const string ApiKey = "cae2f33d-d7d1-406c-ab37-2e54efbe1458";
         private static readonly Uri BaseUri = new Uri("https://api.hubapi.com/");
 
         [Fact(Skip = "Skipping because this uses external resources")]
@@ -63,7 +63,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             protocol.Execute(op);
         }
 
-        [Fact]
+        [Fact(Skip = "Skipping because this uses external resources")]
         public static void AddOrUpdateContactsOp___Does_not_return_http_error___When_executed()
         {
             // Arrange
@@ -93,7 +93,8 @@ namespace Naos.HubSpot.Protocol.Client.Test
             // Arrange
             var protocol = new HubSpotProtocol(BaseUri, ApiKey);
             var companyProps = new Dictionary<string, string>();
-            companyProps.Add("name", "testCompany");
+            companyProps.Add(HubSpotCompanyPropertyNames.CompanyName, "testCompany");
+            companyProps.Add(HubSpotCompanyPropertyNames.Description, "A test company");
             var companyToAdd = new Company(companyProps);
             var op = new AddCompanyOp(companyToAdd);
             
@@ -104,18 +105,25 @@ namespace Naos.HubSpot.Protocol.Client.Test
             company.MustForTest(nameof(company)).NotBeNull();
         }
 
-        [Fact(Skip = "Skipping because this uses external resources")]
-        public static void UpdateCompany___Does_not_return_http_error___When_executed()
+        [Fact]
+        public static void UpdateCompanies___Does_not_return_http_error___When_executed()
         {
             // Arrange
             var protocol = new HubSpotProtocol(BaseUri, ApiKey);
+            var initialProps = new Dictionary<string, string>();
+            initialProps.Add(HubSpotCompanyPropertyNames.CompanyName, "testCompany");
+            initialProps.Add(HubSpotCompanyPropertyNames.Description, "this is the initial description.");
+            var companyToAdd = new Company(initialProps);
+            var createCompanyOp = new AddCompanyOp(companyToAdd);
+            var createdCompany = protocol.Execute(createCompanyOp);
             var companyProps = new Dictionary<string, string>
             {
                 { "name", "testCompany" },
-                { HubSpotCompanyPropertyNames.ObjectId, "1" },
+                { "description", "this is a new company description" },
+                { HubSpotCompanyPropertyNames.CompanyId, createdCompany.Properties["hs_object_id"] },
             };
             var companyList = new List<Company> { new Company(companyProps)  };
-            var op = new UpdateCompanyOp(companyList);
+            var op = new UpdateCompaniesOp(companyList);
 
             // Act & Assert - Will throw exception on failure
             protocol.Execute(op);

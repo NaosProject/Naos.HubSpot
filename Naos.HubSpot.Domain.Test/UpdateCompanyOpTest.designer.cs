@@ -36,33 +36,33 @@ namespace Naos.HubSpot.Domain.Test
 
     public static partial class UpdateCompanyOpTest
     {
-        private static readonly StringRepresentationTestScenarios<UpdateCompanyOp> StringRepresentationTestScenarios = new StringRepresentationTestScenarios<UpdateCompanyOp>()
+        private static readonly StringRepresentationTestScenarios<UpdateCompaniesOp> StringRepresentationTestScenarios = new StringRepresentationTestScenarios<UpdateCompaniesOp>()
             .AddScenario(() =>
-                new StringRepresentationTestScenario<UpdateCompanyOp>
+                new StringRepresentationTestScenario<UpdateCompaniesOp>
                 {
                     Name = "Default Code Generated Scenario",
                     SystemUnderTestExpectedStringRepresentationFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<UpdateCompanyOp>();
+                        var systemUnderTest = A.Dummy<UpdateCompaniesOp>();
 
-                        var result = new SystemUnderTestExpectedStringRepresentation<UpdateCompanyOp>
+                        var result = new SystemUnderTestExpectedStringRepresentation<UpdateCompaniesOp>
                         {
                             SystemUnderTest = systemUnderTest,
-                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.UpdateCompanyOp: CompaniesToUpdate = {systemUnderTest.CompaniesToUpdate?.ToString() ?? "<null>"}."),
+                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.UpdateCompaniesOp: CompaniesToUpdate = {systemUnderTest.CompaniesToUpdate?.ToString() ?? "<null>"}."),
                         };
 
                         return result;
                     },
                 });
 
-        private static readonly ConstructorArgumentValidationTestScenarios<UpdateCompanyOp> ConstructorArgumentValidationTestScenarios = new ConstructorArgumentValidationTestScenarios<UpdateCompanyOp>()
+        private static readonly ConstructorArgumentValidationTestScenarios<UpdateCompaniesOp> ConstructorArgumentValidationTestScenarios = new ConstructorArgumentValidationTestScenarios<UpdateCompaniesOp>()
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<UpdateCompanyOp>
+                new ConstructorArgumentValidationTestScenario<UpdateCompaniesOp>
                 {
                     Name = "constructor should throw ArgumentNullException when parameter 'companiesToUpdate' is null scenario",
                     ConstructionFunc = () =>
                     {
-                        var result = new UpdateCompanyOp(
+                        var result = new UpdateCompaniesOp(
                                              null);
 
                         return result;
@@ -71,12 +71,12 @@ namespace Naos.HubSpot.Domain.Test
                     ExpectedExceptionMessageContains = new[] { "companiesToUpdate" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<UpdateCompanyOp>
+                new ConstructorArgumentValidationTestScenario<UpdateCompaniesOp>
                 {
                     Name = "constructor should throw ArgumentException when parameter 'companiesToUpdate' is an empty enumerable scenario",
                     ConstructionFunc = () =>
                     {
-                        var result = new UpdateCompanyOp(
+                        var result = new UpdateCompaniesOp(
                                              new List<Company>());
 
                         return result;
@@ -85,14 +85,14 @@ namespace Naos.HubSpot.Domain.Test
                     ExpectedExceptionMessageContains = new[] { "companiesToUpdate", "is an empty enumerable" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<UpdateCompanyOp>
+                new ConstructorArgumentValidationTestScenario<UpdateCompaniesOp>
                 {
                     Name = "constructor should throw ArgumentException when parameter 'companiesToUpdate' contains a null element scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<UpdateCompanyOp>();
+                        var referenceObject = A.Dummy<UpdateCompaniesOp>();
 
-                        var result = new UpdateCompanyOp(
+                        var result = new UpdateCompaniesOp(
                                              new Company[0].Concat(referenceObject.CompaniesToUpdate).Concat(new Company[] { null }).Concat(referenceObject.CompaniesToUpdate).ToList());
 
                         return result;
@@ -101,18 +101,18 @@ namespace Naos.HubSpot.Domain.Test
                     ExpectedExceptionMessageContains = new[] { "companiesToUpdate", "contains at least one null element" },
                 });
 
-        private static readonly ConstructorPropertyAssignmentTestScenarios<UpdateCompanyOp> ConstructorPropertyAssignmentTestScenarios = new ConstructorPropertyAssignmentTestScenarios<UpdateCompanyOp>()
+        private static readonly ConstructorPropertyAssignmentTestScenarios<UpdateCompaniesOp> ConstructorPropertyAssignmentTestScenarios = new ConstructorPropertyAssignmentTestScenarios<UpdateCompaniesOp>()
             .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<UpdateCompanyOp>
+                new ConstructorPropertyAssignmentTestScenario<UpdateCompaniesOp>
                 {
                     Name = "CompaniesToUpdate should return same 'companiesToUpdate' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
-                        var referenceObject = A.Dummy<UpdateCompanyOp>();
+                        var referenceObject = A.Dummy<UpdateCompaniesOp>();
 
-                        var result = new SystemUnderTestExpectedPropertyValue<UpdateCompanyOp>
+                        var result = new SystemUnderTestExpectedPropertyValue<UpdateCompaniesOp>
                         {
-                            SystemUnderTest = new UpdateCompanyOp(
+                            SystemUnderTest = new UpdateCompaniesOp(
                                                       referenceObject.CompaniesToUpdate),
                             ExpectedPropertyValue = referenceObject.CompaniesToUpdate,
                         };
@@ -122,19 +122,19 @@ namespace Naos.HubSpot.Domain.Test
                     PropertyName = "CompaniesToUpdate",
                 });
 
-        private static readonly DeepCloneWithTestScenarios<UpdateCompanyOp> DeepCloneWithTestScenarios = new DeepCloneWithTestScenarios<UpdateCompanyOp>()
+        private static readonly DeepCloneWithTestScenarios<UpdateCompaniesOp> DeepCloneWithTestScenarios = new DeepCloneWithTestScenarios<UpdateCompaniesOp>()
             .AddScenario(() =>
-                new DeepCloneWithTestScenario<UpdateCompanyOp>
+                new DeepCloneWithTestScenario<UpdateCompaniesOp>
                 {
                     Name = "DeepCloneWithCompaniesToUpdate should deep clone object and replace CompaniesToUpdate with the provided companiesToUpdate",
                     WithPropertyName = "CompaniesToUpdate",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<UpdateCompanyOp>();
+                        var systemUnderTest = A.Dummy<UpdateCompaniesOp>();
 
-                        var referenceObject = A.Dummy<UpdateCompanyOp>().ThatIs(_ => !systemUnderTest.CompaniesToUpdate.IsEqualTo(_.CompaniesToUpdate));
+                        var referenceObject = A.Dummy<UpdateCompaniesOp>().ThatIs(_ => !systemUnderTest.CompaniesToUpdate.IsEqualTo(_.CompaniesToUpdate));
 
-                        var result = new SystemUnderTestDeepCloneWithValue<UpdateCompanyOp>
+                        var result = new SystemUnderTestDeepCloneWithValue<UpdateCompaniesOp>
                         {
                             SystemUnderTest = systemUnderTest,
                             DeepCloneWithValue = referenceObject.CompaniesToUpdate,
@@ -144,23 +144,23 @@ namespace Naos.HubSpot.Domain.Test
                     },
                 });
 
-        private static readonly UpdateCompanyOp ReferenceObjectForEquatableTestScenarios = A.Dummy<UpdateCompanyOp>();
+        private static readonly UpdateCompaniesOp ReferenceObjectForEquatableTestScenarios = A.Dummy<UpdateCompaniesOp>();
 
-        private static readonly EquatableTestScenarios<UpdateCompanyOp> EquatableTestScenarios = new EquatableTestScenarios<UpdateCompanyOp>()
+        private static readonly EquatableTestScenarios<UpdateCompaniesOp> EquatableTestScenarios = new EquatableTestScenarios<UpdateCompaniesOp>()
             .AddScenario(() =>
-                new EquatableTestScenario<UpdateCompanyOp>
+                new EquatableTestScenario<UpdateCompaniesOp>
                 {
                     Name = "Default Code Generated Scenario",
                     ReferenceObject = ReferenceObjectForEquatableTestScenarios,
-                    ObjectsThatAreEqualToButNotTheSameAsReferenceObject = new UpdateCompanyOp[]
+                    ObjectsThatAreEqualToButNotTheSameAsReferenceObject = new UpdateCompaniesOp[]
                     {
-                        new UpdateCompanyOp(
+                        new UpdateCompaniesOp(
                                 ReferenceObjectForEquatableTestScenarios.CompaniesToUpdate),
                     },
-                    ObjectsThatAreNotEqualToReferenceObject = new UpdateCompanyOp[]
+                    ObjectsThatAreNotEqualToReferenceObject = new UpdateCompaniesOp[]
                     {
-                        new UpdateCompanyOp(
-                                A.Dummy<UpdateCompanyOp>().Whose(_ => !_.CompaniesToUpdate.IsEqualTo(ReferenceObjectForEquatableTestScenarios.CompaniesToUpdate)).CompaniesToUpdate),
+                        new UpdateCompaniesOp(
+                                A.Dummy<UpdateCompaniesOp>().Whose(_ => !_.CompaniesToUpdate.IsEqualTo(ReferenceObjectForEquatableTestScenarios.CompaniesToUpdate)).CompaniesToUpdate),
                     },
                     ObjectsThatAreNotOfTheSameTypeAsReferenceObject = new object[]
                     {
@@ -199,9 +199,9 @@ namespace Naos.HubSpot.Domain.Test
             public static void UpdateCompanyOp___Should_implement_IModel_of_UpdateCompanyOp___When_reflecting()
             {
                 // Arrange
-                var type = typeof(UpdateCompanyOp);
+                var type = typeof(UpdateCompaniesOp);
 
-                var expectedModelMethods = typeof(IModel<UpdateCompanyOp>)
+                var expectedModelMethods = typeof(IModel<UpdateCompaniesOp>)
                                           .GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy)
                                           .ToList();
 
@@ -213,7 +213,7 @@ namespace Naos.HubSpot.Domain.Test
                 var actualModelMethodHashes = actualModelMethods.Select(_ => _.GetSignatureHash());
 
                 // Assert
-                actualInterfaces.AsTest().Must().ContainElement(typeof(IModel<UpdateCompanyOp>));
+                actualInterfaces.AsTest().Must().ContainElement(typeof(IModel<UpdateCompaniesOp>));
                 expectedModelMethodHashes.Except(actualModelMethodHashes).AsTest().Must().BeEmptyEnumerable();
             }
 
@@ -234,7 +234,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void UpdateCompanyOp___Should_be_attributed_with_Serializable____When_reflecting()
             {
                 // Arrange
-                var type = typeof(UpdateCompanyOp);
+                var type = typeof(UpdateCompaniesOp);
 
                 // Act
                 var actualAttributes = type.GetCustomAttributes(typeof(SerializableAttribute), false);
@@ -407,10 +407,10 @@ namespace Naos.HubSpot.Domain.Test
             public static void Clone___Should_clone_object___When_called()
             {
                 // Arrange
-                var systemUnderTest = A.Dummy<UpdateCompanyOp>();
+                var systemUnderTest = A.Dummy<UpdateCompaniesOp>();
 
                 // Act
-                var actual = (UpdateCompanyOp)systemUnderTest.Clone();
+                var actual = (UpdateCompaniesOp)systemUnderTest.Clone();
 
                 // Assert
                 actual.AsTest().Must().BeEqualTo(systemUnderTest);
@@ -434,7 +434,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void DeepClone___Should_deep_clone_object___When_called()
             {
                 // Arrange
-                var systemUnderTest = A.Dummy<UpdateCompanyOp>();
+                var systemUnderTest = A.Dummy<UpdateCompaniesOp>();
 
                 // Act
                 var actual = systemUnderTest.DeepClone();
@@ -486,12 +486,12 @@ namespace Naos.HubSpot.Domain.Test
                     }
 
                     // Act
-                    var actual = (UpdateCompanyOp)scenario.DeepCloneWithMethod.Invoke(scenario.SystemUnderTest, new[] { scenario.WithValue });
+                    var actual = (UpdateCompaniesOp)scenario.DeepCloneWithMethod.Invoke(scenario.SystemUnderTest, new[] { scenario.WithValue });
 
                     // Assert
                     foreach(var propertyName in propertyNames)
                     {
-                        var property = typeof(UpdateCompanyOp).GetProperty(propertyName);
+                        var property = typeof(UpdateCompaniesOp).GetProperty(propertyName);
 
                         var propertyType = property.PropertyType;
 
@@ -559,7 +559,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_string_using_ObcBsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<UpdateCompanyOp>();
+                var expected = A.Dummy<UpdateCompaniesOp>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.BsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -588,7 +588,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_bytes_using_ObcBsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<UpdateCompanyOp>();
+                var expected = A.Dummy<UpdateCompaniesOp>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.BsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -617,7 +617,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_string_using_ObcJsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<UpdateCompanyOp>();
+                var expected = A.Dummy<UpdateCompaniesOp>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.JsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -646,7 +646,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_bytes_using_ObcJsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<UpdateCompanyOp>();
+                var expected = A.Dummy<UpdateCompaniesOp>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.JsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -680,8 +680,8 @@ namespace Naos.HubSpot.Domain.Test
             public static void EqualsOperator___Should_return_true___When_both_sides_of_operator_are_null()
             {
                 // Arrange
-                UpdateCompanyOp systemUnderTest1 = null;
-                UpdateCompanyOp systemUnderTest2 = null;
+                UpdateCompaniesOp systemUnderTest1 = null;
+                UpdateCompaniesOp systemUnderTest2 = null;
 
                 // Act
                 var actual = systemUnderTest1 == systemUnderTest2;
@@ -711,7 +711,7 @@ namespace Naos.HubSpot.Domain.Test
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    UpdateCompanyOp systemUnderTest = null;
+                    UpdateCompaniesOp systemUnderTest = null;
 
                     // Act
                     var actual1 = systemUnderTest == scenario.ReferenceObject;
@@ -860,8 +860,8 @@ namespace Naos.HubSpot.Domain.Test
             public static void NotEqualsOperator___Should_return_false___When_both_sides_of_operator_are_null()
             {
                 // Arrange
-                UpdateCompanyOp systemUnderTest1 = null;
-                UpdateCompanyOp systemUnderTest2 = null;
+                UpdateCompaniesOp systemUnderTest1 = null;
+                UpdateCompaniesOp systemUnderTest2 = null;
 
                 // Act
                 var actual = systemUnderTest1 != systemUnderTest2;
@@ -891,7 +891,7 @@ namespace Naos.HubSpot.Domain.Test
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    UpdateCompanyOp systemUnderTest = null;
+                    UpdateCompaniesOp systemUnderTest = null;
 
                     // Act
                     var actual1 = systemUnderTest != scenario.ReferenceObject;
@@ -1330,7 +1330,7 @@ namespace Naos.HubSpot.Domain.Test
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    UpdateCompanyOp systemUnderTest = null;
+                    UpdateCompaniesOp systemUnderTest = null;
 
                     // Act
                     var actual = scenario.ReferenceObject.Equals(systemUnderTest);

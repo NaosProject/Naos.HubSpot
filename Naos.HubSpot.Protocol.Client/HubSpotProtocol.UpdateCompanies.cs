@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="HubSpotProtocol.UpdateCompany.cs" company="Naos Project">
+// <copyright file="HubSpotProtocol.UpdateCompanies.cs" company="Naos Project">
 //    Copyright (c) Naos Project 2019. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -18,37 +18,37 @@ namespace Naos.HubSpot.Protocol.Client
     /// <summary>
     /// TODO: Starting point for new project.
     /// </summary>
-    public partial class HubSpotProtocol : ISyncAndAsyncVoidProtocol<UpdateCompanyOp>
+    public partial class HubSpotProtocol : ISyncAndAsyncVoidProtocol<UpdateCompaniesOp>
     {
         /// <inheritdoc />
-        public void Execute(UpdateCompanyOp operation)
+        public void Execute(UpdateCompaniesOp operation)
         {
             var task = this.ExecuteAsync(operation);
             Run.TaskUntilCompletion(task);
         }
 
         /// <inheritdoc />
-        public async Task ExecuteAsync(UpdateCompanyOp operation)
+        public async Task ExecuteAsync(UpdateCompaniesOp operation)
         {
             var uri = this.baseUri;
-            uri = uri.AppendPathSegment("/companies/v1/batch-async/update");
-            var reqBody = new List<UpdateCompanyModel>();
+            uri = uri.AppendPathSegment("companies/v1/batch-async/update");
+            var reqBody = new List<object>();
             foreach (var company in operation.CompaniesToUpdate)
             {
-                string rawObjectId = company.Properties.Single(_ => _.Key == HubSpotCompanyPropertyNames.ObjectId).Value;
-                if (string.IsNullOrWhiteSpace(rawObjectId) || !int.TryParse(rawObjectId, out var objectId))
+                string rawObjectId = company.Properties.Single(_ => _.Key == HubSpotCompanyPropertyNames.CompanyId).Value;
+                if (string.IsNullOrWhiteSpace(rawObjectId) || !long.TryParse(rawObjectId, out var objectId))
                 {
                     throw new InvalidOperationException("The company's object ID cannot be null and has to be convertible into an integer.  Current: " + rawObjectId);
                 }
 
                 var props = company.Properties
-                    .Where(_ => _.Key.ToLower() != HubSpotCompanyPropertyNames.CustomId)
-                    .Select(x => new PropertyModel(x.Key, x.Value))
+                    .Where(_ => _.Key.ToLower() != HubSpotCompanyPropertyNames.CompanyId || _.Key != "objectId")
+                    .Select(x => new { name=x.Key, value=x.Value })
                     .ToList();
-                reqBody.Add(new UpdateCompanyModel(objectId, props));
+                reqBody.Add(new { objectId, properties=props });
             }
 
-            uri.WithBody(reqBody).Post<dynamic>();
+            uri.WithBody(reqBody).Post();
             await Task.Factory.StartNew(() => true);
         }
     }

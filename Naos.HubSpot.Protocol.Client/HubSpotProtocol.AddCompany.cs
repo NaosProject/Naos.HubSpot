@@ -8,6 +8,7 @@ namespace Naos.HubSpot.Protocol.Client
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
     using Naos.FluentUri;
     using Naos.HubSpot.Domain;
@@ -32,24 +33,26 @@ namespace Naos.HubSpot.Protocol.Client
         {
             var uri = this.baseUri;
             uri = uri.AppendPathSegment("companies/v2/companies");
-            var request = operation.CompanyToAdd.ToAddCompanyRequest();
-            dynamic addedCompany = await Task.FromResult(uri.WithBody(request).Post<dynamic>());
-            dynamic dynCompanyProps = addedCompany["properties"];
-            var companyPropertiesDictionary = new Dictionary<string, string>();
-            foreach (var property in dynCompanyProps)
+            var request = operation.CompanyToAdd.Properties.Select(_ => new
             {
-                dynamic dynProp = (dynamic)property;
-                string rawName = dynProp.Name?.ToString();
-                if (rawName == null)
-                {
-                    throw new InvalidOperationException("A null property name was retrieved from HubSpot.");
-                }
+                name= _.Key,
+                value= _.Value,
+            });
+            dynamic addedCompany = await Task.FromResult(uri.WithBody(request).Post<dynamic>());
+            var propertiesDict = new Dictionary<string, string>();
+            dynamic dynCompanyProperties = addedCompany["properties"];
+            foreach (var prop in dynCompanyProperties)
+            {
+                string rawName = prop.Name?.ToString();
+                var name = HubSpotCompanyPropertyNames.AllNames.Contains(rawName)
+                    ? rawName.FromCompanyPropertyName().ToString()
+                    : rawName;
 
-                var val = dynProp["value"].Value;
-                companyPropertiesDictionary.Add(rawName, val);
+                var val = prop.Value["value"].Value;
+                propertiesDict.Add(name, val);
             }
 
-            return new Company(companyPropertiesDictionary);
+            return new Company(propertiesDict);
         }
     }
 }

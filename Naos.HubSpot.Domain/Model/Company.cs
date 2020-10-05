@@ -7,6 +7,7 @@
 namespace Naos.HubSpot.Domain
 {
     using System.Collections.Generic;
+    using System.Linq;
     using OBeautifulCode.Assertion.Recipes;
     using OBeautifulCode.Type;
 
@@ -25,7 +26,6 @@ namespace Naos.HubSpot.Domain
             IReadOnlyDictionary<string, string> properties)
         {
             properties.MustForArg(nameof(properties)).NotBeNullNorEmptyDictionary();
-            properties.ContainsKey(nameof(StandardCompanyPropertyName.CompanyName)).MustForArg().NotBeFalse(Invariant($"Must have a {nameof(StandardCompanyPropertyName.CompanyName)} property."));
             this.Properties = properties;
         }
 
