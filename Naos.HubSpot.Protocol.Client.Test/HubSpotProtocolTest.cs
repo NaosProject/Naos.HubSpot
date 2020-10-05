@@ -21,7 +21,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
     /// </summary>
     public static partial class HubSpotProtocolTest
     {
-        private const string ApiKey = "cae2f33d-d7d1-406c-ab37-2e54efbe1458";
+        private const string ApiKey = "Get this here: https://app.hubspot.com/api-key/";
         private static readonly Uri BaseUri = new Uri("https://api.hubapi.com/");
 
         [Fact(Skip = "Skipping because this uses external resources")]
