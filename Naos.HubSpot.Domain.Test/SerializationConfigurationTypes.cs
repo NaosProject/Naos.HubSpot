@@ -9,10 +9,8 @@
 
 namespace Naos.HubSpot.Domain.Test
 {
-    using System;
     using System.CodeDom.Compiler;
     using System.Diagnostics.CodeAnalysis;
-    using MongoDB.Bson;
     using Naos.HubSpot.Serialization.Bson;
     using Naos.HubSpot.Serialization.Json;
     using OBeautifulCode.Serialization.Bson;

@@ -38,15 +38,7 @@ namespace Naos.HubSpot.Protocol.Client
                 .AppendQueryStringParam("count", "100");
             foreach (var propName in operation.PropertyNamesToInclude)
             {
-                var isStandardPropertyName = typeof(StandardContactPropertyName).GetDefinedEnumValues()
-                    .Select(_ => _.ToString())
-                    .Contains(propName);
-                var adjustedName = propName;
-                if (isStandardPropertyName)
-                {
-                    var enumName = (StandardContactPropertyName)Enum.Parse(typeof(StandardContactPropertyName), propName);
-                    adjustedName = enumName.ToContactPropertyName();
-                }
+                var adjustedName = propName.ConvertFromStandardNameToHubSpotNameIfNecessary();
 
                 uri = uri.AppendQueryStringParam("Property", adjustedName);
             }
@@ -67,15 +59,13 @@ namespace Naos.HubSpot.Protocol.Client
                 {
                     var contactProperties = new Dictionary<string, string>();
                     var properties = ((dynamic)dynContact).properties;
-                    var vid = dynContact["vid"];
+                    var vid = dynContact["vid"].ToString();
                     contactProperties.Add(StandardContactPropertyName.HubSpotId.ToString(), vid);
                     foreach (var prop in properties)
                     {
                         dynamic dynProp = (dynamic)prop;
                         string rawName = dynProp.Name?.ToString();
-                        var name = HubSpotContactPropertyNames.AllNames.Contains(rawName)
-                            ? rawName.FromContactPropertyName().ToString()
-                            : rawName;
+                        var name = rawName.ConvertFromHubSpotNameToStandardNameIfNecessary();
                         if (name == null)
                         {
                             throw new InvalidOperationException("The property name cannot be null for contact vid: " + vid);

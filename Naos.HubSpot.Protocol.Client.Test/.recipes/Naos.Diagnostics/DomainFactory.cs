@@ -11,7 +11,6 @@ namespace Naos.Diagnostics.Recipes
 {
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.Linq;
 
     using Microsoft.VisualBasic.Devices;

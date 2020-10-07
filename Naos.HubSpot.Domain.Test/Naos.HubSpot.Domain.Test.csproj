@@ -279,7 +279,6 @@
       <DependentUpon>GetAllContactsOpTest.cs</DependentUpon>
     </Compile>
     <Compile Include="HubSpotCompanyPropertyNamesTest.cs" />
-    <Compile Include="HubSpotContactPropertyNamesTest.cs" />
     <Compile Include="ContactTest.cs" />
     <Compile Include="HubSpotDummyFactory.cs" />
     <Compile Include="HubSpotDummyFactory.designer.cs">

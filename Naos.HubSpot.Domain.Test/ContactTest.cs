@@ -6,18 +6,7 @@
 
 namespace Naos.HubSpot.Domain.Test
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using FakeItEasy;
     using Naos.CodeAnalysis.Recipes;
-    using OBeautifulCode.AutoFakeItEasy;
-    using OBeautifulCode.CodeGen.ModelObject.Recipes;
-    using OBeautifulCode.Collection.Recipes;
-    using OBeautifulCode.Math.Recipes;
-    using Xunit;
-
-    using static System.FormattableString;
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1505:AvoidUnmaintainableCode", Justification = "Not a big deal in this situation.")]
     public static partial class ContactTest

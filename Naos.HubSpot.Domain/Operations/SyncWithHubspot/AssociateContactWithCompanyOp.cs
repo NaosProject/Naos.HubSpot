@@ -6,13 +6,8 @@
 
 namespace Naos.HubSpot.Domain
 {
-    using System.Collections.Generic;
-    using Naos.HubSpot.Domain;
     using Naos.Protocol.Domain;
-    using OBeautifulCode.Assertion.Recipes;
     using OBeautifulCode.Type;
-
-    using static System.FormattableString;
 
     /// <summary>
     /// The operation to get contacts by custom entity identifiers.

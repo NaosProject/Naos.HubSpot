@@ -11,8 +11,6 @@ namespace Naos.HubSpot.Domain
     using OBeautifulCode.Assertion.Recipes;
     using OBeautifulCode.Type;
 
-    using static System.FormattableString;
-
     /// <summary>
     /// Operation to add a contact.
     /// </summary>

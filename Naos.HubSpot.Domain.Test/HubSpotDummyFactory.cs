@@ -9,7 +9,6 @@
 
 namespace Naos.HubSpot.Domain.Test
 {
-    using System;
     using System.Collections.Generic;
     using FakeItEasy;
 

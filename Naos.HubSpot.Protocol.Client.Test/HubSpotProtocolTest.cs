@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="HubSpotProtocolTest.cs" company="Naos Project">
 //    Copyright (c) Naos Project 2019. All rights reserved.
 // </copyright>
@@ -8,12 +8,8 @@ namespace Naos.HubSpot.Protocol.Client.Test
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System.Linq;
-    using System.Web;
     using Naos.HubSpot.Domain;
     using OBeautifulCode.Assertion.Recipes;
-    using OBeautifulCode.Enum.Recipes;
     using Xunit;
 
     /// <summary>
@@ -70,9 +66,9 @@ namespace Naos.HubSpot.Protocol.Client.Test
             var protocol = new HubSpotProtocol(BaseUri, ApiKey);
             var contactDict = new Dictionary<string, string>
             {
-                { HubSpotContactPropertyNames.EmailAddress, "testemail@email.com" },
-                { HubSpotContactPropertyNames.FirstName, "Dave" },
-                { HubSpotContactPropertyNames.LastName, "C" },
+                { StandardContactPropertyName.EmailAddress.ToString(), "testemail@email.com" },
+                { StandardContactPropertyName.FirstName.ToString(), "Dave" },
+                { StandardContactPropertyName.LastName.ToString(), "C" },
             };
 
             var contactToAdd = new Contact(contactDict);
@@ -110,12 +106,17 @@ namespace Naos.HubSpot.Protocol.Client.Test
         {
             // Arrange
             var protocol = new HubSpotProtocol(BaseUri, ApiKey);
-            var initialProps = new Dictionary<string, string>();
-            initialProps.Add(HubSpotCompanyPropertyNames.CompanyName, "testCompany");
-            initialProps.Add(HubSpotCompanyPropertyNames.Description, "this is the initial description.");
+            var initialProps = new Dictionary<string, string>
+            {
+                { HubSpotCompanyPropertyNames.CompanyName, "testCompany" },
+                { HubSpotCompanyPropertyNames.Description, "this is the initial description." },
+            };
             var companyToAdd = new Company(initialProps);
             var createCompanyOp = new AddCompanyOp(companyToAdd);
+            // Create a company in HubSpot
             var createdCompany = protocol.Execute(createCompanyOp);
+
+            // Update the company just created.
             var companyProps = new Dictionary<string, string>
             {
                 { "name", "testCompany" },

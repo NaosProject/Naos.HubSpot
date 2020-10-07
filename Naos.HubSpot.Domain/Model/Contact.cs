@@ -6,7 +6,6 @@
 
 namespace Naos.HubSpot.Domain
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using OBeautifulCode.Assertion.Recipes;
@@ -28,12 +27,12 @@ namespace Naos.HubSpot.Domain
         {
             var notNullProps = properties.MustForArg(nameof(properties));
             notNullProps.NotBeNullNorEmptyDictionary();
-            var containsFirstName = properties.Any(_ => _.Key == HubSpotContactPropertyNames.FirstName).MustForArg();
-            containsFirstName.BeTrue(Invariant($"Must have a {nameof(HubSpotContactPropertyNames.FirstName)} property."));
-            var cotnainsLastName = properties.Any(_ => _.Key == HubSpotContactPropertyNames.LastName && !string.IsNullOrEmpty(_.Value)).MustForArg();
-            cotnainsLastName.BeTrue(Invariant($"Must have a {nameof(HubSpotContactPropertyNames.LastName)} property."));
-            var containsEmail = properties.Any(_ => _.Key == HubSpotContactPropertyNames.EmailAddress && !string.IsNullOrWhiteSpace(_.Value)).MustForArg();
-            containsEmail.BeTrue(Invariant($"Must have a {nameof(HubSpotContactPropertyNames.EmailAddress)} property."));
+            var containsFirstName = properties.Any(_ => _.Key == StandardContactPropertyName.FirstName.ToString()).MustForArg();
+            containsFirstName.BeTrue(Invariant($"Must have a {nameof(StandardContactPropertyName.FirstName)} property."));
+            var containsLastName = properties.Any(_ => _.Key == StandardContactPropertyName.LastName.ToString() && !string.IsNullOrEmpty(_.Value)).MustForArg();
+            containsLastName.BeTrue(Invariant($"Must have a {nameof(StandardContactPropertyName.LastName)} property."));
+            var containsEmail = properties.Any(_ => _.Key == StandardContactPropertyName.EmailAddress.ToString() && !string.IsNullOrWhiteSpace(_.Value)).MustForArg();
+            containsEmail.BeTrue(Invariant($"Must have a {nameof(StandardContactPropertyName.EmailAddress)} property."));
 
             this.Properties = properties;
         }

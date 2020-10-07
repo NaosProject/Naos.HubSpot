@@ -48,35 +48,4 @@ namespace Naos.HubSpot.Domain
         /// </summary>
         public IReadOnlyCollection<PropertyModel> Properties { get; private set; }
     }
-
-    /// <summary>
-    /// Extension methods to create AddOrUpdateContactsRequests.
-    /// </summary>
-    public static class AddOrUpdateContactsRequestBuilder
-    {
-        /// <summary>
-        /// Converts a contact into a AddOrUpdateContactRequest.
-        /// </summary>
-        /// <param name="contact">The HubSpot contact to update.</param>
-        /// <returns>Returns an AddOrUpdateContactsRequest.</returns>
-        public static AddOrUpdateContactsRequest BuildAddOrUpdateContactsRequest(this Contact contact)
-        {
-            var properties = contact.Properties.Select(_ => new PropertyModel(_.Key, _.Value)).ToList();
-            properties.Any(_ => _.Property == HubSpotContactPropertyNames.EmailAddress && !string.IsNullOrEmpty(_.Value)).MustForArg().BeTrue("HubSpot contact must contain an email address.");
-            if (properties.Any(_ => _.Property == "vid"))
-            {
-                var vid = Convert.ToInt32(properties.Single(_ => _.Property == "vid").Value, CultureInfo.InvariantCulture);
-                var filteredProperties = properties.Where(_ => _.Property != "vid").ToList();
-                var contactProperties = filteredProperties;
-                return new AddOrUpdateContactsRequest(vid, null, contactProperties);
-            }
-            else
-            {
-                var email = properties.Single(_ => _.Property == "email").Value;
-                var filteredProperties = properties.Where(_ => _.Property != "email").ToList();
-                var contactProperties = filteredProperties;
-                return new AddOrUpdateContactsRequest(null, email, contactProperties);
-            }
-        }
-    }
 }

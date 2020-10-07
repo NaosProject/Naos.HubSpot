@@ -9,11 +9,8 @@ namespace Naos.HubSpot.Domain
     using System.Collections.Generic;
     using System.Linq;
     using Naos.Protocol.Domain;
-    using OBeautifulCode.Assertion.Recipes;
     using OBeautifulCode.Enum.Recipes;
     using OBeautifulCode.Type;
-
-    using static System.FormattableString;
 
     /// <summary>
     /// The operation to get all contacts.
