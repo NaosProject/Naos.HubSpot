@@ -41,20 +41,23 @@
     <CodeAnalysisRuleSet />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Naos.Protocol.Domain, Version=1.0.68.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Naos.Protocol.Domain.1.0.68\lib\net462\Naos.Protocol.Domain.dll</HintPath>
+    <Reference Include="Naos.Protocol.Domain, Version=1.0.74.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Naos.Protocol.Domain.1.0.74\lib\net462\Naos.Protocol.Domain.dll</HintPath>
     </Reference>
-    <Reference Include="OBeautifulCode.Compression, Version=1.0.17.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OBeautifulCode.Compression.1.0.17\lib\net462\OBeautifulCode.Compression.dll</HintPath>
+    <Reference Include="OBeautifulCode.Compression, Version=1.0.19.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBeautifulCode.Compression.1.0.19\lib\net462\OBeautifulCode.Compression.dll</HintPath>
     </Reference>
-    <Reference Include="OBeautifulCode.Representation.System, Version=1.0.53.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OBeautifulCode.Representation.System.1.0.53\lib\net462\OBeautifulCode.Representation.System.dll</HintPath>
+    <Reference Include="OBeautifulCode.Representation.System, Version=1.0.55.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBeautifulCode.Representation.System.1.0.55\lib\net462\OBeautifulCode.Representation.System.dll</HintPath>
     </Reference>
-    <Reference Include="OBeautifulCode.Serialization, Version=1.0.76.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OBeautifulCode.Serialization.1.0.76\lib\net462\OBeautifulCode.Serialization.dll</HintPath>
+    <Reference Include="OBeautifulCode.Serialization, Version=1.0.84.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBeautifulCode.Serialization.1.0.84\lib\net462\OBeautifulCode.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="OBeautifulCode.Type, Version=1.0.70.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OBeautifulCode.Type.1.0.70\lib\net462\OBeautifulCode.Type.dll</HintPath>
+    <Reference Include="OBeautifulCode.Type, Version=1.0.71.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBeautifulCode.Type.1.0.71\lib\net462\OBeautifulCode.Type.dll</HintPath>
+    </Reference>
+    <Reference Include="StyleCop, Version=6.2.0.0, Culture=neutral, PublicKeyToken=f904653c63bc2738, processorArchitecture=MSIL">
+      <HintPath>..\packages\StyleCop.6.2.0\lib\net40\StyleCop.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
@@ -117,6 +120,10 @@
     <Compile Include="Model\CreateAssociationRequest.designer.cs">
       <DependentUpon>CreateAssociationRequest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\DeleteContactResponse.cs" />
+    <Compile Include="Model\DeleteContactResponse.designer.cs">
+      <DependentUpon>DeleteContactResponse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\PropertyModel.cs" />
     <Compile Include="Model\PropertyModel.designer.cs">
       <DependentUpon>PropertyModel.cs</DependentUpon>
@@ -143,6 +150,10 @@
     <Compile Include="Operations\Contact\AddOrUpdateContactsOp.designer.cs">
       <DependentUpon>AddOrUpdateContactsOp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Operations\Contact\DeleteContactOp.cs" />
+    <Compile Include="Operations\Contact\DeleteContactOp.designer.cs">
+      <DependentUpon>DeleteContactOp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operations\Contact\GetAllContactsOp.designer.cs">
       <DependentUpon>GetAllContactsOp.cs</DependentUpon>
     </Compile>
@@ -161,6 +172,7 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Operations\SyncWithHubSpot\SyncWithHubSpotResult.cs" />
     <AdditionalFiles Include=".analyzers\stylecop.json" />
+    <Compile Include="Properties\ProjectInfo.cs" />
     <None Include=".analyzers\release.ruleset" />
     <None Include="Naos.HubSpot.Domain.override-nuspec" />
     <None Include="packages.config" />
@@ -173,11 +185,11 @@
     <Content Include=".analyzers\dictionary.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\Naos.Build.Analyzers.1.55.40\build\Naos.Build.Analyzers.targets" Condition="Exists('..\packages\Naos.Build.Analyzers.1.55.40\build\Naos.Build.Analyzers.targets')" />
+  <Import Project="..\packages\Naos.Build.Analyzers.1.55.46\build\Naos.Build.Analyzers.targets" Condition="Exists('..\packages\Naos.Build.Analyzers.1.55.46\build\Naos.Build.Analyzers.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Naos.Build.Analyzers.1.55.40\build\Naos.Build.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Naos.Build.Analyzers.1.55.40\build\Naos.Build.Analyzers.targets'))" />
+    <Error Condition="!Exists('..\packages\Naos.Build.Analyzers.1.55.46\build\Naos.Build.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Naos.Build.Analyzers.1.55.46\build\Naos.Build.Analyzers.targets'))" />
   </Target>
 </Project>

@@ -8,8 +8,10 @@ namespace Naos.HubSpot.Protocol.Client.Test
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Naos.HubSpot.Domain;
     using OBeautifulCode.Assertion.Recipes;
+    using OBeautifulCode.Enum.Recipes;
     using Xunit;
 
     /// <summary>
@@ -17,18 +19,21 @@ namespace Naos.HubSpot.Protocol.Client.Test
     /// </summary>
     public static partial class HubSpotProtocolTest
     {
-    //    [Fact]
-    //    public static void GetAllContactsOp___Returns_nonempty_list_of_contacts___When_executed()
-    //    {
-    //        // Arrange
-    //        var protocol = new HubSpotProtocol(BaseUri, ApiKey);
-    //        var op = new GetAllContactsOp();
-            
-    //        // Act
-    //        var contacts = protocol.Execute(op);
+        [Fact]
+        public static void StandardContactPropertyNameStringToHubSpotPropertyNameMap___For_each_standard_property_name___Contains_valid_entry()
+        {
+            // Arrange
+            var mapUnderTest = HubSpotProtocol.StandardContactPropertyNameStringToHubSpotPropertyNameMap;
+            var allStandardNames = typeof(StandardContactPropertyName).GetDefinedEnumValues().Select(_ => _.ToString()).ToList();
 
-    //        // Assert
-    //        contacts.MustForTest().NotBeNullNorEmptyEnumerableNorContainAnyNulls();
-    //    }
+            // Assert
+            allStandardNames.Count().MustForTest()
+                .BeEqualTo(mapUnderTest.Count());
+            foreach (var propertName in allStandardNames)
+            {
+                var val = mapUnderTest[propertName];
+                val.MustForTest().NotBeNullNorWhiteSpace();
+            }
+        }
     }
 }

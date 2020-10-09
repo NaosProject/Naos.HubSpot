@@ -9,8 +9,12 @@
 
 namespace Naos.Protocol.Domain.Test
 {
+    using System;
     using System.CodeDom.Compiler;
     using System.Diagnostics.CodeAnalysis;
+    using FakeItEasy;
+
+    using OBeautifulCode.AutoFakeItEasy;
 
     /// <summary>
     /// A Dummy Factory for types in <see cref="Naos.Protocol.Domain"/>.

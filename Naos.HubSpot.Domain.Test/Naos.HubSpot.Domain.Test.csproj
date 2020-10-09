@@ -77,14 +77,14 @@
     <Reference Include="Naos.Logging.Persistence, Version=1.0.73.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Naos.Logging.Persistence.1.0.73\lib\net462\Naos.Logging.Persistence.dll</HintPath>
     </Reference>
-    <Reference Include="Naos.Protocol.Domain, Version=1.0.68.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Naos.Protocol.Domain.1.0.68\lib\net462\Naos.Protocol.Domain.dll</HintPath>
+    <Reference Include="Naos.Protocol.Domain, Version=1.0.74.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Naos.Protocol.Domain.1.0.74\lib\net462\Naos.Protocol.Domain.dll</HintPath>
     </Reference>
-    <Reference Include="Naos.Protocol.Serialization.Bson, Version=1.0.68.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Naos.Protocol.Serialization.Bson.1.0.68\lib\net462\Naos.Protocol.Serialization.Bson.dll</HintPath>
+    <Reference Include="Naos.Protocol.Serialization.Bson, Version=1.0.74.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Naos.Protocol.Serialization.Bson.1.0.74\lib\net462\Naos.Protocol.Serialization.Bson.dll</HintPath>
     </Reference>
-    <Reference Include="Naos.Protocol.Serialization.Json, Version=1.0.68.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Naos.Protocol.Serialization.Json.1.0.68\lib\net462\Naos.Protocol.Serialization.Json.dll</HintPath>
+    <Reference Include="Naos.Protocol.Serialization.Json, Version=1.0.74.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Naos.Protocol.Serialization.Json.1.0.74\lib\net462\Naos.Protocol.Serialization.Json.dll</HintPath>
     </Reference>
     <Reference Include="Naos.Telemetry.Domain, Version=1.0.24.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Naos.Telemetry.Domain.1.0.24\lib\net462\Naos.Telemetry.Domain.dll</HintPath>
@@ -95,26 +95,26 @@
     <Reference Include="OBeautifulCode.AutoFakeItEasy, Version=1.0.129.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\OBeautifulCode.AutoFakeItEasy.1.0.129\lib\net462\OBeautifulCode.AutoFakeItEasy.dll</HintPath>
     </Reference>
-    <Reference Include="OBeautifulCode.Compression, Version=1.0.17.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OBeautifulCode.Compression.1.0.17\lib\net462\OBeautifulCode.Compression.dll</HintPath>
+    <Reference Include="OBeautifulCode.Compression, Version=1.0.19.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBeautifulCode.Compression.1.0.19\lib\net462\OBeautifulCode.Compression.dll</HintPath>
     </Reference>
-    <Reference Include="OBeautifulCode.Representation.System, Version=1.0.53.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OBeautifulCode.Representation.System.1.0.53\lib\net462\OBeautifulCode.Representation.System.dll</HintPath>
+    <Reference Include="OBeautifulCode.Representation.System, Version=1.0.55.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBeautifulCode.Representation.System.1.0.55\lib\net462\OBeautifulCode.Representation.System.dll</HintPath>
     </Reference>
-    <Reference Include="OBeautifulCode.Serialization, Version=1.0.76.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OBeautifulCode.Serialization.1.0.76\lib\net462\OBeautifulCode.Serialization.dll</HintPath>
+    <Reference Include="OBeautifulCode.Serialization, Version=1.0.84.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBeautifulCode.Serialization.1.0.84\lib\net462\OBeautifulCode.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="OBeautifulCode.Serialization.Bson, Version=1.0.76.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OBeautifulCode.Serialization.Bson.1.0.76\lib\net462\OBeautifulCode.Serialization.Bson.dll</HintPath>
+    <Reference Include="OBeautifulCode.Serialization.Bson, Version=1.0.84.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBeautifulCode.Serialization.Bson.1.0.84\lib\net462\OBeautifulCode.Serialization.Bson.dll</HintPath>
     </Reference>
-    <Reference Include="OBeautifulCode.Serialization.Json, Version=1.0.76.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OBeautifulCode.Serialization.Json.1.0.76\lib\net462\OBeautifulCode.Serialization.Json.dll</HintPath>
+    <Reference Include="OBeautifulCode.Serialization.Json, Version=1.0.84.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBeautifulCode.Serialization.Json.1.0.84\lib\net462\OBeautifulCode.Serialization.Json.dll</HintPath>
     </Reference>
-    <Reference Include="OBeautifulCode.Serialization.PropertyBag, Version=1.0.76.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OBeautifulCode.Serialization.PropertyBag.1.0.76\lib\net462\OBeautifulCode.Serialization.PropertyBag.dll</HintPath>
+    <Reference Include="OBeautifulCode.Serialization.PropertyBag, Version=1.0.84.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBeautifulCode.Serialization.PropertyBag.1.0.84\lib\net462\OBeautifulCode.Serialization.PropertyBag.dll</HintPath>
     </Reference>
-    <Reference Include="OBeautifulCode.Type, Version=1.0.70.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OBeautifulCode.Type.1.0.70\lib\net462\OBeautifulCode.Type.dll</HintPath>
+    <Reference Include="OBeautifulCode.Type, Version=1.0.71.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBeautifulCode.Type.1.0.71\lib\net462\OBeautifulCode.Type.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
@@ -153,7 +153,9 @@
     <Compile Include=".recipes\Naos.Diagnostics\PerformanceCounterSample.cs" />
     <Compile Include=".recipes\Naos.Diagnostics\ProcessHelpers.cs" />
     <Compile Include=".recipes\Naos.Protocol\ProtocolDummyFactory.cs" />
-    <Compile Include=".recipes\Naos.Protocol\ProtocolDummyFactory.designer.cs" />
+    <Compile Include=".recipes\Naos.Protocol\ProtocolDummyFactory.designer.cs">
+      <DependentUpon>ProtocolDummyFactory.cs</DependentUpon>
+    </Compile>
     <Compile Include=".recipes\OBeautifulCode.Assertion\Actions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Assertion\ApplyBecause.cs" />
     <Compile Include=".recipes\OBeautifulCode.Assertion\AssertionKind.cs" />
@@ -270,6 +272,14 @@
     <Compile Include="CreateAssociationRequestTest.designer.cs">
       <DependentUpon>CreateAssociationRequestTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="DeleteContactOpTest.cs" />
+    <Compile Include="DeleteContactOpTest.designer.cs">
+      <DependentUpon>DeleteContactOpTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteContactResponseTest.cs" />
+    <Compile Include="DeleteContactResponseTest.designer.cs">
+      <DependentUpon>DeleteContactResponseTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="GetAllCompaniesOpTest.cs" />
     <Compile Include="GetAllCompaniesOpTest.designer.cs">
       <DependentUpon>GetAllCompaniesOpTest.cs</DependentUpon>
@@ -289,6 +299,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\ProjectInfo.cs" />
     <Compile Include="PropertyModelTest.cs" />
     <Compile Include="PropertyModelTest.designer.cs">
       <DependentUpon>PropertyModelTest.cs</DependentUpon>
@@ -296,10 +307,13 @@
     <Compile Include="SerializationConfigurationTypes.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="HubSpotDummyFactoryTest.cs" />
-    <AdditionalFiles Include=".analyzers\stylecop.json" />
     <Compile Include="SyncWithHubSpotOpTest.cs" />
     <Compile Include="SyncWithHubSpotOpTest.designer.cs">
       <DependentUpon>SyncWithHubSpotOpTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateCompaniesOpTest.cs" />
+    <Compile Include="UpdateCompaniesOpTest.designer.cs">
+      <DependentUpon>UpdateCompaniesOpTest.cs</DependentUpon>
     </Compile>
     <Compile Include="UpdateCompanyModelTest.cs" />
     <Compile Include="UpdateCompanyModelTest.designer.cs">
@@ -309,6 +323,7 @@
     <Compile Include="UpdateCompanyOpTest.designer.cs">
       <DependentUpon>UpdateCompanyOpTest.cs</DependentUpon>
     </Compile>
+    <AdditionalFiles Include=".analyzers\stylecop.json" />
     <None Include=".analyzers\test.ruleset" />
     <None Include="DummyFactory.recipe-nuspec" />
     <None Include="packages.config" />
@@ -342,8 +357,8 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\xunit.core.2.4.1\build\xunit.core.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\xunit.core.2.4.1\build\xunit.core.props'))" />
     <Error Condition="!Exists('..\packages\xunit.core.2.4.1\build\xunit.core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\xunit.core.2.4.1\build\xunit.core.targets'))" />
-    <Error Condition="!Exists('..\packages\Naos.Build.Analyzers.1.55.40\build\Naos.Build.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Naos.Build.Analyzers.1.55.40\build\Naos.Build.Analyzers.targets'))" />
+    <Error Condition="!Exists('..\packages\Naos.Build.Analyzers.1.55.46\build\Naos.Build.Analyzers.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Naos.Build.Analyzers.1.55.46\build\Naos.Build.Analyzers.targets'))" />
   </Target>
   <Import Project="..\packages\xunit.core.2.4.1\build\xunit.core.targets" Condition="Exists('..\packages\xunit.core.2.4.1\build\xunit.core.targets')" />
-  <Import Project="..\packages\Naos.Build.Analyzers.1.55.40\build\Naos.Build.Analyzers.targets" Condition="Exists('..\packages\Naos.Build.Analyzers.1.55.40\build\Naos.Build.Analyzers.targets')" />
+  <Import Project="..\packages\Naos.Build.Analyzers.1.55.46\build\Naos.Build.Analyzers.targets" Condition="Exists('..\packages\Naos.Build.Analyzers.1.55.46\build\Naos.Build.Analyzers.targets')" />
 </Project>

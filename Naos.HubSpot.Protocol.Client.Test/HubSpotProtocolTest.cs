@@ -8,6 +8,8 @@ namespace Naos.HubSpot.Protocol.Client.Test
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
     using Naos.HubSpot.Domain;
     using OBeautifulCode.Assertion.Recipes;
     using Xunit;
@@ -84,13 +86,15 @@ namespace Naos.HubSpot.Protocol.Client.Test
         }
 
         [Fact(Skip = "Skipping because this uses external resources")]
-        public static void AddCompany___Does_not_return_null_contact___When_executed()
+        public static void AddCompanyOp___Does_not_return_null_contact___When_executed()
         {
             // Arrange
             var protocol = new HubSpotProtocol(BaseUri, ApiKey);
-            var companyProps = new Dictionary<string, string>();
-            companyProps.Add(HubSpotCompanyPropertyNames.CompanyName, "testCompany");
-            companyProps.Add(HubSpotCompanyPropertyNames.Description, "A test company");
+            var companyProps = new Dictionary<string, string>
+            {
+                { HubSpotCompanyPropertyNames.CompanyName, "testCompany" },
+                { HubSpotCompanyPropertyNames.Description, "A test company" },
+            };
             var companyToAdd = new Company(companyProps);
             var op = new AddCompanyOp(companyToAdd);
             
@@ -101,8 +105,8 @@ namespace Naos.HubSpot.Protocol.Client.Test
             company.MustForTest(nameof(company)).NotBeNull();
         }
 
-        [Fact]
-        public static void UpdateCompanies___Does_not_return_http_error___When_executed()
+        [Fact(Skip = "Skipping because this uses external resources")]
+        public static void UpdateCompaniesOp___Does_not_return_http_error___When_executed()
         {
             // Arrange
             var protocol = new HubSpotProtocol(BaseUri, ApiKey);
@@ -128,6 +132,36 @@ namespace Naos.HubSpot.Protocol.Client.Test
 
             // Act & Assert - Will throw exception on failure
             protocol.Execute(op);
+        }
+
+        [Fact]
+        public static void DeleteContactOp___Does_not_return_http_error___When_executed()
+        {
+            // Arrange
+            var email = "testemail@email.com";
+            var protocol = new HubSpotProtocol(BaseUri, ApiKey);
+            var contactDict = new Dictionary<string, string>
+            {
+                { StandardContactPropertyName.EmailAddress.ToString(), email },
+                { StandardContactPropertyName.FirstName.ToString(), "Dave" },
+                { StandardContactPropertyName.LastName.ToString(), "C" },
+            };
+
+            var contactToAdd = new Contact(contactDict);
+            var contactList = new[]
+            {
+                contactToAdd,
+            };
+            var addOp = new AddOrUpdateContactsOp(contactList);
+            protocol.Execute(addOp);
+            var addedUser = protocol.Execute(new GetAllContactsOp())
+                .First(_ => _.Properties[StandardContactPropertyName.HubSpotId.ToString()] == email);
+            var vidStringToDelete = addedUser.Properties[StandardContactPropertyName.HubSpotId.ToString()];
+            var vidIntToDelete = Convert.ToInt32(vidStringToDelete, CultureInfo.InvariantCulture);
+            var deleteOp = new DeleteContactOp(vidIntToDelete);
+
+            // Act
+            protocol.Execute(deleteOp);
         }
     }
 }
