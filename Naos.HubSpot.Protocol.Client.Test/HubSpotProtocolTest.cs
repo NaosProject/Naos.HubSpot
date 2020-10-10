@@ -134,7 +134,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             protocol.Execute(op);
         }
 
-        [Fact]
+        [Fact(Skip = "Skipping because this uses external resources")]
         public static void DeleteContactOp___Does_not_return_http_error___When_executed()
         {
             // Arrange
@@ -154,9 +154,12 @@ namespace Naos.HubSpot.Protocol.Client.Test
             };
             var addOp = new AddOrUpdateContactsOp(contactList);
             protocol.Execute(addOp);
-            var addedUser = protocol.Execute(new GetAllContactsOp())
-                .First(_ => _.Properties[StandardContactPropertyName.HubSpotId.ToString()] == email);
-            var vidStringToDelete = addedUser.Properties[StandardContactPropertyName.HubSpotId.ToString()];
+            var contacts = protocol.Execute(new GetAllContactsOp());
+            var addedContact = contacts
+                .First(_ => _.Properties.ContainsKey(StandardContactPropertyName.EmailAddress.ToString()) & 
+                                             _.Properties.TryGetValue(StandardContactPropertyName.EmailAddress.ToString(), out var emailValue) &  
+                                             emailValue == email);
+            var vidStringToDelete = addedContact.Properties[StandardContactPropertyName.HubSpotId.ToString()];
             var vidIntToDelete = Convert.ToInt32(vidStringToDelete, CultureInfo.InvariantCulture);
             var deleteOp = new DeleteContactOp(vidIntToDelete);
 
