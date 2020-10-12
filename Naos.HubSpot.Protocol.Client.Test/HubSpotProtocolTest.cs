@@ -192,7 +192,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             deletedCompany.Deleted.MustForTest().BeTrue();
         }
 
-        [Fact]
+        [Fact(Skip = "Skipping because this uses external resources")]
         public static void GetAllContactProperties___Returns_nonempty_collection___When_Executed()
         {
             // Arrange

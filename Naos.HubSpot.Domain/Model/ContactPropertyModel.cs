@@ -4,7 +4,9 @@
 
 namespace Naos.HubSpot.Domain
 {
+    using System.ComponentModel;
     using Naos.CodeAnalysis.Recipes;
+    using Newtonsoft.Json;
     using OBeautifulCode.Type;
 
     /// <summary>
@@ -50,30 +52,24 @@ namespace Naos.HubSpot.Domain
             string fieldType,
             int? displayOrder,
             string readOnlyDefinition,
-            int? favoriteOrder,
             string displayMode,
             string formField,
             bool? deleted = false,
             bool? readOnlyValue = false,
             bool? hidden = false,
-            bool? mutableDefinitionCannotBeDeleted = false,
-            bool? favorite = false,
             bool? calculated = false,
             bool? externalOptions = false)
         {
             this.Name = name;
             this.Label = label;
             this.GroupName = groupName;
-            this.Type = type;
+            this.PropertyType = type;
             this.FieldType = fieldType;
             this.Deleted = deleted;
             this.DisplayOrder = displayOrder;
             this.ReadOnlyValue = readOnlyValue;
             this.ReadOnlyDefinition = readOnlyDefinition;
             this.Hidden = hidden;
-            this.MutableDefinitionNotDeletable = mutableDefinitionCannotBeDeleted;
-            this.Favorited = favorite;
-            this.FavoritedOrder = favoriteOrder;
             this.Calculated = calculated;
             this.ExternalOptions = externalOptions;
             this.DisplayMode = displayMode;
@@ -102,12 +98,8 @@ namespace Naos.HubSpot.Domain
         /// Gets the type.
         /// </summary>
         /// <value>The type.</value>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage(
-            "Microsoft.Naming",
-            "CA1721:PropertyNamesShouldNotMatchGetMethods",
-            MessageId = "_Type",
-            Justification = "Name is controlled by external API.  Cannot be changed internally.")]
-        public string Type { get; private set; }
+        [JsonProperty("Type")]
+        public string PropertyType { get; private set; }
 
         /// <summary>
         /// Gets the type of the field.
@@ -144,39 +136,6 @@ namespace Naos.HubSpot.Domain
         /// </summary>
         /// <value><c>true</c> if hidden; otherwise, <c>false</c>.</value>
         public bool? Hidden { get; private set; }
-
-        /// <summary>
-        /// Gets a value indicating whether /[mutable definition not deletable].
-        /// </summary>
-        /// <value><c>true</c> if [mutable definition not deletable]; otherwise, <c>false</c>.</value>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage(
-            "Microsoft.Naming",
-            "CA1704:IdentifiersShouldBeSpelledCorrectly",
-            MessageId = "Deletable",
-            Justification = NaosSuppressBecause.CA1704_IdentifiersShouldBeSpelledCorrectly_SpellingIsCorrectInContextOfTheDomain)]
-        public bool? MutableDefinitionNotDeletable { get; private set; }
-
-        /// <summary>
-        /// Gets a value indicating whether this <see cref="ContactPropertyModel"/> is favorited.
-        /// </summary>
-        /// <value><c>true</c> if favorited; otherwise, <c>false</c>.</value>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage(
-            "Microsoft.Naming",
-            "CA1704:IdentifiersShouldBeSpelledCorrectly",
-            MessageId = "Favorited",
-            Justification = NaosSuppressBecause.CA1704_IdentifiersShouldBeSpelledCorrectly_SpellingIsCorrectInContextOfTheDomain)]
-        public bool? Favorited { get; private set; }
-
-        /// <summary>
-        /// Gets the favorited order.
-        /// </summary>
-        /// <value>The favorited order.</value>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage(
-            "Microsoft.Naming",
-            "CA1704:IdentifiersShouldBeSpelledCorrectly",
-            MessageId = "Favorited",
-            Justification = NaosSuppressBecause.CA1704_IdentifiersShouldBeSpelledCorrectly_SpellingIsCorrectInContextOfTheDomain)]
-        public int? FavoritedOrder { get; private set; }
 
         /// <summary>
         /// Gets a value indicating whether this <see cref="ContactPropertyModel"/> is calculated.
