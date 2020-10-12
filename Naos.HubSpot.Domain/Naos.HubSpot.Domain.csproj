@@ -120,6 +120,7 @@
     <Compile Include="Model\CreateAssociationRequest.designer.cs">
       <DependentUpon>CreateAssociationRequest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\DeleteCompanyResponse.cs" />
     <Compile Include="Model\DeleteContactResponse.cs" />
     <Compile Include="Model\DeleteContactResponse.designer.cs">
       <DependentUpon>DeleteContactResponse.cs</DependentUpon>
@@ -134,8 +135,9 @@
     <Compile Include="Model\UpdateCompanyModel.designer.cs">
       <DependentUpon>UpdateCompanyModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Operations\Company\AddCompanyOp.designer.cs">
-      <DependentUpon>AddCompanyOp.cs</DependentUpon>
+    <Compile Include="Operations\Company\DeleteCompanyOp.cs" />
+    <Compile Include="Operations\Company\DeleteCompanyOp.designer.cs">
+      <DependentUpon>DeleteCompanyOp.cs</DependentUpon>
     </Compile>
     <Compile Include="Operations\Company\GetAllCompaniesOp.designer.cs">
       <DependentUpon>GetAllCompaniesOp.cs</DependentUpon>

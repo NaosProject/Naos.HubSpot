@@ -166,5 +166,30 @@ namespace Naos.HubSpot.Protocol.Client.Test
             // Act
             protocol.Execute(deleteOp);
         }
+
+        [Fact(Skip = "Skipping because this uses external resources")]
+        public static void DeleteCompany___Returns_a_deleted_company___When_executed()
+        {
+            // Arrange
+            var proto = new HubSpotProtocol(BaseUri, ApiKey);
+            var companyToAddProps = new Dictionary<string, string>
+            {
+                { StandardCompanyPropertyName.CompanyName.ToString().ConvertFromCompanyStandardNameToCompanyHubSpotNameIfNecessary(), "CompanyForDeleteCompanyTest" },
+                { StandardCompanyPropertyName.Description.ToString().ConvertFromCompanyStandardNameToCompanyHubSpotNameIfNecessary(), "A test company that should be deleted." },
+            };
+            var companyToAdd = new Company(companyToAddProps);
+            var addCompanyOp = new AddCompanyOp(companyToAdd);
+            var addedCompany = proto.Execute(addCompanyOp);
+            var companyStringId =
+                addedCompany.Properties["hs_object_id"];
+            var companyIntId = Convert.ToInt64(companyStringId, CultureInfo.InvariantCulture);
+            var deleteCompanyOp = new DeleteCompanyOp(companyIntId);
+
+            // Act
+            var deletedCompany = proto.Execute(deleteCompanyOp);
+
+            // Assert
+            deletedCompany.Deleted.MustForTest().BeTrue();
+        }
     }
 }
