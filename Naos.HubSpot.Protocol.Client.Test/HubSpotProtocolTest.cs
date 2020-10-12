@@ -22,7 +22,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
         private const string ApiKey = "Get this here: https://app.hubspot.com/api-key/";
         private static readonly Uri BaseUri = new Uri("https://api.hubapi.com/");
 
-        [Fact]
+        [Fact(Skip = "Skipping because this uses external resources")]
         public static void GetAllContactsOp___Returns_nonempty_list_of_contacts___When_executed()
         {
             // Arrange
@@ -36,7 +36,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             contacts.MustForTest().NotBeNullNorEmptyEnumerableNorContainAnyNulls();
         }
 
-        [Fact]
+        [Fact(Skip = "Skipping because this uses external resources")]
         public static void GetAllCompaniesOp___Returns_nonempty_list_of_companies___When_executed()
         {
             // Arrange
@@ -61,7 +61,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             protocol.Execute(op);
         }
 
-        [Fact]
+        [Fact(Skip = "Skipping because this uses external resources")]
         public static void AddOrUpdateContactsOp___Does_not_return_http_error___When_executed()
         {
             // Arrange
@@ -85,7 +85,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             protocol.Execute(op);
         }
 
-        [Fact]
+        [Fact(Skip = "Skipping because this uses external resources")]
         public static void AddCompanyOp___Does_not_return_null_contact___When_executed()
         {
             // Arrange
@@ -105,7 +105,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             company.MustForTest(nameof(company)).NotBeNull();
         }
 
-        [Fact]
+        [Fact(Skip = "Skipping because this uses external resources")]
         public static void UpdateCompaniesOp___Does_not_return_http_error___When_executed()
         {
             // Arrange
@@ -134,7 +134,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             protocol.Execute(op);
         }
 
-        [Fact]
+        [Fact(Skip = "Skipping because this uses external resources")]
         public static void DeleteContactOp___Does_not_return_http_error___When_executed()
         {
             // Arrange
