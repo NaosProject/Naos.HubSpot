@@ -191,5 +191,18 @@ namespace Naos.HubSpot.Protocol.Client.Test
             // Assert
             deletedCompany.Deleted.MustForTest().BeTrue();
         }
+
+        [Fact]
+        public static void GetAllContactProperties___Returns_nonempty_collection___When_Executed()
+        {
+            // Arrange
+            var operation = new GetAllContactPropertiesOp();
+            var protocol = new HubSpotProtocol(BaseUri, ApiKey);
+            // Act
+            var contactProperties = protocol.Execute(operation);
+
+            // Assert
+            contactProperties.ToList().MustForTest().NotBeNullNorEmptyEnumerableNorContainAnyNulls();
+        }
     }
 }

@@ -6,12 +6,6 @@
 
 namespace Naos.HubSpot.Domain
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Naos.CodeAnalysis.Recipes;
-    using OBeautifulCode.Enum.Recipes;
-
     /// <summary>
     /// Object to describe a company in HubSpot.
     /// </summary>

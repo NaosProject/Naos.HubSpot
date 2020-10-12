@@ -4,10 +4,7 @@
 
 namespace Naos.HubSpot.Domain
 {
-    using System;
     using System.Collections.Generic;
-    using System.Globalization;
-    using System.Linq;
     using OBeautifulCode.Assertion.Recipes;
     using OBeautifulCode.Type;
 

@@ -116,6 +116,7 @@
     <Compile Include="Model\Contact.designer.cs">
       <DependentUpon>Contact.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\ContactPropertyModel.cs" />
     <Compile Include="Model\CreateAssociationRequest.cs" />
     <Compile Include="Model\CreateAssociationRequest.designer.cs">
       <DependentUpon>CreateAssociationRequest.cs</DependentUpon>
@@ -156,6 +157,7 @@
     <Compile Include="Operations\Contact\DeleteContactOp.designer.cs">
       <DependentUpon>DeleteContactOp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Operations\Contact\GetAllContactPropertiesOp.cs" />
     <Compile Include="Operations\Contact\GetAllContactsOp.designer.cs">
       <DependentUpon>GetAllContactsOp.cs</DependentUpon>
     </Compile>

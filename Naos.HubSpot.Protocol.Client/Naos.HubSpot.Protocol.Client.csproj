@@ -120,6 +120,7 @@
     <Compile Include="HubSpotProtocol.CompanyCanonicalization.cs" />
     <Compile Include="HubSpotProtocol.DeleteContact.cs" />
     <Compile Include="HubSpotProtocol.ContactCanonicalization.cs" />
+    <Compile Include="HubSpotProtocol.GetAllContactProperties.cs" />
     <Compile Include="HubSpotProtocol.UpdateCompanies.cs" />
     <Compile Include="HubSpotProtocol.Constructor.cs" />
     <Compile Include="HubSpotProtocol.AssociateContactWithCompany.cs" />
