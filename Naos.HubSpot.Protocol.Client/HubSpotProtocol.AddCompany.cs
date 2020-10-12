@@ -43,9 +43,7 @@ namespace Naos.HubSpot.Protocol.Client
             foreach (var prop in dynCompanyProperties)
             {
                 string rawName = prop.Name?.ToString();
-                var name = HubSpotCompanyPropertyNames.AllNames.Contains(rawName)
-                    ? rawName.FromCompanyPropertyName().ToString()
-                    : rawName;
+                var name = rawName.ConvertFromCompanyHubSpotHubSpotNameToCompanyStandardNameIfNecessary();
 
                 var val = prop.Value["value"].Value;
                 propertiesDict.Add(name, val);

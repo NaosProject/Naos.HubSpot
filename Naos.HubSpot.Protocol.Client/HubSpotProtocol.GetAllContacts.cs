@@ -38,7 +38,7 @@ namespace Naos.HubSpot.Protocol.Client
                 .AppendQueryStringParam("count", "100");
             foreach (var propName in operation.PropertyNamesToInclude)
             {
-                var adjustedName = propName.ConvertFromStandardNameToHubSpotNameIfNecessary();
+                var adjustedName = propName.ConvertFromContactStandardNameToContactHubSpotNameIfNecessary();
 
                 uri = uri.AppendQueryStringParam("Property", adjustedName);
             }
@@ -65,7 +65,7 @@ namespace Naos.HubSpot.Protocol.Client
                     {
                         dynamic dynProp = (dynamic)prop;
                         string rawName = dynProp.Name?.ToString();
-                        var name = rawName.ConvertFromHubSpotNameToStandardNameIfNecessary();
+                        var name = rawName.ConvertFromContactHubSpotNameToContactStandardNameIfNecessary();
                         if (name == null)
                         {
                             throw new InvalidOperationException("The property name cannot be null for contact vid: " + vid);

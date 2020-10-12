@@ -22,7 +22,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
         private const string ApiKey = "Get this here: https://app.hubspot.com/api-key/";
         private static readonly Uri BaseUri = new Uri("https://api.hubapi.com/");
 
-        [Fact(Skip = "Skipping because this uses external resources")]
+        [Fact]
         public static void GetAllContactsOp___Returns_nonempty_list_of_contacts___When_executed()
         {
             // Arrange
@@ -36,7 +36,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             contacts.MustForTest().NotBeNullNorEmptyEnumerableNorContainAnyNulls();
         }
 
-        [Fact(Skip = "Skipping because this uses external resources")]
+        [Fact]
         public static void GetAllCompaniesOp___Returns_nonempty_list_of_companies___When_executed()
         {
             // Arrange
@@ -61,7 +61,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             protocol.Execute(op);
         }
 
-        [Fact(Skip = "Skipping because this uses external resources")]
+        [Fact]
         public static void AddOrUpdateContactsOp___Does_not_return_http_error___When_executed()
         {
             // Arrange
@@ -85,15 +85,15 @@ namespace Naos.HubSpot.Protocol.Client.Test
             protocol.Execute(op);
         }
 
-        [Fact(Skip = "Skipping because this uses external resources")]
+        [Fact]
         public static void AddCompanyOp___Does_not_return_null_contact___When_executed()
         {
             // Arrange
             var protocol = new HubSpotProtocol(BaseUri, ApiKey);
             var companyProps = new Dictionary<string, string>
             {
-                { HubSpotCompanyPropertyNames.CompanyName, "testCompany" },
-                { HubSpotCompanyPropertyNames.Description, "A test company" },
+                { StandardCompanyPropertyName.CompanyName.ToString().ConvertFromCompanyStandardNameToCompanyHubSpotNameIfNecessary(), "testCompany" },
+                { StandardCompanyPropertyName.Description.ToString().ConvertFromCompanyStandardNameToCompanyHubSpotNameIfNecessary(), "A test company" },
             };
             var companyToAdd = new Company(companyProps);
             var op = new AddCompanyOp(companyToAdd);
@@ -105,15 +105,15 @@ namespace Naos.HubSpot.Protocol.Client.Test
             company.MustForTest(nameof(company)).NotBeNull();
         }
 
-        [Fact(Skip = "Skipping because this uses external resources")]
+        [Fact]
         public static void UpdateCompaniesOp___Does_not_return_http_error___When_executed()
         {
             // Arrange
             var protocol = new HubSpotProtocol(BaseUri, ApiKey);
             var initialProps = new Dictionary<string, string>
             {
-                { HubSpotCompanyPropertyNames.CompanyName, "testCompany" },
-                { HubSpotCompanyPropertyNames.Description, "this is the initial description." },
+                { StandardCompanyPropertyName.CompanyName.ToString().ConvertFromCompanyStandardNameToCompanyHubSpotNameIfNecessary(), "testCompany" },
+                { StandardCompanyPropertyName.Description.ToString().ConvertFromCompanyStandardNameToCompanyHubSpotNameIfNecessary(), "this is the initial description." },
             };
             var companyToAdd = new Company(initialProps);
             var createCompanyOp = new AddCompanyOp(companyToAdd);
@@ -125,7 +125,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             {
                 { "name", "testCompany" },
                 { "description", "this is a new company description" },
-                { HubSpotCompanyPropertyNames.CompanyId, createdCompany.Properties["hs_object_id"] },
+                { StandardCompanyPropertyName.ObjectId.ToString().ConvertFromCompanyStandardNameToCompanyHubSpotNameIfNecessary(), createdCompany.Properties["hs_object_id"] },
             };
             var companyList = new List<Company> { new Company(companyProps)  };
             var op = new UpdateCompaniesOp(companyList);
@@ -134,7 +134,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             protocol.Execute(op);
         }
 
-        [Fact(Skip = "Skipping because this uses external resources")]
+        [Fact]
         public static void DeleteContactOp___Does_not_return_http_error___When_executed()
         {
             // Arrange

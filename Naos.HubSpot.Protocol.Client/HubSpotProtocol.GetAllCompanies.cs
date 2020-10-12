@@ -59,7 +59,7 @@ namespace Naos.HubSpot.Protocol.Client
                 {
                     try
                     {
-                        var companyId = (string)dynCompany[HubSpotCompanyPropertyNames.CompanyId];
+                        var companyId = (string)dynCompany[StandardCompanyPropertyName.CompanyName.ToString().ConvertFromCompanyHubSpotHubSpotNameToCompanyStandardNameIfNecessary()];
                         var propertiesDict = new Dictionary<string, string>();
                         dynamic dynCompanyProperties = dynCompany["properties"];
                         if (dynCompanyProperties.Count == 0)
@@ -67,13 +67,11 @@ namespace Naos.HubSpot.Protocol.Client
                             continue;
                         }
 
-                        propertiesDict.Add(HubSpotCompanyPropertyNames.CompanyId, companyId);
+                        propertiesDict.Add(StandardCompanyPropertyName.ObjectId.ToString(), companyId);
                         foreach (var dynProp in dynCompanyProperties)
                         {
                             string rawName = dynProp.Name?.ToString();
-                            var name = HubSpotCompanyPropertyNames.AllNames.Contains(rawName)
-                                ? rawName.FromCompanyPropertyName().ToString()
-                                : rawName;
+                            var name = rawName.ConvertFromCompanyHubSpotHubSpotNameToCompanyStandardNameIfNecessary();
 
                             var val = dynProp.Value["value"].Value;
                             propertiesDict.Add(name, val);

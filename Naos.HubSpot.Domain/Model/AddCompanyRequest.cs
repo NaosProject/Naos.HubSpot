@@ -45,8 +45,7 @@ namespace Naos.HubSpot.Domain
         {
             company.MustForArg(nameof(company)).NotBeNull("The company cannot be null.");
             var properties = company.Properties;
-            // TODO: Check if company name is present.
-            var propertiesModel = properties.Select(_ => new PropertyModel(_.Key.ConvertIfStandardCompanyName(), _.Value)).ToList();
+            var propertiesModel = properties.Select(_ => new PropertyModel(_.Key, _.Value)).ToList();
             var result = new AddCompanyRequest(propertiesModel);
             return result;
         }

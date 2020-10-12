@@ -62,7 +62,7 @@ namespace Naos.HubSpot.Protocol.Client
                 var properties = contact
                     .Properties
                     .Where(_ => _.Key != StandardContactPropertyName.HubSpotId.ToString())
-                    .Select(_ => new PropertyModel(_.Key.ConvertFromStandardNameToHubSpotNameIfNecessary(), _.Value))
+                    .Select(_ => new PropertyModel(_.Key.ConvertFromContactStandardNameToContactHubSpotNameIfNecessary(), _.Value))
                     .ToList();
 
                 return new AddOrUpdateContactsRequest(vid, null, properties);
@@ -73,7 +73,7 @@ namespace Naos.HubSpot.Protocol.Client
                 var properties = contact
                     .Properties
                     .Where(_ => _.Key != StandardContactPropertyName.EmailAddress.ToString())
-                    .Select(_ => new PropertyModel(_.Key.ConvertFromStandardNameToHubSpotNameIfNecessary(), _.Value))
+                    .Select(_ => new PropertyModel(_.Key.ConvertFromContactStandardNameToContactHubSpotNameIfNecessary(), _.Value))
                     .ToList();
 
                 return new AddOrUpdateContactsRequest(null, email, properties);

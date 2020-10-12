@@ -35,14 +35,14 @@ namespace Naos.HubSpot.Protocol.Client
             var reqBody = new List<object>();
             foreach (var company in operation.CompaniesToUpdate)
             {
-                string rawObjectId = company.Properties.Single(_ => _.Key == HubSpotCompanyPropertyNames.CompanyId).Value;
+                string rawObjectId = company.Properties.Single(_ => _.Key == StandardCompanyPropertyName.ObjectId.ToString().ConvertFromCompanyStandardNameToCompanyHubSpotNameIfNecessary()).Value;
                 if (string.IsNullOrWhiteSpace(rawObjectId) || !long.TryParse(rawObjectId, out var objectId))
                 {
                     throw new InvalidOperationException("The company's object ID cannot be null and has to be convertible into an integer.  Current: " + rawObjectId);
                 }
 
                 var props = company.Properties
-                    .Where(_ => _.Key.ToLower() != HubSpotCompanyPropertyNames.CompanyId || _.Key != "objectId")
+                    .Where(_ => _.Key.ToLower() != StandardCompanyPropertyName.ObjectId.ToString().ConvertFromCompanyStandardNameToCompanyHubSpotNameIfNecessary() || _.Key != "objectId")
                     .Select(x => new { name=x.Key, value=x.Value })
                     .ToList();
                 reqBody.Add(new { objectId, properties=props });

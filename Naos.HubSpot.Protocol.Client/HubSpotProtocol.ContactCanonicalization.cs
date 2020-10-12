@@ -64,14 +64,14 @@ namespace Naos.HubSpot.Protocol.Client
     /// <summary>
     ///     Class provides extension methods with which to convert enum values to text and from text to enum values.
     /// </summary>
-    public static class PropertyNameCanonicalizationExtensions
+    public static partial class PropertyNameCanonicalizationExtensions
     {
         /// <summary>
         ///     Converts an name to a string containing the name of the property.
         /// </summary>
         /// <param name="propertyNameFromModel">The contact property name.</param>
         /// <returns cref="string">The name of the property recognized by HubSpot.</returns>
-        public static string ConvertFromStandardNameToHubSpotNameIfNecessary(
+        public static string ConvertFromContactStandardNameToContactHubSpotNameIfNecessary(
             this string propertyNameFromModel)
         {
             var isStandard =
@@ -87,7 +87,7 @@ namespace Naos.HubSpot.Protocol.Client
         /// </summary>
         /// <param name="propertyNameFromHubSpot">The name of a property recognized by HubSpot.</param>
         /// <returns cref="StandardContactPropertyName">The enumeration of the contact property name.</returns>
-        public static string ConvertFromHubSpotNameToStandardNameIfNecessary(this string propertyNameFromHubSpot)
+        public static string ConvertFromContactHubSpotNameToContactStandardNameIfNecessary(this string propertyNameFromHubSpot)
         {
             var isStandard =
                 HubSpotProtocol.HubSpotContactPropertyNameToStandardContactPropertyNameStringMap.TryGetValue(
