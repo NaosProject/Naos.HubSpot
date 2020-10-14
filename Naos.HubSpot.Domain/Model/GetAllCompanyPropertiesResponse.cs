@@ -4,10 +4,8 @@
 
 namespace Naos.HubSpot.Domain
 {
-    using System.ComponentModel;
     using System.Diagnostics.CodeAnalysis;
     using Naos.CodeAnalysis.Recipes;
-    using Newtonsoft.Json;
     using OBeautifulCode.Type;
 
     /// <summary>
