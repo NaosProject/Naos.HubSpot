@@ -8,6 +8,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Globalization;
     using System.Linq;
     using Naos.HubSpot.Domain;
@@ -50,15 +51,53 @@ namespace Naos.HubSpot.Protocol.Client.Test
             companies.MustForTest().NotBeNullNorEmptyEnumerableNorContainAnyNulls();
         }
 
-        [Fact(Skip = "Skipping because this uses external resources")]
+        [Fact]
         public static void AssociateContactWithCompanyOp___Does_not_return_http_error___When_executed()
         {
             // Arrange
             var protocol = new HubSpotProtocol(BaseUri, ApiKey);
-            var op = new AssociateContactWithCompanyOp(1, 1);
+            
+            // Create a contact
+            var contactEmail = "testcontact@testemail.com";
+            var contactToAddProps = new Dictionary<string, string>
+            {
+                { StandardContactPropertyName.EmailAddress.ToString(), contactEmail },
+                { StandardContactPropertyName.FirstName.ToString(), "test" },
+                { StandardContactPropertyName.LastName.ToString(), "contact" },
+            };
+            
+            var contactToAdd = new Contact(contactToAddProps);
+            var addContactOp = new AddOrUpdateContactsOp(new[] { contactToAdd });
+            protocol.Execute(addContactOp);
+
+            // Get contact that was created.
+
+            var contacts = protocol.Execute(new GetAllContactsOp());
+            var addedContactVid = contacts.First(_ => _.Properties[StandardContactPropertyName.EmailAddress.ToString()] == contactEmail)
+                .Properties[StandardContactPropertyName.HubSpotId.ToString()];
+            var addedIntContactId = Convert.ToInt32(addedContactVid, CultureInfo.InvariantCulture);
+            // create a company
+            var companyToAddProps = new Dictionary<string, string>()
+            {
+                { StandardCompanyPropertyName.CompanyName.ToString(), "testCompany" },
+            };
+            var companyToAdd = new Company(companyToAddProps);
+            var addCompanyOp = new AddCompanyOp(companyToAdd);
+            var addedCompany = protocol.Execute(addCompanyOp);
+            var addedCompanyId = addedCompany.Properties["hs_object_id"];
+            var addedLongCompanyId = Convert.ToInt64(addedCompanyId, CultureInfo.InvariantCulture);
+            
+            var assignOp = new AssociateContactWithCompanyOp(addedIntContactId, addedLongCompanyId);
 
             // Act & Assert - Will throw exception on failure
-            protocol.Execute(op);
+            protocol.Execute(assignOp);
+
+            // Clean up
+            var deleteContactOp = new DeleteContactOp(addedIntContactId);
+            protocol.Execute(deleteContactOp);
+
+            var deleteCompanyOp = new DeleteCompanyOp(addedLongCompanyId);
+            protocol.Execute(deleteCompanyOp);
         }
 
         [Fact(Skip = "Skipping because this uses external resources")]

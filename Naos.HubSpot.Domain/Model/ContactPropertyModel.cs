@@ -24,26 +24,13 @@ namespace Naos.HubSpot.Domain
         /// <param name="fieldType">Type of the field.</param>
         /// <param name="displayOrder">The display order.</param>
         /// <param name="readOnlyDefinition">The read only definition.</param>
-        /// <param name="favoriteOrder">The favorited order.</param>
         /// <param name="displayMode">The display mode.</param>
         /// <param name="formField">The form field.</param>
         /// <param name="deleted">if set to <c>true</c> [deleted].</param>
         /// <param name="readOnlyValue">if set to <c>true</c> [read only value].</param>
         /// <param name="hidden">if set to <c>true</c> [hidden].</param>
-        /// <param name="mutableDefinitionCannotBeDeleted">if set to <c>true</c> [mutable definition not deletable].</param>
-        /// <param name="favorite">if set to <c>true</c> [favorited].</param>
         /// <param name="calculated">if set to <c>true</c> [calculated].</param>
-        /// <param name="externalOptions">if set to <c>true</c> [external options].</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage(
-            "Microsoft.Naming",
-            "CA1704:IdentifiersShouldBeSpelledCorrectly",
-            MessageId = "deletable",
-            Justification = NaosSuppressBecause.CA1704_IdentifiersShouldBeSpelledCorrectly_SpellingIsCorrectInContextOfTheDomain)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage(
-            "Microsoft.Naming",
-            "CA1704:IdentifiersShouldBeSpelledCorrectly",
-            MessageId = "favorited",
-            Justification = NaosSuppressBecause.CA1704_IdentifiersShouldBeSpelledCorrectly_SpellingIsCorrectInContextOfTheDomain)]
+        /// <param name="externalOptions">if set to <c>true</c> [external options].</param>s
         public ContactPropertyModel(
             string name,
             string label,

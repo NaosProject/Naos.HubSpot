@@ -19,7 +19,7 @@ namespace Naos.HubSpot.Domain
         /// </summary>
         /// <param name="contactHubSpotId">The ID of the contact to be associated.</param>
         /// <param name="companyHubSpotId">The ID of the company with which the contact is to be associated.</param>
-        public AssociateContactWithCompanyOp(int contactHubSpotId, int companyHubSpotId)
+        public AssociateContactWithCompanyOp(long contactHubSpotId, long companyHubSpotId)
         {
             this.ContactHubSpotId = contactHubSpotId;
             this.CompanyHubSpotId = companyHubSpotId;
@@ -28,11 +28,11 @@ namespace Naos.HubSpot.Domain
         /// <summary>
         /// Gets the Contact to be associated.
         /// </summary>
-        public int ContactHubSpotId { get; private set; }
+        public long ContactHubSpotId { get; private set; }
 
         /// <summary>
         /// Gets the Company with which the contact should be associated.
         /// </summary>
-        public int CompanyHubSpotId { get; private set; }
+        public long CompanyHubSpotId { get; private set; }
     }
 }
