@@ -51,7 +51,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             companies.MustForTest().NotBeNullNorEmptyEnumerableNorContainAnyNulls();
         }
 
-        [Fact]
+        [Fact(Skip = "Skipping because this uses external resources")]
         public static void AssociateContactWithCompanyOp___Does_not_return_http_error___When_executed()
         {
             // Arrange
@@ -236,6 +236,19 @@ namespace Naos.HubSpot.Protocol.Client.Test
         {
             // Arrange
             var operation = new GetAllContactPropertiesOp();
+            var protocol = new HubSpotProtocol(BaseUri, ApiKey);
+            // Act
+            var contactProperties = protocol.Execute(operation);
+
+            // Assert
+            contactProperties.ToList().MustForTest().NotBeNullNorEmptyEnumerableNorContainAnyNulls();
+        }
+
+        [Fact]
+        public static void GetAllCompanyProperties___Returns_nonempty_collection___When_Executed()
+        {
+            // Arrange
+            var operation = new GetAllCompanyPropertiesOp();
             var protocol = new HubSpotProtocol(BaseUri, ApiKey);
             // Act
             var contactProperties = protocol.Execute(operation);
