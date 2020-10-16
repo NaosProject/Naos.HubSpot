@@ -56,7 +56,10 @@ namespace Naos.HubSpot.Domain
         /// Gets the type.
         /// </summary>
         /// <value>The type.</value>
-        [SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods", Justification = NaosSuppressBecause.CA1704_IdentifiersShouldBeSpelledCorrectly_SpellingIsCorrectInContextOfTheDomain)]
+        [SuppressMessage(
+            "Microsoft.Naming",
+            "CA1721:PropertyNamesShouldNotMatchGetMethods",
+            Justification = NaosSuppressBecause.CA1704_IdentifiersShouldBeSpelledCorrectly_SpellingIsCorrectInContextOfTheDomain)]
         public string Type { get; private set; }
 
         /// <summary>

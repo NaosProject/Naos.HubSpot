@@ -119,6 +119,7 @@
     <Compile Include="Model\Contact.designer.cs">
       <DependentUpon>Contact.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\CreateCompanyPropertyRequest.cs" />
     <Compile Include="Model\GetAllCompanyPropertiesResponse.cs" />
     <Compile Include="Model\ContactPropertyModel.cs" />
     <Compile Include="Model\CreateAssociationRequest.cs" />
@@ -140,14 +141,16 @@
     <Compile Include="Model\UpdateCompanyModel.designer.cs">
       <DependentUpon>UpdateCompanyModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Operations\Company\CreateCompanyPropertyOp.cs" />
+    <Compile Include="Operations\Company\CreateCompanyPropertyOp.designer.cs">
+      <DependentUpon>CreateCompanyPropertyOp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operations\Company\DeleteCompanyOp.cs" />
     <Compile Include="Operations\Company\DeleteCompanyOp.designer.cs">
       <DependentUpon>DeleteCompanyOp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Operations\Company\DeleteCompanyPropertyOp.cs" />
     <Compile Include="Operations\Company\GetAllCompanyProperties.cs" />
-    <Compile Include="Operations\Company\GetAllCompanyProperties.designer.cs">
-      <DependentUpon>GetAllCompanyProperties.cs</DependentUpon>
-    </Compile>
     <Compile Include="Operations\Company\UpdateCompaniesOp.cs" />
     <Compile Include="Operations\Company\AddCompanyOp.cs" />
     <Compile Include="Operations\Company\GetAllCompaniesOp.cs" />

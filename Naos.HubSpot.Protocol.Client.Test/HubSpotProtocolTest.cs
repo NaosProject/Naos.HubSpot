@@ -12,6 +12,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
     using System.Globalization;
     using System.Linq;
     using Naos.HubSpot.Domain;
+    using Naos.HubSpot.Domain.Model;
     using OBeautifulCode.Assertion.Recipes;
     using Xunit;
 
@@ -244,7 +245,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             contactProperties.ToList().MustForTest().NotBeNullNorEmptyEnumerableNorContainAnyNulls();
         }
 
-        [Fact]
+        [Fact(Skip = "Skipping because this uses external resources")]
         public static void GetAllCompanyProperties___Returns_nonempty_collection___When_Executed()
         {
             // Arrange
@@ -255,6 +256,28 @@ namespace Naos.HubSpot.Protocol.Client.Test
 
             // Assert
             contactProperties.ToList().MustForTest().NotBeNullNorEmptyEnumerableNorContainAnyNulls();
+        }
+
+        [Fact(Skip = "Skipping because this uses external resources")]
+        public static void CreateCompanyProperty___Returns_company_property_with_matching_name_and_label___When_Executed()
+        {
+            // Arrange
+            const string propName = "testprop";
+            const string propLabel = "testlabel";
+            var companyPropToBeCreated = new CreateCompanyPropertyRequest(propName, propLabel);
+            var createOperation = new CreateCompanyPropertyOp(companyPropToBeCreated);
+            var protocol = new HubSpotProtocol(BaseUri, ApiKey);
+            
+            // Act 
+            var companyProperty = protocol.Execute(createOperation);
+
+            // Assert 
+            companyProperty.Name.MustForTest().BeEqualTo(propName);
+            companyProperty.Label.MustForTest().BeEqualTo(propLabel);
+
+            // Clean up
+            var deleteCompanyPropertyOp = new DeleteCompanyPropertyOp(propName);
+            protocol.Execute(deleteCompanyPropertyOp);
         }
     }
 }
