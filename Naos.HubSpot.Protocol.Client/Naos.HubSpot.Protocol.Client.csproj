@@ -116,6 +116,8 @@
     <Compile Include=".recipes\Spritely.Redo\RetriableFunction.cs" />
     <Compile Include=".recipes\Spritely.Redo\RetriableFunctionAsync.cs" />
     <Compile Include=".recipes\Spritely.Redo\Using.cs" />
+    <Compile Include="HubSpotProtocol.CreateContactProperty.cs" />
+    <Compile Include="HubSpotProtocol.DeleteContactProperty.cs" />
     <Compile Include="HubSpotProtocol.DeleteCompanyProperty.cs" />
     <Compile Include="HubSpotProtocol.DeleteCompany.cs" />
     <Compile Include="HubSpotProtocol.CompanyCanonicalization.cs" />

@@ -279,5 +279,27 @@ namespace Naos.HubSpot.Protocol.Client.Test
             var deleteCompanyPropertyOp = new DeleteCompanyPropertyOp(propName);
             protocol.Execute(deleteCompanyPropertyOp);
         }
+
+        [Fact(Skip = "Skipping because this uses external resources")]
+        public static void CreateContactProperty___Returns_contact_property_with_matching_name_and_label___When_Executed()
+        {
+            // Arrange
+            const string propName = "testprop";
+            const string propLabel = "testlabel";
+            var contactPropToBeCreated = new CreateContactPropertyRequest(propName, propLabel);
+            var createOperation = new CreateContactPropertyOp(contactPropToBeCreated);
+            var protocol = new HubSpotProtocol(BaseUri, ApiKey);
+
+            // Act 
+            var contactProperty = protocol.Execute(createOperation);
+
+            // Assert 
+            contactProperty.Name.MustForTest().BeEqualTo(propName);
+            contactProperty.Label.MustForTest().BeEqualTo(propLabel);
+
+            // Clean up
+            var deleteContactPropertyOp = new DeleteContactPropertyOp(propName);
+            protocol.Execute(deleteContactPropertyOp);
+        }
     }
 }
