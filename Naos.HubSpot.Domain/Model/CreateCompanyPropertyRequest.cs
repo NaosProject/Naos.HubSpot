@@ -4,6 +4,7 @@
 
 namespace Naos.HubSpot.Domain.Model
 {
+    using Naos.CodeAnalysis.Recipes;
     using OBeautifulCode.Type;
 
     /// <summary>
@@ -18,7 +19,6 @@ namespace Naos.HubSpot.Domain.Model
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="label">The label.</param>
-        /// <param name="groupName">Name of the group.</param>
         public CreateCompanyPropertyRequest(string name, string label)
         {
             this.Name = name;
@@ -50,6 +50,7 @@ namespace Naos.HubSpot.Domain.Model
         /// Gets the type.
         /// </summary>
         /// <value>The type.</value>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods", Justification = NaosSuppressBecause.CA1704_IdentifiersShouldBeSpelledCorrectly_SpellingIsCorrectInContextOfTheDomain)]
         public string Type { get; private set; }
 
         /// <summary>
