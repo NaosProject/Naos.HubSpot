@@ -12,8 +12,9 @@ namespace Naos.HubSpot.Domain
 
     /// <summary>
     /// Operation to add a company.
+    /// Returns the Company's HubSpot ID.
     /// </summary>
-    public partial class AddCompanyOp : ReturningOperationBase<Company>, IModelViaCodeGen
+    public partial class AddCompanyOp : ReturningOperationBase<string>, IModelViaCodeGen
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AddCompanyOp"/> class.

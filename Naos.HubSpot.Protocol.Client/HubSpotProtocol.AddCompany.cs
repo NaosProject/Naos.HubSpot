@@ -6,6 +6,7 @@
 
 namespace Naos.HubSpot.Protocol.Client
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -17,10 +18,10 @@ namespace Naos.HubSpot.Protocol.Client
     /// <summary>
     /// TODO: Starting point for new project.
     /// </summary>
-    public partial class HubSpotProtocol : ISyncAndAsyncReturningProtocol<AddCompanyOp, Company>
+    public partial class HubSpotProtocol : ISyncAndAsyncReturningProtocol<AddCompanyOp, string>
     {
         /// <inheritdoc />
-        public Company Execute(AddCompanyOp operation)
+        public string Execute(AddCompanyOp operation)
         {
             var task = this.ExecuteAsync(operation);
             var result = Run.TaskUntilCompletion(task);
@@ -28,7 +29,7 @@ namespace Naos.HubSpot.Protocol.Client
         }
 
         /// <inheritdoc />
-        public async Task<Company> ExecuteAsync(AddCompanyOp operation)
+        public async Task<string> ExecuteAsync(AddCompanyOp operation)
         {
             var uri = this.baseUri;
             uri = uri.AppendPathSegment("companies/v2/companies");
@@ -38,18 +39,22 @@ namespace Naos.HubSpot.Protocol.Client
                 value= _.Value,
             });
             dynamic addedCompany = await Task.FromResult(uri.WithBody(request).Post<dynamic>());
-            var propertiesDict = new Dictionary<string, string>();
             dynamic dynCompanyProperties = addedCompany["properties"];
+            string objectId = null;
             foreach (var prop in dynCompanyProperties)
             {
-                string rawName = prop.Name?.ToString();
-                var name = rawName.ConvertFromCompanyHubSpotHubSpotNameToCompanyStandardNameIfNecessary();
-
-                var val = prop.Value["value"].Value;
-                propertiesDict.Add(name, val);
+                if (prop.Name?.ToString() == "hs_object_id")
+                {
+                    objectId = prop.Value["value"].Value;
+                }
             }
 
-            return new Company(propertiesDict);
+            if (string.IsNullOrWhiteSpace(objectId))
+            {
+                throw new InvalidOperationException("HubSpot ID was not included in returned object.");
+            }
+
+            return objectId;
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Naos.HubSpot.Protocol.Client
                 new Dictionary<StandardCompanyPropertyName, string>
                 {
                     { StandardCompanyPropertyName.CompanyName, "name" },
-                    { StandardCompanyPropertyName.ObjectId, "objectId" },
+                    { StandardCompanyPropertyName.HubSpotId, "objectId" },
                     { StandardCompanyPropertyName.Description, "description" },
                 };
 

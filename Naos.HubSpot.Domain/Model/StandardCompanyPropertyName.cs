@@ -14,7 +14,7 @@ namespace Naos.HubSpot.Domain
         /// <summary>
         /// The HubSpot ID of the company.
         /// </summary>
-        ObjectId,
+        HubSpotId,
 
         /// <summary>
         /// The name of the company.

@@ -74,7 +74,8 @@ namespace Naos.HubSpot.Protocol.Client.Test
             // Get contact that was created.
 
             var contacts = protocol.Execute(new GetAllContactsOp());
-            var addedContactVid = contacts.First(_ => _.Properties[StandardContactPropertyName.EmailAddress.ToString()] == contactEmail)
+            var addedContactVid = contacts.First(_ =>
+                    _.Properties[StandardContactPropertyName.EmailAddress.ToString().ConvertFromContactHubSpotNameToContactStandardNameIfNecessary()] == contactEmail)
                 .Properties[StandardContactPropertyName.HubSpotId.ToString()];
             var addedIntContactId = Convert.ToInt32(addedContactVid, CultureInfo.InvariantCulture);
             // create a company
@@ -85,7 +86,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             var companyToAdd = new Company(companyToAddProps);
             var addCompanyOp = new AddCompanyOp(companyToAdd);
             var addedCompany = protocol.Execute(addCompanyOp);
-            var addedCompanyId = addedCompany.Properties["hs_object_id"];
+            var addedCompanyId = addedCompany;
             var addedLongCompanyId = Convert.ToInt64(addedCompanyId, CultureInfo.InvariantCulture);
             
             var assignOp = new AssociateContactWithCompanyOp(addedIntContactId, addedLongCompanyId);
@@ -165,13 +166,18 @@ namespace Naos.HubSpot.Protocol.Client.Test
             {
                 { "name", "testCompany" },
                 { "description", "this is a new company description" },
-                { StandardCompanyPropertyName.ObjectId.ToString().ConvertFromCompanyStandardNameToCompanyHubSpotNameIfNecessary(), createdCompany.Properties["hs_object_id"] },
+                { StandardCompanyPropertyName.HubSpotId.ToString().ConvertFromCompanyStandardNameToCompanyHubSpotNameIfNecessary(), createdCompany },
             };
             var companyList = new List<Company> { new Company(companyProps)  };
             var op = new UpdateCompaniesOp(companyList);
 
             // Act & Assert - Will throw exception on failure
             protocol.Execute(op);
+
+            // Clean Up
+            var createdCompanyLongId = Convert.ToInt64(createdCompany, CultureInfo.InvariantCulture);
+            var deleteCompanyOp = new DeleteCompanyOp(createdCompanyLongId);
+            protocol.Execute(deleteCompanyOp);
         }
 
         [Fact(Skip = "Skipping because this uses external resources")]
@@ -220,9 +226,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             var companyToAdd = new Company(companyToAddProps);
             var addCompanyOp = new AddCompanyOp(companyToAdd);
             var addedCompany = proto.Execute(addCompanyOp);
-            var companyStringId =
-                addedCompany.Properties["hs_object_id"];
-            var companyIntId = Convert.ToInt64(companyStringId, CultureInfo.InvariantCulture);
+            var companyIntId = Convert.ToInt64(addedCompany, CultureInfo.InvariantCulture);
             var deleteCompanyOp = new DeleteCompanyOp(companyIntId);
 
             // Act
