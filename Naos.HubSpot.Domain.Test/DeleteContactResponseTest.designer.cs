@@ -4,7 +4,7 @@
 // </auto-generated>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Naos.HubSpot.Domain.Model.Test
+namespace Naos.HubSpot.Domain.Test
 {
     using global::System;
     using global::System.CodeDom.Compiler;
@@ -31,7 +31,6 @@ namespace Naos.HubSpot.Domain.Model.Test
     using global::Xunit;
 
     using static global::System.FormattableString;
-    using Naos.HubSpot.Domain.Test;
 
     public static partial class DeleteContactResponseTest
     {
@@ -47,7 +46,7 @@ namespace Naos.HubSpot.Domain.Model.Test
                         var result = new SystemUnderTestExpectedStringRepresentation<DeleteContactResponse>
                         {
                             SystemUnderTest = systemUnderTest,
-                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.Model.DeleteContactResponse: Vid = {systemUnderTest.Vid.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Deleted = {systemUnderTest.Deleted.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Reason = {systemUnderTest.Reason?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}."),
+                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.DeleteContactResponse: Vid = {systemUnderTest.Vid.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Deleted = {systemUnderTest.Deleted.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Reason = {systemUnderTest.Reason?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}."),
                         };
 
                         return result;

@@ -4,7 +4,7 @@
 // </auto-generated>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Naos.HubSpot.Domain.Model
+namespace Naos.HubSpot.Domain
 {
     using global::System;
     using global::System.CodeDom.Compiler;
@@ -193,7 +193,7 @@ namespace Naos.HubSpot.Domain.Model
         [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         public override string ToString()
         {
-            var result = Invariant($"Naos.HubSpot.Domain.Model.DeleteContactResponse: Vid = {this.Vid.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Deleted = {this.Deleted.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Reason = {this.Reason?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}.");
+            var result = Invariant($"Naos.HubSpot.Domain.DeleteContactResponse: Vid = {this.Vid.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Deleted = {this.Deleted.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Reason = {this.Reason?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}.");
 
             return result;
         }

@@ -332,6 +332,10 @@
     <Compile Include="GetAllContactsOpTest.designer.cs">
       <DependentUpon>GetAllContactsOpTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="GetAllContactsResponseV3Test.cs" />
+    <Compile Include="GetAllContactsResponseV3Test.designer.cs">
+      <DependentUpon>GetAllContactsResponseV3Test.cs</DependentUpon>
+    </Compile>
     <Compile Include="HubSpotCompanyPropertyNamesTest.cs" />
     <Compile Include="ContactTest.cs" />
     <Compile Include="HubSpotDummyFactory.cs" />

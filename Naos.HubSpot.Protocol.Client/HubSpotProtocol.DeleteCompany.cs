@@ -6,12 +6,9 @@
 
 namespace Naos.HubSpot.Protocol.Client
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
     using Naos.FluentUri;
     using Naos.HubSpot.Domain;
-    using Naos.HubSpot.Domain.Model;
     using Naos.Protocol.Domain;
     using Naos.Recipes.RunWithRetry;
 

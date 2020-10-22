@@ -2,9 +2,8 @@
 //    Copyright (c) Naos Project 2019. All rights reserved.
 // </copyright>
 
-namespace Naos.HubSpot.Domain.Model
+namespace Naos.HubSpot.Domain
 {
-    using Naos.CodeAnalysis.Recipes;
     using Newtonsoft.Json;
     using OBeautifulCode.Type;
 

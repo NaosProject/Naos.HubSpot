@@ -16,7 +16,6 @@ namespace Naos.HubSpot.Domain.Test
     using global::FakeItEasy;
 
     using global::Naos.HubSpot.Domain;
-    using global::Naos.HubSpot.Domain.Model;
     using global::Naos.Protocol.Domain;
 
     using global::OBeautifulCode.AutoFakeItEasy;
@@ -73,6 +72,22 @@ namespace Naos.HubSpot.Domain.Test
                                  A.Dummy<bool?>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
+                () => new CreateCompanyPropertyRequest(
+                                 A.Dummy<string>(),
+                                 A.Dummy<string>(),
+                                 A.Dummy<string>(),
+                                 A.Dummy<string>(),
+                                 A.Dummy<string>()));
+
+            AutoFixtureBackedDummyFactory.AddDummyCreator(
+                () => new CreateContactPropertyRequest(
+                                 A.Dummy<string>(),
+                                 A.Dummy<string>(),
+                                 A.Dummy<string>(),
+                                 A.Dummy<string>(),
+                                 A.Dummy<string>()));
+
+            AutoFixtureBackedDummyFactory.AddDummyCreator(
                 () => new GetAllCompanyPropertiesResponse(
                                  A.Dummy<string>(),
                                  A.Dummy<string>(),
@@ -90,6 +105,12 @@ namespace Naos.HubSpot.Domain.Test
                                  A.Dummy<int>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
+                () => new DeleteContactResponse(
+                                 A.Dummy<int>(),
+                                 A.Dummy<bool>(),
+                                 A.Dummy<string>()));
+
+            AutoFixtureBackedDummyFactory.AddDummyCreator(
                 () => new PropertyModel(
                                  A.Dummy<string>(),
                                  A.Dummy<string>()));
@@ -98,6 +119,13 @@ namespace Naos.HubSpot.Domain.Test
                 () => new UpdateCompanyModel(
                                  A.Dummy<long>(),
                                  A.Dummy<IReadOnlyCollection<PropertyModel>>()));
+
+            AutoFixtureBackedDummyFactory.AddDummyCreator(
+                () => new GetAllContactsResponseV3(
+                                 A.Dummy<string>(),
+                                 A.Dummy<bool>(),
+                                 A.Dummy<string>(),
+                                 A.Dummy<IReadOnlyDictionary<string, string>>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
                 () => new AddCompanyOp(
@@ -156,28 +184,6 @@ namespace Naos.HubSpot.Domain.Test
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
                 () => new SyncWithHubSpotOp());
-
-            AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new CreateCompanyPropertyRequest(
-                                 A.Dummy<string>(),
-                                 A.Dummy<string>(),
-                                 A.Dummy<string>(),
-                                 A.Dummy<string>(),
-                                 A.Dummy<string>()));
-
-            AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new CreateContactPropertyRequest(
-                                 A.Dummy<string>(),
-                                 A.Dummy<string>(),
-                                 A.Dummy<string>(),
-                                 A.Dummy<string>(),
-                                 A.Dummy<string>()));
-
-            AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new DeleteContactResponse(
-                                 A.Dummy<int>(),
-                                 A.Dummy<bool>(),
-                                 A.Dummy<string>()));
         }
 
         /// <inheritdoc />

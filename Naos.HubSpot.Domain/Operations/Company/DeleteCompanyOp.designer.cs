@@ -15,7 +15,6 @@ namespace Naos.HubSpot.Domain
     using global::System.Globalization;
     using global::System.Linq;
 
-    using global::Naos.HubSpot.Domain.Model;
     using global::Naos.Protocol.Domain;
 
     using global::OBeautifulCode.Equality.Recipes;

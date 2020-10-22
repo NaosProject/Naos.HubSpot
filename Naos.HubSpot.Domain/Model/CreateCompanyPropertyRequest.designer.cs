@@ -4,7 +4,7 @@
 // </auto-generated>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Naos.HubSpot.Domain.Model
+namespace Naos.HubSpot.Domain
 {
     using global::System;
     using global::System.CodeDom.Compiler;
@@ -269,7 +269,7 @@ namespace Naos.HubSpot.Domain.Model
         [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         public override string ToString()
         {
-            var result = Invariant($"Naos.HubSpot.Domain.Model.CreateCompanyPropertyRequest: Name = {this.Name?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Label = {this.Label?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, GroupName = {this.GroupName?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Type = {this.Type?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, FieldType = {this.FieldType?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}.");
+            var result = Invariant($"Naos.HubSpot.Domain.CreateCompanyPropertyRequest: Name = {this.Name?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Label = {this.Label?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, GroupName = {this.GroupName?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Type = {this.Type?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, FieldType = {this.FieldType?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}.");
 
             return result;
         }

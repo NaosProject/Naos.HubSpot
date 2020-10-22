@@ -4,7 +4,7 @@
 // </auto-generated>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Naos.HubSpot.Domain.Model.Test
+namespace Naos.HubSpot.Domain.Test
 {
     using global::System;
     using global::System.CodeDom.Compiler;
@@ -31,7 +31,6 @@ namespace Naos.HubSpot.Domain.Model.Test
     using global::Xunit;
 
     using static global::System.FormattableString;
-    using Naos.HubSpot.Domain.Test;
 
     public static partial class CreateContactPropertyRequestTest
     {
@@ -47,7 +46,7 @@ namespace Naos.HubSpot.Domain.Model.Test
                         var result = new SystemUnderTestExpectedStringRepresentation<CreateContactPropertyRequest>
                         {
                             SystemUnderTest = systemUnderTest,
-                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.Model.CreateContactPropertyRequest: Name = {systemUnderTest.Name?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Label = {systemUnderTest.Label?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, GroupName = {systemUnderTest.GroupName?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, PropertyType = {systemUnderTest.PropertyType?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, FieldType = {systemUnderTest.FieldType?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}."),
+                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.CreateContactPropertyRequest: Name = {systemUnderTest.Name?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Label = {systemUnderTest.Label?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, GroupName = {systemUnderTest.GroupName?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, PropertyType = {systemUnderTest.PropertyType?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, FieldType = {systemUnderTest.FieldType?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}."),
                         };
 
                         return result;

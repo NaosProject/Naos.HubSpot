@@ -6,8 +6,6 @@
 
 namespace Naos.HubSpot.Domain
 {
-    using System.Collections.Generic;
-    using Naos.HubSpot.Domain.Model;
     using Naos.Protocol.Domain;
     using OBeautifulCode.Type;
 

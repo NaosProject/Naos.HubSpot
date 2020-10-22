@@ -18,7 +18,6 @@ namespace Naos.HubSpot.Domain.Test
 
     using global::FakeItEasy;
 
-    using global::Naos.HubSpot.Domain.Model;
     using global::Naos.Protocol.Domain;
 
     using global::OBeautifulCode.Assertion.Recipes;

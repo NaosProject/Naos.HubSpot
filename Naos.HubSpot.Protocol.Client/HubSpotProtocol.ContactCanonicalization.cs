@@ -8,7 +8,6 @@ namespace Naos.HubSpot.Protocol.Client
 {
     using System.Collections.Generic;
     using System.Linq;
-    using System.Security.Permissions;
     using Naos.CodeAnalysis.Recipes;
     using Naos.HubSpot.Domain;
 

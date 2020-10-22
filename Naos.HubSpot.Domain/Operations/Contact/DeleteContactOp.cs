@@ -6,7 +6,6 @@
 
 namespace Naos.HubSpot.Domain
 {
-    using Naos.HubSpot.Domain.Model;
     using Naos.Protocol.Domain;
     using OBeautifulCode.Assertion.Recipes;
     using OBeautifulCode.Type;

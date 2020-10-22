@@ -6,15 +6,8 @@
 
 namespace Naos.HubSpot.Domain.Test
 {
-    using System;
     using System.Diagnostics.CodeAnalysis;
-
-    using FakeItEasy;
-
-    using OBeautifulCode.AutoFakeItEasy;
     using OBeautifulCode.CodeAnalysis.Recipes;
-
-    using Xunit;
 
     public static partial class GetAllCompanyPropertiesOpTest
     {

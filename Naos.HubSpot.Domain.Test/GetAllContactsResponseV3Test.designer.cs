@@ -32,497 +32,378 @@ namespace Naos.HubSpot.Domain.Test
 
     using static global::System.FormattableString;
 
-    public static partial class CreateCompanyPropertyRequestTest
+    public static partial class GetAllContactsResponseV3Test
     {
-        private static readonly StringRepresentationTestScenarios<CreateCompanyPropertyRequest> StringRepresentationTestScenarios = new StringRepresentationTestScenarios<CreateCompanyPropertyRequest>()
+        private static readonly StringRepresentationTestScenarios<GetAllContactsResponseV3> StringRepresentationTestScenarios = new StringRepresentationTestScenarios<GetAllContactsResponseV3>()
             .AddScenario(() =>
-                new StringRepresentationTestScenario<CreateCompanyPropertyRequest>
+                new StringRepresentationTestScenario<GetAllContactsResponseV3>
                 {
                     Name = "Default Code Generated Scenario",
                     SystemUnderTestExpectedStringRepresentationFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<CreateCompanyPropertyRequest>();
+                        var systemUnderTest = A.Dummy<GetAllContactsResponseV3>();
 
-                        var result = new SystemUnderTestExpectedStringRepresentation<CreateCompanyPropertyRequest>
+                        var result = new SystemUnderTestExpectedStringRepresentation<GetAllContactsResponseV3>
                         {
                             SystemUnderTest = systemUnderTest,
-                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.CreateCompanyPropertyRequest: Name = {systemUnderTest.Name?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Label = {systemUnderTest.Label?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, GroupName = {systemUnderTest.GroupName?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Type = {systemUnderTest.Type?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, FieldType = {systemUnderTest.FieldType?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}."),
+                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.GetAllContactsResponseV3: CreatedAd = {systemUnderTest.CreatedAd?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Archived = {systemUnderTest.Archived.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Id = {systemUnderTest.Id?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Properties = {systemUnderTest.Properties?.ToString() ?? "<null>"}."),
                         };
 
                         return result;
                     },
                 });
 
-        private static readonly ConstructorArgumentValidationTestScenarios<CreateCompanyPropertyRequest> ConstructorArgumentValidationTestScenarios = new ConstructorArgumentValidationTestScenarios<CreateCompanyPropertyRequest>()
+        private static readonly ConstructorArgumentValidationTestScenarios<GetAllContactsResponseV3> ConstructorArgumentValidationTestScenarios = new ConstructorArgumentValidationTestScenarios<GetAllContactsResponseV3>()
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<CreateCompanyPropertyRequest>
+                new ConstructorArgumentValidationTestScenario<GetAllContactsResponseV3>
                 {
-                    Name = "constructor should throw ArgumentNullException when parameter 'name' is null scenario",
+                    Name = "constructor should throw ArgumentNullException when parameter 'createdAd' is null scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<CreateCompanyPropertyRequest>();
+                        var referenceObject = A.Dummy<GetAllContactsResponseV3>();
 
-                        var result = new CreateCompanyPropertyRequest(
+                        var result = new GetAllContactsResponseV3(
                                              null,
-                                             referenceObject.Label,
-                                             referenceObject.FieldType,
-                                             referenceObject.Type,
-                                             referenceObject.GroupName);
+                                             referenceObject.Archived,
+                                             referenceObject.Id,
+                                             referenceObject.Properties);
 
                         return result;
                     },
                     ExpectedExceptionType = typeof(ArgumentNullException),
-                    ExpectedExceptionMessageContains = new[] { "name" },
+                    ExpectedExceptionMessageContains = new[] { "createdAd" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<CreateCompanyPropertyRequest>
+                new ConstructorArgumentValidationTestScenario<GetAllContactsResponseV3>
                 {
-                    Name = "constructor should throw ArgumentException when parameter 'name' is white space scenario",
+                    Name = "constructor should throw ArgumentException when parameter 'createdAd' is white space scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<CreateCompanyPropertyRequest>();
+                        var referenceObject = A.Dummy<GetAllContactsResponseV3>();
 
-                        var result = new CreateCompanyPropertyRequest(
+                        var result = new GetAllContactsResponseV3(
                                              Invariant($"  {Environment.NewLine}  "),
-                                             referenceObject.Label,
-                                             referenceObject.FieldType,
-                                             referenceObject.Type,
-                                             referenceObject.GroupName);
+                                             referenceObject.Archived,
+                                             referenceObject.Id,
+                                             referenceObject.Properties);
 
                         return result;
                     },
                     ExpectedExceptionType = typeof(ArgumentException),
-                    ExpectedExceptionMessageContains = new[] { "name", "white space" },
+                    ExpectedExceptionMessageContains = new[] { "createdAd", "white space" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<CreateCompanyPropertyRequest>
+                new ConstructorArgumentValidationTestScenario<GetAllContactsResponseV3>
                 {
-                    Name = "constructor should throw ArgumentNullException when parameter 'label' is null scenario",
+                    Name = "constructor should throw ArgumentNullException when parameter 'id' is null scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<CreateCompanyPropertyRequest>();
+                        var referenceObject = A.Dummy<GetAllContactsResponseV3>();
 
-                        var result = new CreateCompanyPropertyRequest(
-                                             referenceObject.Name,
+                        var result = new GetAllContactsResponseV3(
+                                             referenceObject.CreatedAd,
+                                             referenceObject.Archived,
                                              null,
-                                             referenceObject.FieldType,
-                                             referenceObject.Type,
-                                             referenceObject.GroupName);
+                                             referenceObject.Properties);
 
                         return result;
                     },
                     ExpectedExceptionType = typeof(ArgumentNullException),
-                    ExpectedExceptionMessageContains = new[] { "label" },
+                    ExpectedExceptionMessageContains = new[] { "id" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<CreateCompanyPropertyRequest>
+                new ConstructorArgumentValidationTestScenario<GetAllContactsResponseV3>
                 {
-                    Name = "constructor should throw ArgumentException when parameter 'label' is white space scenario",
+                    Name = "constructor should throw ArgumentException when parameter 'id' is white space scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<CreateCompanyPropertyRequest>();
+                        var referenceObject = A.Dummy<GetAllContactsResponseV3>();
 
-                        var result = new CreateCompanyPropertyRequest(
-                                             referenceObject.Name,
+                        var result = new GetAllContactsResponseV3(
+                                             referenceObject.CreatedAd,
+                                             referenceObject.Archived,
                                              Invariant($"  {Environment.NewLine}  "),
-                                             referenceObject.FieldType,
-                                             referenceObject.Type,
-                                             referenceObject.GroupName);
+                                             referenceObject.Properties);
 
                         return result;
                     },
                     ExpectedExceptionType = typeof(ArgumentException),
-                    ExpectedExceptionMessageContains = new[] { "label", "white space" },
+                    ExpectedExceptionMessageContains = new[] { "id", "white space" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<CreateCompanyPropertyRequest>
+                new ConstructorArgumentValidationTestScenario<GetAllContactsResponseV3>
                 {
-                    Name = "constructor should throw ArgumentNullException when parameter 'fieldType' is null scenario",
+                    Name = "constructor should throw ArgumentNullException when parameter 'properties' is null scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<CreateCompanyPropertyRequest>();
+                        var referenceObject = A.Dummy<GetAllContactsResponseV3>();
 
-                        var result = new CreateCompanyPropertyRequest(
-                                             referenceObject.Name,
-                                             referenceObject.Label,
-                                             null,
-                                             referenceObject.Type,
-                                             referenceObject.GroupName);
-
-                        return result;
-                    },
-                    ExpectedExceptionType = typeof(ArgumentNullException),
-                    ExpectedExceptionMessageContains = new[] { "fieldType" },
-                })
-            .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<CreateCompanyPropertyRequest>
-                {
-                    Name = "constructor should throw ArgumentException when parameter 'fieldType' is white space scenario",
-                    ConstructionFunc = () =>
-                    {
-                        var referenceObject = A.Dummy<CreateCompanyPropertyRequest>();
-
-                        var result = new CreateCompanyPropertyRequest(
-                                             referenceObject.Name,
-                                             referenceObject.Label,
-                                             Invariant($"  {Environment.NewLine}  "),
-                                             referenceObject.Type,
-                                             referenceObject.GroupName);
-
-                        return result;
-                    },
-                    ExpectedExceptionType = typeof(ArgumentException),
-                    ExpectedExceptionMessageContains = new[] { "fieldType", "white space" },
-                })
-            .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<CreateCompanyPropertyRequest>
-                {
-                    Name = "constructor should throw ArgumentNullException when parameter 'type' is null scenario",
-                    ConstructionFunc = () =>
-                    {
-                        var referenceObject = A.Dummy<CreateCompanyPropertyRequest>();
-
-                        var result = new CreateCompanyPropertyRequest(
-                                             referenceObject.Name,
-                                             referenceObject.Label,
-                                             referenceObject.FieldType,
-                                             null,
-                                             referenceObject.GroupName);
-
-                        return result;
-                    },
-                    ExpectedExceptionType = typeof(ArgumentNullException),
-                    ExpectedExceptionMessageContains = new[] { "type" },
-                })
-            .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<CreateCompanyPropertyRequest>
-                {
-                    Name = "constructor should throw ArgumentException when parameter 'type' is white space scenario",
-                    ConstructionFunc = () =>
-                    {
-                        var referenceObject = A.Dummy<CreateCompanyPropertyRequest>();
-
-                        var result = new CreateCompanyPropertyRequest(
-                                             referenceObject.Name,
-                                             referenceObject.Label,
-                                             referenceObject.FieldType,
-                                             Invariant($"  {Environment.NewLine}  "),
-                                             referenceObject.GroupName);
-
-                        return result;
-                    },
-                    ExpectedExceptionType = typeof(ArgumentException),
-                    ExpectedExceptionMessageContains = new[] { "type", "white space" },
-                })
-            .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<CreateCompanyPropertyRequest>
-                {
-                    Name = "constructor should throw ArgumentNullException when parameter 'groupName' is null scenario",
-                    ConstructionFunc = () =>
-                    {
-                        var referenceObject = A.Dummy<CreateCompanyPropertyRequest>();
-
-                        var result = new CreateCompanyPropertyRequest(
-                                             referenceObject.Name,
-                                             referenceObject.Label,
-                                             referenceObject.FieldType,
-                                             referenceObject.Type,
+                        var result = new GetAllContactsResponseV3(
+                                             referenceObject.CreatedAd,
+                                             referenceObject.Archived,
+                                             referenceObject.Id,
                                              null);
 
                         return result;
                     },
                     ExpectedExceptionType = typeof(ArgumentNullException),
-                    ExpectedExceptionMessageContains = new[] { "groupName" },
+                    ExpectedExceptionMessageContains = new[] { "properties" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<CreateCompanyPropertyRequest>
+                new ConstructorArgumentValidationTestScenario<GetAllContactsResponseV3>
                 {
-                    Name = "constructor should throw ArgumentException when parameter 'groupName' is white space scenario",
+                    Name = "constructor should throw ArgumentException when parameter 'properties' is an empty dictionary scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<CreateCompanyPropertyRequest>();
+                        var referenceObject = A.Dummy<GetAllContactsResponseV3>();
 
-                        var result = new CreateCompanyPropertyRequest(
-                                             referenceObject.Name,
-                                             referenceObject.Label,
-                                             referenceObject.FieldType,
-                                             referenceObject.Type,
-                                             Invariant($"  {Environment.NewLine}  "));
+                        var result = new GetAllContactsResponseV3(
+                                             referenceObject.CreatedAd,
+                                             referenceObject.Archived,
+                                             referenceObject.Id,
+                                             new Dictionary<string, string>());
 
                         return result;
                     },
                     ExpectedExceptionType = typeof(ArgumentException),
-                    ExpectedExceptionMessageContains = new[] { "groupName", "white space" },
+                    ExpectedExceptionMessageContains = new[] { "properties", "is an empty dictionary" },
+                })
+            .AddScenario(() =>
+                new ConstructorArgumentValidationTestScenario<GetAllContactsResponseV3>
+                {
+                    Name = "constructor should throw ArgumentException when parameter 'properties' contains a key-value pair with a null value scenario",
+                    ConstructionFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<GetAllContactsResponseV3>();
+
+                        var dictionaryWithNullValue = referenceObject.Properties.ToDictionary(_ => _.Key, _ => _.Value);
+
+                        var randomKey = dictionaryWithNullValue.Keys.ElementAt(ThreadSafeRandom.Next(0, dictionaryWithNullValue.Count));
+
+                        dictionaryWithNullValue[randomKey] = null;
+
+                        var result = new GetAllContactsResponseV3(
+                                             referenceObject.CreatedAd,
+                                             referenceObject.Archived,
+                                             referenceObject.Id,
+                                             dictionaryWithNullValue);
+
+                        return result;
+                    },
+                    ExpectedExceptionType = typeof(ArgumentException),
+                    ExpectedExceptionMessageContains = new[] { "properties", "contains at least one key-value pair with a null value" },
                 });
 
-        private static readonly ConstructorPropertyAssignmentTestScenarios<CreateCompanyPropertyRequest> ConstructorPropertyAssignmentTestScenarios = new ConstructorPropertyAssignmentTestScenarios<CreateCompanyPropertyRequest>()
+        private static readonly ConstructorPropertyAssignmentTestScenarios<GetAllContactsResponseV3> ConstructorPropertyAssignmentTestScenarios = new ConstructorPropertyAssignmentTestScenarios<GetAllContactsResponseV3>()
             .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<CreateCompanyPropertyRequest>
+                new ConstructorPropertyAssignmentTestScenario<GetAllContactsResponseV3>
                 {
-                    Name = "Name should return same 'name' parameter passed to constructor when getting",
+                    Name = "CreatedAd should return same 'createdAd' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
-                        var referenceObject = A.Dummy<CreateCompanyPropertyRequest>();
+                        var referenceObject = A.Dummy<GetAllContactsResponseV3>();
 
-                        var result = new SystemUnderTestExpectedPropertyValue<CreateCompanyPropertyRequest>
+                        var result = new SystemUnderTestExpectedPropertyValue<GetAllContactsResponseV3>
                         {
-                            SystemUnderTest = new CreateCompanyPropertyRequest(
-                                                      referenceObject.Name,
-                                                      referenceObject.Label,
-                                                      referenceObject.FieldType,
-                                                      referenceObject.Type,
-                                                      referenceObject.GroupName),
-                            ExpectedPropertyValue = referenceObject.Name,
+                            SystemUnderTest = new GetAllContactsResponseV3(
+                                                      referenceObject.CreatedAd,
+                                                      referenceObject.Archived,
+                                                      referenceObject.Id,
+                                                      referenceObject.Properties),
+                            ExpectedPropertyValue = referenceObject.CreatedAd,
                         };
 
                         return result;
                     },
-                    PropertyName = "Name",
+                    PropertyName = "CreatedAd",
                 })
             .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<CreateCompanyPropertyRequest>
+                new ConstructorPropertyAssignmentTestScenario<GetAllContactsResponseV3>
                 {
-                    Name = "Label should return same 'label' parameter passed to constructor when getting",
+                    Name = "Archived should return same 'archived' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
-                        var referenceObject = A.Dummy<CreateCompanyPropertyRequest>();
+                        var referenceObject = A.Dummy<GetAllContactsResponseV3>();
 
-                        var result = new SystemUnderTestExpectedPropertyValue<CreateCompanyPropertyRequest>
+                        var result = new SystemUnderTestExpectedPropertyValue<GetAllContactsResponseV3>
                         {
-                            SystemUnderTest = new CreateCompanyPropertyRequest(
-                                                      referenceObject.Name,
-                                                      referenceObject.Label,
-                                                      referenceObject.FieldType,
-                                                      referenceObject.Type,
-                                                      referenceObject.GroupName),
-                            ExpectedPropertyValue = referenceObject.Label,
+                            SystemUnderTest = new GetAllContactsResponseV3(
+                                                      referenceObject.CreatedAd,
+                                                      referenceObject.Archived,
+                                                      referenceObject.Id,
+                                                      referenceObject.Properties),
+                            ExpectedPropertyValue = referenceObject.Archived,
                         };
 
                         return result;
                     },
-                    PropertyName = "Label",
+                    PropertyName = "Archived",
                 })
             .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<CreateCompanyPropertyRequest>
+                new ConstructorPropertyAssignmentTestScenario<GetAllContactsResponseV3>
                 {
-                    Name = "FieldType should return same 'fieldType' parameter passed to constructor when getting",
+                    Name = "Id should return same 'id' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
-                        var referenceObject = A.Dummy<CreateCompanyPropertyRequest>();
+                        var referenceObject = A.Dummy<GetAllContactsResponseV3>();
 
-                        var result = new SystemUnderTestExpectedPropertyValue<CreateCompanyPropertyRequest>
+                        var result = new SystemUnderTestExpectedPropertyValue<GetAllContactsResponseV3>
                         {
-                            SystemUnderTest = new CreateCompanyPropertyRequest(
-                                                      referenceObject.Name,
-                                                      referenceObject.Label,
-                                                      referenceObject.FieldType,
-                                                      referenceObject.Type,
-                                                      referenceObject.GroupName),
-                            ExpectedPropertyValue = referenceObject.FieldType,
+                            SystemUnderTest = new GetAllContactsResponseV3(
+                                                      referenceObject.CreatedAd,
+                                                      referenceObject.Archived,
+                                                      referenceObject.Id,
+                                                      referenceObject.Properties),
+                            ExpectedPropertyValue = referenceObject.Id,
                         };
 
                         return result;
                     },
-                    PropertyName = "FieldType",
+                    PropertyName = "Id",
                 })
             .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<CreateCompanyPropertyRequest>
+                new ConstructorPropertyAssignmentTestScenario<GetAllContactsResponseV3>
                 {
-                    Name = "Type should return same 'type' parameter passed to constructor when getting",
+                    Name = "Properties should return same 'properties' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
-                        var referenceObject = A.Dummy<CreateCompanyPropertyRequest>();
+                        var referenceObject = A.Dummy<GetAllContactsResponseV3>();
 
-                        var result = new SystemUnderTestExpectedPropertyValue<CreateCompanyPropertyRequest>
+                        var result = new SystemUnderTestExpectedPropertyValue<GetAllContactsResponseV3>
                         {
-                            SystemUnderTest = new CreateCompanyPropertyRequest(
-                                                      referenceObject.Name,
-                                                      referenceObject.Label,
-                                                      referenceObject.FieldType,
-                                                      referenceObject.Type,
-                                                      referenceObject.GroupName),
-                            ExpectedPropertyValue = referenceObject.Type,
+                            SystemUnderTest = new GetAllContactsResponseV3(
+                                                      referenceObject.CreatedAd,
+                                                      referenceObject.Archived,
+                                                      referenceObject.Id,
+                                                      referenceObject.Properties),
+                            ExpectedPropertyValue = referenceObject.Properties,
                         };
 
                         return result;
                     },
-                    PropertyName = "Type",
-                })
-            .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<CreateCompanyPropertyRequest>
-                {
-                    Name = "GroupName should return same 'groupName' parameter passed to constructor when getting",
-                    SystemUnderTestExpectedPropertyValueFunc = () =>
-                    {
-                        var referenceObject = A.Dummy<CreateCompanyPropertyRequest>();
-
-                        var result = new SystemUnderTestExpectedPropertyValue<CreateCompanyPropertyRequest>
-                        {
-                            SystemUnderTest = new CreateCompanyPropertyRequest(
-                                                      referenceObject.Name,
-                                                      referenceObject.Label,
-                                                      referenceObject.FieldType,
-                                                      referenceObject.Type,
-                                                      referenceObject.GroupName),
-                            ExpectedPropertyValue = referenceObject.GroupName,
-                        };
-
-                        return result;
-                    },
-                    PropertyName = "GroupName",
+                    PropertyName = "Properties",
                 });
 
-        private static readonly DeepCloneWithTestScenarios<CreateCompanyPropertyRequest> DeepCloneWithTestScenarios = new DeepCloneWithTestScenarios<CreateCompanyPropertyRequest>()
+        private static readonly DeepCloneWithTestScenarios<GetAllContactsResponseV3> DeepCloneWithTestScenarios = new DeepCloneWithTestScenarios<GetAllContactsResponseV3>()
             .AddScenario(() =>
-                new DeepCloneWithTestScenario<CreateCompanyPropertyRequest>
+                new DeepCloneWithTestScenario<GetAllContactsResponseV3>
                 {
-                    Name = "DeepCloneWithName should deep clone object and replace Name with the provided name",
-                    WithPropertyName = "Name",
+                    Name = "DeepCloneWithCreatedAd should deep clone object and replace CreatedAd with the provided createdAd",
+                    WithPropertyName = "CreatedAd",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<CreateCompanyPropertyRequest>();
+                        var systemUnderTest = A.Dummy<GetAllContactsResponseV3>();
 
-                        var referenceObject = A.Dummy<CreateCompanyPropertyRequest>().ThatIs(_ => !systemUnderTest.Name.IsEqualTo(_.Name));
+                        var referenceObject = A.Dummy<GetAllContactsResponseV3>().ThatIs(_ => !systemUnderTest.CreatedAd.IsEqualTo(_.CreatedAd));
 
-                        var result = new SystemUnderTestDeepCloneWithValue<CreateCompanyPropertyRequest>
+                        var result = new SystemUnderTestDeepCloneWithValue<GetAllContactsResponseV3>
                         {
                             SystemUnderTest = systemUnderTest,
-                            DeepCloneWithValue = referenceObject.Name,
+                            DeepCloneWithValue = referenceObject.CreatedAd,
                         };
 
                         return result;
                     },
                 })
             .AddScenario(() =>
-                new DeepCloneWithTestScenario<CreateCompanyPropertyRequest>
+                new DeepCloneWithTestScenario<GetAllContactsResponseV3>
                 {
-                    Name = "DeepCloneWithLabel should deep clone object and replace Label with the provided label",
-                    WithPropertyName = "Label",
+                    Name = "DeepCloneWithArchived should deep clone object and replace Archived with the provided archived",
+                    WithPropertyName = "Archived",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<CreateCompanyPropertyRequest>();
+                        var systemUnderTest = A.Dummy<GetAllContactsResponseV3>();
 
-                        var referenceObject = A.Dummy<CreateCompanyPropertyRequest>().ThatIs(_ => !systemUnderTest.Label.IsEqualTo(_.Label));
+                        var referenceObject = A.Dummy<GetAllContactsResponseV3>().ThatIs(_ => !systemUnderTest.Archived.IsEqualTo(_.Archived));
 
-                        var result = new SystemUnderTestDeepCloneWithValue<CreateCompanyPropertyRequest>
+                        var result = new SystemUnderTestDeepCloneWithValue<GetAllContactsResponseV3>
                         {
                             SystemUnderTest = systemUnderTest,
-                            DeepCloneWithValue = referenceObject.Label,
+                            DeepCloneWithValue = referenceObject.Archived,
                         };
 
                         return result;
                     },
                 })
             .AddScenario(() =>
-                new DeepCloneWithTestScenario<CreateCompanyPropertyRequest>
+                new DeepCloneWithTestScenario<GetAllContactsResponseV3>
                 {
-                    Name = "DeepCloneWithGroupName should deep clone object and replace GroupName with the provided groupName",
-                    WithPropertyName = "GroupName",
+                    Name = "DeepCloneWithId should deep clone object and replace Id with the provided id",
+                    WithPropertyName = "Id",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<CreateCompanyPropertyRequest>();
+                        var systemUnderTest = A.Dummy<GetAllContactsResponseV3>();
 
-                        var referenceObject = A.Dummy<CreateCompanyPropertyRequest>().ThatIs(_ => !systemUnderTest.GroupName.IsEqualTo(_.GroupName));
+                        var referenceObject = A.Dummy<GetAllContactsResponseV3>().ThatIs(_ => !systemUnderTest.Id.IsEqualTo(_.Id));
 
-                        var result = new SystemUnderTestDeepCloneWithValue<CreateCompanyPropertyRequest>
+                        var result = new SystemUnderTestDeepCloneWithValue<GetAllContactsResponseV3>
                         {
                             SystemUnderTest = systemUnderTest,
-                            DeepCloneWithValue = referenceObject.GroupName,
+                            DeepCloneWithValue = referenceObject.Id,
                         };
 
                         return result;
                     },
                 })
             .AddScenario(() =>
-                new DeepCloneWithTestScenario<CreateCompanyPropertyRequest>
+                new DeepCloneWithTestScenario<GetAllContactsResponseV3>
                 {
-                    Name = "DeepCloneWithType should deep clone object and replace Type with the provided type",
-                    WithPropertyName = "Type",
+                    Name = "DeepCloneWithProperties should deep clone object and replace Properties with the provided properties",
+                    WithPropertyName = "Properties",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<CreateCompanyPropertyRequest>();
+                        var systemUnderTest = A.Dummy<GetAllContactsResponseV3>();
 
-                        var referenceObject = A.Dummy<CreateCompanyPropertyRequest>().ThatIs(_ => !systemUnderTest.Type.IsEqualTo(_.Type));
+                        var referenceObject = A.Dummy<GetAllContactsResponseV3>().ThatIs(_ => !systemUnderTest.Properties.IsEqualTo(_.Properties));
 
-                        var result = new SystemUnderTestDeepCloneWithValue<CreateCompanyPropertyRequest>
+                        var result = new SystemUnderTestDeepCloneWithValue<GetAllContactsResponseV3>
                         {
                             SystemUnderTest = systemUnderTest,
-                            DeepCloneWithValue = referenceObject.Type,
-                        };
-
-                        return result;
-                    },
-                })
-            .AddScenario(() =>
-                new DeepCloneWithTestScenario<CreateCompanyPropertyRequest>
-                {
-                    Name = "DeepCloneWithFieldType should deep clone object and replace FieldType with the provided fieldType",
-                    WithPropertyName = "FieldType",
-                    SystemUnderTestDeepCloneWithValueFunc = () =>
-                    {
-                        var systemUnderTest = A.Dummy<CreateCompanyPropertyRequest>();
-
-                        var referenceObject = A.Dummy<CreateCompanyPropertyRequest>().ThatIs(_ => !systemUnderTest.FieldType.IsEqualTo(_.FieldType));
-
-                        var result = new SystemUnderTestDeepCloneWithValue<CreateCompanyPropertyRequest>
-                        {
-                            SystemUnderTest = systemUnderTest,
-                            DeepCloneWithValue = referenceObject.FieldType,
+                            DeepCloneWithValue = referenceObject.Properties,
                         };
 
                         return result;
                     },
                 });
 
-        private static readonly CreateCompanyPropertyRequest ReferenceObjectForEquatableTestScenarios = A.Dummy<CreateCompanyPropertyRequest>();
+        private static readonly GetAllContactsResponseV3 ReferenceObjectForEquatableTestScenarios = A.Dummy<GetAllContactsResponseV3>();
 
-        private static readonly EquatableTestScenarios<CreateCompanyPropertyRequest> EquatableTestScenarios = new EquatableTestScenarios<CreateCompanyPropertyRequest>()
+        private static readonly EquatableTestScenarios<GetAllContactsResponseV3> EquatableTestScenarios = new EquatableTestScenarios<GetAllContactsResponseV3>()
             .AddScenario(() =>
-                new EquatableTestScenario<CreateCompanyPropertyRequest>
+                new EquatableTestScenario<GetAllContactsResponseV3>
                 {
                     Name = "Default Code Generated Scenario",
                     ReferenceObject = ReferenceObjectForEquatableTestScenarios,
-                    ObjectsThatAreEqualToButNotTheSameAsReferenceObject = new CreateCompanyPropertyRequest[]
+                    ObjectsThatAreEqualToButNotTheSameAsReferenceObject = new GetAllContactsResponseV3[]
                     {
-                        new CreateCompanyPropertyRequest(
-                                ReferenceObjectForEquatableTestScenarios.Name,
-                                ReferenceObjectForEquatableTestScenarios.Label,
-                                ReferenceObjectForEquatableTestScenarios.FieldType,
-                                ReferenceObjectForEquatableTestScenarios.Type,
-                                ReferenceObjectForEquatableTestScenarios.GroupName),
+                        new GetAllContactsResponseV3(
+                                ReferenceObjectForEquatableTestScenarios.CreatedAd,
+                                ReferenceObjectForEquatableTestScenarios.Archived,
+                                ReferenceObjectForEquatableTestScenarios.Id,
+                                ReferenceObjectForEquatableTestScenarios.Properties),
                     },
-                    ObjectsThatAreNotEqualToReferenceObject = new CreateCompanyPropertyRequest[]
+                    ObjectsThatAreNotEqualToReferenceObject = new GetAllContactsResponseV3[]
                     {
-                        new CreateCompanyPropertyRequest(
-                                A.Dummy<CreateCompanyPropertyRequest>().Whose(_ => !_.Name.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Name)).Name,
-                                ReferenceObjectForEquatableTestScenarios.Label,
-                                ReferenceObjectForEquatableTestScenarios.FieldType,
-                                ReferenceObjectForEquatableTestScenarios.Type,
-                                ReferenceObjectForEquatableTestScenarios.GroupName),
-                        new CreateCompanyPropertyRequest(
-                                ReferenceObjectForEquatableTestScenarios.Name,
-                                A.Dummy<CreateCompanyPropertyRequest>().Whose(_ => !_.Label.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Label)).Label,
-                                ReferenceObjectForEquatableTestScenarios.FieldType,
-                                ReferenceObjectForEquatableTestScenarios.Type,
-                                ReferenceObjectForEquatableTestScenarios.GroupName),
-                        new CreateCompanyPropertyRequest(
-                                ReferenceObjectForEquatableTestScenarios.Name,
-                                ReferenceObjectForEquatableTestScenarios.Label,
-                                ReferenceObjectForEquatableTestScenarios.FieldType,
-                                ReferenceObjectForEquatableTestScenarios.Type,
-                                A.Dummy<CreateCompanyPropertyRequest>().Whose(_ => !_.GroupName.IsEqualTo(ReferenceObjectForEquatableTestScenarios.GroupName)).GroupName),
-                        new CreateCompanyPropertyRequest(
-                                ReferenceObjectForEquatableTestScenarios.Name,
-                                ReferenceObjectForEquatableTestScenarios.Label,
-                                ReferenceObjectForEquatableTestScenarios.FieldType,
-                                A.Dummy<CreateCompanyPropertyRequest>().Whose(_ => !_.Type.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Type)).Type,
-                                ReferenceObjectForEquatableTestScenarios.GroupName),
-                        new CreateCompanyPropertyRequest(
-                                ReferenceObjectForEquatableTestScenarios.Name,
-                                ReferenceObjectForEquatableTestScenarios.Label,
-                                A.Dummy<CreateCompanyPropertyRequest>().Whose(_ => !_.FieldType.IsEqualTo(ReferenceObjectForEquatableTestScenarios.FieldType)).FieldType,
-                                ReferenceObjectForEquatableTestScenarios.Type,
-                                ReferenceObjectForEquatableTestScenarios.GroupName),
+                        new GetAllContactsResponseV3(
+                                A.Dummy<GetAllContactsResponseV3>().Whose(_ => !_.CreatedAd.IsEqualTo(ReferenceObjectForEquatableTestScenarios.CreatedAd)).CreatedAd,
+                                ReferenceObjectForEquatableTestScenarios.Archived,
+                                ReferenceObjectForEquatableTestScenarios.Id,
+                                ReferenceObjectForEquatableTestScenarios.Properties),
+                        new GetAllContactsResponseV3(
+                                ReferenceObjectForEquatableTestScenarios.CreatedAd,
+                                A.Dummy<GetAllContactsResponseV3>().Whose(_ => !_.Archived.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Archived)).Archived,
+                                ReferenceObjectForEquatableTestScenarios.Id,
+                                ReferenceObjectForEquatableTestScenarios.Properties),
+                        new GetAllContactsResponseV3(
+                                ReferenceObjectForEquatableTestScenarios.CreatedAd,
+                                ReferenceObjectForEquatableTestScenarios.Archived,
+                                A.Dummy<GetAllContactsResponseV3>().Whose(_ => !_.Id.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Id)).Id,
+                                ReferenceObjectForEquatableTestScenarios.Properties),
+                        new GetAllContactsResponseV3(
+                                ReferenceObjectForEquatableTestScenarios.CreatedAd,
+                                ReferenceObjectForEquatableTestScenarios.Archived,
+                                ReferenceObjectForEquatableTestScenarios.Id,
+                                A.Dummy<GetAllContactsResponseV3>().Whose(_ => !_.Properties.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Properties)).Properties),
                     },
                     ObjectsThatAreNotOfTheSameTypeAsReferenceObject = new object[]
                     {
@@ -552,12 +433,12 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void CreateCompanyPropertyRequest___Should_implement_IModel_of_CreateCompanyPropertyRequest___When_reflecting()
+            public static void GetAllContactsResponseV3___Should_implement_IModel_of_GetAllContactsResponseV3___When_reflecting()
             {
                 // Arrange
-                var type = typeof(CreateCompanyPropertyRequest);
+                var type = typeof(GetAllContactsResponseV3);
 
-                var expectedModelMethods = typeof(IModel<CreateCompanyPropertyRequest>)
+                var expectedModelMethods = typeof(IModel<GetAllContactsResponseV3>)
                                           .GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy)
                                           .ToList();
 
@@ -569,7 +450,7 @@ namespace Naos.HubSpot.Domain.Test
                 var actualModelMethodHashes = actualModelMethods.Select(_ => _.GetSignatureHash());
 
                 // Assert
-                actualInterfaces.AsTest().Must().ContainElement(typeof(IModel<CreateCompanyPropertyRequest>));
+                actualInterfaces.AsTest().Must().ContainElement(typeof(IModel<GetAllContactsResponseV3>));
                 expectedModelMethodHashes.Except(actualModelMethodHashes).AsTest().Must().BeEmptyEnumerable();
             }
 
@@ -587,10 +468,10 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void CreateCompanyPropertyRequest___Should_be_attributed_with_Serializable____When_reflecting()
+            public static void GetAllContactsResponseV3___Should_be_attributed_with_Serializable____When_reflecting()
             {
                 // Arrange
-                var type = typeof(CreateCompanyPropertyRequest);
+                var type = typeof(GetAllContactsResponseV3);
 
                 // Act
                 var actualAttributes = type.GetCustomAttributes(typeof(SerializableAttribute), false);
@@ -763,10 +644,10 @@ namespace Naos.HubSpot.Domain.Test
             public static void Clone___Should_clone_object___When_called()
             {
                 // Arrange
-                var systemUnderTest = A.Dummy<CreateCompanyPropertyRequest>();
+                var systemUnderTest = A.Dummy<GetAllContactsResponseV3>();
 
                 // Act
-                var actual = (CreateCompanyPropertyRequest)systemUnderTest.Clone();
+                var actual = (GetAllContactsResponseV3)systemUnderTest.Clone();
 
                 // Assert
                 actual.AsTest().Must().BeEqualTo(systemUnderTest);
@@ -790,7 +671,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void DeepClone___Should_deep_clone_object___When_called()
             {
                 // Arrange
-                var systemUnderTest = A.Dummy<CreateCompanyPropertyRequest>();
+                var systemUnderTest = A.Dummy<GetAllContactsResponseV3>();
 
                 // Act
                 var actual = systemUnderTest.DeepClone();
@@ -798,6 +679,15 @@ namespace Naos.HubSpot.Domain.Test
                 // Assert
                 actual.AsTest().Must().BeEqualTo(systemUnderTest);
                 actual.AsTest().Must().NotBeSameReferenceAs(systemUnderTest);
+
+                if (systemUnderTest.Properties == null)
+                {
+                    actual.Properties.AsTest().Must().BeNull();
+                }
+                else
+                {
+                    actual.Properties.AsTest().Must().NotBeSameReferenceAs(systemUnderTest.Properties);
+                }
             }
 
             [Fact]
@@ -816,7 +706,7 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
             public static void DeepCloneWith___Should_deep_clone_object_and_replace_the_associated_property_with_the_provided_value___When_called()
             {
-                var propertyNames = new string[] { "Name", "Label", "GroupName", "Type", "FieldType" };
+                var propertyNames = new string[] { "CreatedAd", "Archived", "Id", "Properties" };
 
                 var scenarios = DeepCloneWithTestScenarios.ValidateAndPrepareForTesting();
 
@@ -833,12 +723,12 @@ namespace Naos.HubSpot.Domain.Test
                     }
 
                     // Act
-                    var actual = (CreateCompanyPropertyRequest)scenario.DeepCloneWithMethod.Invoke(scenario.SystemUnderTest, new[] { scenario.WithValue });
+                    var actual = (GetAllContactsResponseV3)scenario.DeepCloneWithMethod.Invoke(scenario.SystemUnderTest, new[] { scenario.WithValue });
 
                     // Assert
                     foreach(var propertyName in propertyNames)
                     {
-                        var property = typeof(CreateCompanyPropertyRequest).GetProperty(propertyName);
+                        var property = typeof(GetAllContactsResponseV3).GetProperty(propertyName);
 
                         var propertyType = property.PropertyType;
 
@@ -906,7 +796,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_string_using_ObcBsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<CreateCompanyPropertyRequest>();
+                var expected = A.Dummy<GetAllContactsResponseV3>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.BsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -935,7 +825,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_bytes_using_ObcBsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<CreateCompanyPropertyRequest>();
+                var expected = A.Dummy<GetAllContactsResponseV3>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.BsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -964,7 +854,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_string_using_ObcJsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<CreateCompanyPropertyRequest>();
+                var expected = A.Dummy<GetAllContactsResponseV3>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.JsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -993,7 +883,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_bytes_using_ObcJsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<CreateCompanyPropertyRequest>();
+                var expected = A.Dummy<GetAllContactsResponseV3>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.JsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -1027,8 +917,8 @@ namespace Naos.HubSpot.Domain.Test
             public static void EqualsOperator___Should_return_true___When_both_sides_of_operator_are_null()
             {
                 // Arrange
-                CreateCompanyPropertyRequest systemUnderTest1 = null;
-                CreateCompanyPropertyRequest systemUnderTest2 = null;
+                GetAllContactsResponseV3 systemUnderTest1 = null;
+                GetAllContactsResponseV3 systemUnderTest2 = null;
 
                 // Act
                 var actual = systemUnderTest1 == systemUnderTest2;
@@ -1058,7 +948,7 @@ namespace Naos.HubSpot.Domain.Test
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    CreateCompanyPropertyRequest systemUnderTest = null;
+                    GetAllContactsResponseV3 systemUnderTest = null;
 
                     // Act
                     var actual1 = systemUnderTest == scenario.ReferenceObject;
@@ -1207,8 +1097,8 @@ namespace Naos.HubSpot.Domain.Test
             public static void NotEqualsOperator___Should_return_false___When_both_sides_of_operator_are_null()
             {
                 // Arrange
-                CreateCompanyPropertyRequest systemUnderTest1 = null;
-                CreateCompanyPropertyRequest systemUnderTest2 = null;
+                GetAllContactsResponseV3 systemUnderTest1 = null;
+                GetAllContactsResponseV3 systemUnderTest2 = null;
 
                 // Act
                 var actual = systemUnderTest1 != systemUnderTest2;
@@ -1238,7 +1128,7 @@ namespace Naos.HubSpot.Domain.Test
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    CreateCompanyPropertyRequest systemUnderTest = null;
+                    GetAllContactsResponseV3 systemUnderTest = null;
 
                     // Act
                     var actual1 = systemUnderTest != scenario.ReferenceObject;
@@ -1384,14 +1274,14 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_CreateCompanyPropertyRequest___Should_return_false___When_parameter_other_is_null()
+            public static void Equals_with_GetAllContactsResponseV3___Should_return_false___When_parameter_other_is_null()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    CreateCompanyPropertyRequest systemUnderTest = null;
+                    GetAllContactsResponseV3 systemUnderTest = null;
 
                     // Act
                     var actual = scenario.ReferenceObject.Equals(systemUnderTest);
@@ -1415,7 +1305,7 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_CreateCompanyPropertyRequest___Should_return_true___When_parameter_other_is_same_object()
+            public static void Equals_with_GetAllContactsResponseV3___Should_return_true___When_parameter_other_is_same_object()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
@@ -1443,7 +1333,7 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_CreateCompanyPropertyRequest___Should_return_false___When_parameter_other_is_derived_from_the_same_type_but_is_not_of_the_same_type_as_this_object()
+            public static void Equals_with_GetAllContactsResponseV3___Should_return_false___When_parameter_other_is_derived_from_the_same_type_but_is_not_of_the_same_type_as_this_object()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
@@ -1471,7 +1361,7 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_CreateCompanyPropertyRequest___Should_return_false___When_objects_being_compared_have_different_property_values()
+            public static void Equals_with_GetAllContactsResponseV3___Should_return_false___When_objects_being_compared_have_different_property_values()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
@@ -1499,7 +1389,7 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_CreateCompanyPropertyRequest___Should_return_true___When_objects_being_compared_have_same_property_values()
+            public static void Equals_with_GetAllContactsResponseV3___Should_return_true___When_objects_being_compared_have_same_property_values()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 

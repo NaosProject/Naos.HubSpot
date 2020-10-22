@@ -10,7 +10,6 @@
 namespace Naos.Bootstrapper
 {
     using System;
-    using FakeItEasy;
     using OBeautifulCode.Type.Recipes;
 
     /// <summary>

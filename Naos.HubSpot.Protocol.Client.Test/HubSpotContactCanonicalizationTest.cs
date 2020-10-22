@@ -6,8 +6,6 @@
 
 namespace Naos.HubSpot.Protocol.Client.Test
 {
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
     using Naos.HubSpot.Domain;
     using OBeautifulCode.Assertion.Recipes;

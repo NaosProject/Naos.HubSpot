@@ -14,7 +14,6 @@ namespace Naos.HubSpot.Protocol.Client
     using Naos.HubSpot.Domain;
     using Naos.Protocol.Domain;
     using Naos.Recipes.RunWithRetry;
-    using OBeautifulCode.Enum.Recipes;
     using OBeautifulCode.Serialization.Json;
 
     /// <summary>
