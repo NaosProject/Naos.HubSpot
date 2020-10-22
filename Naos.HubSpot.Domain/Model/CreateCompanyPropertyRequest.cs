@@ -12,20 +12,23 @@ namespace Naos.HubSpot.Domain.Model
     /// Implements the <see cref="OBeautifulCode.Type.IModelViaCodeGen" />.
     /// </summary>
     /// <seealso cref="OBeautifulCode.Type.IModelViaCodeGen" />
-    public class CreateCompanyPropertyRequest : IModelViaCodeGen
+    public partial class CreateCompanyPropertyRequest : IModelViaCodeGen
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateCompanyPropertyRequest"/> class.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="label">The label.</param>
-        public CreateCompanyPropertyRequest(string name, string label)
+        /// <param name="fieldType">Type of the field.</param>
+        /// <param name="type">The type.</param>
+        /// <param name="groupName">Name of the group.</param>
+        public CreateCompanyPropertyRequest(string name, string label, string fieldType = "text", string type = "string", string groupName = "companyinformation")
         {
             this.Name = name;
             this.Label = label;
-            this.GroupName = "companyinformation";
-            this.Type = "string";
-            this.FieldType = "text";
+            this.FieldType = fieldType;
+            this.Type = type;
+            this.GroupName = groupName;
         }
 
         /// <summary>

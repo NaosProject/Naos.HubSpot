@@ -30,6 +30,15 @@ namespace Naos.HubSpot.Protocol.Client.Test
             // Arrange
             var protocol = new HubSpotProtocol(BaseUri, ApiKey);
             var op = new GetAllContactsOp();
+            var contactToAddProps = new Dictionary<string, string>
+            {
+                { StandardContactPropertyName.EmailAddress.ToString(), "addcontacttest@testemail.com" },
+                { StandardContactPropertyName.FirstName.ToString(), "testContactFirst" },
+                { StandardContactPropertyName.LastName.ToString(), "testcontactLast" },
+            };
+            var contactToCreate = new Contact(contactToAddProps);
+            var createContactOp = new AddOrUpdateContactsOp(new[] { contactToCreate });
+            protocol.Execute(createContactOp);
             
             // Act
             var contacts = protocol.Execute(op);

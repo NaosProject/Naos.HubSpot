@@ -119,8 +119,17 @@
     <Compile Include="Model\Contact.designer.cs">
       <DependentUpon>Contact.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\ContactPropertyModel.designer.cs">
+      <DependentUpon>ContactPropertyModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\CreateCompanyPropertyRequest.cs" />
+    <Compile Include="Model\CreateCompanyPropertyRequest.designer.cs">
+      <DependentUpon>CreateCompanyPropertyRequest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\CreateContactPropertyRequest.cs" />
+    <Compile Include="Model\CreateContactPropertyRequest.designer.cs">
+      <DependentUpon>CreateContactPropertyRequest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\GetAllCompanyPropertiesResponse.cs" />
     <Compile Include="Model\ContactPropertyModel.cs" />
     <Compile Include="Model\CreateAssociationRequest.cs" />
@@ -132,6 +141,9 @@
     <Compile Include="Model\DeleteContactResponse.designer.cs">
       <DependentUpon>DeleteContactResponse.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\GetAllCompanyPropertiesResponse.designer.cs">
+      <DependentUpon>GetAllCompanyPropertiesResponse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\PropertyModel.cs" />
     <Compile Include="Model\PropertyModel.designer.cs">
       <DependentUpon>PropertyModel.cs</DependentUpon>
@@ -142,6 +154,9 @@
     <Compile Include="Model\UpdateCompanyModel.designer.cs">
       <DependentUpon>UpdateCompanyModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Operations\Company\AddCompanyOp.designer.cs">
+      <DependentUpon>AddCompanyOp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operations\Company\CreateCompanyPropertyOp.cs" />
     <Compile Include="Operations\Company\CreateCompanyPropertyOp.designer.cs">
       <DependentUpon>CreateCompanyPropertyOp.cs</DependentUpon>
@@ -151,7 +166,16 @@
       <DependentUpon>DeleteCompanyOp.cs</DependentUpon>
     </Compile>
     <Compile Include="Operations\Company\DeleteCompanyPropertyOp.cs" />
-    <Compile Include="Operations\Company\GetAllCompanyProperties.cs" />
+    <Compile Include="Operations\Company\DeleteCompanyPropertyOp.designer.cs">
+      <DependentUpon>DeleteCompanyPropertyOp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Operations\Company\GetAllCompaniesOp.designer.cs">
+      <DependentUpon>GetAllCompaniesOp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Operations\Company\GetAllCompanyPropertiesOp.cs" />
+    <Compile Include="Operations\Company\GetAllCompanyPropertiesOp.designer.cs">
+      <DependentUpon>GetAllCompanyPropertiesOp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operations\Company\UpdateCompaniesOp.cs" />
     <Compile Include="Operations\Company\AddCompanyOp.cs" />
     <Compile Include="Operations\Company\GetAllCompaniesOp.cs" />
@@ -162,13 +186,22 @@
     <Compile Include="Operations\Contact\AddOrUpdateContactsOp.designer.cs">
       <DependentUpon>AddOrUpdateContactsOp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Operations\Contact\CreateContactPropertyOp.designer.cs">
+      <DependentUpon>CreateContactPropertyOp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operations\Contact\DeleteContactPropertyOp.cs" />
     <Compile Include="Operations\Contact\DeleteContactOp.cs" />
     <Compile Include="Operations\Contact\DeleteContactOp.designer.cs">
       <DependentUpon>DeleteContactOp.cs</DependentUpon>
     </Compile>
     <Compile Include="Operations\Contact\CreateContactPropertyOp.cs" />
+    <Compile Include="Operations\Contact\DeleteContactPropertyOp.designer.cs">
+      <DependentUpon>DeleteContactPropertyOp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operations\Contact\GetAllContactPropertiesOp.cs" />
+    <Compile Include="Operations\Contact\GetAllContactPropertiesOp.designer.cs">
+      <DependentUpon>GetAllContactPropertiesOp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operations\Contact\GetAllContactsOp.designer.cs">
       <DependentUpon>GetAllContactsOp.cs</DependentUpon>
     </Compile>

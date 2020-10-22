@@ -5,6 +5,7 @@
 namespace Naos.HubSpot.Domain.Model
 {
     using Naos.CodeAnalysis.Recipes;
+    using Newtonsoft.Json;
     using OBeautifulCode.Type;
 
     /// <summary>
@@ -12,20 +13,23 @@ namespace Naos.HubSpot.Domain.Model
     /// Implements the <see cref="OBeautifulCode.Type.IModelViaCodeGen" />.
     /// </summary>
     /// <seealso cref="OBeautifulCode.Type.IModelViaCodeGen" />
-    public class CreateContactPropertyRequest : IModelViaCodeGen
+    public partial class CreateContactPropertyRequest : IModelViaCodeGen
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateContactPropertyRequest"/> class.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="label">The label.</param>
-        public CreateContactPropertyRequest(string name, string label)
+        /// <param name="fieldType">Type of the field.</param>
+        /// <param name="propertyType">Type of the property.</param>
+        /// <param name="groupName">Name of the group.</param>
+        public CreateContactPropertyRequest(string name, string label, string fieldType = "text", string propertyType = "string", string groupName = "companyinformation")
         {
             this.Name = name;
             this.Label = label;
-            this.GroupName = "contactinformation";
-            this.Type = "string";
-            this.FieldType = "text";
+            this.GroupName = groupName;
+            this.PropertyType = propertyType;
+            this.FieldType = fieldType;
         }
 
         /// <summary>
@@ -50,8 +54,8 @@ namespace Naos.HubSpot.Domain.Model
         /// Gets the type.
         /// </summary>
         /// <value>The type.</value>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods", Justification = NaosSuppressBecause.CA1704_IdentifiersShouldBeSpelledCorrectly_SpellingIsCorrectInContextOfTheDomain)]
-        public string Type { get; private set; }
+        [JsonProperty("type")]
+        public string PropertyType { get; private set; }
 
         /// <summary>
         /// Gets the type of the field.

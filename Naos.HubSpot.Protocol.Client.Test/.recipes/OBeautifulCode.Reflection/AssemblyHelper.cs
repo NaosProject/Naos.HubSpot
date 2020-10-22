@@ -57,7 +57,7 @@ namespace OBeautifulCode.Reflection.Recipes
         /// Retrieves an embedded resource's stream.
         /// </summary>
         /// <param name="assembly">Calling assembly.</param>
-        /// <param name="resourceName">Property of the resource in the calling assembly.</param>
+        /// <param name="resourceName">Name of the resource in the calling assembly.</param>
         /// <param name="decompressionMethod">
         /// The compression algorithm and/or archive file format that was used to compress the resource.
         /// This is used to open a decompressed stream.
@@ -125,7 +125,7 @@ namespace OBeautifulCode.Reflection.Recipes
         /// <summary>
         /// Retrieves a stream for an embedded resource.
         /// </summary>
-        /// <param name="resourceName">Property of the resource in the calling assembly.</param>
+        /// <param name="resourceName">Name of the resource in the calling assembly.</param>
         /// <param name="addCallerNamespace">
         /// Determines whether to add the namespace of the calling method to the resource name.
         /// If false, then the resource name is used as-is.
@@ -156,7 +156,7 @@ namespace OBeautifulCode.Reflection.Recipes
         /// <summary>
         /// Reads an embedded resource from the calling assembly and returns as string.
         /// </summary>
-        /// <param name="resourceName">Property of the resource in the calling assembly.</param>
+        /// <param name="resourceName">Name of the resource in the calling assembly.</param>
         /// <param name="addCallerNamespace">
         /// Determines whether to add the namespace of the calling method to the resource name.
         /// If false, then the resource name is used as-is.

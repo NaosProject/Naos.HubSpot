@@ -265,6 +265,10 @@
       <DependentUpon>CompanyTest.cs</DependentUpon>
     </Compile>
     <Compile Include="ConsoleAbstraction.cs" />
+    <Compile Include="ContactPropertyModelTest.cs" />
+    <Compile Include="ContactPropertyModelTest.designer.cs">
+      <DependentUpon>ContactPropertyModelTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="ContactTest.designer.cs">
       <DependentUpon>ContactTest.cs</DependentUpon>
     </Compile>
@@ -272,9 +276,37 @@
     <Compile Include="CreateAssociationRequestTest.designer.cs">
       <DependentUpon>CreateAssociationRequestTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateCompanyPropertyOpTest.cs" />
+    <Compile Include="CreateCompanyPropertyOpTest.designer.cs">
+      <DependentUpon>CreateCompanyPropertyOpTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateCompanyPropertyRequestTest.cs" />
+    <Compile Include="CreateCompanyPropertyRequestTest.designer.cs">
+      <DependentUpon>CreateCompanyPropertyRequestTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateContactPropertyOpTest.cs" />
+    <Compile Include="CreateContactPropertyOpTest.designer.cs">
+      <DependentUpon>CreateContactPropertyOpTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateContactPropertyRequestTest.cs" />
+    <Compile Include="CreateContactPropertyRequestTest.designer.cs">
+      <DependentUpon>CreateContactPropertyRequestTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteCompanyOpTest.cs" />
+    <Compile Include="DeleteCompanyOpTest.designer.cs">
+      <DependentUpon>DeleteCompanyOpTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteCompanyPropertyOpTest.cs" />
+    <Compile Include="DeleteCompanyPropertyOpTest.designer.cs">
+      <DependentUpon>DeleteCompanyPropertyOpTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="DeleteContactOpTest.cs" />
     <Compile Include="DeleteContactOpTest.designer.cs">
       <DependentUpon>DeleteContactOpTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteContactPropertyOpTest.cs" />
+    <Compile Include="DeleteContactPropertyOpTest.designer.cs">
+      <DependentUpon>DeleteContactPropertyOpTest.cs</DependentUpon>
     </Compile>
     <Compile Include="DeleteContactResponseTest.cs" />
     <Compile Include="DeleteContactResponseTest.designer.cs">
@@ -283,6 +315,18 @@
     <Compile Include="GetAllCompaniesOpTest.cs" />
     <Compile Include="GetAllCompaniesOpTest.designer.cs">
       <DependentUpon>GetAllCompaniesOpTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GetAllCompanyPropertiesOpTest.cs" />
+    <Compile Include="GetAllCompanyPropertiesOpTest.designer.cs">
+      <DependentUpon>GetAllCompanyPropertiesOpTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GetAllCompanyPropertiesResponseTest.cs" />
+    <Compile Include="GetAllCompanyPropertiesResponseTest.designer.cs">
+      <DependentUpon>GetAllCompanyPropertiesResponseTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GetAllContactPropertiesOpTest.cs" />
+    <Compile Include="GetAllContactPropertiesOpTest.designer.cs">
+      <DependentUpon>GetAllContactPropertiesOpTest.cs</DependentUpon>
     </Compile>
     <Compile Include="GetAllContactsOpTest.cs" />
     <Compile Include="GetAllContactsOpTest.designer.cs">

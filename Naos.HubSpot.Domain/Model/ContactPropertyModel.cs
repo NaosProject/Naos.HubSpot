@@ -18,7 +18,7 @@ namespace Naos.HubSpot.Domain
         /// <param name="name">The name.</param>
         /// <param name="label">The label.</param>
         /// <param name="groupName">Name of the group.</param>
-        /// <param name="type">The type.</param>
+        /// <param name="propertyType">The type.</param>
         /// <param name="fieldType">Type of the field.</param>
         /// <param name="displayOrder">The display order.</param>
         /// <param name="readOnlyDefinition">The read only definition.</param>
@@ -33,7 +33,7 @@ namespace Naos.HubSpot.Domain
             string name,
             string label,
             string groupName,
-            string type,
+            string propertyType,
             string fieldType,
             int? displayOrder,
             string readOnlyDefinition,
@@ -48,7 +48,7 @@ namespace Naos.HubSpot.Domain
             this.Name = name;
             this.Label = label;
             this.GroupName = groupName;
-            this.PropertyType = type;
+            this.PropertyType = propertyType;
             this.FieldType = fieldType;
             this.Deleted = deleted;
             this.DisplayOrder = displayOrder;
