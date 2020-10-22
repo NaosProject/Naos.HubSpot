@@ -99,7 +99,7 @@ namespace Naos.HubSpot.Protocol.Client
                             }
 
                             email = dynIdent.value.Value;
-                            contactProperties.Add(StandardContactPropertyName.EmailAddress.ToString(), email);
+                            contactProperties.Add(StandardContactPropertyName.Email.ToString(), email);
                         }
                     }
 

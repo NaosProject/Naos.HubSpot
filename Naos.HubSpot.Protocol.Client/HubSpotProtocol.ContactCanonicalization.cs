@@ -27,7 +27,7 @@ namespace Naos.HubSpot.Protocol.Client
                     { StandardContactPropertyName.HubSpotId, "vid" },
                     { StandardContactPropertyName.FirstName, "firstname" },
                     { StandardContactPropertyName.LastName, "lastname" },
-                    { StandardContactPropertyName.EmailAddress, "email" },
+                    { StandardContactPropertyName.Email, "email" },
                     { StandardContactPropertyName.CustomId, "customid" },
                     { StandardContactPropertyName.PhoneNumber, "phone" },
                 };

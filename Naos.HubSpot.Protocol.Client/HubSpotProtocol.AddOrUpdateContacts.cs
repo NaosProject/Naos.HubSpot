@@ -67,12 +67,12 @@ namespace Naos.HubSpot.Protocol.Client
 
                 return new AddOrUpdateContactsRequest(vid, null, properties);
             }
-            else if (contact.Properties.ContainsKey(StandardContactPropertyName.EmailAddress.ToString()))
+            else if (contact.Properties.ContainsKey(StandardContactPropertyName.Email.ToString()))
             {
-                var email = contact.Properties[StandardContactPropertyName.EmailAddress.ToString()];
+                var email = contact.Properties[StandardContactPropertyName.Email.ToString()];
                 var properties = contact
                     .Properties
-                    .Where(_ => _.Key != StandardContactPropertyName.EmailAddress.ToString())
+                    .Where(_ => _.Key != StandardContactPropertyName.Email.ToString())
                     .Select(_ => new PropertyModel(_.Key.ConvertFromContactStandardNameToContactHubSpotNameIfNecessary(), _.Value))
                     .ToList();
 
@@ -81,7 +81,7 @@ namespace Naos.HubSpot.Protocol.Client
             else
             {
                 throw new ArgumentException(FormattableString.Invariant(
-                    $"HubSpot contact properties must contain either an entry for '{StandardContactPropertyName.HubSpotId}' or '{StandardContactPropertyName.EmailAddress}'."));
+                    $"HubSpot contact properties must contain either an entry for '{StandardContactPropertyName.HubSpotId}' or '{StandardContactPropertyName.Email}'."));
             }
         }
     }

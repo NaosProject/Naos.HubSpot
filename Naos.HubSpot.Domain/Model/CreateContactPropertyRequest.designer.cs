@@ -269,7 +269,7 @@ namespace Naos.HubSpot.Domain
         [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         public override string ToString()
         {
-            var result = Invariant($"Naos.HubSpot.Domain.CreateContactPropertyRequest: Name = {this.Name?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Label = {this.Label?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, GroupName = {this.GroupName?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, PropertyType = {this.PropertyType?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, FieldType = {this.FieldType?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}.");
+            var result = Invariant($"Naos.HubSpot.Domain.CreateContactPropertyRequest: Name = {this.Name?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Label = {this.Label?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, GroupName = {this.GroupName?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, ObjectType = {this.PropertyType?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, FieldType = {this.FieldType?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}.");
 
             return result;
         }

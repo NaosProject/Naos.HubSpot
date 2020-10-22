@@ -31,8 +31,8 @@ namespace Naos.HubSpot.Domain
             containsFirstName.BeTrue(Invariant($"Must have a {nameof(StandardContactPropertyName.FirstName)} property."));
             var containsLastName = properties.Any(_ => _.Key == StandardContactPropertyName.LastName.ToString() && !string.IsNullOrEmpty(_.Value)).MustForArg();
             containsLastName.BeTrue(Invariant($"Must have a {nameof(StandardContactPropertyName.LastName)} property."));
-            var containsEmail = properties.Any(_ => _.Key == StandardContactPropertyName.EmailAddress.ToString() && !string.IsNullOrWhiteSpace(_.Value)).MustForArg();
-            containsEmail.BeTrue(Invariant($"Must have a {nameof(StandardContactPropertyName.EmailAddress)} property."));
+            var containsEmail = properties.Any(_ => _.Key == StandardContactPropertyName.Email.ToString() && !string.IsNullOrWhiteSpace(_.Value)).MustForArg();
+            containsEmail.BeTrue(Invariant($"Must have a {nameof(StandardContactPropertyName.Email)} property."));
 
             this.Properties = properties;
         }

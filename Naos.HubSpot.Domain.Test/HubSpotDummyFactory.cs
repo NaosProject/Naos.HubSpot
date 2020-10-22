@@ -32,7 +32,7 @@ namespace Naos.HubSpot.Domain.Test
                     var readOnlyDictionary = A.Dummy<Dictionary<string, string>>();
                     readOnlyDictionary.Add(StandardContactPropertyName.FirstName.ToString(), A.Dummy<string>());
                     readOnlyDictionary.Add(StandardContactPropertyName.LastName.ToString(), A.Dummy<string>());
-                    readOnlyDictionary.Add(StandardContactPropertyName.EmailAddress.ToString(), A.Dummy<string>());
+                    readOnlyDictionary.Add(StandardContactPropertyName.Email.ToString(), A.Dummy<string>());
                     return new Contact(
                         readOnlyDictionary);
                 });

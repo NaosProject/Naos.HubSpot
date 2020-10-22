@@ -139,6 +139,18 @@
     <Compile Include="GlobalSuppressions.cs" />
     <AdditionalFiles Include=".analyzers\stylecop.json" />
     <Compile Include="Properties\ProjectInfo.cs" />
+    <Compile Include="v3\HubSpotProtocol.AssociateContactWithCompanyV3.cs" />
+    <Compile Include="v3\HubSpotProtocol.CreateProperty.cs" />
+    <Compile Include="v3\HubSpotProtocol.CreateContactV3.cs" />
+    <Compile Include="v3\HubSpotProtocol.GetAllContactV3.cs" />
+    <Compile Include="v3\HubSpotProtocol.GetSingleContactV3.cs" />
+    <Compile Include="v3\HubSpotProtocol.GetSingleCompanyV3.cs" />
+    <Compile Include="v3\HubSpotProtocol.RemoveContactV3.cs" />
+    <Compile Include="v3\HubSpotProtocol.RemoveCompanyV3.cs" />
+    <Compile Include="v3\HubSpotProtocol.UpdateContactV3.cs" />
+    <Compile Include="v3\HubSpotProtocol.UpdateCompanyV3.cs" />
+    <Compile Include="v3\HubSpotProtocol.GetAllCompaniesV3.cs" />
+    <Compile Include="v3\HubSpotProtocol.CreateCompanyV3.cs" />
     <None Include=".analyzers\release.ruleset" />
     <None Include="Naos.HubSpot.Protocol.Client.override-nuspec" />
     <None Include="packages.config" />
@@ -156,6 +168,7 @@
   <ItemGroup>
     <Content Include=".analyzers\dictionary.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Naos.Build.Analyzers.1.55.46\build\Naos.Build.Analyzers.targets" Condition="Exists('..\packages\Naos.Build.Analyzers.1.55.46\build\Naos.Build.Analyzers.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

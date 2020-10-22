@@ -46,7 +46,7 @@ namespace Naos.HubSpot.Domain.Test
                         var result = new SystemUnderTestExpectedStringRepresentation<ContactPropertyModel>
                         {
                             SystemUnderTest = systemUnderTest,
-                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.ContactPropertyModel: Name = {systemUnderTest.Name?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Label = {systemUnderTest.Label?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, GroupName = {systemUnderTest.GroupName?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, PropertyType = {systemUnderTest.PropertyType?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, FieldType = {systemUnderTest.FieldType?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Deleted = {systemUnderTest.Deleted?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, DisplayOrder = {systemUnderTest.DisplayOrder?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, ReadOnlyValue = {systemUnderTest.ReadOnlyValue?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, ReadOnlyDefinition = {systemUnderTest.ReadOnlyDefinition?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Hidden = {systemUnderTest.Hidden?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Calculated = {systemUnderTest.Calculated?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, ExternalOptions = {systemUnderTest.ExternalOptions?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, DisplayMode = {systemUnderTest.DisplayMode?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, FormField = {systemUnderTest.FormField?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}."),
+                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.ContactPropertyModel: Name = {systemUnderTest.Name?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Label = {systemUnderTest.Label?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, GroupName = {systemUnderTest.GroupName?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, ObjectType = {systemUnderTest.PropertyType?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, FieldType = {systemUnderTest.FieldType?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Deleted = {systemUnderTest.Deleted?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, DisplayOrder = {systemUnderTest.DisplayOrder?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, ReadOnlyValue = {systemUnderTest.ReadOnlyValue?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, ReadOnlyDefinition = {systemUnderTest.ReadOnlyDefinition?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Hidden = {systemUnderTest.Hidden?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Calculated = {systemUnderTest.Calculated?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, ExternalOptions = {systemUnderTest.ExternalOptions?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, DisplayMode = {systemUnderTest.DisplayMode?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, FormField = {systemUnderTest.FormField?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}."),
                         };
 
                         return result;
@@ -619,7 +619,7 @@ namespace Naos.HubSpot.Domain.Test
             .AddScenario(() =>
                 new ConstructorPropertyAssignmentTestScenario<ContactPropertyModel>
                 {
-                    Name = "PropertyType should return same 'propertyType' parameter passed to constructor when getting",
+                    Name = "ObjectType should return same 'propertyType' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
                         var referenceObject = A.Dummy<ContactPropertyModel>();
@@ -646,7 +646,7 @@ namespace Naos.HubSpot.Domain.Test
 
                         return result;
                     },
-                    PropertyName = "PropertyType",
+                    PropertyName = "ObjectType",
                 })
             .AddScenario(() =>
                 new ConstructorPropertyAssignmentTestScenario<ContactPropertyModel>
@@ -1033,8 +1033,8 @@ namespace Naos.HubSpot.Domain.Test
             .AddScenario(() =>
                 new DeepCloneWithTestScenario<ContactPropertyModel>
                 {
-                    Name = "DeepCloneWithPropertyType should deep clone object and replace PropertyType with the provided propertyType",
-                    WithPropertyName = "PropertyType",
+                    Name = "DeepCloneWithPropertyType should deep clone object and replace ObjectType with the provided propertyType",
+                    WithPropertyName = "ObjectType",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
                         var systemUnderTest = A.Dummy<ContactPropertyModel>();
@@ -1686,7 +1686,7 @@ namespace Naos.HubSpot.Domain.Test
                         // Here 'scenario.ExpectedPropertyValue' and 'actual' are declared as typeof(object).
                         // With the exception of some specific boxed types (e.g. value types, string),
                         // BeEqualTo() uses reference equality to compare two objects declared as typeof(object).
-                        // We want to use the property's real type, 'scenario.Property.PropertyType'.
+                        // We want to use the property's real type, 'scenario.Property.ObjectType'.
                         // For example, BeEqualTo() returns false for these two dictionaries because their declared type is typeof(object):
                         // object x = Dictionary<string, string>();
                         // object y = Dictionary<string, string>();
@@ -1782,7 +1782,7 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
             public static void DeepCloneWith___Should_deep_clone_object_and_replace_the_associated_property_with_the_provided_value___When_called()
             {
-                var propertyNames = new string[] { "Name", "Label", "GroupName", "PropertyType", "FieldType", "Deleted", "DisplayOrder", "ReadOnlyValue", "ReadOnlyDefinition", "Hidden", "Calculated", "ExternalOptions", "DisplayMode", "FormField" };
+                var propertyNames = new string[] { "Name", "Label", "GroupName", "ObjectType", "FieldType", "Deleted", "DisplayOrder", "ReadOnlyValue", "ReadOnlyDefinition", "Hidden", "Calculated", "ExternalOptions", "DisplayMode", "FormField" };
 
                 var scenarios = DeepCloneWithTestScenarios.ValidateAndPrepareForTesting();
 
@@ -1831,7 +1831,7 @@ namespace Naos.HubSpot.Domain.Test
                             // Here 'systemUnderTestPropertyValue' and 'actualPropertyValue' are declared as typeof(object).
                             // With the exception of some specific boxed types (e.g. value types, string),
                             // BeEqualTo() uses reference equality to compare two objects declared as typeof(object).
-                            // We want to use the property's real type, 'property.PropertyType'.
+                            // We want to use the property's real type, 'property.ObjectType'.
                             // For example, BeEqualTo() returns false for these two dictionaries because their declared type is typeof(object):
                             // object x = Dictionary<string, string>();
                             // object y = Dictionary<string, string>();

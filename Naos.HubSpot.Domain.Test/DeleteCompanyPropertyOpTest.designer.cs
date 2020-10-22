@@ -356,7 +356,7 @@ namespace Naos.HubSpot.Domain.Test
                         // Here 'scenario.ExpectedPropertyValue' and 'actual' are declared as typeof(object).
                         // With the exception of some specific boxed types (e.g. value types, string),
                         // BeEqualTo() uses reference equality to compare two objects declared as typeof(object).
-                        // We want to use the property's real type, 'scenario.Property.PropertyType'.
+                        // We want to use the property's real type, 'scenario.Property.ObjectType'.
                         // For example, BeEqualTo() returns false for these two dictionaries because their declared type is typeof(object):
                         // object x = Dictionary<string, string>();
                         // object y = Dictionary<string, string>();
@@ -501,7 +501,7 @@ namespace Naos.HubSpot.Domain.Test
                             // Here 'systemUnderTestPropertyValue' and 'actualPropertyValue' are declared as typeof(object).
                             // With the exception of some specific boxed types (e.g. value types, string),
                             // BeEqualTo() uses reference equality to compare two objects declared as typeof(object).
-                            // We want to use the property's real type, 'property.PropertyType'.
+                            // We want to use the property's real type, 'property.ObjectType'.
                             // For example, BeEqualTo() returns false for these two dictionaries because their declared type is typeof(object):
                             // object x = Dictionary<string, string>();
                             // object y = Dictionary<string, string>();

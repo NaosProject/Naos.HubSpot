@@ -8,11 +8,9 @@ namespace Naos.HubSpot.Protocol.Client.Test
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     using System.Globalization;
     using System.Linq;
     using Naos.HubSpot.Domain;
-    using Naos.HubSpot.Domain.Model;
     using OBeautifulCode.Assertion.Recipes;
     using Xunit;
 
@@ -32,7 +30,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             var op = new GetAllContactsOp();
             var contactToAddProps = new Dictionary<string, string>
             {
-                { StandardContactPropertyName.EmailAddress.ToString(), "addcontacttest@testemail.com" },
+                { StandardContactPropertyName.Email.ToString(), "addcontacttest@testemail.com" },
                 { StandardContactPropertyName.FirstName.ToString(), "testContactFirst" },
                 { StandardContactPropertyName.LastName.ToString(), "testcontactLast" },
             };
@@ -71,7 +69,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             var contactEmail = "testcontact@testemail.com";
             var contactToAddProps = new Dictionary<string, string>
             {
-                { StandardContactPropertyName.EmailAddress.ToString(), contactEmail },
+                { StandardContactPropertyName.Email.ToString(), contactEmail },
                 { StandardContactPropertyName.FirstName.ToString(), "test" },
                 { StandardContactPropertyName.LastName.ToString(), "contact" },
             };
@@ -84,7 +82,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
 
             var contacts = protocol.Execute(new GetAllContactsOp());
             var addedContactVid = contacts.First(_ =>
-                    _.Properties[StandardContactPropertyName.EmailAddress.ToString().ConvertFromContactHubSpotNameToContactStandardNameIfNecessary()] == contactEmail)
+                    _.Properties[StandardContactPropertyName.Email.ToString().ConvertFromContactHubSpotNameToContactStandardNameIfNecessary()] == contactEmail)
                 .Properties[StandardContactPropertyName.HubSpotId.ToString()];
             var addedIntContactId = Convert.ToInt32(addedContactVid, CultureInfo.InvariantCulture);
             // create a company
@@ -155,7 +153,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             company.MustForTest(nameof(company)).NotBeNull();
         }
 
-        [Fact(Skip = "Skipping because this uses external resources")]
+        [Fact]
         public static void UpdateCompaniesOp___Does_not_return_http_error___When_executed()
         {
             // Arrange

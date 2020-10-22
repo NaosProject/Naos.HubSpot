@@ -29,7 +29,7 @@ namespace Naos.HubSpot.Domain
         /// <summary>
         ///     The email address of the contact.
         /// </summary>
-        EmailAddress,
+        Email,
 
         /// <summary>
         ///     The custom ID of the contact

@@ -121,11 +121,12 @@ namespace Naos.HubSpot.Domain.Test
                                  A.Dummy<IReadOnlyCollection<PropertyModel>>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new GetAllContactsResponseV3(
+                () => new ContactAndCompanyModelV3(
                                  A.Dummy<string>(),
-                                 A.Dummy<bool>(),
                                  A.Dummy<string>(),
-                                 A.Dummy<IReadOnlyDictionary<string, string>>()));
+                                 A.Dummy<string>(),
+                                 A.Dummy<IReadOnlyDictionary<string, string>>(),
+                                A.Dummy<bool>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
                 () => new AddCompanyOp(
