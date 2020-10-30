@@ -13,6 +13,10 @@ namespace Naos.HubSpot.Protocol.Client
     using Naos.HubSpot.Domain;
     using Naos.Protocol.Domain;
     using Naos.Recipes.RunWithRetry;
+    using Newtonsoft.Json;
+    using OBeautifulCode.Representation.System;
+    using OBeautifulCode.Serialization;
+    using OBeautifulCode.Serialization.Json;
 
     /// <summary>
     /// TODO: Starting point for new project.
@@ -31,7 +35,8 @@ namespace Naos.HubSpot.Protocol.Client
         public async Task<ContactAndCompanyModelV3> ExecuteAsync(CreateContactV3Op operation)
         {
             var uri = this.baseUri;
-            uri = uri.AppendPathSegment("/crm/v3/objects/companies");
+            uri = uri.AppendPathSegment("crm/v3/objects/contacts");
+            // This must ignore null values.
             var result = uri.WithBody(operation.ContactToCreate).Post<ContactAndCompanyModelV3>();
             return await Task.FromResult(result);
         }

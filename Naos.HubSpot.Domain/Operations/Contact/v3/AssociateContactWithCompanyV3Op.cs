@@ -9,10 +9,10 @@ namespace Naos.HubSpot.Domain
 
     /// <summary>
     /// Class AssociateContactWithCompanyV3Op.
-    /// Implements the <see cref="ReturningOperationBase{AssociationResult}" />.
+    /// Implements the <see cref="ReturningOperationBase{AssociationResultV3}" />.
     /// </summary>
-    /// <seealso cref="ReturningOperationBase{AssociationResult}" />
-    public partial class AssociateContactWithCompanyV3Op : ReturningOperationBase<AssociationResult>, IModelViaCodeGen
+    /// <seealso cref="ReturningOperationBase{AssociationResultV3}" />
+    public partial class AssociateContactWithCompanyV3Op : ReturningOperationBase<AssociationResultV3>, IModelViaCodeGen
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AssociateContactWithCompanyV3Op"/> class.

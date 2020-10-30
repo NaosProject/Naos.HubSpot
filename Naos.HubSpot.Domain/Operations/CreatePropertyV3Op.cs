@@ -13,7 +13,7 @@ namespace Naos.HubSpot.Domain
     /// </summary>
     /// <seealso cref="ReturningOperationBase{PropertyModel}" />
     /// <seealso cref="IModelViaCodeGen" />
-    public partial class CreatePropertyV3Op : ReturningOperationBase<PropertyModel>, IModelViaCodeGen
+    public partial class CreatePropertyV3Op : ReturningOperationBase<PropertyModelV3>, IModelViaCodeGen
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CreatePropertyV3Op"/> class.

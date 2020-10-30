@@ -17,10 +17,10 @@ namespace Naos.HubSpot.Protocol.Client
     /// <summary>
     /// TODO: Starting point for new project.
     /// </summary>
-    public partial class HubSpotProtocol : ISyncAndAsyncReturningProtocol<AssociateContactWithCompanyV3Op, AssociationResult>
+    public partial class HubSpotProtocol : ISyncAndAsyncReturningProtocol<AssociateContactWithCompanyV3Op, AssociationResultV3>
     {
         /// <inheritdoc />
-        public AssociationResult Execute(AssociateContactWithCompanyV3Op operation)
+        public AssociationResultV3 Execute(AssociateContactWithCompanyV3Op operation)
         {
             var task = this.ExecuteAsync(operation);
             var result = Run.TaskUntilCompletion(task);
@@ -28,7 +28,7 @@ namespace Naos.HubSpot.Protocol.Client
         }
 
         /// <inheritdoc />
-        public async Task<AssociationResult> ExecuteAsync(AssociateContactWithCompanyV3Op operation)
+        public async Task<AssociationResultV3> ExecuteAsync(AssociateContactWithCompanyV3Op operation)
         {
             var uri = this.baseUri;
             uri = uri.AppendPathSegment("crm/v3/objects/contacts");
@@ -36,7 +36,7 @@ namespace Naos.HubSpot.Protocol.Client
             uri = uri.AppendPathSegment("associations");
             uri = uri.AppendPathSegment(operation.CompanyId);
             uri = uri.AppendPathSegment("contact_to_company");
-            var result = uri.Put<AssociationResult>();
+            var result = uri.Put<AssociationResultV3>();
             return await Task.FromResult(result);
         }
     }

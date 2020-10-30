@@ -47,7 +47,7 @@ namespace Naos.HubSpot.Protocol.Client
                     reqUri = reqUri.AppendQueryStringParam("after", skip);
                 }
 
-                var result = reqUri.Get<GetAllContactsOrCompaniesModel>();
+                var result = reqUri.Get<GetAllContactsOrCompaniesModelV3>();
                 if (!string.IsNullOrWhiteSpace(result.Paging.Next.After))
                 {
                     skip = result.Paging.Next.After;

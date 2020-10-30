@@ -53,11 +53,11 @@
     <Reference Include="OBeautifulCode.Representation.System, Version=1.0.55.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\OBeautifulCode.Representation.System.1.0.55\lib\net462\OBeautifulCode.Representation.System.dll</HintPath>
     </Reference>
-    <Reference Include="OBeautifulCode.Serialization, Version=1.0.84.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OBeautifulCode.Serialization.1.0.84\lib\net462\OBeautifulCode.Serialization.dll</HintPath>
+    <Reference Include="OBeautifulCode.Serialization, Version=1.0.87.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBeautifulCode.Serialization.1.0.87\lib\net462\OBeautifulCode.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="OBeautifulCode.Type, Version=1.0.71.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OBeautifulCode.Type.1.0.71\lib\net462\OBeautifulCode.Type.dll</HintPath>
+    <Reference Include="OBeautifulCode.Type, Version=1.0.73.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OBeautifulCode.Type.1.0.73\lib\net462\OBeautifulCode.Type.dll</HintPath>
     </Reference>
     <Reference Include="StyleCop, Version=6.2.0.0, Culture=neutral, PublicKeyToken=f904653c63bc2738, processorArchitecture=MSIL">
       <HintPath>..\packages\StyleCop.6.2.0\lib\net40\StyleCop.dll</HintPath>
@@ -154,11 +154,12 @@
     <Compile Include="Model\UpdateCompanyModel.designer.cs">
       <DependentUpon>UpdateCompanyModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\v3\AssociationResult.cs" />
+    <Compile Include="Model\v3\AssociationResultV3.cs" />
     <Compile Include="Model\v3\ContactAndCompanyModelV3.cs" />
-    <Compile Include="Model\v3\GetAllContactsOrCompaniesModel.cs" />
-    <Compile Include="Model\v3\PagingModel.cs" />
+    <Compile Include="Model\v3\GetAllContactsOrCompaniesModelV3.cs" />
     <Compile Include="Model\v3\PropertyModelV3.cs" />
+    <Compile Include="Model\v3\StandardCompanyPropertyNameV3.cs" />
+    <Compile Include="Model\v3\StandardContactPropertyNameV3.cs" />
     <Compile Include="Operations\Company\AddCompanyOp.designer.cs">
       <DependentUpon>AddCompanyOp.cs</DependentUpon>
     </Compile>

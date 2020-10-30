@@ -1,4 +1,4 @@
-﻿// <copyright file="GetAllContactsOrCompaniesModel.cs" company="Naos Project">
+﻿// <copyright file="GetAllContactsOrCompaniesModelV3.cs" company="Naos Project">
 //    Copyright (c) Naos Project 2019. All rights reserved.
 // </copyright>
 namespace Naos.HubSpot.Domain
@@ -6,16 +6,16 @@ namespace Naos.HubSpot.Domain
     using System.Collections.Generic;
 
     /// <summary>
-    /// Class GetAllContactsOrCompaniesModel.
+    /// Class GetAllContactsOrCompaniesModelV3.
     /// </summary>
-    public class GetAllContactsOrCompaniesModel
+    public class GetAllContactsOrCompaniesModelV3
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAllContactsOrCompaniesModel"/> class.
+        /// Initializes a new instance of the <see cref="GetAllContactsOrCompaniesModelV3"/> class.
         /// </summary>
         /// <param name="results">The results.</param>
         /// <param name="paging">The paging.</param>
-        public GetAllContactsOrCompaniesModel(IReadOnlyCollection<ContactAndCompanyModelV3> results, PagingModel paging)
+        public GetAllContactsOrCompaniesModelV3(IReadOnlyCollection<ContactAndCompanyModelV3> results, PagingModel paging)
         {
             this.Results = results;
             this.Paging = paging;

@@ -195,7 +195,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             var protocol = new HubSpotProtocol(BaseUri, ApiKey);
             var contactDict = new Dictionary<string, string>
             {
-                { StandardContactPropertyName.EmailAddress.ToString(), email },
+                { StandardContactPropertyName.Email.ToString(), email },
                 { StandardContactPropertyName.FirstName.ToString(), "Dave" },
                 { StandardContactPropertyName.LastName.ToString(), "C" },
             };
@@ -209,8 +209,8 @@ namespace Naos.HubSpot.Protocol.Client.Test
             protocol.Execute(addOp);
             var contacts = protocol.Execute(new GetAllContactsOp());
             var addedContact = contacts
-                .First(_ => _.Properties.ContainsKey(StandardContactPropertyName.EmailAddress.ToString()) & 
-                                             _.Properties.TryGetValue(StandardContactPropertyName.EmailAddress.ToString(), out var emailValue) &  
+                .First(_ => _.Properties.ContainsKey(StandardContactPropertyName.Email.ToString()) & 
+                                             _.Properties.TryGetValue(StandardContactPropertyName.Email.ToString(), out var emailValue) &  
                                              emailValue == email);
             var vidStringToDelete = addedContact.Properties[StandardContactPropertyName.HubSpotId.ToString()];
             var vidIntToDelete = Convert.ToInt32(vidStringToDelete, CultureInfo.InvariantCulture);
@@ -311,6 +311,94 @@ namespace Naos.HubSpot.Protocol.Client.Test
             // Clean up
             var deleteContactPropertyOp = new DeleteContactPropertyOp(propName);
             protocol.Execute(deleteContactPropertyOp);
+        }
+
+        [Fact(Skip = "Skipping because this uses external resources")]
+        public static void GetAllContactsOpV3___Returns_nonempty_list_of_contacts___When_executed()
+        {
+            // Arrange
+            var protocol = new HubSpotProtocol(BaseUri, ApiKey);
+            var op = new GetAllContactsV3Op();
+            var contactToAddProps = new Dictionary<string, string>
+            {
+                { StandardContactPropertyNameV3.Email.ToString().ConvertFromContactStandardNameToContactHubSpotNameIfNecessaryV3(), "addcontacttest@testemail.com" },
+                { StandardContactPropertyNameV3.FirstName.ToString().ConvertFromContactStandardNameToContactHubSpotNameIfNecessaryV3(), "testContactFirst" },
+                { StandardContactPropertyNameV3.LastName.ToString().ConvertFromContactStandardNameToContactHubSpotNameIfNecessaryV3(), "testcontactLast" },
+                { StandardContactPropertyNameV3.CompanyName.ToString().ConvertFromContactStandardNameToContactHubSpotNameIfNecessaryV3(), "testCompany" },
+                { StandardContactPropertyNameV3.Website.ToString().ConvertFromContactStandardNameToContactHubSpotNameIfNecessaryV3(), "www.testwebsite.com" },
+            };
+            var contactToCreate = new ContactAndCompanyModelV3(null, null, null, contactToAddProps);
+            var createContactOp = new CreateContactV3Op(contactToCreate);
+            var createdContact = protocol.Execute(createContactOp);
+
+            // Act
+            var contacts = protocol.Execute(op);
+
+            // Assert
+            contacts.MustForTest().NotBeNullNorEmptyEnumerableNorContainAnyNulls();
+            //Clean Up
+
+            var removeContactOp = new RemoveContactV3Op(createdContact.Id);
+            protocol.Execute(removeContactOp);
+        }
+
+        [Fact(Skip = "Skipping because this uses external resources")]
+        public static void CreateContactOpV3___Returns_valid_contact___When_executed()
+        {
+            // Arrange
+            var protocol = new HubSpotProtocol(BaseUri, ApiKey);
+            var contactToAddProps = new Dictionary<string, string>
+            {
+                { StandardContactPropertyNameV3.Email.ToString(), "addcontacttest@testemail.com" },
+                { StandardContactPropertyNameV3.FirstName.ToString(), "testContactFirst" },
+                { StandardContactPropertyNameV3.LastName.ToString(), "testcontactLast" },
+                { StandardContactPropertyNameV3.CompanyName.ToString(), "testCompany" },
+                { StandardContactPropertyNameV3.Website.ToString(), "www.testwebsite.com" },
+            };
+            var contactToCreate = new ContactAndCompanyModelV3(null, null, null, contactToAddProps);
+            var createContactOp = new CreateContactV3Op(contactToCreate);
+
+            // Act
+            var createdContact = protocol.Execute(createContactOp);
+
+            // Assert
+            createdContact.MustForTest().NotBeNull();
+            createdContact.Id.MustForTest().NotBeNull();
+
+            // Clean Up
+
+            var removeContactOp = new RemoveContactV3Op(createdContact.Id);
+            protocol.Execute(removeContactOp);
+        }
+
+        [Fact(Skip = "Skipping because this uses external resources")]
+        public static void CreateCompanyV3___Returns_a_valid_company___When_executed()
+        {
+            // Arrange
+            var protocol = new HubSpotProtocol(BaseUri, ApiKey);
+            var companyToCreateProps = new Dictionary<string, string>()
+            {
+                { StandardCompanyPropertyNameV3.CompanyName.ToString(), "testcompany" },
+                { StandardCompanyPropertyNameV3.Domain.ToString(), "testcompanydomain.com" },
+                { StandardCompanyPropertyNameV3.Industry.ToString(), "testcompanyindustry" },
+                { StandardCompanyPropertyNameV3.PhoneNumber.ToString(), "18001231234" },
+                { StandardCompanyPropertyNameV3.City.ToString(), "San Antonio" },
+                { StandardCompanyPropertyNameV3.State.ToString(), "Texas" },
+            };
+
+            var companyToCreate = new ContactAndCompanyModelV3(null, null, null, companyToCreateProps);
+            var createCompanyOp = new CreateCompanyV3Op(companyToCreate);
+
+            // Act
+            var createdCompany = protocol.Execute(createCompanyOp);
+
+            // Assert 
+            createdCompany.MustForTest().NotBeNull();
+            createdCompany.Id.MustForTest().NotBeNull();
+
+            //Clean Up
+            var removeCompanyOp = new RemoveContactV3Op(createdCompany.Id);
+            protocol.Execute(removeCompanyOp);
         }
     }
 }

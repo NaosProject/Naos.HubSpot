@@ -1,4 +1,4 @@
-﻿// <copyright file="AssociationResult.cs" company="Naos Project">
+﻿// <copyright file="AssociationResultV3.cs" company="Naos Project">
 //    Copyright (c) Naos Project 2019. All rights reserved.
 // </copyright>
 
@@ -9,14 +9,14 @@ namespace Naos.HubSpot.Domain
     using OBeautifulCode.Type;
 
     /// <summary>
-    /// Class AssociationResult.
+    /// Class AssociationResultV3.
     /// Implements the <see cref="IModelViaCodeGen" />.
     /// </summary>
     /// <seealso cref="IModelViaCodeGen" />
-    public class AssociationResult : IModelViaCodeGen
+    public class AssociationResultV3 : IModelViaCodeGen
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AssociationResult"/> class.
+        /// Initializes a new instance of the <see cref="AssociationResultV3"/> class.
         /// </summary>
         /// <param name="createdAt">The created at.</param>
         /// <param name="archived">if set to <c>true</c> [archived].</param>
@@ -24,7 +24,7 @@ namespace Naos.HubSpot.Domain
         /// <param name="properties">The properties.</param>
         /// <param name="updatedAt">The updated at.</param>
         /// <param name="associations">The associations.</param>
-        public AssociationResult(string createdAt, bool archived, string id, IReadOnlyDictionary<string, string> properties, string updatedAt, AssociationsAssociationsSection associations)
+        public AssociationResultV3(string createdAt, bool archived, string id, IReadOnlyDictionary<string, string> properties, string updatedAt, AssociationsAssociationsSection associations)
         {
             this.CreatedAt = createdAt;
             this.Archived = archived;
@@ -41,7 +41,7 @@ namespace Naos.HubSpot.Domain
         public string CreatedAt { get; private set; }
 
         /// <summary>
-        /// Gets a value indicating whether this <see cref="AssociationResult"/> is archived.
+        /// Gets a value indicating whether this <see cref="AssociationResultV3"/> is archived.
         /// </summary>
         /// <value><c>true</c> if archived; otherwise, <c>false</c>.</value>
         public bool Archived { get; private set; }
