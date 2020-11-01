@@ -116,7 +116,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             var protocol = new HubSpotProtocol(BaseUri, ApiKey);
             var contactDict = new Dictionary<string, string>
             {
-                { StandardContactPropertyName.EmailAddress.ToString(), "testemail@email.com" },
+                { StandardContactPropertyName.Email.ToString(), "testemail@email.com" },
                 { StandardContactPropertyName.FirstName.ToString(), "Dave" },
                 { StandardContactPropertyName.LastName.ToString(), "C" },
             };
