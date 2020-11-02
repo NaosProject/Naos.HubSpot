@@ -17,10 +17,10 @@ namespace Naos.HubSpot.Protocol.Client
     /// <summary>
     /// TODO: Starting point for new project.
     /// </summary>
-    public partial class HubSpotProtocol : ISyncAndAsyncReturningProtocol<RemoveCompanyV3Op, ContactAndCompanyModelV3>
+    public partial class HubSpotProtocol : ISyncAndAsyncReturningProtocol<RemoveCompanyByHubSpotIdV3Op, CompanyV3>
     {
         /// <inheritdoc />
-        public ContactAndCompanyModelV3 Execute(RemoveCompanyV3Op operation)
+        public CompanyV3 Execute(RemoveCompanyByHubSpotIdV3Op operation)
         {
             var task = this.ExecuteAsync(operation);
             var result = Run.TaskUntilCompletion(task);
@@ -28,13 +28,14 @@ namespace Naos.HubSpot.Protocol.Client
         }
 
         /// <inheritdoc />
-        public async Task<ContactAndCompanyModelV3> ExecuteAsync(RemoveCompanyV3Op operation)
+        public async Task<CompanyV3> ExecuteAsync(RemoveCompanyByHubSpotIdV3Op operation)
         {
             var uri = this.baseUri;
             uri = uri.AppendPathSegment("crm/v3/objects/contacts");
-            uri = uri.AppendPathSegment(operation.CompanyIdToRemove);
-            var result = uri.Delete<ContactAndCompanyModelV3>();
-            return await Task.FromResult(result);
+            uri = uri.AppendPathSegment(operation.HubSpotId);
+            var result = uri.Delete<CompanyModelV3>();
+            var companyToReturn = result.ToCompanyV3();
+            return await Task.FromResult(companyToReturn);
         }
     }
 }

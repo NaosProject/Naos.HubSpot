@@ -17,10 +17,10 @@ namespace Naos.HubSpot.Protocol.Client
     /// <summary>
     /// TODO: Starting point for new project.
     /// </summary>
-    public partial class HubSpotProtocol : ISyncAndAsyncReturningProtocol<GetSingleContactV3Op, ContactAndCompanyModelV3>
+    public partial class HubSpotProtocol : ISyncAndAsyncReturningProtocol<GetSingleContactByHubSpotIdV3Op, ContactV3>
     {
         /// <inheritdoc />
-        public ContactAndCompanyModelV3 Execute(GetSingleContactV3Op operation)
+        public ContactV3 Execute(GetSingleContactByHubSpotIdV3Op operation)
         {
             var task = this.ExecuteAsync(operation);
             var result = Run.TaskUntilCompletion(task);
@@ -28,13 +28,14 @@ namespace Naos.HubSpot.Protocol.Client
         }
 
         /// <inheritdoc />
-        public async Task<ContactAndCompanyModelV3> ExecuteAsync(GetSingleContactV3Op operation)
+        public async Task<ContactV3> ExecuteAsync(GetSingleContactByHubSpotIdV3Op operation)
         {
             var uri = this.baseUri;
             uri = uri.AppendPathSegment("crm/v3/objects/contacts");
-            uri = uri.AppendPathSegment(operation.ContactId);
-            var result = uri.Get<ContactAndCompanyModelV3>();
-            return await Task.FromResult(result);
+            uri = uri.AppendPathSegment(operation.HubSpotId);
+            var result = uri.Get<ContactModelV3>();
+            var contactToReturn = result.ToContactV3();
+            return await Task.FromResult(contactToReturn);
         }
     }
 }

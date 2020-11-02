@@ -11,6 +11,7 @@ namespace Naos.HubSpot.Protocol.Client
     using Naos.HubSpot.Domain;
     using Naos.Protocol.Domain;
     using OBeautifulCode.Assertion.Recipes;
+    using OBeautifulCode.Serialization.Json;
 
     /// <summary>
     /// TODO: Starting point for new project.
@@ -18,6 +19,7 @@ namespace Naos.HubSpot.Protocol.Client
     public partial class HubSpotProtocol : ISyncAndAsyncReturningProtocol<SyncWithHubSpotOp, SyncWithHubSpotResult>
     {
         private readonly Uri baseUri;
+        private readonly ObcJsonSerializer bodySerializer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HubSpotProtocol"/> class.
@@ -30,6 +32,7 @@ namespace Naos.HubSpot.Protocol.Client
             this.baseUri = baseUri;
             apiKey.MustForArg(nameof(apiKey)).NotBeNullNorWhiteSpace();
             this.baseUri = baseUri.AppendQueryStringParam("hapikey", apiKey);
+            this.bodySerializer = new ObcJsonSerializer(typeof(MinimalFormatJsonSerializationConfiguration<NullJsonSerializationConfiguration>).ToJsonSerializationConfigurationType());
         }
     }
 }

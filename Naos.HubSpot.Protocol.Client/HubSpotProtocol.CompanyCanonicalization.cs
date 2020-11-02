@@ -10,6 +10,7 @@ namespace Naos.HubSpot.Protocol.Client
     using System.Linq;
     using Naos.CodeAnalysis.Recipes;
     using Naos.HubSpot.Domain;
+    using Naos.HubSpot.Domain.Model;
 
     /// <summary>
     /// TODO: Starting point for new project.

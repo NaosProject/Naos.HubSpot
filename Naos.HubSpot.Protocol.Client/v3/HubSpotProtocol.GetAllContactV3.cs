@@ -18,10 +18,10 @@ namespace Naos.HubSpot.Protocol.Client
     /// <summary>
     /// TODO: Starting point for new project.
     /// </summary>
-    public partial class HubSpotProtocol : ISyncAndAsyncReturningProtocol<GetAllContactsV3Op, IReadOnlyCollection<ContactAndCompanyModelV3>>
+    public partial class HubSpotProtocol : ISyncAndAsyncReturningProtocol<GetAllContactsV3Op, IReadOnlyCollection<ContactV3>>
     {
         /// <inheritdoc />
-        public IReadOnlyCollection<ContactAndCompanyModelV3> Execute(GetAllContactsV3Op operation)
+        public IReadOnlyCollection<ContactV3> Execute(GetAllContactsV3Op operation)
         {
             var task = this.ExecuteAsync(operation);
             var result = Run.TaskUntilCompletion(task);
@@ -29,7 +29,7 @@ namespace Naos.HubSpot.Protocol.Client
         }
 
         /// <inheritdoc />
-        public async Task<IReadOnlyCollection<ContactAndCompanyModelV3>> ExecuteAsync(GetAllContactsV3Op operation)
+        public async Task<IReadOnlyCollection<ContactV3>> ExecuteAsync(GetAllContactsV3Op operation)
         {
             var uri = this.baseUri;
             uri = uri.AppendPathSegment("/crm/v3/objects/contacts");
@@ -38,7 +38,7 @@ namespace Naos.HubSpot.Protocol.Client
             uri = uri.AppendQueryStringParam("archived", false.ToString());
             bool hasMore = true;
             string skip = string.Empty;
-            var results = new List<ContactAndCompanyModelV3>();
+            var results = new List<ContactV3>();
             while (hasMore)
             {
                 var reqUri = uri;
@@ -47,7 +47,7 @@ namespace Naos.HubSpot.Protocol.Client
                     reqUri = reqUri.AppendQueryStringParam("after", skip);
                 }
 
-                var result = reqUri.Get<GetAllContactsOrCompaniesModelV3>();
+                var result = reqUri.Get<GetAllContactsModelV3>();
                 if (!string.IsNullOrWhiteSpace(result.Paging.Next.After))
                 {
                     skip = result.Paging.Next.After;
@@ -57,7 +57,8 @@ namespace Naos.HubSpot.Protocol.Client
                     hasMore = false;
                 }
 
-                results.AddRange(result.Results);
+                var runList = result.Results.Select(_ => _.ToContactV3());
+                results.AddRange(runList);
             }
 
             return await Task.FromResult(results);

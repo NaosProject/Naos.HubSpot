@@ -10,10 +10,10 @@ namespace Naos.HubSpot.Domain
 
     /// <summary>
     /// Class SearchContactV3.
-    /// Implements the <see cref="IReadOnlyCollection{ContactAndCompanyModelV3}" />.
+    /// Implements the <see cref="IReadOnlyCollection{ContactV3}" />.
     /// </summary>
-    /// <seealso cref="ContactAndCompanyModelV3" />
-    public partial class SearchContactV3 : ReturningOperationBase<IReadOnlyCollection<ContactAndCompanyModelV3>>, IModelViaCodeGen
+    /// <seealso cref="ContactModelV3" />
+    public partial class SearchContactV3 : ReturningOperationBase<IReadOnlyCollection<ContactV3>>, IModelViaCodeGen
     {
     }
 }

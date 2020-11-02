@@ -8,6 +8,7 @@ namespace Naos.HubSpot.Protocol.Client
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Runtime.CompilerServices;
     using Naos.CodeAnalysis.Recipes;
     using Naos.HubSpot.Domain;
 
@@ -108,6 +109,99 @@ namespace Naos.HubSpot.Protocol.Client
                     out var standardResult);
             var result = isStandard ? standardResult : propertyNameFromHubSpot;
             return result;
+        }
+
+        /// <summary>
+        /// Converts to CompanyV3.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns>CompanyV3.</returns>
+        public static CompanyV3 ToCompanyV3(this CompanyModelV3 model)
+        {
+            var props = model.Properties.ToDictionary(k => k.Key.ConvertFromContactHubSpotNameToContactStandardNameIfNecessaryV3(), v => v.Value);
+            props.Add(StandardCompanyPropertyNameV3.HubSpotId.ToString(), model.Id);
+            return new CompanyV3(props);
+        }
+
+        /// <summary>
+        /// Converts to companyrequestmodelv3.
+        /// </summary>
+        /// <param name="company">The company.</param>
+        /// <returns>CompanyRequestModelV3.</returns>
+        public static CompanyRequestModelV3 ToCompanyRequestModelV3(this CompanyV3 company)
+        {
+            string id;
+            if (!company.Properties.TryGetValue(StandardCompanyPropertyNameV3.HubSpotId.ToString(), out id) ||
+                id == string.Empty)
+            {
+                id = null;
+            }
+
+            var props = company.Properties.Where(_ => _.Key != StandardCompanyPropertyNameV3.HubSpotId.ToString()).ToDictionary(k => k.Key.ConvertFromCompanyStandardNameToCompanyHubSpotNameIfNecessaryV3(), v => v.Value);
+            var companyRequestToReturn = new CompanyRequestModelV3(id, props);
+            return companyRequestToReturn;
+        }
+
+        /// <summary>
+        /// Converts to PropertyV3.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns>PropertyV3.</returns>
+        public static PropertyV3 ToPropertyV3(this PropertyModelV3 model)
+        {
+            return new PropertyV3(model.Name);
+        }
+
+        /// <summary>
+        /// Converts to ContactPropertyModelV3.
+        /// </summary>
+        /// <param name="prop">The property.</param>
+        /// <returns>PropertyModelV3.</returns>
+        public static PropertyModelV3 ToContactPropertyModelV3(this PropertyV3 prop)
+        {
+            var propModel = new PropertyModelV3(
+                "contactinformation",
+                false,
+                new ModificationMetadataModel(
+                    false,
+                    false,
+                    false,
+                    true),
+                prop.PropertyName,
+                -1,
+                null,
+                prop.PropertyName,
+                "string",
+                false,
+                "text",
+                false);
+            return propModel;
+        }
+
+        /// <summary>
+        /// Converts to CompanyPropertyModelV3.
+        /// </summary>
+        /// <param name="prop">The property.</param>
+        /// <returns>PropertyModelV3.</returns>
+        public static PropertyModelV3 ToCompanyPropertyModelV3(this PropertyV3 prop)
+        {
+            var propModel = new PropertyModelV3(
+                "companyinformation",
+                false,
+                new ModificationMetadataModel(
+                    false,
+                    false,
+                    false,
+                    true),
+                prop.PropertyName,
+                -1,
+                null,
+                prop.PropertyName,
+                "string",
+                false,
+                "text",
+                false);
+            return propModel;
         }
     }
 }

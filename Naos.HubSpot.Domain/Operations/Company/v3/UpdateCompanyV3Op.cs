@@ -4,21 +4,22 @@
 
 namespace Naos.HubSpot.Domain
 {
+    using System.Collections.Generic;
     using Naos.Protocol.Domain;
     using OBeautifulCode.Type;
 
     /// <summary>
     /// Class UpdateCompanyV3Op.
-    /// Implements the <see cref="ContactAndCompanyModelV3" />.
+    /// Implements the <see cref="CompanyV3" />.
     /// </summary>
-    /// <seealso cref="ContactAndCompanyModelV3" />
-    public partial class UpdateCompanyV3Op : ReturningOperationBase<ContactAndCompanyModelV3>, IModelViaCodeGen
+    /// <seealso cref="CompanyV3" />
+    public partial class UpdateCompanyV3Op : ReturningOperationBase<CompanyV3>, IModelViaCodeGen
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateCompanyV3Op"/> class.
         /// </summary>
-        /// <param name="companyToUpdate">The contact to update.</param>
-        public UpdateCompanyV3Op(ContactAndCompanyModelV3 companyToUpdate)
+        /// <param name="companyToUpdate">The company to update.</param>
+        public UpdateCompanyV3Op(CompanyV3 companyToUpdate)
         {
             this.CompanyToUpdate = companyToUpdate;
         }
@@ -27,6 +28,6 @@ namespace Naos.HubSpot.Domain
         /// Gets the contact to update.
         /// </summary>
         /// <value>The contact to update.</value>
-        public ContactAndCompanyModelV3 CompanyToUpdate { get; private set; }
+        public CompanyV3 CompanyToUpdate { get; private set; }
     }
 }

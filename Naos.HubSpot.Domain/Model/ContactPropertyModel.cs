@@ -4,7 +4,6 @@
 
 namespace Naos.HubSpot.Domain
 {
-    using Newtonsoft.Json;
     using OBeautifulCode.Type;
 
     /// <summary>
@@ -18,7 +17,7 @@ namespace Naos.HubSpot.Domain
         /// <param name="name">The name.</param>
         /// <param name="label">The label.</param>
         /// <param name="groupName">Name of the group.</param>
-        /// <param name="propertyType">The type.</param>
+        /// <param name="type">The type.</param>
         /// <param name="fieldType">Type of the field.</param>
         /// <param name="displayOrder">The display order.</param>
         /// <param name="readOnlyDefinition">The read only definition.</param>
@@ -33,7 +32,7 @@ namespace Naos.HubSpot.Domain
             string name,
             string label,
             string groupName,
-            string propertyType,
+            string type,
             string fieldType,
             int? displayOrder,
             string readOnlyDefinition,
@@ -48,7 +47,7 @@ namespace Naos.HubSpot.Domain
             this.Name = name;
             this.Label = label;
             this.GroupName = groupName;
-            this.PropertyType = propertyType;
+            this.Type = type;
             this.FieldType = fieldType;
             this.Deleted = deleted;
             this.DisplayOrder = displayOrder;
@@ -83,8 +82,8 @@ namespace Naos.HubSpot.Domain
         /// Gets the type.
         /// </summary>
         /// <value>The type.</value>
-        [JsonProperty("Type")]
-        public string PropertyType { get; private set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods", Justification = "Naming controlled by external API")]
+        public string Type { get; private set; }
 
         /// <summary>
         /// Gets the type of the field.

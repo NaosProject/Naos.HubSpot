@@ -4,7 +4,6 @@
 
 namespace Naos.HubSpot.Domain
 {
-    using Newtonsoft.Json;
     using OBeautifulCode.Type;
 
     /// <summary>
@@ -53,7 +52,6 @@ namespace Naos.HubSpot.Domain
         /// Gets the type.
         /// </summary>
         /// <value>The type.</value>
-        [JsonProperty("type")]
         public string PropertyType { get; private set; }
 
         /// <summary>

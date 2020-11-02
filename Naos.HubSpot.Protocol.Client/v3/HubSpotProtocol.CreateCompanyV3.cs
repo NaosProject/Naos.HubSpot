@@ -7,6 +7,7 @@
 namespace Naos.HubSpot.Protocol.Client
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using Naos.FluentUri;
@@ -17,10 +18,10 @@ namespace Naos.HubSpot.Protocol.Client
     /// <summary>
     /// TODO: Starting point for new project.
     /// </summary>
-    public partial class HubSpotProtocol : ISyncAndAsyncReturningProtocol<CreateCompanyV3Op, ContactAndCompanyModelV3>
+    public partial class HubSpotProtocol : ISyncAndAsyncReturningProtocol<CreateCompanyV3Op, CompanyV3>
     {
         /// <inheritdoc />
-        public ContactAndCompanyModelV3 Execute(CreateCompanyV3Op operation)
+        public CompanyV3 Execute(CreateCompanyV3Op operation)
         {
             var task = this.ExecuteAsync(operation);
             var result = Run.TaskUntilCompletion(task);
@@ -28,12 +29,13 @@ namespace Naos.HubSpot.Protocol.Client
         }
 
         /// <inheritdoc />
-        public async Task<ContactAndCompanyModelV3> ExecuteAsync(CreateCompanyV3Op operation)
+        public async Task<CompanyV3> ExecuteAsync(CreateCompanyV3Op operation)
         {
             var uri = this.baseUri;
             uri = uri.AppendPathSegment("/crm/v3/objects/companies");
-            var result = uri.WithBody(operation.ContactToCreate).Post<ContactAndCompanyModelV3>();
-            return await Task.FromResult(result);
+            var result = uri.WithBody(operation.CompanyToCreate.ToCompanyRequestModelV3()).WithSerializer(this.bodySerializer).Post<CompanyModelV3>();
+            var companyToReturn = result.ToCompanyV3();
+            return await Task.FromResult(companyToReturn);
         }
     }
 }

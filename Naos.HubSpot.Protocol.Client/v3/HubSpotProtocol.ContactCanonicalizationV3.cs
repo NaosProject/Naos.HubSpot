@@ -8,6 +8,7 @@ namespace Naos.HubSpot.Protocol.Client
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Runtime.InteropServices;
     using Naos.CodeAnalysis.Recipes;
     using Naos.HubSpot.Domain;
 
@@ -30,7 +31,7 @@ namespace Naos.HubSpot.Protocol.Client
                     { StandardContactPropertyNameV3.Email, "email" },
                     { StandardContactPropertyNameV3.CompanyName, "company" },
                     { StandardContactPropertyNameV3.PhoneNumber, "phone" },
-                    { StandardContactPropertyNameV3.Website, "website   " },
+                    { StandardContactPropertyNameV3.Website, "website" },
                 };
 
         /// <summary>
@@ -75,7 +76,7 @@ namespace Naos.HubSpot.Protocol.Client
             this string propertyNameFromModel)
         {
             var isStandard =
-                HubSpotProtocol.StandardContactPropertyNameStringToHubSpotPropertyNameMap.TryGetValue(
+                HubSpotProtocol.StandardContactPropertyNameStringToHubSpotPropertyNameMapV3.TryGetValue(
                     propertyNameFromModel,
                     out var standardResult);
             var result = isStandard ? standardResult : propertyNameFromModel;
@@ -90,11 +91,42 @@ namespace Naos.HubSpot.Protocol.Client
         public static string ConvertFromContactHubSpotNameToContactStandardNameIfNecessaryV3(this string propertyNameFromHubSpot)
         {
             var isStandard =
-                HubSpotProtocol.HubSpotContactPropertyNameToStandardContactPropertyNameStringMap.TryGetValue(
+                HubSpotProtocol.HubSpotContactPropertyNameToStandardContactPropertyNameStringMapV3.TryGetValue(
                     propertyNameFromHubSpot,
                     out var standardResult);
             var result = isStandard ? standardResult : propertyNameFromHubSpot;
             return result;
+        }
+
+        /// <summary>
+        /// Converts to ContactRequestModelV3.
+        /// </summary>
+        /// <param name="contact">The contact.</param>
+        /// <returns>ContactRequestModelV3.</returns>
+        public static ContactRequestModelV3 ToContactRequestModel(this ContactV3 contact)
+        {
+            string id;
+            if (!contact.Properties.TryGetValue(StandardContactPropertyNameV3.HubSpotId.ToString(), out id) || id == string.Empty)
+            {
+                id = null;
+            }
+
+            var filteredProperties = contact.Properties
+                .Where(_ => _.Key != StandardContactPropertyNameV3.HubSpotId.ToString().ConvertFromContactHubSpotNameToContactStandardNameIfNecessaryV3())
+                .ToDictionary(k => k.Key.ConvertFromContactHubSpotNameToContactStandardNameIfNecessaryV3(), v => v.Value);
+            return new ContactRequestModelV3(id, filteredProperties);
+        }
+
+        /// <summary>
+        /// Converts to ContactV3.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns>ContactV3.</returns>
+        public static ContactV3 ToContactV3(this ContactModelV3 model)
+        {
+            var props = model.Properties.ToDictionary(k => k.Key.ConvertFromContactStandardNameToContactHubSpotNameIfNecessaryV3(), v => v.Value);
+            props.Add(StandardContactPropertyNameV3.HubSpotId.ToString(), model.Id);
+            return new ContactV3(props);
         }
     }
 }

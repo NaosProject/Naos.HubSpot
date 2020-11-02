@@ -11,21 +11,21 @@ namespace Naos.HubSpot.Domain
     /// Implements the <see cref="OBeautifulCode.Type.IModelViaCodeGen" />.
     /// </summary>
     /// <seealso cref="OBeautifulCode.Type.IModelViaCodeGen" />
-    public partial class CreateCompanyV3Op : ReturningOperationBase<ContactAndCompanyModelV3>, IModelViaCodeGen
+    public partial class CreateCompanyV3Op : ReturningOperationBase<CompanyV3>, IModelViaCodeGen
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateCompanyV3Op"/> class.
         /// </summary>
-        /// <param name="contactToCreate">The contact create.</param>
-        public CreateCompanyV3Op(ContactAndCompanyModelV3 contactToCreate)
+        /// <param name="companyToCreate">The company to create.</param>
+        public CreateCompanyV3Op(CompanyV3 companyToCreate)
         {
-            this.ContactToCreate = contactToCreate;
+            this.CompanyToCreate = companyToCreate;
         }
 
         /// <summary>
         /// Gets the contact and company to create.
         /// </summary>
         /// <value>The contact and company to create.</value>
-        public ContactAndCompanyModelV3 ContactToCreate { get; private set; }
+        public CompanyV3 CompanyToCreate { get; private set; }
     }
 }
