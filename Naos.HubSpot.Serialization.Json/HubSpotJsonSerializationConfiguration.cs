@@ -10,6 +10,7 @@ namespace Naos.HubSpot.Serialization.Json
     using System.Collections.Generic;
     using Naos.HubSpot.Domain;
     using Naos.Protocol.Domain;
+    using Naos.Protocol.Serialization.Json;
     using OBeautifulCode.Serialization.Json;
 
     /// <inheritdoc />
@@ -20,6 +21,13 @@ namespace Naos.HubSpot.Serialization.Json
                                                                                                {
                                                                                                    FormattableString.Invariant($"{nameof(Naos)}.{nameof(HubSpot)}.{nameof(Domain)}"),
                                                                                                };
+
+        /// <inheritdoc />
+        protected override IReadOnlyCollection<JsonSerializationConfigurationType> DependentJsonSerializationConfigurationTypes
+            => new[]
+               {
+                   typeof(ProtocolJsonSerializationConfiguration).ToJsonSerializationConfigurationType(),
+               };
 
         /// <inheritdoc />
         protected override IReadOnlyCollection<TypeToRegisterForJson> TypesToRegisterForJson => new[]

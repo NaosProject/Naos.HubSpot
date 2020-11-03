@@ -10,6 +10,7 @@ namespace Naos.HubSpot.Serialization.Bson
     using System.Collections.Generic;
     using Naos.HubSpot.Domain;
     using Naos.Protocol.Domain;
+    using Naos.Protocol.Serialization.Bson;
     using OBeautifulCode.Serialization.Bson;
 
     /// <inheritdoc />
@@ -20,6 +21,13 @@ namespace Naos.HubSpot.Serialization.Bson
                                                                                                {
                                                                                                    FormattableString.Invariant($"{nameof(Naos)}.{nameof(HubSpot)}.{nameof(Domain)}"),
                                                                                                };
+
+        /// <inheritdoc />
+        protected override IReadOnlyCollection<BsonSerializationConfigurationType> DependentBsonSerializationConfigurationTypes
+            => new[]
+               {
+                   typeof(ProtocolBsonSerializationConfiguration).ToBsonSerializationConfigurationType(),
+               };
 
         /// <inheritdoc />
         protected override IReadOnlyCollection<TypeToRegisterForBson> TypesToRegisterForBson => new[]
