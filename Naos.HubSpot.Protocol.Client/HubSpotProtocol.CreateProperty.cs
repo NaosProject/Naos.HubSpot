@@ -32,8 +32,8 @@ namespace Naos.HubSpot.Protocol.Client
             var uri = this.baseUri;
             uri = uri.AppendPathSegment("crm/v3/properties");
             uri = uri.AppendPathSegment(operation.ObjectType.ToString().ToLower());
-            var result = uri.WithBody(operation.ObjectType == HubSpotPropertyObjectType.Company ? operation.PropModelToAdd.ToCompanyPropertyModelV3() : operation.PropModelToAdd.ToContactPropertyModelV3()).Post<PropertyModel>();
-            var propertyToReturn = result.ToPropertyV3();
+            var result = uri.WithBody(operation.ObjectType == HubSpotPropertyObjectType.Company ? operation.PropModelToAdd.ToCompanyPropertyModel() : operation.PropModelToAdd.ToContactPropertyModel()).Post<PropertyModel>();
+            var propertyToReturn = result.ToProperty();
             return await Task.FromResult(propertyToReturn);
         }
     }

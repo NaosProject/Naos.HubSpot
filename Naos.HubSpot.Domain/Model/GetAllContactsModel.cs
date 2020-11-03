@@ -15,7 +15,7 @@ namespace Naos.HubSpot.Domain
         /// </summary>
         /// <param name="results">The results.</param>
         /// <param name="paging">The paging.</param>
-        public GetAllContactsModel(IReadOnlyCollection<ContactModel> results, PagingModel paging)
+        public GetAllContactsModel(IReadOnlyCollection<ContactModel> results, PagingModel paging = null)
         {
             this.Results = results;
             this.Paging = paging;

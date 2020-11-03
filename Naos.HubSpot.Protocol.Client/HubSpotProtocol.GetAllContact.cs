@@ -31,7 +31,7 @@ namespace Naos.HubSpot.Protocol.Client
         public async Task<IReadOnlyCollection<Contact>> ExecuteAsync(GetAllContactsOp operation)
         {
             var uri = this.baseUri;
-            uri = uri.AppendPathSegment("/crm/v3/objects/contacts");
+            uri = uri.AppendPathSegment("crm/v3/objects/contacts");
             uri = uri.AppendQueryStringParam("limit", "100");
             uri = uri.AppendQueryStringParam("paginateAssociations", false.ToString());
             uri = uri.AppendQueryStringParam("archived", false.ToString());
@@ -47,7 +47,7 @@ namespace Naos.HubSpot.Protocol.Client
                 }
 
                 var result = reqUri.Get<GetAllContactsModel>();
-                if (!string.IsNullOrWhiteSpace(result.Paging.Next.After))
+                if (!string.IsNullOrWhiteSpace(result.Paging?.Next?.After))
                 {
                     skip = result.Paging.Next.After;
                 }

@@ -33,139 +33,1093 @@ namespace Naos.HubSpot.Domain.Test
 
     using static global::System.FormattableString;
 
-    public static partial class CompanyTest
+    public static partial class PropertyModelTest
     {
-        private static readonly StringRepresentationTestScenarios<Company> StringRepresentationTestScenarios = new StringRepresentationTestScenarios<Company>()
+        private static readonly StringRepresentationTestScenarios<PropertyModel> StringRepresentationTestScenarios = new StringRepresentationTestScenarios<PropertyModel>()
             .AddScenario(() =>
-                new StringRepresentationTestScenario<Company>
+                new StringRepresentationTestScenario<PropertyModel>
                 {
                     Name = "Default Code Generated Scenario",
                     SystemUnderTestExpectedStringRepresentationFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<Company>();
+                        var systemUnderTest = A.Dummy<PropertyModel>();
 
-                        var result = new SystemUnderTestExpectedStringRepresentation<Company>
+                        var result = new SystemUnderTestExpectedStringRepresentation<PropertyModel>
                         {
                             SystemUnderTest = systemUnderTest,
-                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.Company: Properties = {systemUnderTest.Properties?.ToString() ?? "<null>"}."),
+                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.PropertyModel: GroupName = {systemUnderTest.GroupName?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Hidden = {systemUnderTest.Hidden.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, ModificationMetadataModel = {systemUnderTest.ModificationMetadataModel?.ToString() ?? "<null>"}, Name = {systemUnderTest.Name?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, DisplayOrder = {systemUnderTest.DisplayOrder.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Options = {systemUnderTest.Options?.ToString() ?? "<null>"}, Label = {systemUnderTest.Label?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, HasUniqueValue = {systemUnderTest.HasUniqueValue.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Type = {systemUnderTest.Type?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, FieldType = {systemUnderTest.FieldType?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, FormField = {systemUnderTest.FormField.ToString(CultureInfo.InvariantCulture) ?? "<null>"}."),
                         };
 
                         return result;
                     },
                 });
 
-        private static readonly ConstructorArgumentValidationTestScenarios<Company> ConstructorArgumentValidationTestScenarios = new ConstructorArgumentValidationTestScenarios<Company>()
+        private static readonly ConstructorArgumentValidationTestScenarios<PropertyModel> ConstructorArgumentValidationTestScenarios = new ConstructorArgumentValidationTestScenarios<PropertyModel>()
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<Company>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
                 {
-                    Name = "constructor should throw ArgumentNullException when parameter 'properties' is null scenario",
+                    Name = "constructor should throw ArgumentNullException when parameter 'groupName' is null scenario",
                     ConstructionFunc = () =>
                     {
-                        var result = new Company(
-                                             null);
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new PropertyModel(
+                                             null,
+                                             referenceObject.Hidden,
+                                             referenceObject.ModificationMetadataModel,
+                                             referenceObject.Name,
+                                             referenceObject.DisplayOrder,
+                                             referenceObject.Options,
+                                             referenceObject.Label,
+                                             referenceObject.Type,
+                                             referenceObject.HasUniqueValue,
+                                             referenceObject.FieldType,
+                                             referenceObject.FormField);
 
                         return result;
                     },
                     ExpectedExceptionType = typeof(ArgumentNullException),
-                    ExpectedExceptionMessageContains = new[] { "properties" },
+                    ExpectedExceptionMessageContains = new[] { "groupName" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<Company>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
                 {
-                    Name = "constructor should throw ArgumentException when parameter 'properties' is an empty dictionary scenario",
+                    Name = "constructor should throw ArgumentException when parameter 'groupName' is white space scenario",
                     ConstructionFunc = () =>
                     {
-                        var result = new Company(
-                                             new Dictionary<string, string>());
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new PropertyModel(
+                                             Invariant($"  {Environment.NewLine}  "),
+                                             referenceObject.Hidden,
+                                             referenceObject.ModificationMetadataModel,
+                                             referenceObject.Name,
+                                             referenceObject.DisplayOrder,
+                                             referenceObject.Options,
+                                             referenceObject.Label,
+                                             referenceObject.Type,
+                                             referenceObject.HasUniqueValue,
+                                             referenceObject.FieldType,
+                                             referenceObject.FormField);
 
                         return result;
                     },
                     ExpectedExceptionType = typeof(ArgumentException),
-                    ExpectedExceptionMessageContains = new[] { "properties", "is an empty dictionary" },
+                    ExpectedExceptionMessageContains = new[] { "groupName", "white space" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<Company>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
                 {
-                    Name = "constructor should throw ArgumentException when parameter 'properties' contains a key-value pair with a null value scenario",
+                    Name = "constructor should throw ArgumentNullException when parameter 'modificationMetadataModel' is null scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<Company>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var dictionaryWithNullValue = referenceObject.Properties.ToDictionary(_ => _.Key, _ => _.Value);
+                        var result = new PropertyModel(
+                                             referenceObject.GroupName,
+                                             referenceObject.Hidden,
+                                             null,
+                                             referenceObject.Name,
+                                             referenceObject.DisplayOrder,
+                                             referenceObject.Options,
+                                             referenceObject.Label,
+                                             referenceObject.Type,
+                                             referenceObject.HasUniqueValue,
+                                             referenceObject.FieldType,
+                                             referenceObject.FormField);
 
-                        var randomKey = dictionaryWithNullValue.Keys.ElementAt(ThreadSafeRandom.Next(0, dictionaryWithNullValue.Count));
+                        return result;
+                    },
+                    ExpectedExceptionType = typeof(ArgumentNullException),
+                    ExpectedExceptionMessageContains = new[] { "modificationMetadataModel" },
+                })
+            .AddScenario(() =>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
+                {
+                    Name = "constructor should throw ArgumentNullException when parameter 'name' is null scenario",
+                    ConstructionFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        dictionaryWithNullValue[randomKey] = null;
+                        var result = new PropertyModel(
+                                             referenceObject.GroupName,
+                                             referenceObject.Hidden,
+                                             referenceObject.ModificationMetadataModel,
+                                             null,
+                                             referenceObject.DisplayOrder,
+                                             referenceObject.Options,
+                                             referenceObject.Label,
+                                             referenceObject.Type,
+                                             referenceObject.HasUniqueValue,
+                                             referenceObject.FieldType,
+                                             referenceObject.FormField);
 
-                        var result = new Company(
-                                             dictionaryWithNullValue);
+                        return result;
+                    },
+                    ExpectedExceptionType = typeof(ArgumentNullException),
+                    ExpectedExceptionMessageContains = new[] { "name" },
+                })
+            .AddScenario(() =>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
+                {
+                    Name = "constructor should throw ArgumentException when parameter 'name' is white space scenario",
+                    ConstructionFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new PropertyModel(
+                                             referenceObject.GroupName,
+                                             referenceObject.Hidden,
+                                             referenceObject.ModificationMetadataModel,
+                                             Invariant($"  {Environment.NewLine}  "),
+                                             referenceObject.DisplayOrder,
+                                             referenceObject.Options,
+                                             referenceObject.Label,
+                                             referenceObject.Type,
+                                             referenceObject.HasUniqueValue,
+                                             referenceObject.FieldType,
+                                             referenceObject.FormField);
 
                         return result;
                     },
                     ExpectedExceptionType = typeof(ArgumentException),
-                    ExpectedExceptionMessageContains = new[] { "properties", "contains at least one key-value pair with a null value" },
+                    ExpectedExceptionMessageContains = new[] { "name", "white space" },
+                })
+            .AddScenario(() =>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
+                {
+                    Name = "constructor should throw ArgumentNullException when parameter 'options' is null scenario",
+                    ConstructionFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new PropertyModel(
+                                             referenceObject.GroupName,
+                                             referenceObject.Hidden,
+                                             referenceObject.ModificationMetadataModel,
+                                             referenceObject.Name,
+                                             referenceObject.DisplayOrder,
+                                             null,
+                                             referenceObject.Label,
+                                             referenceObject.Type,
+                                             referenceObject.HasUniqueValue,
+                                             referenceObject.FieldType,
+                                             referenceObject.FormField);
+
+                        return result;
+                    },
+                    ExpectedExceptionType = typeof(ArgumentNullException),
+                    ExpectedExceptionMessageContains = new[] { "options" },
+                })
+            .AddScenario(() =>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
+                {
+                    Name = "constructor should throw ArgumentException when parameter 'options' is an empty enumerable scenario",
+                    ConstructionFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new PropertyModel(
+                                             referenceObject.GroupName,
+                                             referenceObject.Hidden,
+                                             referenceObject.ModificationMetadataModel,
+                                             referenceObject.Name,
+                                             referenceObject.DisplayOrder,
+                                             new List<OptionModel>(),
+                                             referenceObject.Label,
+                                             referenceObject.Type,
+                                             referenceObject.HasUniqueValue,
+                                             referenceObject.FieldType,
+                                             referenceObject.FormField);
+
+                        return result;
+                    },
+                    ExpectedExceptionType = typeof(ArgumentException),
+                    ExpectedExceptionMessageContains = new[] { "options", "is an empty enumerable" },
+                })
+            .AddScenario(() =>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
+                {
+                    Name = "constructor should throw ArgumentException when parameter 'options' contains a null element scenario",
+                    ConstructionFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new PropertyModel(
+                                             referenceObject.GroupName,
+                                             referenceObject.Hidden,
+                                             referenceObject.ModificationMetadataModel,
+                                             referenceObject.Name,
+                                             referenceObject.DisplayOrder,
+                                             new OptionModel[0].Concat(referenceObject.Options).Concat(new OptionModel[] { null }).Concat(referenceObject.Options).ToList(),
+                                             referenceObject.Label,
+                                             referenceObject.Type,
+                                             referenceObject.HasUniqueValue,
+                                             referenceObject.FieldType,
+                                             referenceObject.FormField);
+
+                        return result;
+                    },
+                    ExpectedExceptionType = typeof(ArgumentException),
+                    ExpectedExceptionMessageContains = new[] { "options", "contains at least one null element" },
+                })
+            .AddScenario(() =>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
+                {
+                    Name = "constructor should throw ArgumentNullException when parameter 'label' is null scenario",
+                    ConstructionFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new PropertyModel(
+                                             referenceObject.GroupName,
+                                             referenceObject.Hidden,
+                                             referenceObject.ModificationMetadataModel,
+                                             referenceObject.Name,
+                                             referenceObject.DisplayOrder,
+                                             referenceObject.Options,
+                                             null,
+                                             referenceObject.Type,
+                                             referenceObject.HasUniqueValue,
+                                             referenceObject.FieldType,
+                                             referenceObject.FormField);
+
+                        return result;
+                    },
+                    ExpectedExceptionType = typeof(ArgumentNullException),
+                    ExpectedExceptionMessageContains = new[] { "label" },
+                })
+            .AddScenario(() =>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
+                {
+                    Name = "constructor should throw ArgumentException when parameter 'label' is white space scenario",
+                    ConstructionFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new PropertyModel(
+                                             referenceObject.GroupName,
+                                             referenceObject.Hidden,
+                                             referenceObject.ModificationMetadataModel,
+                                             referenceObject.Name,
+                                             referenceObject.DisplayOrder,
+                                             referenceObject.Options,
+                                             Invariant($"  {Environment.NewLine}  "),
+                                             referenceObject.Type,
+                                             referenceObject.HasUniqueValue,
+                                             referenceObject.FieldType,
+                                             referenceObject.FormField);
+
+                        return result;
+                    },
+                    ExpectedExceptionType = typeof(ArgumentException),
+                    ExpectedExceptionMessageContains = new[] { "label", "white space" },
+                })
+            .AddScenario(() =>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
+                {
+                    Name = "constructor should throw ArgumentNullException when parameter 'type' is null scenario",
+                    ConstructionFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new PropertyModel(
+                                             referenceObject.GroupName,
+                                             referenceObject.Hidden,
+                                             referenceObject.ModificationMetadataModel,
+                                             referenceObject.Name,
+                                             referenceObject.DisplayOrder,
+                                             referenceObject.Options,
+                                             referenceObject.Label,
+                                             null,
+                                             referenceObject.HasUniqueValue,
+                                             referenceObject.FieldType,
+                                             referenceObject.FormField);
+
+                        return result;
+                    },
+                    ExpectedExceptionType = typeof(ArgumentNullException),
+                    ExpectedExceptionMessageContains = new[] { "type" },
+                })
+            .AddScenario(() =>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
+                {
+                    Name = "constructor should throw ArgumentException when parameter 'type' is white space scenario",
+                    ConstructionFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new PropertyModel(
+                                             referenceObject.GroupName,
+                                             referenceObject.Hidden,
+                                             referenceObject.ModificationMetadataModel,
+                                             referenceObject.Name,
+                                             referenceObject.DisplayOrder,
+                                             referenceObject.Options,
+                                             referenceObject.Label,
+                                             Invariant($"  {Environment.NewLine}  "),
+                                             referenceObject.HasUniqueValue,
+                                             referenceObject.FieldType,
+                                             referenceObject.FormField);
+
+                        return result;
+                    },
+                    ExpectedExceptionType = typeof(ArgumentException),
+                    ExpectedExceptionMessageContains = new[] { "type", "white space" },
+                })
+            .AddScenario(() =>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
+                {
+                    Name = "constructor should throw ArgumentNullException when parameter 'fieldType' is null scenario",
+                    ConstructionFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new PropertyModel(
+                                             referenceObject.GroupName,
+                                             referenceObject.Hidden,
+                                             referenceObject.ModificationMetadataModel,
+                                             referenceObject.Name,
+                                             referenceObject.DisplayOrder,
+                                             referenceObject.Options,
+                                             referenceObject.Label,
+                                             referenceObject.Type,
+                                             referenceObject.HasUniqueValue,
+                                             null,
+                                             referenceObject.FormField);
+
+                        return result;
+                    },
+                    ExpectedExceptionType = typeof(ArgumentNullException),
+                    ExpectedExceptionMessageContains = new[] { "fieldType" },
+                })
+            .AddScenario(() =>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
+                {
+                    Name = "constructor should throw ArgumentException when parameter 'fieldType' is white space scenario",
+                    ConstructionFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new PropertyModel(
+                                             referenceObject.GroupName,
+                                             referenceObject.Hidden,
+                                             referenceObject.ModificationMetadataModel,
+                                             referenceObject.Name,
+                                             referenceObject.DisplayOrder,
+                                             referenceObject.Options,
+                                             referenceObject.Label,
+                                             referenceObject.Type,
+                                             referenceObject.HasUniqueValue,
+                                             Invariant($"  {Environment.NewLine}  "),
+                                             referenceObject.FormField);
+
+                        return result;
+                    },
+                    ExpectedExceptionType = typeof(ArgumentException),
+                    ExpectedExceptionMessageContains = new[] { "fieldType", "white space" },
                 });
 
-        private static readonly ConstructorPropertyAssignmentTestScenarios<Company> ConstructorPropertyAssignmentTestScenarios = new ConstructorPropertyAssignmentTestScenarios<Company>()
+        private static readonly ConstructorPropertyAssignmentTestScenarios<PropertyModel> ConstructorPropertyAssignmentTestScenarios = new ConstructorPropertyAssignmentTestScenarios<PropertyModel>()
             .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<Company>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
                 {
-                    Name = "Properties should return same 'properties' parameter passed to constructor when getting",
+                    Name = "GroupName should return same 'groupName' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
-                        var referenceObject = A.Dummy<Company>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new SystemUnderTestExpectedPropertyValue<Company>
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
                         {
-                            SystemUnderTest = new Company(
-                                                      referenceObject.Properties),
-                            ExpectedPropertyValue = referenceObject.Properties,
+                            SystemUnderTest = new PropertyModel(
+                                                      referenceObject.GroupName,
+                                                      referenceObject.Hidden,
+                                                      referenceObject.ModificationMetadataModel,
+                                                      referenceObject.Name,
+                                                      referenceObject.DisplayOrder,
+                                                      referenceObject.Options,
+                                                      referenceObject.Label,
+                                                      referenceObject.Type,
+                                                      referenceObject.HasUniqueValue,
+                                                      referenceObject.FieldType,
+                                                      referenceObject.FormField),
+                            ExpectedPropertyValue = referenceObject.GroupName,
                         };
 
                         return result;
                     },
-                    PropertyName = "Properties",
+                    PropertyName = "GroupName",
+                })
+            .AddScenario(() =>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
+                {
+                    Name = "Hidden should return same 'hidden' parameter passed to constructor when getting",
+                    SystemUnderTestExpectedPropertyValueFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
+                        {
+                            SystemUnderTest = new PropertyModel(
+                                                      referenceObject.GroupName,
+                                                      referenceObject.Hidden,
+                                                      referenceObject.ModificationMetadataModel,
+                                                      referenceObject.Name,
+                                                      referenceObject.DisplayOrder,
+                                                      referenceObject.Options,
+                                                      referenceObject.Label,
+                                                      referenceObject.Type,
+                                                      referenceObject.HasUniqueValue,
+                                                      referenceObject.FieldType,
+                                                      referenceObject.FormField),
+                            ExpectedPropertyValue = referenceObject.Hidden,
+                        };
+
+                        return result;
+                    },
+                    PropertyName = "Hidden",
+                })
+            .AddScenario(() =>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
+                {
+                    Name = "ModificationMetadataModel should return same 'modificationMetadataModel' parameter passed to constructor when getting",
+                    SystemUnderTestExpectedPropertyValueFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
+                        {
+                            SystemUnderTest = new PropertyModel(
+                                                      referenceObject.GroupName,
+                                                      referenceObject.Hidden,
+                                                      referenceObject.ModificationMetadataModel,
+                                                      referenceObject.Name,
+                                                      referenceObject.DisplayOrder,
+                                                      referenceObject.Options,
+                                                      referenceObject.Label,
+                                                      referenceObject.Type,
+                                                      referenceObject.HasUniqueValue,
+                                                      referenceObject.FieldType,
+                                                      referenceObject.FormField),
+                            ExpectedPropertyValue = referenceObject.ModificationMetadataModel,
+                        };
+
+                        return result;
+                    },
+                    PropertyName = "ModificationMetadataModel",
+                })
+            .AddScenario(() =>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
+                {
+                    Name = "Name should return same 'name' parameter passed to constructor when getting",
+                    SystemUnderTestExpectedPropertyValueFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
+                        {
+                            SystemUnderTest = new PropertyModel(
+                                                      referenceObject.GroupName,
+                                                      referenceObject.Hidden,
+                                                      referenceObject.ModificationMetadataModel,
+                                                      referenceObject.Name,
+                                                      referenceObject.DisplayOrder,
+                                                      referenceObject.Options,
+                                                      referenceObject.Label,
+                                                      referenceObject.Type,
+                                                      referenceObject.HasUniqueValue,
+                                                      referenceObject.FieldType,
+                                                      referenceObject.FormField),
+                            ExpectedPropertyValue = referenceObject.Name,
+                        };
+
+                        return result;
+                    },
+                    PropertyName = "Name",
+                })
+            .AddScenario(() =>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
+                {
+                    Name = "DisplayOrder should return same 'displayOrder' parameter passed to constructor when getting",
+                    SystemUnderTestExpectedPropertyValueFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
+                        {
+                            SystemUnderTest = new PropertyModel(
+                                                      referenceObject.GroupName,
+                                                      referenceObject.Hidden,
+                                                      referenceObject.ModificationMetadataModel,
+                                                      referenceObject.Name,
+                                                      referenceObject.DisplayOrder,
+                                                      referenceObject.Options,
+                                                      referenceObject.Label,
+                                                      referenceObject.Type,
+                                                      referenceObject.HasUniqueValue,
+                                                      referenceObject.FieldType,
+                                                      referenceObject.FormField),
+                            ExpectedPropertyValue = referenceObject.DisplayOrder,
+                        };
+
+                        return result;
+                    },
+                    PropertyName = "DisplayOrder",
+                })
+            .AddScenario(() =>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
+                {
+                    Name = "Options should return same 'options' parameter passed to constructor when getting",
+                    SystemUnderTestExpectedPropertyValueFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
+                        {
+                            SystemUnderTest = new PropertyModel(
+                                                      referenceObject.GroupName,
+                                                      referenceObject.Hidden,
+                                                      referenceObject.ModificationMetadataModel,
+                                                      referenceObject.Name,
+                                                      referenceObject.DisplayOrder,
+                                                      referenceObject.Options,
+                                                      referenceObject.Label,
+                                                      referenceObject.Type,
+                                                      referenceObject.HasUniqueValue,
+                                                      referenceObject.FieldType,
+                                                      referenceObject.FormField),
+                            ExpectedPropertyValue = referenceObject.Options,
+                        };
+
+                        return result;
+                    },
+                    PropertyName = "Options",
+                })
+            .AddScenario(() =>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
+                {
+                    Name = "Label should return same 'label' parameter passed to constructor when getting",
+                    SystemUnderTestExpectedPropertyValueFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
+                        {
+                            SystemUnderTest = new PropertyModel(
+                                                      referenceObject.GroupName,
+                                                      referenceObject.Hidden,
+                                                      referenceObject.ModificationMetadataModel,
+                                                      referenceObject.Name,
+                                                      referenceObject.DisplayOrder,
+                                                      referenceObject.Options,
+                                                      referenceObject.Label,
+                                                      referenceObject.Type,
+                                                      referenceObject.HasUniqueValue,
+                                                      referenceObject.FieldType,
+                                                      referenceObject.FormField),
+                            ExpectedPropertyValue = referenceObject.Label,
+                        };
+
+                        return result;
+                    },
+                    PropertyName = "Label",
+                })
+            .AddScenario(() =>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
+                {
+                    Name = "Type should return same 'type' parameter passed to constructor when getting",
+                    SystemUnderTestExpectedPropertyValueFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
+                        {
+                            SystemUnderTest = new PropertyModel(
+                                                      referenceObject.GroupName,
+                                                      referenceObject.Hidden,
+                                                      referenceObject.ModificationMetadataModel,
+                                                      referenceObject.Name,
+                                                      referenceObject.DisplayOrder,
+                                                      referenceObject.Options,
+                                                      referenceObject.Label,
+                                                      referenceObject.Type,
+                                                      referenceObject.HasUniqueValue,
+                                                      referenceObject.FieldType,
+                                                      referenceObject.FormField),
+                            ExpectedPropertyValue = referenceObject.Type,
+                        };
+
+                        return result;
+                    },
+                    PropertyName = "Type",
+                })
+            .AddScenario(() =>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
+                {
+                    Name = "HasUniqueValue should return same 'hasUniqueValue' parameter passed to constructor when getting",
+                    SystemUnderTestExpectedPropertyValueFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
+                        {
+                            SystemUnderTest = new PropertyModel(
+                                                      referenceObject.GroupName,
+                                                      referenceObject.Hidden,
+                                                      referenceObject.ModificationMetadataModel,
+                                                      referenceObject.Name,
+                                                      referenceObject.DisplayOrder,
+                                                      referenceObject.Options,
+                                                      referenceObject.Label,
+                                                      referenceObject.Type,
+                                                      referenceObject.HasUniqueValue,
+                                                      referenceObject.FieldType,
+                                                      referenceObject.FormField),
+                            ExpectedPropertyValue = referenceObject.HasUniqueValue,
+                        };
+
+                        return result;
+                    },
+                    PropertyName = "HasUniqueValue",
+                })
+            .AddScenario(() =>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
+                {
+                    Name = "FieldType should return same 'fieldType' parameter passed to constructor when getting",
+                    SystemUnderTestExpectedPropertyValueFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
+                        {
+                            SystemUnderTest = new PropertyModel(
+                                                      referenceObject.GroupName,
+                                                      referenceObject.Hidden,
+                                                      referenceObject.ModificationMetadataModel,
+                                                      referenceObject.Name,
+                                                      referenceObject.DisplayOrder,
+                                                      referenceObject.Options,
+                                                      referenceObject.Label,
+                                                      referenceObject.Type,
+                                                      referenceObject.HasUniqueValue,
+                                                      referenceObject.FieldType,
+                                                      referenceObject.FormField),
+                            ExpectedPropertyValue = referenceObject.FieldType,
+                        };
+
+                        return result;
+                    },
+                    PropertyName = "FieldType",
+                })
+            .AddScenario(() =>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
+                {
+                    Name = "FormField should return same 'formField' parameter passed to constructor when getting",
+                    SystemUnderTestExpectedPropertyValueFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
+                        {
+                            SystemUnderTest = new PropertyModel(
+                                                      referenceObject.GroupName,
+                                                      referenceObject.Hidden,
+                                                      referenceObject.ModificationMetadataModel,
+                                                      referenceObject.Name,
+                                                      referenceObject.DisplayOrder,
+                                                      referenceObject.Options,
+                                                      referenceObject.Label,
+                                                      referenceObject.Type,
+                                                      referenceObject.HasUniqueValue,
+                                                      referenceObject.FieldType,
+                                                      referenceObject.FormField),
+                            ExpectedPropertyValue = referenceObject.FormField,
+                        };
+
+                        return result;
+                    },
+                    PropertyName = "FormField",
                 });
 
-        private static readonly DeepCloneWithTestScenarios<Company> DeepCloneWithTestScenarios = new DeepCloneWithTestScenarios<Company>()
+        private static readonly DeepCloneWithTestScenarios<PropertyModel> DeepCloneWithTestScenarios = new DeepCloneWithTestScenarios<PropertyModel>()
             .AddScenario(() =>
-                new DeepCloneWithTestScenario<Company>
+                new DeepCloneWithTestScenario<PropertyModel>
                 {
-                    Name = "DeepCloneWithProperties should deep clone object and replace Properties with the provided properties",
-                    WithPropertyName = "Properties",
+                    Name = "DeepCloneWithGroupName should deep clone object and replace GroupName with the provided groupName",
+                    WithPropertyName = "GroupName",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<Company>();
+                        var systemUnderTest = A.Dummy<PropertyModel>();
 
-                        var referenceObject = A.Dummy<Company>().ThatIs(_ => !systemUnderTest.Properties.IsEqualTo(_.Properties));
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.GroupName.IsEqualTo(_.GroupName));
 
-                        var result = new SystemUnderTestDeepCloneWithValue<Company>
+                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
                         {
                             SystemUnderTest = systemUnderTest,
-                            DeepCloneWithValue = referenceObject.Properties,
+                            DeepCloneWithValue = referenceObject.GroupName,
+                        };
+
+                        return result;
+                    },
+                })
+            .AddScenario(() =>
+                new DeepCloneWithTestScenario<PropertyModel>
+                {
+                    Name = "DeepCloneWithHidden should deep clone object and replace Hidden with the provided hidden",
+                    WithPropertyName = "Hidden",
+                    SystemUnderTestDeepCloneWithValueFunc = () =>
+                    {
+                        var systemUnderTest = A.Dummy<PropertyModel>();
+
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.Hidden.IsEqualTo(_.Hidden));
+
+                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
+                        {
+                            SystemUnderTest = systemUnderTest,
+                            DeepCloneWithValue = referenceObject.Hidden,
+                        };
+
+                        return result;
+                    },
+                })
+            .AddScenario(() =>
+                new DeepCloneWithTestScenario<PropertyModel>
+                {
+                    Name = "DeepCloneWithModificationMetadataModel should deep clone object and replace ModificationMetadataModel with the provided modificationMetadataModel",
+                    WithPropertyName = "ModificationMetadataModel",
+                    SystemUnderTestDeepCloneWithValueFunc = () =>
+                    {
+                        var systemUnderTest = A.Dummy<PropertyModel>();
+
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.ModificationMetadataModel.IsEqualTo(_.ModificationMetadataModel));
+
+                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
+                        {
+                            SystemUnderTest = systemUnderTest,
+                            DeepCloneWithValue = referenceObject.ModificationMetadataModel,
+                        };
+
+                        return result;
+                    },
+                })
+            .AddScenario(() =>
+                new DeepCloneWithTestScenario<PropertyModel>
+                {
+                    Name = "DeepCloneWithName should deep clone object and replace Name with the provided name",
+                    WithPropertyName = "Name",
+                    SystemUnderTestDeepCloneWithValueFunc = () =>
+                    {
+                        var systemUnderTest = A.Dummy<PropertyModel>();
+
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.Name.IsEqualTo(_.Name));
+
+                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
+                        {
+                            SystemUnderTest = systemUnderTest,
+                            DeepCloneWithValue = referenceObject.Name,
+                        };
+
+                        return result;
+                    },
+                })
+            .AddScenario(() =>
+                new DeepCloneWithTestScenario<PropertyModel>
+                {
+                    Name = "DeepCloneWithDisplayOrder should deep clone object and replace DisplayOrder with the provided displayOrder",
+                    WithPropertyName = "DisplayOrder",
+                    SystemUnderTestDeepCloneWithValueFunc = () =>
+                    {
+                        var systemUnderTest = A.Dummy<PropertyModel>();
+
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.DisplayOrder.IsEqualTo(_.DisplayOrder));
+
+                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
+                        {
+                            SystemUnderTest = systemUnderTest,
+                            DeepCloneWithValue = referenceObject.DisplayOrder,
+                        };
+
+                        return result;
+                    },
+                })
+            .AddScenario(() =>
+                new DeepCloneWithTestScenario<PropertyModel>
+                {
+                    Name = "DeepCloneWithOptions should deep clone object and replace Options with the provided options",
+                    WithPropertyName = "Options",
+                    SystemUnderTestDeepCloneWithValueFunc = () =>
+                    {
+                        var systemUnderTest = A.Dummy<PropertyModel>();
+
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.Options.IsEqualTo(_.Options));
+
+                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
+                        {
+                            SystemUnderTest = systemUnderTest,
+                            DeepCloneWithValue = referenceObject.Options,
+                        };
+
+                        return result;
+                    },
+                })
+            .AddScenario(() =>
+                new DeepCloneWithTestScenario<PropertyModel>
+                {
+                    Name = "DeepCloneWithLabel should deep clone object and replace Label with the provided label",
+                    WithPropertyName = "Label",
+                    SystemUnderTestDeepCloneWithValueFunc = () =>
+                    {
+                        var systemUnderTest = A.Dummy<PropertyModel>();
+
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.Label.IsEqualTo(_.Label));
+
+                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
+                        {
+                            SystemUnderTest = systemUnderTest,
+                            DeepCloneWithValue = referenceObject.Label,
+                        };
+
+                        return result;
+                    },
+                })
+            .AddScenario(() =>
+                new DeepCloneWithTestScenario<PropertyModel>
+                {
+                    Name = "DeepCloneWithHasUniqueValue should deep clone object and replace HasUniqueValue with the provided hasUniqueValue",
+                    WithPropertyName = "HasUniqueValue",
+                    SystemUnderTestDeepCloneWithValueFunc = () =>
+                    {
+                        var systemUnderTest = A.Dummy<PropertyModel>();
+
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.HasUniqueValue.IsEqualTo(_.HasUniqueValue));
+
+                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
+                        {
+                            SystemUnderTest = systemUnderTest,
+                            DeepCloneWithValue = referenceObject.HasUniqueValue,
+                        };
+
+                        return result;
+                    },
+                })
+            .AddScenario(() =>
+                new DeepCloneWithTestScenario<PropertyModel>
+                {
+                    Name = "DeepCloneWithType should deep clone object and replace Type with the provided type",
+                    WithPropertyName = "Type",
+                    SystemUnderTestDeepCloneWithValueFunc = () =>
+                    {
+                        var systemUnderTest = A.Dummy<PropertyModel>();
+
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.Type.IsEqualTo(_.Type));
+
+                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
+                        {
+                            SystemUnderTest = systemUnderTest,
+                            DeepCloneWithValue = referenceObject.Type,
+                        };
+
+                        return result;
+                    },
+                })
+            .AddScenario(() =>
+                new DeepCloneWithTestScenario<PropertyModel>
+                {
+                    Name = "DeepCloneWithFieldType should deep clone object and replace FieldType with the provided fieldType",
+                    WithPropertyName = "FieldType",
+                    SystemUnderTestDeepCloneWithValueFunc = () =>
+                    {
+                        var systemUnderTest = A.Dummy<PropertyModel>();
+
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.FieldType.IsEqualTo(_.FieldType));
+
+                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
+                        {
+                            SystemUnderTest = systemUnderTest,
+                            DeepCloneWithValue = referenceObject.FieldType,
+                        };
+
+                        return result;
+                    },
+                })
+            .AddScenario(() =>
+                new DeepCloneWithTestScenario<PropertyModel>
+                {
+                    Name = "DeepCloneWithFormField should deep clone object and replace FormField with the provided formField",
+                    WithPropertyName = "FormField",
+                    SystemUnderTestDeepCloneWithValueFunc = () =>
+                    {
+                        var systemUnderTest = A.Dummy<PropertyModel>();
+
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.FormField.IsEqualTo(_.FormField));
+
+                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
+                        {
+                            SystemUnderTest = systemUnderTest,
+                            DeepCloneWithValue = referenceObject.FormField,
                         };
 
                         return result;
                     },
                 });
 
-        private static readonly Company ReferenceObjectForEquatableTestScenarios = A.Dummy<Company>();
+        private static readonly PropertyModel ReferenceObjectForEquatableTestScenarios = A.Dummy<PropertyModel>();
 
-        private static readonly EquatableTestScenarios<Company> EquatableTestScenarios = new EquatableTestScenarios<Company>()
+        private static readonly EquatableTestScenarios<PropertyModel> EquatableTestScenarios = new EquatableTestScenarios<PropertyModel>()
             .AddScenario(() =>
-                new EquatableTestScenario<Company>
+                new EquatableTestScenario<PropertyModel>
                 {
                     Name = "Default Code Generated Scenario",
                     ReferenceObject = ReferenceObjectForEquatableTestScenarios,
-                    ObjectsThatAreEqualToButNotTheSameAsReferenceObject = new Company[]
+                    ObjectsThatAreEqualToButNotTheSameAsReferenceObject = new PropertyModel[]
                     {
-                        new Company(
-                                ReferenceObjectForEquatableTestScenarios.Properties),
+                        new PropertyModel(
+                                ReferenceObjectForEquatableTestScenarios.GroupName,
+                                ReferenceObjectForEquatableTestScenarios.Hidden,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Name,
+                                ReferenceObjectForEquatableTestScenarios.DisplayOrder,
+                                ReferenceObjectForEquatableTestScenarios.Options,
+                                ReferenceObjectForEquatableTestScenarios.Label,
+                                ReferenceObjectForEquatableTestScenarios.Type,
+                                ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
+                                ReferenceObjectForEquatableTestScenarios.FieldType,
+                                ReferenceObjectForEquatableTestScenarios.FormField),
                     },
-                    ObjectsThatAreNotEqualToReferenceObject = new Company[]
+                    ObjectsThatAreNotEqualToReferenceObject = new PropertyModel[]
                     {
-                        new Company(
-                                A.Dummy<Company>().Whose(_ => !_.Properties.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Properties)).Properties),
+                        new PropertyModel(
+                                A.Dummy<PropertyModel>().Whose(_ => !_.GroupName.IsEqualTo(ReferenceObjectForEquatableTestScenarios.GroupName)).GroupName,
+                                ReferenceObjectForEquatableTestScenarios.Hidden,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Name,
+                                ReferenceObjectForEquatableTestScenarios.DisplayOrder,
+                                ReferenceObjectForEquatableTestScenarios.Options,
+                                ReferenceObjectForEquatableTestScenarios.Label,
+                                ReferenceObjectForEquatableTestScenarios.Type,
+                                ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
+                                ReferenceObjectForEquatableTestScenarios.FieldType,
+                                ReferenceObjectForEquatableTestScenarios.FormField),
+                        new PropertyModel(
+                                ReferenceObjectForEquatableTestScenarios.GroupName,
+                                A.Dummy<PropertyModel>().Whose(_ => !_.Hidden.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Hidden)).Hidden,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Name,
+                                ReferenceObjectForEquatableTestScenarios.DisplayOrder,
+                                ReferenceObjectForEquatableTestScenarios.Options,
+                                ReferenceObjectForEquatableTestScenarios.Label,
+                                ReferenceObjectForEquatableTestScenarios.Type,
+                                ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
+                                ReferenceObjectForEquatableTestScenarios.FieldType,
+                                ReferenceObjectForEquatableTestScenarios.FormField),
+                        new PropertyModel(
+                                ReferenceObjectForEquatableTestScenarios.GroupName,
+                                ReferenceObjectForEquatableTestScenarios.Hidden,
+                                A.Dummy<PropertyModel>().Whose(_ => !_.ModificationMetadataModel.IsEqualTo(ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel)).ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Name,
+                                ReferenceObjectForEquatableTestScenarios.DisplayOrder,
+                                ReferenceObjectForEquatableTestScenarios.Options,
+                                ReferenceObjectForEquatableTestScenarios.Label,
+                                ReferenceObjectForEquatableTestScenarios.Type,
+                                ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
+                                ReferenceObjectForEquatableTestScenarios.FieldType,
+                                ReferenceObjectForEquatableTestScenarios.FormField),
+                        new PropertyModel(
+                                ReferenceObjectForEquatableTestScenarios.GroupName,
+                                ReferenceObjectForEquatableTestScenarios.Hidden,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                A.Dummy<PropertyModel>().Whose(_ => !_.Name.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Name)).Name,
+                                ReferenceObjectForEquatableTestScenarios.DisplayOrder,
+                                ReferenceObjectForEquatableTestScenarios.Options,
+                                ReferenceObjectForEquatableTestScenarios.Label,
+                                ReferenceObjectForEquatableTestScenarios.Type,
+                                ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
+                                ReferenceObjectForEquatableTestScenarios.FieldType,
+                                ReferenceObjectForEquatableTestScenarios.FormField),
+                        new PropertyModel(
+                                ReferenceObjectForEquatableTestScenarios.GroupName,
+                                ReferenceObjectForEquatableTestScenarios.Hidden,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Name,
+                                A.Dummy<PropertyModel>().Whose(_ => !_.DisplayOrder.IsEqualTo(ReferenceObjectForEquatableTestScenarios.DisplayOrder)).DisplayOrder,
+                                ReferenceObjectForEquatableTestScenarios.Options,
+                                ReferenceObjectForEquatableTestScenarios.Label,
+                                ReferenceObjectForEquatableTestScenarios.Type,
+                                ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
+                                ReferenceObjectForEquatableTestScenarios.FieldType,
+                                ReferenceObjectForEquatableTestScenarios.FormField),
+                        new PropertyModel(
+                                ReferenceObjectForEquatableTestScenarios.GroupName,
+                                ReferenceObjectForEquatableTestScenarios.Hidden,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Name,
+                                ReferenceObjectForEquatableTestScenarios.DisplayOrder,
+                                A.Dummy<PropertyModel>().Whose(_ => !_.Options.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Options)).Options,
+                                ReferenceObjectForEquatableTestScenarios.Label,
+                                ReferenceObjectForEquatableTestScenarios.Type,
+                                ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
+                                ReferenceObjectForEquatableTestScenarios.FieldType,
+                                ReferenceObjectForEquatableTestScenarios.FormField),
+                        new PropertyModel(
+                                ReferenceObjectForEquatableTestScenarios.GroupName,
+                                ReferenceObjectForEquatableTestScenarios.Hidden,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Name,
+                                ReferenceObjectForEquatableTestScenarios.DisplayOrder,
+                                ReferenceObjectForEquatableTestScenarios.Options,
+                                A.Dummy<PropertyModel>().Whose(_ => !_.Label.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Label)).Label,
+                                ReferenceObjectForEquatableTestScenarios.Type,
+                                ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
+                                ReferenceObjectForEquatableTestScenarios.FieldType,
+                                ReferenceObjectForEquatableTestScenarios.FormField),
+                        new PropertyModel(
+                                ReferenceObjectForEquatableTestScenarios.GroupName,
+                                ReferenceObjectForEquatableTestScenarios.Hidden,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Name,
+                                ReferenceObjectForEquatableTestScenarios.DisplayOrder,
+                                ReferenceObjectForEquatableTestScenarios.Options,
+                                ReferenceObjectForEquatableTestScenarios.Label,
+                                ReferenceObjectForEquatableTestScenarios.Type,
+                                A.Dummy<PropertyModel>().Whose(_ => !_.HasUniqueValue.IsEqualTo(ReferenceObjectForEquatableTestScenarios.HasUniqueValue)).HasUniqueValue,
+                                ReferenceObjectForEquatableTestScenarios.FieldType,
+                                ReferenceObjectForEquatableTestScenarios.FormField),
+                        new PropertyModel(
+                                ReferenceObjectForEquatableTestScenarios.GroupName,
+                                ReferenceObjectForEquatableTestScenarios.Hidden,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Name,
+                                ReferenceObjectForEquatableTestScenarios.DisplayOrder,
+                                ReferenceObjectForEquatableTestScenarios.Options,
+                                ReferenceObjectForEquatableTestScenarios.Label,
+                                A.Dummy<PropertyModel>().Whose(_ => !_.Type.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Type)).Type,
+                                ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
+                                ReferenceObjectForEquatableTestScenarios.FieldType,
+                                ReferenceObjectForEquatableTestScenarios.FormField),
+                        new PropertyModel(
+                                ReferenceObjectForEquatableTestScenarios.GroupName,
+                                ReferenceObjectForEquatableTestScenarios.Hidden,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Name,
+                                ReferenceObjectForEquatableTestScenarios.DisplayOrder,
+                                ReferenceObjectForEquatableTestScenarios.Options,
+                                ReferenceObjectForEquatableTestScenarios.Label,
+                                ReferenceObjectForEquatableTestScenarios.Type,
+                                ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
+                                A.Dummy<PropertyModel>().Whose(_ => !_.FieldType.IsEqualTo(ReferenceObjectForEquatableTestScenarios.FieldType)).FieldType,
+                                ReferenceObjectForEquatableTestScenarios.FormField),
+                        new PropertyModel(
+                                ReferenceObjectForEquatableTestScenarios.GroupName,
+                                ReferenceObjectForEquatableTestScenarios.Hidden,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Name,
+                                ReferenceObjectForEquatableTestScenarios.DisplayOrder,
+                                ReferenceObjectForEquatableTestScenarios.Options,
+                                ReferenceObjectForEquatableTestScenarios.Label,
+                                ReferenceObjectForEquatableTestScenarios.Type,
+                                ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
+                                ReferenceObjectForEquatableTestScenarios.FieldType,
+                                A.Dummy<PropertyModel>().Whose(_ => !_.FormField.IsEqualTo(ReferenceObjectForEquatableTestScenarios.FormField)).FormField),
                     },
                     ObjectsThatAreNotOfTheSameTypeAsReferenceObject = new object[]
                     {
@@ -195,12 +1149,12 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Company___Should_implement_IModel_of_Company___When_reflecting()
+            public static void PropertyModel___Should_implement_IModel_of_PropertyModel___When_reflecting()
             {
                 // Arrange
-                var type = typeof(Company);
+                var type = typeof(PropertyModel);
 
-                var expectedModelMethods = typeof(IModel<Company>).GetInterfaceDeclaredAndImplementedMethods();
+                var expectedModelMethods = typeof(IModel<PropertyModel>).GetInterfaceDeclaredAndImplementedMethods();
 
                 var expectedModelMethodHashes = expectedModelMethods.Select(_ => _.GetSignatureHash());
 
@@ -210,7 +1164,7 @@ namespace Naos.HubSpot.Domain.Test
                 var actualModelMethodHashes = actualModelMethods.Select(_ => _.GetSignatureHash());
 
                 // Assert
-                actualInterfaces.AsTest().Must().ContainElement(typeof(IModel<Company>));
+                actualInterfaces.AsTest().Must().ContainElement(typeof(IModel<PropertyModel>));
                 expectedModelMethodHashes.Except(actualModelMethodHashes).AsTest().Must().BeEmptyEnumerable();
             }
 
@@ -228,10 +1182,10 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Company___Should_be_attributed_with_Serializable____When_reflecting()
+            public static void PropertyModel___Should_be_attributed_with_Serializable____When_reflecting()
             {
                 // Arrange
-                var type = typeof(Company);
+                var type = typeof(PropertyModel);
 
                 // Act
                 var actualAttributes = type.GetCustomAttributes(typeof(SerializableAttribute), false);
@@ -404,10 +1358,10 @@ namespace Naos.HubSpot.Domain.Test
             public static void Clone___Should_clone_object___When_called()
             {
                 // Arrange
-                var systemUnderTest = A.Dummy<Company>();
+                var systemUnderTest = A.Dummy<PropertyModel>();
 
                 // Act
-                var actual = (Company)systemUnderTest.Clone();
+                var actual = (PropertyModel)systemUnderTest.Clone();
 
                 // Assert
                 actual.AsTest().Must().BeEqualTo(systemUnderTest);
@@ -431,7 +1385,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void DeepClone___Should_deep_clone_object___When_called()
             {
                 // Arrange
-                var systemUnderTest = A.Dummy<Company>();
+                var systemUnderTest = A.Dummy<PropertyModel>();
 
                 // Act
                 var actual = systemUnderTest.DeepClone();
@@ -440,13 +1394,22 @@ namespace Naos.HubSpot.Domain.Test
                 actual.AsTest().Must().BeEqualTo(systemUnderTest);
                 actual.AsTest().Must().NotBeSameReferenceAs(systemUnderTest);
 
-                if (systemUnderTest.Properties == null)
+                if (systemUnderTest.ModificationMetadataModel == null)
                 {
-                    actual.Properties.AsTest().Must().BeNull();
+                    actual.ModificationMetadataModel.AsTest().Must().BeNull();
                 }
                 else
                 {
-                    actual.Properties.AsTest().Must().NotBeSameReferenceAs(systemUnderTest.Properties);
+                    actual.ModificationMetadataModel.AsTest().Must().NotBeSameReferenceAs(systemUnderTest.ModificationMetadataModel);
+                }
+
+                if (systemUnderTest.Options == null)
+                {
+                    actual.Options.AsTest().Must().BeNull();
+                }
+                else
+                {
+                    actual.Options.AsTest().Must().NotBeSameReferenceAs(systemUnderTest.Options);
                 }
             }
 
@@ -466,7 +1429,7 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
             public static void DeepCloneWith___Should_deep_clone_object_and_replace_the_associated_property_with_the_provided_value___When_called()
             {
-                var propertyNames = new string[] { "Properties" };
+                var propertyNames = new string[] { "GroupName", "Hidden", "ModificationMetadataModel", "Name", "DisplayOrder", "Options", "Label", "HasUniqueValue", "Type", "FieldType", "FormField" };
 
                 var scenarios = DeepCloneWithTestScenarios.ValidateAndPrepareForTesting();
 
@@ -483,12 +1446,12 @@ namespace Naos.HubSpot.Domain.Test
                     }
 
                     // Act
-                    var actual = (Company)scenario.DeepCloneWithMethod.Invoke(scenario.SystemUnderTest, new[] { scenario.WithValue });
+                    var actual = (PropertyModel)scenario.DeepCloneWithMethod.Invoke(scenario.SystemUnderTest, new[] { scenario.WithValue });
 
                     // Assert
                     foreach(var propertyName in propertyNames)
                     {
-                        var propertyInfo = typeof(Company).GetPropertyFiltered(propertyName, MemberRelationships.DeclaredOrInherited, MemberOwners.Instance, MemberAccessModifiers.Public);
+                        var propertyInfo = typeof(PropertyModel).GetPropertyFiltered(propertyName, MemberRelationships.DeclaredOrInherited, MemberOwners.Instance, MemberAccessModifiers.Public);
 
                         var propertyType = propertyInfo.PropertyType;
 
@@ -556,7 +1519,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_string_using_ObcBsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<Company>();
+                var expected = A.Dummy<PropertyModel>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.BsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -585,7 +1548,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_bytes_using_ObcBsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<Company>();
+                var expected = A.Dummy<PropertyModel>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.BsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -614,7 +1577,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_string_using_ObcJsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<Company>();
+                var expected = A.Dummy<PropertyModel>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.JsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -643,7 +1606,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_bytes_using_ObcJsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<Company>();
+                var expected = A.Dummy<PropertyModel>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.JsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -677,8 +1640,8 @@ namespace Naos.HubSpot.Domain.Test
             public static void EqualsOperator___Should_return_true___When_both_sides_of_operator_are_null()
             {
                 // Arrange
-                Company systemUnderTest1 = null;
-                Company systemUnderTest2 = null;
+                PropertyModel systemUnderTest1 = null;
+                PropertyModel systemUnderTest2 = null;
 
                 // Act
                 var actual = systemUnderTest1 == systemUnderTest2;
@@ -708,7 +1671,7 @@ namespace Naos.HubSpot.Domain.Test
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    Company systemUnderTest = null;
+                    PropertyModel systemUnderTest = null;
 
                     // Act
                     var actual1 = systemUnderTest == scenario.ReferenceObject;
@@ -857,8 +1820,8 @@ namespace Naos.HubSpot.Domain.Test
             public static void NotEqualsOperator___Should_return_false___When_both_sides_of_operator_are_null()
             {
                 // Arrange
-                Company systemUnderTest1 = null;
-                Company systemUnderTest2 = null;
+                PropertyModel systemUnderTest1 = null;
+                PropertyModel systemUnderTest2 = null;
 
                 // Act
                 var actual = systemUnderTest1 != systemUnderTest2;
@@ -888,7 +1851,7 @@ namespace Naos.HubSpot.Domain.Test
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    Company systemUnderTest = null;
+                    PropertyModel systemUnderTest = null;
 
                     // Act
                     var actual1 = systemUnderTest != scenario.ReferenceObject;
@@ -1034,14 +1997,14 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_Company___Should_return_false___When_parameter_other_is_null()
+            public static void Equals_with_PropertyModel___Should_return_false___When_parameter_other_is_null()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    Company systemUnderTest = null;
+                    PropertyModel systemUnderTest = null;
 
                     // Act
                     var actual = scenario.ReferenceObject.Equals(systemUnderTest);
@@ -1065,7 +2028,7 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_Company___Should_return_true___When_parameter_other_is_same_object()
+            public static void Equals_with_PropertyModel___Should_return_true___When_parameter_other_is_same_object()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
@@ -1093,7 +2056,7 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_Company___Should_return_false___When_parameter_other_is_derived_from_the_same_type_but_is_not_of_the_same_type_as_this_object()
+            public static void Equals_with_PropertyModel___Should_return_false___When_parameter_other_is_derived_from_the_same_type_but_is_not_of_the_same_type_as_this_object()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
@@ -1121,7 +2084,7 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_Company___Should_return_false___When_objects_being_compared_have_different_property_values()
+            public static void Equals_with_PropertyModel___Should_return_false___When_objects_being_compared_have_different_property_values()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
@@ -1149,7 +2112,7 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_Company___Should_return_true___When_objects_being_compared_have_same_property_values()
+            public static void Equals_with_PropertyModel___Should_return_true___When_objects_being_compared_have_same_property_values()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
@@ -1310,7 +2273,7 @@ namespace Naos.HubSpot.Domain.Test
         [SuppressMessage("Microsoft.Naming", "CA1724:TypeNamesShouldNotMatchNamespaces")]
         public static class Hashing
         {
-            [Fact]
+            [Fact(Skip = "It's possible (and even probable after a few runs of this test) that two dummy, unequal models will have the same hash code.  The model being tested contains at least one property who's type (or a type nested within the generic type, or a property of the IModel type) is a dictionary with keys that are not comparable or an unordered collection with elements that are not comparable.  In these cases the hashing method cannot hash the elements and must resort to hashing the element count.  Two dummies could easily have the same element count for such a type.")]
             [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly")]
             [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly")]
             [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly")]

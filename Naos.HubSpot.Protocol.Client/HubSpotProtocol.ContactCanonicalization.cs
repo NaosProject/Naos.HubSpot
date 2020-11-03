@@ -22,7 +22,7 @@ namespace Naos.HubSpot.Protocol.Client
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification = NaosSuppressBecause.CA2104_DoNotDeclareReadOnlyMutableReferenceTypes_TypeIsImmutable)]
         public static readonly IReadOnlyDictionary<StandardContactPropertyName, string>
-            StandardContactPropertyNameToHubSpotContactPropertyNameMapV3 =
+            StandardContactPropertyNameToHubSpotContactPropertyNameMap =
                 new Dictionary<StandardContactPropertyName, string>
                 {
                     { StandardContactPropertyName.HubSpotId, "id" },
@@ -39,8 +39,8 @@ namespace Naos.HubSpot.Protocol.Client
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification = NaosSuppressBecause.CA2104_DoNotDeclareReadOnlyMutableReferenceTypes_TypeIsImmutable)]
         public static readonly IReadOnlyDictionary<string, string>
-            StandardContactPropertyNameStringToHubSpotPropertyNameMapV3 =
-                StandardContactPropertyNameToHubSpotContactPropertyNameMapV3
+            StandardContactPropertyNameStringToHubSpotPropertyNameMap =
+                StandardContactPropertyNameToHubSpotContactPropertyNameMap
                     .ToDictionary(k => k.Key.ToString(), v => v.Value);
 
         /// <summary>
@@ -48,8 +48,8 @@ namespace Naos.HubSpot.Protocol.Client
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification = NaosSuppressBecause.CA2104_DoNotDeclareReadOnlyMutableReferenceTypes_TypeIsImmutable)]
         public static readonly IReadOnlyDictionary<string, string>
-            HubSpotContactPropertyNameToStandardContactPropertyNameStringMapV3 =
-                StandardContactPropertyNameToHubSpotContactPropertyNameMapV3
+            HubSpotContactPropertyNameToStandardContactPropertyNameStringMap =
+                StandardContactPropertyNameToHubSpotContactPropertyNameMap
                     .ToDictionary(k => k.Value, v => v.Key.ToString());
 
         /// <summary>
@@ -57,8 +57,8 @@ namespace Naos.HubSpot.Protocol.Client
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes", Justification = NaosSuppressBecause.CA2104_DoNotDeclareReadOnlyMutableReferenceTypes_TypeIsImmutable)]
         public static readonly IReadOnlyDictionary<string, StandardContactPropertyName>
-            HubSpotContactPropertyNameToStandardContactPropertyNameMapV3 =
-                StandardContactPropertyNameToHubSpotContactPropertyNameMapV3
+            HubSpotContactPropertyNameToStandardContactPropertyNameMap =
+                StandardContactPropertyNameToHubSpotContactPropertyNameMap
                     .ToDictionary(k => k.Value, v => v.Key);
     }
 
@@ -74,11 +74,11 @@ namespace Naos.HubSpot.Protocol.Client
         /// </summary>
         /// <param name="propertyNameFromModel">The contact property name.</param>
         /// <returns cref="string">The name of the property recognized by HubSpot.</returns>
-        public static string ConvertFromContactStandardNameToContactHubSpotNameIfNecessaryV3(
+        public static string ConvertFromContactStandardNameToContactHubSpotNameIfNecessary(
             this string propertyNameFromModel)
         {
             var isStandard =
-                HubSpotProtocol.StandardContactPropertyNameStringToHubSpotPropertyNameMapV3.TryGetValue(
+                HubSpotProtocol.StandardContactPropertyNameStringToHubSpotPropertyNameMap.TryGetValue(
                     propertyNameFromModel,
                     out var standardResult);
             var result = isStandard ? standardResult : propertyNameFromModel;
@@ -90,10 +90,10 @@ namespace Naos.HubSpot.Protocol.Client
         /// </summary>
         /// <param name="propertyNameFromHubSpot">The name of a property recognized by HubSpot.</param>
         /// <returns cref="StandardContactPropertyName">The enumeration of the contact property name.</returns>
-        public static string ConvertFromContactHubSpotNameToContactStandardNameIfNecessaryV3(this string propertyNameFromHubSpot)
+        public static string ConvertFromContactHubSpotNameToContactStandardNameIfNecessary(this string propertyNameFromHubSpot)
         {
             var isStandard =
-                HubSpotProtocol.HubSpotContactPropertyNameToStandardContactPropertyNameStringMapV3.TryGetValue(
+                HubSpotProtocol.HubSpotContactPropertyNameToStandardContactPropertyNameStringMap.TryGetValue(
                     propertyNameFromHubSpot,
                     out var standardResult);
             var result = isStandard ? standardResult : propertyNameFromHubSpot;
@@ -114,8 +114,12 @@ namespace Naos.HubSpot.Protocol.Client
             }
 
             var filteredProperties = contact.Properties
-                .Where(_ => _.Key != StandardContactPropertyName.HubSpotId.ToString().ConvertFromContactHubSpotNameToContactStandardNameIfNecessaryV3())
-                .ToDictionary(k => k.Key.ConvertFromContactHubSpotNameToContactStandardNameIfNecessaryV3(), v => v.Value);
+                .Where(_ => _.Key != StandardContactPropertyName.HubSpotId.ToString().ConvertFromContactStandardNameToContactHubSpotNameIfNecessary() &&
+                            _.Key != StandardContactPropertyName.HubSpotId.ToString() &&
+                            _.Key != "createdate" &&
+                            _.Key != "hs_is_unworked" &&
+                            _.Key != "lastmodifieddate")
+                .ToDictionary(k => k.Key.ConvertFromContactStandardNameToContactHubSpotNameIfNecessary(), v => v.Value);
             return new ContactRequestModel(id, filteredProperties);
         }
 
@@ -126,7 +130,9 @@ namespace Naos.HubSpot.Protocol.Client
         /// <returns>Contact.</returns>
         public static Contact ToContactV3(this ContactModel model)
         {
-            var props = model.Properties.ToDictionary(k => k.Key.ConvertFromContactStandardNameToContactHubSpotNameIfNecessaryV3(), v => v.Value);
+            var props = model.Properties.Where(_ => _.Key != "createdate" &&
+                                               _.Key != "hs_is_unworked" &&
+                                               _.Key != "lastmodifieddate").ToDictionary(k => k.Key.ConvertFromContactHubSpotNameToContactStandardNameIfNecessary(), v => v.Value);
             props.Add(StandardContactPropertyName.HubSpotId.ToString(), model.Id);
             return new Contact(props);
         }

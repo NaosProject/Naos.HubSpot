@@ -6,6 +6,7 @@
 
 namespace Naos.HubSpot.Protocol.Client
 {
+    using System.Diagnostics;
     using System.Threading.Tasks;
     using Naos.FluentUri;
     using Naos.HubSpot.Domain;
@@ -29,11 +30,13 @@ namespace Naos.HubSpot.Protocol.Client
         public async Task<Company> ExecuteAsync(UpdateCompanyOp operation)
         {
             var uri = this.baseUri;
-            uri = uri.AppendPathSegment("crm/v3/objects/contacts");
-            var companyToUpdate = operation.CompanyToUpdate.ToCompanyRequestModelV3();
+            uri = uri.AppendPathSegment("crm/v3/objects/companies");
+            uri.AppendPathSegment(
+                operation.CompanyToUpdate.Properties[StandardCompanyPropertyName.HubSpotId.ToString()]);
+            var companyToUpdate = operation.CompanyToUpdate.ToCompanyRequestModel();
             uri = uri.AppendPathSegment(companyToUpdate.Id);
-            var result = uri.WithBody(companyToUpdate.Properties).Put<CompanyModel>();
-            var companyToReturn = result.ToCompanyV3();
+            var result = uri.WithBody(companyToUpdate).CallWithVerb<CompanyModel>("PATCH");
+            var companyToReturn = result.ToCompany();
             return await Task.FromResult(companyToReturn);
         }
     }

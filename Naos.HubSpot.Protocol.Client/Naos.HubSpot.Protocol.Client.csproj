@@ -133,8 +133,8 @@
     <Compile Include="HubSpotProtocol.GetAllContact.cs" />
     <Compile Include="HubSpotProtocol.GetSingleContact.cs" />
     <Compile Include="HubSpotProtocol.GetSingleCompany.cs" />
-    <Compile Include="HubSpotProtocol.RemoveContact.cs" />
-    <Compile Include="HubSpotProtocol.RemoveCompany.cs" />
+    <Compile Include="HubSpotProtocol.RemoveContactByHubSpotId.cs" />
+    <Compile Include="HubSpotProtocol.RemoveCompanyByHubSpotId.cs" />
     <Compile Include="HubSpotProtocol.UpdateContact.cs" />
     <Compile Include="HubSpotProtocol.UpdateCompany.cs" />
     <Compile Include="HubSpotProtocol.GetAllCompanies.cs" />

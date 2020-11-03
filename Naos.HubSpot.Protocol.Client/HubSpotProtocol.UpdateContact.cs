@@ -33,7 +33,7 @@ namespace Naos.HubSpot.Protocol.Client
 
             uri = uri.AppendPathSegment("crm/v3/objects/contacts");
             uri = uri.AppendPathSegment(contactToUpdate.Id);
-            var result = uri.WithBody(operation.ContactToUpdate).CallWithVerb<ContactModel>("PATCH");
+            var result = uri.WithBody(operation.ContactToUpdate.ToContactRequestModel()).CallWithVerb<ContactModel>("PATCH");
             var contactToReturn = result.ToContactV3();
             return await Task.FromResult(contactToReturn);
         }

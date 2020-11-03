@@ -56,7 +56,7 @@ namespace Naos.HubSpot.Protocol.Client
                     hasMore = false;
                 }
 
-                var runList = result.Results.Select(_ => _.ToCompanyV3()).ToList();
+                var runList = result.Results.Select(_ => _.ToCompany()).ToList();
                 results.AddRange(runList);
             }
 

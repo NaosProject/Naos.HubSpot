@@ -12,7 +12,7 @@ namespace Naos.HubSpot.Domain
     /// Implements the <see cref="OBeautifulCode.Type.IModelViaCodeGen" />.
     /// </summary>
     /// <seealso cref="OBeautifulCode.Type.IModelViaCodeGen" />
-    public partial class RemoveContactByHubSpotIdOp : ReturningOperationBase<Contact>, IModelViaCodeGen
+    public partial class RemoveContactByHubSpotIdOp : VoidOperationBase, IModelViaCodeGen
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="RemoveContactByHubSpotIdOp"/> class.

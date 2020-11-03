@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="HubSpotProtocol.RemoveContact.cs" company="Naos Project">
+// <copyright file="HubSpotProtocol.RemoveCompanyByHubSpotId.cs" company="Naos Project">
 //    Copyright (c) Naos Project 2019. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -15,25 +15,23 @@ namespace Naos.HubSpot.Protocol.Client
     /// <summary>
     /// TODO: Starting point for new project.
     /// </summary>
-    public partial class HubSpotProtocol : ISyncAndAsyncReturningProtocol<RemoveContactByHubSpotIdOp, Contact>
+    public partial class HubSpotProtocol : ISyncAndAsyncVoidProtocol<RemoveCompanyByHubSpotIdOp>
     {
         /// <inheritdoc />
-        public Contact Execute(RemoveContactByHubSpotIdOp operation)
+        public void Execute(RemoveCompanyByHubSpotIdOp operation)
         {
             var task = this.ExecuteAsync(operation);
-            var result = Run.TaskUntilCompletion(task);
-            return result;
+            Run.TaskUntilCompletion(task);
         }
 
         /// <inheritdoc />
-        public async Task<Contact> ExecuteAsync(RemoveContactByHubSpotIdOp operation)
+        public async Task ExecuteAsync(RemoveCompanyByHubSpotIdOp operation)
         {
             var uri = this.baseUri;
             uri = uri.AppendPathSegment("crm/v3/objects/contacts");
             uri = uri.AppendPathSegment(operation.HubSpotId);
-            var result = uri.Delete<ContactModel>();
-            var contactToReturn = result.ToContactV3();
-            return await Task.FromResult(contactToReturn);
+            uri.Delete<CompanyModel>();
+            await Task.Factory.StartNew(() => true);
         }
     }
 }

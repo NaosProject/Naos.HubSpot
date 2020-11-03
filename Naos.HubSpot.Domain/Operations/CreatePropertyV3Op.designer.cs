@@ -109,7 +109,7 @@ namespace Naos.HubSpot.Domain
         [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
         [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
-        public CreatePropertyV3Op DeepCloneWithPropertyToAdd(PropModel propModelToAdd)
+        public CreatePropertyV3Op DeepCloneWithPropModelToAdd(PropModel propModelToAdd)
         {
             var result = new CreatePropertyV3Op(
                                  propModelToAdd,

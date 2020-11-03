@@ -45,5 +45,10 @@ namespace Naos.HubSpot.Domain
         /// The industry
         /// </summary>
         Industry,
+
+        /// <summary>
+        /// The website
+        /// </summary>
+        Website,
     }
 }

@@ -22,18 +22,18 @@ namespace Naos.HubSpot.Protocol.Client.Test
         private static readonly Uri BaseUri = new Uri("https://api.hubapi.com/");
 
         [Fact(Skip = "Skipping because this uses external resources")]
-        public static void GetAllContactsV3___Returns_nonempty_list_of_contacts___When_executed()
+        public static void GetAllContacts___Returns_nonempty_list_of_contacts___When_executed()
         {
             // Arrange
             var protocol = new HubSpotProtocol(BaseUri, ApiKey);
             var op = new GetAllContactsOp();
+            var uniqueGuid = Guid.NewGuid();
             var contactToAddProps = new Dictionary<string, string>
             {
-                { StandardContactPropertyName.Email.ToString(), "addcontacttest@testemail.com" },
-                { StandardContactPropertyName.FirstName.ToString(), "testContactFirst" },
-                { StandardContactPropertyName.LastName.ToString(), "testcontactLast" },
-                { StandardContactPropertyName.CompanyName.ToString(), "testCompany" },
-                { StandardContactPropertyName.Website.ToString(), "www.testwebsite.com" },
+                { StandardContactPropertyName.Email.ToString(), "addcontacttest" + uniqueGuid + "@testemail.com" },
+                { StandardContactPropertyName.FirstName.ToString(), "testContactFirst" + uniqueGuid },
+                { StandardContactPropertyName.LastName.ToString(), "testcontactLast" + uniqueGuid },
+                { StandardContactPropertyName.Website.ToString(), "www.test" + uniqueGuid + "website.com" },
             };
             var contactToCreate = new Contact(contactToAddProps);
             var createContactOp = new CreateContactOp(contactToCreate);
@@ -52,7 +52,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
         }
 
         [Fact(Skip = "Skipping because this uses external resources")]
-        public static void CreateContactV3___Returns_valid_contact___When_executed()
+        public static void CreateContact___Returns_valid_contact___When_executed()
         {
             // Arrange
             var protocol = new HubSpotProtocol(BaseUri, ApiKey);
@@ -81,16 +81,17 @@ namespace Naos.HubSpot.Protocol.Client.Test
         }
 
         [Fact(Skip = "Skipping because this uses external resources")]
-        public static void CreateCompanyV3___Returns_a_valid_company___When_executed()
+        public static void CreateCompany___Returns_a_valid_company___When_executed()
         {
             // Arrange
             var protocol = new HubSpotProtocol(BaseUri, ApiKey);
+            var uniqueGuid = Guid.NewGuid();
             var companyToCreateProps = new Dictionary<string, string>()
             {
-                { StandardCompanyPropertyName.CompanyName.ToString(), "testcompany" },
-                { StandardCompanyPropertyName.Domain.ToString(), "testcompanydomain.com" },
-                { StandardCompanyPropertyName.Industry.ToString(), "testcompanyindustry" },
-                { StandardCompanyPropertyName.PhoneNumber.ToString(), "18001231234" },
+                { StandardCompanyPropertyName.CompanyName.ToString(), "testcompany" + uniqueGuid },
+                { StandardCompanyPropertyName.Domain.ToString(), "testcompanydomain" + uniqueGuid + ".com" },
+                { StandardCompanyPropertyName.Industry.ToString(), "testcompanyindustry" + uniqueGuid },
+                { StandardCompanyPropertyName.PhoneNumber.ToString(), uniqueGuid.ToString() },
                 { StandardCompanyPropertyName.City.ToString(), "San Antonio" },
                 { StandardCompanyPropertyName.State.ToString(), "Texas" },
             };
@@ -111,24 +112,24 @@ namespace Naos.HubSpot.Protocol.Client.Test
         }
 
         [Fact(Skip = "Skipping because this uses external resources")]
-        public static void UpdateContactV3___Returns_valid_contact___When_executed()
+        public static void UpdateContact___Returns_valid_contact___When_executed()
         {
             // Arrange
             var protocol = new HubSpotProtocol(BaseUri, ApiKey);
+            var uniqueGuid = Guid.NewGuid();
             var contactToAddProps = new Dictionary<string, string>
             {
-                { StandardContactPropertyName.Email.ToString(), "addcontacttest@testemail.com" },
-                { StandardContactPropertyName.FirstName.ToString(), "testContactFirst" },
-                { StandardContactPropertyName.LastName.ToString(), "testcontactLast" },
-                { StandardContactPropertyName.CompanyName.ToString(), "testCompany" },
-                { StandardContactPropertyName.Website.ToString(), "www.testwebsite.com" },
+                { StandardContactPropertyName.FirstName.ToString(), "testContactFirst" + uniqueGuid },
+                { StandardContactPropertyName.LastName.ToString(), "testcontactLast" + uniqueGuid },
+                { StandardContactPropertyName.CompanyName.ToString(), "testCompany" + uniqueGuid },
+                { StandardContactPropertyName.Website.ToString(), "www.testwebsite" + uniqueGuid + ".com" },
             };
             var contactToCreate = new Contact(contactToAddProps);
             var createContactOp = new CreateContactOp(contactToCreate);
             var createdContact = protocol.Execute(createContactOp);
 
             var propsToUpdate = createdContact.Properties.ToDictionary(k => k.Key, v => v.Value);
-            propsToUpdate[StandardContactPropertyName.LastName.ToString()] = "updatedContactLastName";
+            propsToUpdate[StandardContactPropertyName.LastName.ToString()] = "updatedContactLastName" + uniqueGuid;
             var contactToUpdate = new Contact(propsToUpdate);
 
             // Act
@@ -137,7 +138,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             // Assert
             updatedContact.Properties.TryGetValue(StandardContactPropertyName.HubSpotId.ToString(), out var createdId).MustForTest().BeTrue();
             updatedContact.Properties[StandardContactPropertyName.LastName.ToString()].MustForTest()
-                .NotBeEqualTo(updatedContact.Properties[StandardContactPropertyName.LastName.ToString()]);
+                .NotBeEqualTo(createdContact.Properties[StandardContactPropertyName.LastName.ToString()]);
 
             // Clean Up
 
@@ -146,16 +147,17 @@ namespace Naos.HubSpot.Protocol.Client.Test
         }
 
         [Fact(Skip = "Skipping because this uses external resources")]
-        public static void UpdateCompanyV3___Returns_valid_company___When_executed()
+        public static void UpdateCompany___Returns_valid_company___When_executed()
         {
             // Arrange
             var protocol = new HubSpotProtocol(BaseUri, ApiKey);
+            var uniqueGuid = Guid.NewGuid();
             var companyToCreateProps = new Dictionary<string, string>()
             {
-                { StandardCompanyPropertyName.CompanyName.ToString(), "testcompany" },
-                { StandardCompanyPropertyName.Domain.ToString(), "testcompanydomain.com" },
-                { StandardCompanyPropertyName.Industry.ToString(), "testcompanyindustry" },
-                { StandardCompanyPropertyName.PhoneNumber.ToString(), "18001231234" },
+                { StandardCompanyPropertyName.CompanyName.ToString(), "testcompany" + uniqueGuid },
+                { StandardCompanyPropertyName.Domain.ToString(), "testcompanydomain" + uniqueGuid + ".com" },
+                { StandardCompanyPropertyName.Industry.ToString(), "testcompanyindustry" + uniqueGuid },
+                { StandardCompanyPropertyName.PhoneNumber.ToString(), uniqueGuid.ToString() },
                 { StandardCompanyPropertyName.City.ToString(), "San Antonio" },
                 { StandardCompanyPropertyName.State.ToString(), "Texas" },
             };
@@ -164,7 +166,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             var createCompanyOp = new CreateCompanyOp(companyToCreate);
             var createdCompany = protocol.Execute(createCompanyOp);
             var companyToUpdateProps = createdCompany.Properties.ToDictionary(k => k.Key, v => v.Value);
-            companyToUpdateProps[StandardCompanyPropertyName.CompanyName.ToString()] = "updatedCompanyName"; 
+            companyToUpdateProps[StandardCompanyPropertyName.Domain.ToString()] = "updatedCompanyName" + uniqueGuid; 
             var companyToUpdate = new Company(companyToUpdateProps);
             var updateCompanyOp = new UpdateCompanyOp(companyToUpdate);
 
@@ -174,7 +176,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             // Assert 
             updatedCompany.Properties.TryGetValue(StandardCompanyPropertyName.HubSpotId.ToString(), out var updatedId).MustForTest().BeTrue();
             updatedCompany.Properties[StandardCompanyPropertyName.Domain.ToString()].MustForTest()
-                .NotBeEqualTo(updatedCompany.Properties[StandardCompanyPropertyName.Domain.ToString()]);
+                .NotBeEqualTo(createdCompany.Properties[StandardCompanyPropertyName.Domain.ToString()]);
 
             // Clean Up
             var removeCompanyOp = new RemoveCompanyByHubSpotIdOp(updatedId);

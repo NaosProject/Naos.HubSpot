@@ -27,9 +27,9 @@ namespace Naos.HubSpot.Protocol.Client
         public async Task<Company> ExecuteAsync(CreateCompanyOp operation)
         {
             var uri = this.baseUri;
-            uri = uri.AppendPathSegment("/crm/v3/objects/companies");
-            var result = uri.WithBody(operation.CompanyToCreate.ToCompanyRequestModelV3()).WithSerializer(this.bodySerializer).Post<CompanyModel>();
-            var companyToReturn = result.ToCompanyV3();
+            uri = uri.AppendPathSegment("crm/v3/objects/companies");
+            var result = uri.WithBody(operation.CompanyToCreate.ToCompanyRequestModel()).WithSerializer(this.bodySerializer).Post<CompanyModel>();
+            var companyToReturn = result.ToCompany();
             return await Task.FromResult(companyToReturn);
         }
     }

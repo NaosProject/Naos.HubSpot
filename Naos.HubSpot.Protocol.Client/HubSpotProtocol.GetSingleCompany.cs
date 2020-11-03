@@ -29,10 +29,10 @@ namespace Naos.HubSpot.Protocol.Client
         public async Task<Company> ExecuteAsync(GetSingleCompanyByHubSpotIdOp operation)
         {
             var uri = this.baseUri;
-            uri = uri.AppendPathSegment("crm/v3/objects/contacts");
+            uri = uri.AppendPathSegment("crm/v3/objects/companies");
             uri = uri.AppendPathSegment(operation.HubSpotId);
             var result = uri.Get<CompanyModel>();
-            var companyToReturn = result.ToCompanyV3();
+            var companyToReturn = result.ToCompany();
             return await Task.FromResult(companyToReturn);
         }
     }

@@ -21,13 +21,6 @@ namespace Naos.HubSpot.Domain
         /// <param name="properties">The properties dictionary.</param>
         public CompanyRequestModel(string id, IReadOnlyDictionary<string, string> properties)
         {
-            var keys = properties.Keys.ToList();
-            keys.MustForArg("Company properties must contain the company name").ContainElement(StandardCompanyPropertyName.CompanyName.ToString());
-            keys.MustForArg("Company properties must contain the city").ContainElement(StandardCompanyPropertyName.City.ToString());
-            keys.MustForArg("Company properties must contain the phone number").ContainElement(StandardCompanyPropertyName.PhoneNumber.ToString());
-            keys.MustForArg("Company properties must contain the city").ContainElement(StandardCompanyPropertyName.City.ToString());
-            keys.MustForArg("Company properties must contain the state").ContainElement(StandardCompanyPropertyName.State.ToString());
-
             this.Id = id;
             this.Properties = properties;
         }

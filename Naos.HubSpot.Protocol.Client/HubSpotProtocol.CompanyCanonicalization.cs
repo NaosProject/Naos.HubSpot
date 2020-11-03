@@ -9,6 +9,7 @@ namespace Naos.HubSpot.Protocol.Client
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
+    using System.Runtime.InteropServices;
     using Naos.CodeAnalysis.Recipes;
     using Naos.HubSpot.Domain;
 
@@ -25,7 +26,7 @@ namespace Naos.HubSpot.Protocol.Client
             "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes",
             Justification = NaosSuppressBecause.CA2104_DoNotDeclareReadOnlyMutableReferenceTypes_TypeIsImmutable)]
         public static readonly IReadOnlyDictionary<StandardCompanyPropertyName, string>
-            StandardCompanyPropertyNameToHubSpotCompanyPropertyNameMapV3 =
+            StandardCompanyPropertyNameToHubSpotCompanyPropertyNameMap =
                 new Dictionary<StandardCompanyPropertyName, string>
                 {
                     { StandardCompanyPropertyName.CompanyName, "name" },
@@ -35,6 +36,7 @@ namespace Naos.HubSpot.Protocol.Client
                     { StandardCompanyPropertyName.PhoneNumber, "phone" },
                     { StandardCompanyPropertyName.City, "city" },
                     { StandardCompanyPropertyName.State, "state" },
+                    { StandardCompanyPropertyName.Website, "website" },
                 };
 
         /// <summary>
@@ -45,8 +47,8 @@ namespace Naos.HubSpot.Protocol.Client
             "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes",
             Justification = NaosSuppressBecause.CA2104_DoNotDeclareReadOnlyMutableReferenceTypes_TypeIsImmutable)]
         public static readonly IReadOnlyDictionary<string, string>
-            StandardCompanyPropertyNameStringToHubSpotPropertyNameMapV3 =
-                StandardCompanyPropertyNameToHubSpotCompanyPropertyNameMapV3
+            StandardCompanyPropertyNameStringToHubSpotPropertyNameMap =
+                StandardCompanyPropertyNameToHubSpotCompanyPropertyNameMap
                     .ToDictionary(k => k.Key.ToString(), v => v.Value);
 
         /// <summary>
@@ -57,8 +59,8 @@ namespace Naos.HubSpot.Protocol.Client
             "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes",
             Justification = NaosSuppressBecause.CA2104_DoNotDeclareReadOnlyMutableReferenceTypes_TypeIsImmutable)]
         public static readonly IReadOnlyDictionary<string, string>
-            HubSpotCompanyPropertyNameToStandardCompanyPropertyNameStringMapV3 =
-                StandardCompanyPropertyNameToHubSpotCompanyPropertyNameMapV3
+            HubSpotCompanyPropertyNameToStandardCompanyPropertyNameStringMap =
+                StandardCompanyPropertyNameToHubSpotCompanyPropertyNameMap
                     .ToDictionary(k => k.Value, v => v.Key.ToString());
 
         /// <summary>
@@ -69,8 +71,8 @@ namespace Naos.HubSpot.Protocol.Client
             "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes",
             Justification = NaosSuppressBecause.CA2104_DoNotDeclareReadOnlyMutableReferenceTypes_TypeIsImmutable)]
         public static readonly IReadOnlyDictionary<string, StandardCompanyPropertyName>
-            HubSpotCompanyPropertyNameToStandardCompanyPropertyNameMapV3 =
-                StandardCompanyPropertyNameToHubSpotCompanyPropertyNameMapV3
+            HubSpotCompanyPropertyNameToStandardCompanyPropertyNameMap =
+                StandardCompanyPropertyNameToHubSpotCompanyPropertyNameMap
                     .ToDictionary(k => k.Value, v => v.Key);
     }
 
@@ -86,11 +88,11 @@ namespace Naos.HubSpot.Protocol.Client
         /// </summary>
         /// <param name="propertyNameFromModel">The contact property name.</param>
         /// <returns cref="string">The name of the property recognized by HubSpot.</returns>
-        public static string ConvertFromCompanyStandardNameToCompanyHubSpotNameIfNecessaryV3(
+        public static string ConvertFromCompanyStandardNameToCompanyHubSpotNameIfNecessary(
             this string propertyNameFromModel)
         {
             var isStandard =
-                HubSpotProtocol.StandardCompanyPropertyNameStringToHubSpotPropertyNameMapV3.TryGetValue(
+                HubSpotProtocol.StandardCompanyPropertyNameStringToHubSpotPropertyNameMap.TryGetValue(
                     propertyNameFromModel,
                     out var standardResult);
             var result = isStandard ? standardResult : propertyNameFromModel;
@@ -102,11 +104,11 @@ namespace Naos.HubSpot.Protocol.Client
         /// </summary>
         /// <param name="propertyNameFromHubSpot">The name of a property recognized by HubSpot.</param>
         /// <returns cref="StandardContactPropertyName">The enumeration of the contact property name.</returns>
-        public static string ConvertFromCompanyHubSpotHubSpotNameToCompanyStandardNameIfNecessaryV3(
+        public static string ConvertFromCompanyHubSpotHubSpotNameToCompanyStandardNameIfNecessary(
             this string propertyNameFromHubSpot)
         {
             var isStandard =
-                HubSpotProtocol.HubSpotContactPropertyNameToStandardContactPropertyNameStringMapV3.TryGetValue(
+                HubSpotProtocol.HubSpotCompanyPropertyNameToStandardCompanyPropertyNameStringMap.TryGetValue(
                     propertyNameFromHubSpot,
                     out var standardResult);
             var result = isStandard ? standardResult : propertyNameFromHubSpot;
@@ -118,19 +120,22 @@ namespace Naos.HubSpot.Protocol.Client
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns>Company.</returns>
-        public static Company ToCompanyV3(this CompanyModel model)
+        public static Company ToCompany(this CompanyModel model)
         {
-            var props = model.Properties.ToDictionary(k => k.Key.ConvertFromContactHubSpotNameToContactStandardNameIfNecessaryV3(), v => v.Value);
+            var props = model.Properties
+                .Where(_ => _.Key != StandardCompanyPropertyName.HubSpotId.ToString() &&
+                            _.Key != StandardCompanyPropertyName.HubSpotId.ToString().ConvertFromCompanyStandardNameToCompanyHubSpotNameIfNecessary())
+                .ToDictionary(k => k.Key.ConvertFromCompanyHubSpotHubSpotNameToCompanyStandardNameIfNecessary(), v => v.Value);
             props.Add(StandardCompanyPropertyName.HubSpotId.ToString(), model.Id);
             return new Company(props);
         }
 
         /// <summary>
-        /// Converts to company request model for v3.
+        /// Converts to company request model for .
         /// </summary>
         /// <param name="company">The company.</param>
         /// <returns>CompanyRequestModel.</returns>
-        public static CompanyRequestModel ToCompanyRequestModelV3(this Company company)
+        public static CompanyRequestModel ToCompanyRequestModel(this Company company)
         {
             var hasId = company.Properties.TryGetValue(StandardCompanyPropertyName.HubSpotId.ToString(), out var id);
             if (hasId && string.IsNullOrWhiteSpace(id))
@@ -138,7 +143,18 @@ namespace Naos.HubSpot.Protocol.Client
                 id = null;
             }
 
-            var props = company.Properties.Where(_ => _.Key != StandardCompanyPropertyName.HubSpotId.ToString()).ToDictionary(k => k.Key.ConvertFromCompanyStandardNameToCompanyHubSpotNameIfNecessaryV3(), v => v.Value);
+            var filteredProps = company.Properties
+                .Where(_ => _.Key != StandardCompanyPropertyName.HubSpotId.ToString() &&
+                            _.Key != StandardCompanyPropertyName.HubSpotId.ToString().ConvertFromCompanyHubSpotHubSpotNameToCompanyStandardNameIfNecessary() &&
+                            _.Key != "hs_lastmodifieddate" &&
+                            _.Key != "hs_object_id" &&
+                            _.Key != "createdate");
+            var props = new Dictionary<string, string>();
+            foreach (var prop in filteredProps)
+            {
+                props.Add(prop.Key.ConvertFromCompanyStandardNameToCompanyHubSpotNameIfNecessary(), prop.Value);
+            }
+
             var companyRequestToReturn = new CompanyRequestModel(id, props);
             return companyRequestToReturn;
         }
@@ -148,17 +164,17 @@ namespace Naos.HubSpot.Protocol.Client
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns>PropModel.</returns>
-        public static PropModel ToPropertyV3(this PropertyModel model)
+        public static PropModel ToProperty(this PropertyModel model)
         {
             return new PropModel(model.Name);
         }
 
         /// <summary>
-        /// Converts to ContactPropertyModelV3.
+        /// Converts to ContactPropertyModel.
         /// </summary>
         /// <param name="prop">The property.</param>
         /// <returns>PropertyModel.</returns>
-        public static PropertyModel ToContactPropertyModelV3(this PropModel prop)
+        public static PropertyModel ToContactPropertyModel(this PropModel prop)
         {
             var propModel = new PropertyModel(
                 "contactinformation",
@@ -180,11 +196,11 @@ namespace Naos.HubSpot.Protocol.Client
         }
 
         /// <summary>
-        /// Converts to CompanyPropertyModelV3.
+        /// Converts to CompanyPropertyModel.
         /// </summary>
         /// <param name="prop">The property.</param>
         /// <returns>PropertyModel.</returns>
-        public static PropertyModel ToCompanyPropertyModelV3(this PropModel prop)
+        public static PropertyModel ToCompanyPropertyModel(this PropModel prop)
         {
             var propModel = new PropertyModel(
                 "companyinformation",
