@@ -153,7 +153,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             company.MustForTest(nameof(company)).NotBeNull();
         }
 
-        [Fact]
+        [Fact(Skip = "API testing only.")]
         public static void UpdateCompaniesOp___Does_not_return_http_error___When_executed()
         {
             // Arrange
