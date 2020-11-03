@@ -25,15 +25,15 @@ namespace Naos.HubSpot.Domain
     using static global::System.FormattableString;
 
     [Serializable]
-    public partial class CreatePropertyV3Op : IModel<CreatePropertyV3Op>
+    public partial class CreatePropertyOp : IModel<CreatePropertyOp>
     {
         /// <summary>
-        /// Determines whether two objects of type <see cref="CreatePropertyV3Op"/> are equal.
+        /// Determines whether two objects of type <see cref="CreatePropertyOp"/> are equal.
         /// </summary>
         /// <param name="left">The object to the left of the equality operator.</param>
         /// <param name="right">The object to the right of the equality operator.</param>
         /// <returns>true if the two items are equal; otherwise false.</returns>
-        public static bool operator ==(CreatePropertyV3Op left, CreatePropertyV3Op right)
+        public static bool operator ==(CreatePropertyOp left, CreatePropertyOp right)
         {
             if (ReferenceEquals(left, right))
             {
@@ -51,15 +51,15 @@ namespace Naos.HubSpot.Domain
         }
 
         /// <summary>
-        /// Determines whether two objects of type <see cref="CreatePropertyV3Op"/> are not equal.
+        /// Determines whether two objects of type <see cref="CreatePropertyOp"/> are not equal.
         /// </summary>
         /// <param name="left">The object to the left of the equality operator.</param>
         /// <param name="right">The object to the right of the equality operator.</param>
         /// <returns>true if the two items are not equal; otherwise false.</returns>
-        public static bool operator !=(CreatePropertyV3Op left, CreatePropertyV3Op right) => !(left == right);
+        public static bool operator !=(CreatePropertyOp left, CreatePropertyOp right) => !(left == right);
 
         /// <inheritdoc />
-        public bool Equals(CreatePropertyV3Op other)
+        public bool Equals(CreatePropertyOp other)
         {
             if (ReferenceEquals(this, other))
             {
@@ -71,29 +71,29 @@ namespace Naos.HubSpot.Domain
                 return false;
             }
 
-            var result = this.PropModelToAdd.IsEqualTo(other.PropModelToAdd)
+            var result = this.CustomPropertyName.IsEqualTo(other.CustomPropertyName, StringComparer.Ordinal)
                       && this.ObjectType.IsEqualTo(other.ObjectType);
 
             return result;
         }
 
         /// <inheritdoc />
-        public override bool Equals(object obj) => this == (obj as CreatePropertyV3Op);
+        public override bool Equals(object obj) => this == (obj as CreatePropertyOp);
 
         /// <inheritdoc />
         public override int GetHashCode() => HashCodeHelper.Initialize()
-            .Hash(this.PropModelToAdd)
+            .Hash(this.CustomPropertyName)
             .Hash(this.ObjectType)
             .Value;
 
         /// <inheritdoc />
-        public new CreatePropertyV3Op DeepClone() => (CreatePropertyV3Op)this.DeepCloneInternal();
+        public new CreatePropertyOp DeepClone() => (CreatePropertyOp)this.DeepCloneInternal();
 
         /// <summary>
-        /// Deep clones this object with a new <see cref="PropModelToAdd" />.
+        /// Deep clones this object with a new <see cref="CustomPropertyName" />.
         /// </summary>
-        /// <param name="propModelToAdd">The new <see cref="PropModelToAdd" />.  This object will NOT be deep cloned; it is used as-is.</param>
-        /// <returns>New <see cref="CreatePropertyV3Op" /> using the specified <paramref name="propModelToAdd" /> for <see cref="PropModelToAdd" /> and a deep clone of every other property.</returns>
+        /// <param name="customPropertyName">The new <see cref="CustomPropertyName" />.  This object will NOT be deep cloned; it is used as-is.</param>
+        /// <returns>New <see cref="CreatePropertyOp" /> using the specified <paramref name="customPropertyName" /> for <see cref="CustomPropertyName" /> and a deep clone of every other property.</returns>
         [SuppressMessage("Microsoft.Design", "CA1002: DoNotExposeGenericLists")]
         [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly")]
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly")]
@@ -109,10 +109,10 @@ namespace Naos.HubSpot.Domain
         [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
         [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
-        public CreatePropertyV3Op DeepCloneWithPropModelToAdd(PropModel propModelToAdd)
+        public CreatePropertyOp DeepCloneWithCustomPropertyName(string customPropertyName)
         {
-            var result = new CreatePropertyV3Op(
-                                 propModelToAdd,
+            var result = new CreatePropertyOp(
+                                 customPropertyName,
                                  this.ObjectType);
 
             return result;
@@ -122,7 +122,7 @@ namespace Naos.HubSpot.Domain
         /// Deep clones this object with a new <see cref="ObjectType" />.
         /// </summary>
         /// <param name="objectType">The new <see cref="ObjectType" />.  This object will NOT be deep cloned; it is used as-is.</param>
-        /// <returns>New <see cref="CreatePropertyV3Op" /> using the specified <paramref name="objectType" /> for <see cref="ObjectType" /> and a deep clone of every other property.</returns>
+        /// <returns>New <see cref="CreatePropertyOp" /> using the specified <paramref name="objectType" /> for <see cref="ObjectType" /> and a deep clone of every other property.</returns>
         [SuppressMessage("Microsoft.Design", "CA1002: DoNotExposeGenericLists")]
         [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly")]
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly")]
@@ -138,10 +138,10 @@ namespace Naos.HubSpot.Domain
         [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
         [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
-        public CreatePropertyV3Op DeepCloneWithObjectType(HubSpotPropertyObjectType objectType)
+        public CreatePropertyOp DeepCloneWithObjectType(HubSpotPropertyObjectType objectType)
         {
-            var result = new CreatePropertyV3Op(
-                                 this.PropModelToAdd?.DeepClone(),
+            var result = new CreatePropertyOp(
+                                 this.CustomPropertyName?.Clone().ToString(),
                                  objectType);
 
             return result;
@@ -150,8 +150,8 @@ namespace Naos.HubSpot.Domain
         /// <inheritdoc />
         protected override OperationBase DeepCloneInternal()
         {
-            var result = new CreatePropertyV3Op(
-                                 this.PropModelToAdd?.DeepClone(),
+            var result = new CreatePropertyOp(
+                                 this.CustomPropertyName?.Clone().ToString(),
                                  this.ObjectType);
 
             return result;
@@ -161,7 +161,7 @@ namespace Naos.HubSpot.Domain
         [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         public override string ToString()
         {
-            var result = Invariant($"Naos.HubSpot.Domain.CreatePropertyV3Op: PropModelToAdd = {this.PropModelToAdd?.ToString() ?? "<null>"}, ObjectType = {this.ObjectType.ToString() ?? "<null>"}.");
+            var result = Invariant($"Naos.HubSpot.Domain.CreatePropertyOp: CustomPropertyName = {this.CustomPropertyName?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, ObjectType = {this.ObjectType.ToString() ?? "<null>"}.");
 
             return result;
         }

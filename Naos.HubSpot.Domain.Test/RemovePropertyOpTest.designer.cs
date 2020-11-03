@@ -18,6 +18,7 @@ namespace Naos.HubSpot.Domain.Test
 
     using global::FakeItEasy;
 
+    using global::Naos.HubSpot.Domain.Model;
     using global::Naos.Protocol.Domain;
 
     using global::OBeautifulCode.Assertion.Recipes;
@@ -37,35 +38,35 @@ namespace Naos.HubSpot.Domain.Test
 
     public static partial class RemovePropertyOpTest
     {
-        private static readonly StringRepresentationTestScenarios<RemovePropertyV3Op> StringRepresentationTestScenarios = new StringRepresentationTestScenarios<RemovePropertyV3Op>()
+        private static readonly StringRepresentationTestScenarios<RemovePropertyOp> StringRepresentationTestScenarios = new StringRepresentationTestScenarios<RemovePropertyOp>()
             .AddScenario(() =>
-                new StringRepresentationTestScenario<RemovePropertyV3Op>
+                new StringRepresentationTestScenario<RemovePropertyOp>
                 {
                     Name = "Default Code Generated Scenario",
                     SystemUnderTestExpectedStringRepresentationFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<RemovePropertyV3Op>();
+                        var systemUnderTest = A.Dummy<RemovePropertyOp>();
 
-                        var result = new SystemUnderTestExpectedStringRepresentation<RemovePropertyV3Op>
+                        var result = new SystemUnderTestExpectedStringRepresentation<RemovePropertyOp>
                         {
                             SystemUnderTest = systemUnderTest,
-                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.RemovePropertyV3Op: PropertyType = {systemUnderTest.PropertyType?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, PropertyName = {systemUnderTest.PropertyName?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}."),
+                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.RemovePropertyOp: PropertyType = {systemUnderTest.PropertyType.ToString() ?? "<null>"}, PropertyName = {systemUnderTest.PropertyName?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}."),
                         };
 
                         return result;
                     },
                 });
 
-        private static readonly ConstructorArgumentValidationTestScenarios<RemovePropertyV3Op> ConstructorArgumentValidationTestScenarios = new ConstructorArgumentValidationTestScenarios<RemovePropertyV3Op>()
+        private static readonly ConstructorArgumentValidationTestScenarios<RemovePropertyOp> ConstructorArgumentValidationTestScenarios = new ConstructorArgumentValidationTestScenarios<RemovePropertyOp>()
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<RemovePropertyV3Op>
+                new ConstructorArgumentValidationTestScenario<RemovePropertyOp>
                 {
                     Name = "constructor should throw ArgumentNullException when parameter 'propertyName' is null scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<RemovePropertyV3Op>();
+                        var referenceObject = A.Dummy<RemovePropertyOp>();
 
-                        var result = new RemovePropertyV3Op(
+                        var result = new RemovePropertyOp(
                                              null,
                                              referenceObject.PropertyType);
 
@@ -75,14 +76,14 @@ namespace Naos.HubSpot.Domain.Test
                     ExpectedExceptionMessageContains = new[] { "propertyName" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<RemovePropertyV3Op>
+                new ConstructorArgumentValidationTestScenario<RemovePropertyOp>
                 {
                     Name = "constructor should throw ArgumentException when parameter 'propertyName' is white space scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<RemovePropertyV3Op>();
+                        var referenceObject = A.Dummy<RemovePropertyOp>();
 
-                        var result = new RemovePropertyV3Op(
+                        var result = new RemovePropertyOp(
                                              Invariant($"  {Environment.NewLine}  "),
                                              referenceObject.PropertyType);
 
@@ -90,54 +91,20 @@ namespace Naos.HubSpot.Domain.Test
                     },
                     ExpectedExceptionType = typeof(ArgumentException),
                     ExpectedExceptionMessageContains = new[] { "propertyName", "white space" },
-                })
-            .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<RemovePropertyV3Op>
-                {
-                    Name = "constructor should throw ArgumentNullException when parameter 'propertyType' is null scenario",
-                    ConstructionFunc = () =>
-                    {
-                        var referenceObject = A.Dummy<RemovePropertyV3Op>();
-
-                        var result = new RemovePropertyV3Op(
-                                             referenceObject.PropertyName,
-                                             null);
-
-                        return result;
-                    },
-                    ExpectedExceptionType = typeof(ArgumentNullException),
-                    ExpectedExceptionMessageContains = new[] { "propertyType" },
-                })
-            .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<RemovePropertyV3Op>
-                {
-                    Name = "constructor should throw ArgumentException when parameter 'propertyType' is white space scenario",
-                    ConstructionFunc = () =>
-                    {
-                        var referenceObject = A.Dummy<RemovePropertyV3Op>();
-
-                        var result = new RemovePropertyV3Op(
-                                             referenceObject.PropertyName,
-                                             Invariant($"  {Environment.NewLine}  "));
-
-                        return result;
-                    },
-                    ExpectedExceptionType = typeof(ArgumentException),
-                    ExpectedExceptionMessageContains = new[] { "propertyType", "white space" },
                 });
 
-        private static readonly ConstructorPropertyAssignmentTestScenarios<RemovePropertyV3Op> ConstructorPropertyAssignmentTestScenarios = new ConstructorPropertyAssignmentTestScenarios<RemovePropertyV3Op>()
+        private static readonly ConstructorPropertyAssignmentTestScenarios<RemovePropertyOp> ConstructorPropertyAssignmentTestScenarios = new ConstructorPropertyAssignmentTestScenarios<RemovePropertyOp>()
             .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<RemovePropertyV3Op>
+                new ConstructorPropertyAssignmentTestScenario<RemovePropertyOp>
                 {
                     Name = "PropertyName should return same 'propertyName' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
-                        var referenceObject = A.Dummy<RemovePropertyV3Op>();
+                        var referenceObject = A.Dummy<RemovePropertyOp>();
 
-                        var result = new SystemUnderTestExpectedPropertyValue<RemovePropertyV3Op>
+                        var result = new SystemUnderTestExpectedPropertyValue<RemovePropertyOp>
                         {
-                            SystemUnderTest = new RemovePropertyV3Op(
+                            SystemUnderTest = new RemovePropertyOp(
                                                       referenceObject.PropertyName,
                                                       referenceObject.PropertyType),
                             ExpectedPropertyValue = referenceObject.PropertyName,
@@ -148,16 +115,16 @@ namespace Naos.HubSpot.Domain.Test
                     PropertyName = "PropertyName",
                 })
             .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<RemovePropertyV3Op>
+                new ConstructorPropertyAssignmentTestScenario<RemovePropertyOp>
                 {
                     Name = "PropertyType should return same 'propertyType' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
-                        var referenceObject = A.Dummy<RemovePropertyV3Op>();
+                        var referenceObject = A.Dummy<RemovePropertyOp>();
 
-                        var result = new SystemUnderTestExpectedPropertyValue<RemovePropertyV3Op>
+                        var result = new SystemUnderTestExpectedPropertyValue<RemovePropertyOp>
                         {
-                            SystemUnderTest = new RemovePropertyV3Op(
+                            SystemUnderTest = new RemovePropertyOp(
                                                       referenceObject.PropertyName,
                                                       referenceObject.PropertyType),
                             ExpectedPropertyValue = referenceObject.PropertyType,
@@ -168,19 +135,19 @@ namespace Naos.HubSpot.Domain.Test
                     PropertyName = "PropertyType",
                 });
 
-        private static readonly DeepCloneWithTestScenarios<RemovePropertyV3Op> DeepCloneWithTestScenarios = new DeepCloneWithTestScenarios<RemovePropertyV3Op>()
+        private static readonly DeepCloneWithTestScenarios<RemovePropertyOp> DeepCloneWithTestScenarios = new DeepCloneWithTestScenarios<RemovePropertyOp>()
             .AddScenario(() =>
-                new DeepCloneWithTestScenario<RemovePropertyV3Op>
+                new DeepCloneWithTestScenario<RemovePropertyOp>
                 {
                     Name = "DeepCloneWithPropertyType should deep clone object and replace PropertyType with the provided propertyType",
                     WithPropertyName = "PropertyType",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<RemovePropertyV3Op>();
+                        var systemUnderTest = A.Dummy<RemovePropertyOp>();
 
-                        var referenceObject = A.Dummy<RemovePropertyV3Op>().ThatIs(_ => !systemUnderTest.PropertyType.IsEqualTo(_.PropertyType));
+                        var referenceObject = A.Dummy<RemovePropertyOp>().ThatIs(_ => !systemUnderTest.PropertyType.IsEqualTo(_.PropertyType));
 
-                        var result = new SystemUnderTestDeepCloneWithValue<RemovePropertyV3Op>
+                        var result = new SystemUnderTestDeepCloneWithValue<RemovePropertyOp>
                         {
                             SystemUnderTest = systemUnderTest,
                             DeepCloneWithValue = referenceObject.PropertyType,
@@ -190,17 +157,17 @@ namespace Naos.HubSpot.Domain.Test
                     },
                 })
             .AddScenario(() =>
-                new DeepCloneWithTestScenario<RemovePropertyV3Op>
+                new DeepCloneWithTestScenario<RemovePropertyOp>
                 {
                     Name = "DeepCloneWithPropertyName should deep clone object and replace PropertyName with the provided propertyName",
                     WithPropertyName = "PropertyName",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<RemovePropertyV3Op>();
+                        var systemUnderTest = A.Dummy<RemovePropertyOp>();
 
-                        var referenceObject = A.Dummy<RemovePropertyV3Op>().ThatIs(_ => !systemUnderTest.PropertyName.IsEqualTo(_.PropertyName));
+                        var referenceObject = A.Dummy<RemovePropertyOp>().ThatIs(_ => !systemUnderTest.PropertyName.IsEqualTo(_.PropertyName));
 
-                        var result = new SystemUnderTestDeepCloneWithValue<RemovePropertyV3Op>
+                        var result = new SystemUnderTestDeepCloneWithValue<RemovePropertyOp>
                         {
                             SystemUnderTest = systemUnderTest,
                             DeepCloneWithValue = referenceObject.PropertyName,
@@ -210,27 +177,27 @@ namespace Naos.HubSpot.Domain.Test
                     },
                 });
 
-        private static readonly RemovePropertyV3Op ReferenceObjectForEquatableTestScenarios = A.Dummy<RemovePropertyV3Op>();
+        private static readonly RemovePropertyOp ReferenceObjectForEquatableTestScenarios = A.Dummy<RemovePropertyOp>();
 
-        private static readonly EquatableTestScenarios<RemovePropertyV3Op> EquatableTestScenarios = new EquatableTestScenarios<RemovePropertyV3Op>()
+        private static readonly EquatableTestScenarios<RemovePropertyOp> EquatableTestScenarios = new EquatableTestScenarios<RemovePropertyOp>()
             .AddScenario(() =>
-                new EquatableTestScenario<RemovePropertyV3Op>
+                new EquatableTestScenario<RemovePropertyOp>
                 {
                     Name = "Default Code Generated Scenario",
                     ReferenceObject = ReferenceObjectForEquatableTestScenarios,
-                    ObjectsThatAreEqualToButNotTheSameAsReferenceObject = new RemovePropertyV3Op[]
+                    ObjectsThatAreEqualToButNotTheSameAsReferenceObject = new RemovePropertyOp[]
                     {
-                        new RemovePropertyV3Op(
+                        new RemovePropertyOp(
                                 ReferenceObjectForEquatableTestScenarios.PropertyName,
                                 ReferenceObjectForEquatableTestScenarios.PropertyType),
                     },
-                    ObjectsThatAreNotEqualToReferenceObject = new RemovePropertyV3Op[]
+                    ObjectsThatAreNotEqualToReferenceObject = new RemovePropertyOp[]
                     {
-                        new RemovePropertyV3Op(
+                        new RemovePropertyOp(
                                 ReferenceObjectForEquatableTestScenarios.PropertyName,
-                                A.Dummy<RemovePropertyV3Op>().Whose(_ => !_.PropertyType.IsEqualTo(ReferenceObjectForEquatableTestScenarios.PropertyType)).PropertyType),
-                        new RemovePropertyV3Op(
-                                A.Dummy<RemovePropertyV3Op>().Whose(_ => !_.PropertyName.IsEqualTo(ReferenceObjectForEquatableTestScenarios.PropertyName)).PropertyName,
+                                A.Dummy<RemovePropertyOp>().Whose(_ => !_.PropertyType.IsEqualTo(ReferenceObjectForEquatableTestScenarios.PropertyType)).PropertyType),
+                        new RemovePropertyOp(
+                                A.Dummy<RemovePropertyOp>().Whose(_ => !_.PropertyName.IsEqualTo(ReferenceObjectForEquatableTestScenarios.PropertyName)).PropertyName,
                                 ReferenceObjectForEquatableTestScenarios.PropertyType),
                     },
                     ObjectsThatAreNotOfTheSameTypeAsReferenceObject = new object[]
@@ -253,8 +220,8 @@ namespace Naos.HubSpot.Domain.Test
                         A.Dummy<RemoveContactByHubSpotIdOp>(),
                         A.Dummy<SearchContactOp>(),
                         A.Dummy<UpdateContactOp>(),
+                        A.Dummy<GetAllPropertiesOp>(),
                         A.Dummy<CreatePropertyOp>(),
-                        A.Dummy<GetAllPropertiesV3Op>(),
                         A.Dummy<SyncWithHubSpotOp>(),
                     },
                 });
@@ -277,12 +244,12 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void RemovePropertyV3Op___Should_implement_IModel_of_RemovePropertyV3Op___When_reflecting()
+            public static void RemovePropertyOp___Should_implement_IModel_of_RemovePropertyOp___When_reflecting()
             {
                 // Arrange
-                var type = typeof(RemovePropertyV3Op);
+                var type = typeof(RemovePropertyOp);
 
-                var expectedModelMethods = typeof(IModel<RemovePropertyV3Op>).GetInterfaceDeclaredAndImplementedMethods();
+                var expectedModelMethods = typeof(IModel<RemovePropertyOp>).GetInterfaceDeclaredAndImplementedMethods();
 
                 var expectedModelMethodHashes = expectedModelMethods.Select(_ => _.GetSignatureHash());
 
@@ -292,7 +259,7 @@ namespace Naos.HubSpot.Domain.Test
                 var actualModelMethodHashes = actualModelMethods.Select(_ => _.GetSignatureHash());
 
                 // Assert
-                actualInterfaces.AsTest().Must().ContainElement(typeof(IModel<RemovePropertyV3Op>));
+                actualInterfaces.AsTest().Must().ContainElement(typeof(IModel<RemovePropertyOp>));
                 expectedModelMethodHashes.Except(actualModelMethodHashes).AsTest().Must().BeEmptyEnumerable();
             }
 
@@ -310,10 +277,10 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void RemovePropertyV3Op___Should_be_attributed_with_Serializable____When_reflecting()
+            public static void RemovePropertyOp___Should_be_attributed_with_Serializable____When_reflecting()
             {
                 // Arrange
-                var type = typeof(RemovePropertyV3Op);
+                var type = typeof(RemovePropertyOp);
 
                 // Act
                 var actualAttributes = type.GetCustomAttributes(typeof(SerializableAttribute), false);
@@ -443,7 +410,7 @@ namespace Naos.HubSpot.Domain.Test
                         // Here 'scenario.ExpectedPropertyValue' and 'actual' are declared as typeof(object).
                         // With the exception of some specific boxed types (e.g. value types, string),
                         // BeEqualTo() uses reference equality to compare two objects declared as typeof(object).
-                        // We want to use the property's real type, 'scenario.PropModel.PropertyType'.
+                        // We want to use the property's real type, 'scenario.Property.PropertyType'.
                         // For example, BeEqualTo() returns false for these two dictionaries because their declared type is typeof(object):
                         // object x = Dictionary<string, string>();
                         // object y = Dictionary<string, string>();
@@ -486,10 +453,10 @@ namespace Naos.HubSpot.Domain.Test
             public static void Clone___Should_clone_object___When_called()
             {
                 // Arrange
-                var systemUnderTest = A.Dummy<RemovePropertyV3Op>();
+                var systemUnderTest = A.Dummy<RemovePropertyOp>();
 
                 // Act
-                var actual = (RemovePropertyV3Op)systemUnderTest.Clone();
+                var actual = (RemovePropertyOp)systemUnderTest.Clone();
 
                 // Assert
                 actual.AsTest().Must().BeEqualTo(systemUnderTest);
@@ -513,7 +480,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void DeepClone___Should_deep_clone_object___When_called()
             {
                 // Arrange
-                var systemUnderTest = A.Dummy<RemovePropertyV3Op>();
+                var systemUnderTest = A.Dummy<RemovePropertyOp>();
 
                 // Act
                 var actual = systemUnderTest.DeepClone();
@@ -556,12 +523,12 @@ namespace Naos.HubSpot.Domain.Test
                     }
 
                     // Act
-                    var actual = (RemovePropertyV3Op)scenario.DeepCloneWithMethod.Invoke(scenario.SystemUnderTest, new[] { scenario.WithValue });
+                    var actual = (RemovePropertyOp)scenario.DeepCloneWithMethod.Invoke(scenario.SystemUnderTest, new[] { scenario.WithValue });
 
                     // Assert
                     foreach(var propertyName in propertyNames)
                     {
-                        var propertyInfo = typeof(RemovePropertyV3Op).GetPropertyFiltered(propertyName, MemberRelationships.DeclaredOrInherited, MemberOwners.Instance, MemberAccessModifiers.Public);
+                        var propertyInfo = typeof(RemovePropertyOp).GetPropertyFiltered(propertyName, MemberRelationships.DeclaredOrInherited, MemberOwners.Instance, MemberAccessModifiers.Public);
 
                         var propertyType = propertyInfo.PropertyType;
 
@@ -629,7 +596,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_string_using_ObcBsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<RemovePropertyV3Op>();
+                var expected = A.Dummy<RemovePropertyOp>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.BsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -658,7 +625,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_bytes_using_ObcBsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<RemovePropertyV3Op>();
+                var expected = A.Dummy<RemovePropertyOp>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.BsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -687,7 +654,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_string_using_ObcJsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<RemovePropertyV3Op>();
+                var expected = A.Dummy<RemovePropertyOp>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.JsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -716,7 +683,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_bytes_using_ObcJsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<RemovePropertyV3Op>();
+                var expected = A.Dummy<RemovePropertyOp>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.JsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -750,8 +717,8 @@ namespace Naos.HubSpot.Domain.Test
             public static void EqualsOperator___Should_return_true___When_both_sides_of_operator_are_null()
             {
                 // Arrange
-                RemovePropertyV3Op systemUnderTest1 = null;
-                RemovePropertyV3Op systemUnderTest2 = null;
+                RemovePropertyOp systemUnderTest1 = null;
+                RemovePropertyOp systemUnderTest2 = null;
 
                 // Act
                 var actual = systemUnderTest1 == systemUnderTest2;
@@ -781,7 +748,7 @@ namespace Naos.HubSpot.Domain.Test
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    RemovePropertyV3Op systemUnderTest = null;
+                    RemovePropertyOp systemUnderTest = null;
 
                     // Act
                     var actual1 = systemUnderTest == scenario.ReferenceObject;
@@ -930,8 +897,8 @@ namespace Naos.HubSpot.Domain.Test
             public static void NotEqualsOperator___Should_return_false___When_both_sides_of_operator_are_null()
             {
                 // Arrange
-                RemovePropertyV3Op systemUnderTest1 = null;
-                RemovePropertyV3Op systemUnderTest2 = null;
+                RemovePropertyOp systemUnderTest1 = null;
+                RemovePropertyOp systemUnderTest2 = null;
 
                 // Act
                 var actual = systemUnderTest1 != systemUnderTest2;
@@ -961,7 +928,7 @@ namespace Naos.HubSpot.Domain.Test
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    RemovePropertyV3Op systemUnderTest = null;
+                    RemovePropertyOp systemUnderTest = null;
 
                     // Act
                     var actual1 = systemUnderTest != scenario.ReferenceObject;
@@ -1250,17 +1217,17 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_ReturningOperationBase___Should_return_false___When_parameter_other_is_null()
+            public static void Equals_with_VoidOperationBase___Should_return_false___When_parameter_other_is_null()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    ReturningOperationBase<PropertyModel> systemUnderTest = null;
+                    VoidOperationBase systemUnderTest = null;
 
                     // Act
-                    var actual = scenario.ReferenceObject.Equals((ReturningOperationBase<PropertyModel>)systemUnderTest);
+                    var actual = scenario.ReferenceObject.Equals((VoidOperationBase)systemUnderTest);
 
                     // Assert
                     actual.AsTest().Must().BeFalse(because: scenario.Id);
@@ -1281,14 +1248,14 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_ReturningOperationBase___Should_return_true___When_parameter_other_is_same_object()
+            public static void Equals_with_VoidOperationBase___Should_return_true___When_parameter_other_is_same_object()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
                 foreach (var scenario in scenarios)
                 {
                     // Arrange, Act
-                    var actual = scenario.ReferenceObject.Equals((ReturningOperationBase<PropertyModel>)scenario.ReferenceObject);
+                    var actual = scenario.ReferenceObject.Equals((VoidOperationBase)scenario.ReferenceObject);
 
                     // Assert
                     actual.AsTest().Must().BeTrue(because: scenario.Id);
@@ -1309,14 +1276,14 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_ReturningOperationBase___Should_return_false___When_parameter_other_is_derived_from_the_same_type_but_is_not_of_the_same_type_as_this_object()
+            public static void Equals_with_VoidOperationBase___Should_return_false___When_parameter_other_is_derived_from_the_same_type_but_is_not_of_the_same_type_as_this_object()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
                 foreach (var scenario in scenarios)
                 {
                     // Arrange, Act
-                    var actuals = scenario.ObjectsThatDeriveFromScenarioTypeButAreNotOfTheSameTypeAsReferenceObject.Select(_ => scenario.ReferenceObject.Equals((ReturningOperationBase<PropertyModel>)_)).ToList();
+                    var actuals = scenario.ObjectsThatDeriveFromScenarioTypeButAreNotOfTheSameTypeAsReferenceObject.Select(_ => scenario.ReferenceObject.Equals((VoidOperationBase)_)).ToList();
 
                     // Assert
                     actuals.AsTest().Must().Each().BeFalse(because: scenario.Id);
@@ -1337,14 +1304,14 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_ReturningOperationBase___Should_return_false___When_objects_being_compared_have_different_property_values()
+            public static void Equals_with_VoidOperationBase___Should_return_false___When_objects_being_compared_have_different_property_values()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
                 foreach (var scenario in scenarios)
                 {
                     // Arrange, Act
-                    var actuals = scenario.ObjectsThatAreNotEqualToReferenceObject.Select(_ => scenario.ReferenceObject.Equals((ReturningOperationBase<PropertyModel>)_)).ToList();
+                    var actuals = scenario.ObjectsThatAreNotEqualToReferenceObject.Select(_ => scenario.ReferenceObject.Equals((VoidOperationBase)_)).ToList();
 
                     // Assert
                     actuals.AsTest().Must().Each().BeFalse(because: scenario.Id);
@@ -1365,14 +1332,14 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_ReturningOperationBase___Should_return_true___When_objects_being_compared_have_same_property_values()
+            public static void Equals_with_VoidOperationBase___Should_return_true___When_objects_being_compared_have_same_property_values()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
                 foreach (var scenario in scenarios)
                 {
                     // Arrange, Act
-                    var actuals = scenario.ObjectsThatAreEqualToButNotTheSameAsReferenceObject.Select(_ => scenario.ReferenceObject.Equals((ReturningOperationBase<PropertyModel>)_)).ToList();
+                    var actuals = scenario.ObjectsThatAreEqualToButNotTheSameAsReferenceObject.Select(_ => scenario.ReferenceObject.Equals((VoidOperationBase)_)).ToList();
 
                     // Assert
                     actuals.AsTest().Must().Each().BeTrue(because: scenario.Id);
@@ -1393,14 +1360,14 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_RemovePropertyV3Op___Should_return_false___When_parameter_other_is_null()
+            public static void Equals_with_RemovePropertyOp___Should_return_false___When_parameter_other_is_null()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    RemovePropertyV3Op systemUnderTest = null;
+                    RemovePropertyOp systemUnderTest = null;
 
                     // Act
                     var actual = scenario.ReferenceObject.Equals(systemUnderTest);
@@ -1424,7 +1391,7 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_RemovePropertyV3Op___Should_return_true___When_parameter_other_is_same_object()
+            public static void Equals_with_RemovePropertyOp___Should_return_true___When_parameter_other_is_same_object()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
@@ -1452,7 +1419,7 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_RemovePropertyV3Op___Should_return_false___When_parameter_other_is_derived_from_the_same_type_but_is_not_of_the_same_type_as_this_object()
+            public static void Equals_with_RemovePropertyOp___Should_return_false___When_parameter_other_is_derived_from_the_same_type_but_is_not_of_the_same_type_as_this_object()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
@@ -1480,7 +1447,7 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_RemovePropertyV3Op___Should_return_false___When_objects_being_compared_have_different_property_values()
+            public static void Equals_with_RemovePropertyOp___Should_return_false___When_objects_being_compared_have_different_property_values()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
@@ -1508,7 +1475,7 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_RemovePropertyV3Op___Should_return_true___When_objects_being_compared_have_same_property_values()
+            public static void Equals_with_RemovePropertyOp___Should_return_true___When_objects_being_compared_have_same_property_values()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 

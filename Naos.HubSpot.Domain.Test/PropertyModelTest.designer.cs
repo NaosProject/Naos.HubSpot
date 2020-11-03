@@ -66,15 +66,15 @@ namespace Naos.HubSpot.Domain.Test
                         var result = new PropertyModel(
                                              null,
                                              referenceObject.Hidden,
-                                             referenceObject.ModificationMetadataModel,
                                              referenceObject.Name,
                                              referenceObject.DisplayOrder,
-                                             referenceObject.Options,
                                              referenceObject.Label,
                                              referenceObject.Type,
                                              referenceObject.HasUniqueValue,
                                              referenceObject.FieldType,
-                                             referenceObject.FormField);
+                                             referenceObject.FormField,
+                                             referenceObject.ModificationMetadataModel,
+                                             referenceObject.Options);
 
                         return result;
                     },
@@ -92,46 +92,20 @@ namespace Naos.HubSpot.Domain.Test
                         var result = new PropertyModel(
                                              Invariant($"  {Environment.NewLine}  "),
                                              referenceObject.Hidden,
-                                             referenceObject.ModificationMetadataModel,
                                              referenceObject.Name,
                                              referenceObject.DisplayOrder,
-                                             referenceObject.Options,
                                              referenceObject.Label,
                                              referenceObject.Type,
                                              referenceObject.HasUniqueValue,
                                              referenceObject.FieldType,
-                                             referenceObject.FormField);
+                                             referenceObject.FormField,
+                                             referenceObject.ModificationMetadataModel,
+                                             referenceObject.Options);
 
                         return result;
                     },
                     ExpectedExceptionType = typeof(ArgumentException),
                     ExpectedExceptionMessageContains = new[] { "groupName", "white space" },
-                })
-            .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<PropertyModel>
-                {
-                    Name = "constructor should throw ArgumentNullException when parameter 'modificationMetadataModel' is null scenario",
-                    ConstructionFunc = () =>
-                    {
-                        var referenceObject = A.Dummy<PropertyModel>();
-
-                        var result = new PropertyModel(
-                                             referenceObject.GroupName,
-                                             referenceObject.Hidden,
-                                             null,
-                                             referenceObject.Name,
-                                             referenceObject.DisplayOrder,
-                                             referenceObject.Options,
-                                             referenceObject.Label,
-                                             referenceObject.Type,
-                                             referenceObject.HasUniqueValue,
-                                             referenceObject.FieldType,
-                                             referenceObject.FormField);
-
-                        return result;
-                    },
-                    ExpectedExceptionType = typeof(ArgumentNullException),
-                    ExpectedExceptionMessageContains = new[] { "modificationMetadataModel" },
                 })
             .AddScenario(() =>
                 new ConstructorArgumentValidationTestScenario<PropertyModel>
@@ -144,15 +118,15 @@ namespace Naos.HubSpot.Domain.Test
                         var result = new PropertyModel(
                                              referenceObject.GroupName,
                                              referenceObject.Hidden,
-                                             referenceObject.ModificationMetadataModel,
                                              null,
                                              referenceObject.DisplayOrder,
-                                             referenceObject.Options,
                                              referenceObject.Label,
                                              referenceObject.Type,
                                              referenceObject.HasUniqueValue,
                                              referenceObject.FieldType,
-                                             referenceObject.FormField);
+                                             referenceObject.FormField,
+                                             referenceObject.ModificationMetadataModel,
+                                             referenceObject.Options);
 
                         return result;
                     },
@@ -170,98 +144,20 @@ namespace Naos.HubSpot.Domain.Test
                         var result = new PropertyModel(
                                              referenceObject.GroupName,
                                              referenceObject.Hidden,
-                                             referenceObject.ModificationMetadataModel,
                                              Invariant($"  {Environment.NewLine}  "),
                                              referenceObject.DisplayOrder,
-                                             referenceObject.Options,
                                              referenceObject.Label,
                                              referenceObject.Type,
                                              referenceObject.HasUniqueValue,
                                              referenceObject.FieldType,
-                                             referenceObject.FormField);
+                                             referenceObject.FormField,
+                                             referenceObject.ModificationMetadataModel,
+                                             referenceObject.Options);
 
                         return result;
                     },
                     ExpectedExceptionType = typeof(ArgumentException),
                     ExpectedExceptionMessageContains = new[] { "name", "white space" },
-                })
-            .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<PropertyModel>
-                {
-                    Name = "constructor should throw ArgumentNullException when parameter 'options' is null scenario",
-                    ConstructionFunc = () =>
-                    {
-                        var referenceObject = A.Dummy<PropertyModel>();
-
-                        var result = new PropertyModel(
-                                             referenceObject.GroupName,
-                                             referenceObject.Hidden,
-                                             referenceObject.ModificationMetadataModel,
-                                             referenceObject.Name,
-                                             referenceObject.DisplayOrder,
-                                             null,
-                                             referenceObject.Label,
-                                             referenceObject.Type,
-                                             referenceObject.HasUniqueValue,
-                                             referenceObject.FieldType,
-                                             referenceObject.FormField);
-
-                        return result;
-                    },
-                    ExpectedExceptionType = typeof(ArgumentNullException),
-                    ExpectedExceptionMessageContains = new[] { "options" },
-                })
-            .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<PropertyModel>
-                {
-                    Name = "constructor should throw ArgumentException when parameter 'options' is an empty enumerable scenario",
-                    ConstructionFunc = () =>
-                    {
-                        var referenceObject = A.Dummy<PropertyModel>();
-
-                        var result = new PropertyModel(
-                                             referenceObject.GroupName,
-                                             referenceObject.Hidden,
-                                             referenceObject.ModificationMetadataModel,
-                                             referenceObject.Name,
-                                             referenceObject.DisplayOrder,
-                                             new List<OptionModel>(),
-                                             referenceObject.Label,
-                                             referenceObject.Type,
-                                             referenceObject.HasUniqueValue,
-                                             referenceObject.FieldType,
-                                             referenceObject.FormField);
-
-                        return result;
-                    },
-                    ExpectedExceptionType = typeof(ArgumentException),
-                    ExpectedExceptionMessageContains = new[] { "options", "is an empty enumerable" },
-                })
-            .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<PropertyModel>
-                {
-                    Name = "constructor should throw ArgumentException when parameter 'options' contains a null element scenario",
-                    ConstructionFunc = () =>
-                    {
-                        var referenceObject = A.Dummy<PropertyModel>();
-
-                        var result = new PropertyModel(
-                                             referenceObject.GroupName,
-                                             referenceObject.Hidden,
-                                             referenceObject.ModificationMetadataModel,
-                                             referenceObject.Name,
-                                             referenceObject.DisplayOrder,
-                                             new OptionModel[0].Concat(referenceObject.Options).Concat(new OptionModel[] { null }).Concat(referenceObject.Options).ToList(),
-                                             referenceObject.Label,
-                                             referenceObject.Type,
-                                             referenceObject.HasUniqueValue,
-                                             referenceObject.FieldType,
-                                             referenceObject.FormField);
-
-                        return result;
-                    },
-                    ExpectedExceptionType = typeof(ArgumentException),
-                    ExpectedExceptionMessageContains = new[] { "options", "contains at least one null element" },
                 })
             .AddScenario(() =>
                 new ConstructorArgumentValidationTestScenario<PropertyModel>
@@ -274,15 +170,15 @@ namespace Naos.HubSpot.Domain.Test
                         var result = new PropertyModel(
                                              referenceObject.GroupName,
                                              referenceObject.Hidden,
-                                             referenceObject.ModificationMetadataModel,
                                              referenceObject.Name,
                                              referenceObject.DisplayOrder,
-                                             referenceObject.Options,
                                              null,
                                              referenceObject.Type,
                                              referenceObject.HasUniqueValue,
                                              referenceObject.FieldType,
-                                             referenceObject.FormField);
+                                             referenceObject.FormField,
+                                             referenceObject.ModificationMetadataModel,
+                                             referenceObject.Options);
 
                         return result;
                     },
@@ -300,15 +196,15 @@ namespace Naos.HubSpot.Domain.Test
                         var result = new PropertyModel(
                                              referenceObject.GroupName,
                                              referenceObject.Hidden,
-                                             referenceObject.ModificationMetadataModel,
                                              referenceObject.Name,
                                              referenceObject.DisplayOrder,
-                                             referenceObject.Options,
                                              Invariant($"  {Environment.NewLine}  "),
                                              referenceObject.Type,
                                              referenceObject.HasUniqueValue,
                                              referenceObject.FieldType,
-                                             referenceObject.FormField);
+                                             referenceObject.FormField,
+                                             referenceObject.ModificationMetadataModel,
+                                             referenceObject.Options);
 
                         return result;
                     },
@@ -326,15 +222,15 @@ namespace Naos.HubSpot.Domain.Test
                         var result = new PropertyModel(
                                              referenceObject.GroupName,
                                              referenceObject.Hidden,
-                                             referenceObject.ModificationMetadataModel,
                                              referenceObject.Name,
                                              referenceObject.DisplayOrder,
-                                             referenceObject.Options,
                                              referenceObject.Label,
                                              null,
                                              referenceObject.HasUniqueValue,
                                              referenceObject.FieldType,
-                                             referenceObject.FormField);
+                                             referenceObject.FormField,
+                                             referenceObject.ModificationMetadataModel,
+                                             referenceObject.Options);
 
                         return result;
                     },
@@ -352,15 +248,15 @@ namespace Naos.HubSpot.Domain.Test
                         var result = new PropertyModel(
                                              referenceObject.GroupName,
                                              referenceObject.Hidden,
-                                             referenceObject.ModificationMetadataModel,
                                              referenceObject.Name,
                                              referenceObject.DisplayOrder,
-                                             referenceObject.Options,
                                              referenceObject.Label,
                                              Invariant($"  {Environment.NewLine}  "),
                                              referenceObject.HasUniqueValue,
                                              referenceObject.FieldType,
-                                             referenceObject.FormField);
+                                             referenceObject.FormField,
+                                             referenceObject.ModificationMetadataModel,
+                                             referenceObject.Options);
 
                         return result;
                     },
@@ -378,15 +274,15 @@ namespace Naos.HubSpot.Domain.Test
                         var result = new PropertyModel(
                                              referenceObject.GroupName,
                                              referenceObject.Hidden,
-                                             referenceObject.ModificationMetadataModel,
                                              referenceObject.Name,
                                              referenceObject.DisplayOrder,
-                                             referenceObject.Options,
                                              referenceObject.Label,
                                              referenceObject.Type,
                                              referenceObject.HasUniqueValue,
                                              null,
-                                             referenceObject.FormField);
+                                             referenceObject.FormField,
+                                             referenceObject.ModificationMetadataModel,
+                                             referenceObject.Options);
 
                         return result;
                     },
@@ -404,20 +300,124 @@ namespace Naos.HubSpot.Domain.Test
                         var result = new PropertyModel(
                                              referenceObject.GroupName,
                                              referenceObject.Hidden,
-                                             referenceObject.ModificationMetadataModel,
                                              referenceObject.Name,
                                              referenceObject.DisplayOrder,
-                                             referenceObject.Options,
                                              referenceObject.Label,
                                              referenceObject.Type,
                                              referenceObject.HasUniqueValue,
                                              Invariant($"  {Environment.NewLine}  "),
-                                             referenceObject.FormField);
+                                             referenceObject.FormField,
+                                             referenceObject.ModificationMetadataModel,
+                                             referenceObject.Options);
 
                         return result;
                     },
                     ExpectedExceptionType = typeof(ArgumentException),
                     ExpectedExceptionMessageContains = new[] { "fieldType", "white space" },
+                })
+            .AddScenario(() =>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
+                {
+                    Name = "constructor should throw ArgumentNullException when parameter 'modificationMetadataModel' is null scenario",
+                    ConstructionFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new PropertyModel(
+                                             referenceObject.GroupName,
+                                             referenceObject.Hidden,
+                                             referenceObject.Name,
+                                             referenceObject.DisplayOrder,
+                                             referenceObject.Label,
+                                             referenceObject.Type,
+                                             referenceObject.HasUniqueValue,
+                                             referenceObject.FieldType,
+                                             referenceObject.FormField,
+                                             null,
+                                             referenceObject.Options);
+
+                        return result;
+                    },
+                    ExpectedExceptionType = typeof(ArgumentNullException),
+                    ExpectedExceptionMessageContains = new[] { "modificationMetadataModel" },
+                })
+            .AddScenario(() =>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
+                {
+                    Name = "constructor should throw ArgumentNullException when parameter 'options' is null scenario",
+                    ConstructionFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new PropertyModel(
+                                             referenceObject.GroupName,
+                                             referenceObject.Hidden,
+                                             referenceObject.Name,
+                                             referenceObject.DisplayOrder,
+                                             referenceObject.Label,
+                                             referenceObject.Type,
+                                             referenceObject.HasUniqueValue,
+                                             referenceObject.FieldType,
+                                             referenceObject.FormField,
+                                             referenceObject.ModificationMetadataModel,
+                                             null);
+
+                        return result;
+                    },
+                    ExpectedExceptionType = typeof(ArgumentNullException),
+                    ExpectedExceptionMessageContains = new[] { "options" },
+                })
+            .AddScenario(() =>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
+                {
+                    Name = "constructor should throw ArgumentException when parameter 'options' is an empty enumerable scenario",
+                    ConstructionFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new PropertyModel(
+                                             referenceObject.GroupName,
+                                             referenceObject.Hidden,
+                                             referenceObject.Name,
+                                             referenceObject.DisplayOrder,
+                                             referenceObject.Label,
+                                             referenceObject.Type,
+                                             referenceObject.HasUniqueValue,
+                                             referenceObject.FieldType,
+                                             referenceObject.FormField,
+                                             referenceObject.ModificationMetadataModel,
+                                             new List<OptionModel>());
+
+                        return result;
+                    },
+                    ExpectedExceptionType = typeof(ArgumentException),
+                    ExpectedExceptionMessageContains = new[] { "options", "is an empty enumerable" },
+                })
+            .AddScenario(() =>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
+                {
+                    Name = "constructor should throw ArgumentException when parameter 'options' contains a null element scenario",
+                    ConstructionFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new PropertyModel(
+                                             referenceObject.GroupName,
+                                             referenceObject.Hidden,
+                                             referenceObject.Name,
+                                             referenceObject.DisplayOrder,
+                                             referenceObject.Label,
+                                             referenceObject.Type,
+                                             referenceObject.HasUniqueValue,
+                                             referenceObject.FieldType,
+                                             referenceObject.FormField,
+                                             referenceObject.ModificationMetadataModel,
+                                             new OptionModel[0].Concat(referenceObject.Options).Concat(new OptionModel[] { null }).Concat(referenceObject.Options).ToList());
+
+                        return result;
+                    },
+                    ExpectedExceptionType = typeof(ArgumentException),
+                    ExpectedExceptionMessageContains = new[] { "options", "contains at least one null element" },
                 });
 
         private static readonly ConstructorPropertyAssignmentTestScenarios<PropertyModel> ConstructorPropertyAssignmentTestScenarios = new ConstructorPropertyAssignmentTestScenarios<PropertyModel>()
@@ -434,15 +434,15 @@ namespace Naos.HubSpot.Domain.Test
                             SystemUnderTest = new PropertyModel(
                                                       referenceObject.GroupName,
                                                       referenceObject.Hidden,
-                                                      referenceObject.ModificationMetadataModel,
                                                       referenceObject.Name,
                                                       referenceObject.DisplayOrder,
-                                                      referenceObject.Options,
                                                       referenceObject.Label,
                                                       referenceObject.Type,
                                                       referenceObject.HasUniqueValue,
                                                       referenceObject.FieldType,
-                                                      referenceObject.FormField),
+                                                      referenceObject.FormField,
+                                                      referenceObject.ModificationMetadataModel,
+                                                      referenceObject.Options),
                             ExpectedPropertyValue = referenceObject.GroupName,
                         };
 
@@ -463,50 +463,21 @@ namespace Naos.HubSpot.Domain.Test
                             SystemUnderTest = new PropertyModel(
                                                       referenceObject.GroupName,
                                                       referenceObject.Hidden,
-                                                      referenceObject.ModificationMetadataModel,
                                                       referenceObject.Name,
                                                       referenceObject.DisplayOrder,
-                                                      referenceObject.Options,
                                                       referenceObject.Label,
                                                       referenceObject.Type,
                                                       referenceObject.HasUniqueValue,
                                                       referenceObject.FieldType,
-                                                      referenceObject.FormField),
+                                                      referenceObject.FormField,
+                                                      referenceObject.ModificationMetadataModel,
+                                                      referenceObject.Options),
                             ExpectedPropertyValue = referenceObject.Hidden,
                         };
 
                         return result;
                     },
                     PropertyName = "Hidden",
-                })
-            .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
-                {
-                    Name = "ModificationMetadataModel should return same 'modificationMetadataModel' parameter passed to constructor when getting",
-                    SystemUnderTestExpectedPropertyValueFunc = () =>
-                    {
-                        var referenceObject = A.Dummy<PropertyModel>();
-
-                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
-                        {
-                            SystemUnderTest = new PropertyModel(
-                                                      referenceObject.GroupName,
-                                                      referenceObject.Hidden,
-                                                      referenceObject.ModificationMetadataModel,
-                                                      referenceObject.Name,
-                                                      referenceObject.DisplayOrder,
-                                                      referenceObject.Options,
-                                                      referenceObject.Label,
-                                                      referenceObject.Type,
-                                                      referenceObject.HasUniqueValue,
-                                                      referenceObject.FieldType,
-                                                      referenceObject.FormField),
-                            ExpectedPropertyValue = referenceObject.ModificationMetadataModel,
-                        };
-
-                        return result;
-                    },
-                    PropertyName = "ModificationMetadataModel",
                 })
             .AddScenario(() =>
                 new ConstructorPropertyAssignmentTestScenario<PropertyModel>
@@ -521,15 +492,15 @@ namespace Naos.HubSpot.Domain.Test
                             SystemUnderTest = new PropertyModel(
                                                       referenceObject.GroupName,
                                                       referenceObject.Hidden,
-                                                      referenceObject.ModificationMetadataModel,
                                                       referenceObject.Name,
                                                       referenceObject.DisplayOrder,
-                                                      referenceObject.Options,
                                                       referenceObject.Label,
                                                       referenceObject.Type,
                                                       referenceObject.HasUniqueValue,
                                                       referenceObject.FieldType,
-                                                      referenceObject.FormField),
+                                                      referenceObject.FormField,
+                                                      referenceObject.ModificationMetadataModel,
+                                                      referenceObject.Options),
                             ExpectedPropertyValue = referenceObject.Name,
                         };
 
@@ -550,50 +521,21 @@ namespace Naos.HubSpot.Domain.Test
                             SystemUnderTest = new PropertyModel(
                                                       referenceObject.GroupName,
                                                       referenceObject.Hidden,
-                                                      referenceObject.ModificationMetadataModel,
                                                       referenceObject.Name,
                                                       referenceObject.DisplayOrder,
-                                                      referenceObject.Options,
                                                       referenceObject.Label,
                                                       referenceObject.Type,
                                                       referenceObject.HasUniqueValue,
                                                       referenceObject.FieldType,
-                                                      referenceObject.FormField),
+                                                      referenceObject.FormField,
+                                                      referenceObject.ModificationMetadataModel,
+                                                      referenceObject.Options),
                             ExpectedPropertyValue = referenceObject.DisplayOrder,
                         };
 
                         return result;
                     },
                     PropertyName = "DisplayOrder",
-                })
-            .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
-                {
-                    Name = "Options should return same 'options' parameter passed to constructor when getting",
-                    SystemUnderTestExpectedPropertyValueFunc = () =>
-                    {
-                        var referenceObject = A.Dummy<PropertyModel>();
-
-                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
-                        {
-                            SystemUnderTest = new PropertyModel(
-                                                      referenceObject.GroupName,
-                                                      referenceObject.Hidden,
-                                                      referenceObject.ModificationMetadataModel,
-                                                      referenceObject.Name,
-                                                      referenceObject.DisplayOrder,
-                                                      referenceObject.Options,
-                                                      referenceObject.Label,
-                                                      referenceObject.Type,
-                                                      referenceObject.HasUniqueValue,
-                                                      referenceObject.FieldType,
-                                                      referenceObject.FormField),
-                            ExpectedPropertyValue = referenceObject.Options,
-                        };
-
-                        return result;
-                    },
-                    PropertyName = "Options",
                 })
             .AddScenario(() =>
                 new ConstructorPropertyAssignmentTestScenario<PropertyModel>
@@ -608,15 +550,15 @@ namespace Naos.HubSpot.Domain.Test
                             SystemUnderTest = new PropertyModel(
                                                       referenceObject.GroupName,
                                                       referenceObject.Hidden,
-                                                      referenceObject.ModificationMetadataModel,
                                                       referenceObject.Name,
                                                       referenceObject.DisplayOrder,
-                                                      referenceObject.Options,
                                                       referenceObject.Label,
                                                       referenceObject.Type,
                                                       referenceObject.HasUniqueValue,
                                                       referenceObject.FieldType,
-                                                      referenceObject.FormField),
+                                                      referenceObject.FormField,
+                                                      referenceObject.ModificationMetadataModel,
+                                                      referenceObject.Options),
                             ExpectedPropertyValue = referenceObject.Label,
                         };
 
@@ -637,15 +579,15 @@ namespace Naos.HubSpot.Domain.Test
                             SystemUnderTest = new PropertyModel(
                                                       referenceObject.GroupName,
                                                       referenceObject.Hidden,
-                                                      referenceObject.ModificationMetadataModel,
                                                       referenceObject.Name,
                                                       referenceObject.DisplayOrder,
-                                                      referenceObject.Options,
                                                       referenceObject.Label,
                                                       referenceObject.Type,
                                                       referenceObject.HasUniqueValue,
                                                       referenceObject.FieldType,
-                                                      referenceObject.FormField),
+                                                      referenceObject.FormField,
+                                                      referenceObject.ModificationMetadataModel,
+                                                      referenceObject.Options),
                             ExpectedPropertyValue = referenceObject.Type,
                         };
 
@@ -666,15 +608,15 @@ namespace Naos.HubSpot.Domain.Test
                             SystemUnderTest = new PropertyModel(
                                                       referenceObject.GroupName,
                                                       referenceObject.Hidden,
-                                                      referenceObject.ModificationMetadataModel,
                                                       referenceObject.Name,
                                                       referenceObject.DisplayOrder,
-                                                      referenceObject.Options,
                                                       referenceObject.Label,
                                                       referenceObject.Type,
                                                       referenceObject.HasUniqueValue,
                                                       referenceObject.FieldType,
-                                                      referenceObject.FormField),
+                                                      referenceObject.FormField,
+                                                      referenceObject.ModificationMetadataModel,
+                                                      referenceObject.Options),
                             ExpectedPropertyValue = referenceObject.HasUniqueValue,
                         };
 
@@ -695,15 +637,15 @@ namespace Naos.HubSpot.Domain.Test
                             SystemUnderTest = new PropertyModel(
                                                       referenceObject.GroupName,
                                                       referenceObject.Hidden,
-                                                      referenceObject.ModificationMetadataModel,
                                                       referenceObject.Name,
                                                       referenceObject.DisplayOrder,
-                                                      referenceObject.Options,
                                                       referenceObject.Label,
                                                       referenceObject.Type,
                                                       referenceObject.HasUniqueValue,
                                                       referenceObject.FieldType,
-                                                      referenceObject.FormField),
+                                                      referenceObject.FormField,
+                                                      referenceObject.ModificationMetadataModel,
+                                                      referenceObject.Options),
                             ExpectedPropertyValue = referenceObject.FieldType,
                         };
 
@@ -724,21 +666,79 @@ namespace Naos.HubSpot.Domain.Test
                             SystemUnderTest = new PropertyModel(
                                                       referenceObject.GroupName,
                                                       referenceObject.Hidden,
-                                                      referenceObject.ModificationMetadataModel,
                                                       referenceObject.Name,
                                                       referenceObject.DisplayOrder,
-                                                      referenceObject.Options,
                                                       referenceObject.Label,
                                                       referenceObject.Type,
                                                       referenceObject.HasUniqueValue,
                                                       referenceObject.FieldType,
-                                                      referenceObject.FormField),
+                                                      referenceObject.FormField,
+                                                      referenceObject.ModificationMetadataModel,
+                                                      referenceObject.Options),
                             ExpectedPropertyValue = referenceObject.FormField,
                         };
 
                         return result;
                     },
                     PropertyName = "FormField",
+                })
+            .AddScenario(() =>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
+                {
+                    Name = "ModificationMetadataModel should return same 'modificationMetadataModel' parameter passed to constructor when getting",
+                    SystemUnderTestExpectedPropertyValueFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
+                        {
+                            SystemUnderTest = new PropertyModel(
+                                                      referenceObject.GroupName,
+                                                      referenceObject.Hidden,
+                                                      referenceObject.Name,
+                                                      referenceObject.DisplayOrder,
+                                                      referenceObject.Label,
+                                                      referenceObject.Type,
+                                                      referenceObject.HasUniqueValue,
+                                                      referenceObject.FieldType,
+                                                      referenceObject.FormField,
+                                                      referenceObject.ModificationMetadataModel,
+                                                      referenceObject.Options),
+                            ExpectedPropertyValue = referenceObject.ModificationMetadataModel,
+                        };
+
+                        return result;
+                    },
+                    PropertyName = "ModificationMetadataModel",
+                })
+            .AddScenario(() =>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
+                {
+                    Name = "Options should return same 'options' parameter passed to constructor when getting",
+                    SystemUnderTestExpectedPropertyValueFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<PropertyModel>();
+
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
+                        {
+                            SystemUnderTest = new PropertyModel(
+                                                      referenceObject.GroupName,
+                                                      referenceObject.Hidden,
+                                                      referenceObject.Name,
+                                                      referenceObject.DisplayOrder,
+                                                      referenceObject.Label,
+                                                      referenceObject.Type,
+                                                      referenceObject.HasUniqueValue,
+                                                      referenceObject.FieldType,
+                                                      referenceObject.FormField,
+                                                      referenceObject.ModificationMetadataModel,
+                                                      referenceObject.Options),
+                            ExpectedPropertyValue = referenceObject.Options,
+                        };
+
+                        return result;
+                    },
+                    PropertyName = "Options",
                 });
 
         private static readonly DeepCloneWithTestScenarios<PropertyModel> DeepCloneWithTestScenarios = new DeepCloneWithTestScenarios<PropertyModel>()
@@ -976,150 +976,150 @@ namespace Naos.HubSpot.Domain.Test
                         new PropertyModel(
                                 ReferenceObjectForEquatableTestScenarios.GroupName,
                                 ReferenceObjectForEquatableTestScenarios.Hidden,
-                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
                                 ReferenceObjectForEquatableTestScenarios.Name,
                                 ReferenceObjectForEquatableTestScenarios.DisplayOrder,
-                                ReferenceObjectForEquatableTestScenarios.Options,
                                 ReferenceObjectForEquatableTestScenarios.Label,
                                 ReferenceObjectForEquatableTestScenarios.Type,
                                 ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
                                 ReferenceObjectForEquatableTestScenarios.FieldType,
-                                ReferenceObjectForEquatableTestScenarios.FormField),
+                                ReferenceObjectForEquatableTestScenarios.FormField,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Options),
                     },
                     ObjectsThatAreNotEqualToReferenceObject = new PropertyModel[]
                     {
                         new PropertyModel(
                                 A.Dummy<PropertyModel>().Whose(_ => !_.GroupName.IsEqualTo(ReferenceObjectForEquatableTestScenarios.GroupName)).GroupName,
                                 ReferenceObjectForEquatableTestScenarios.Hidden,
-                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
                                 ReferenceObjectForEquatableTestScenarios.Name,
                                 ReferenceObjectForEquatableTestScenarios.DisplayOrder,
-                                ReferenceObjectForEquatableTestScenarios.Options,
                                 ReferenceObjectForEquatableTestScenarios.Label,
                                 ReferenceObjectForEquatableTestScenarios.Type,
                                 ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
                                 ReferenceObjectForEquatableTestScenarios.FieldType,
-                                ReferenceObjectForEquatableTestScenarios.FormField),
+                                ReferenceObjectForEquatableTestScenarios.FormField,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Options),
                         new PropertyModel(
                                 ReferenceObjectForEquatableTestScenarios.GroupName,
                                 A.Dummy<PropertyModel>().Whose(_ => !_.Hidden.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Hidden)).Hidden,
-                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
                                 ReferenceObjectForEquatableTestScenarios.Name,
                                 ReferenceObjectForEquatableTestScenarios.DisplayOrder,
-                                ReferenceObjectForEquatableTestScenarios.Options,
                                 ReferenceObjectForEquatableTestScenarios.Label,
                                 ReferenceObjectForEquatableTestScenarios.Type,
                                 ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
                                 ReferenceObjectForEquatableTestScenarios.FieldType,
-                                ReferenceObjectForEquatableTestScenarios.FormField),
+                                ReferenceObjectForEquatableTestScenarios.FormField,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Options),
                         new PropertyModel(
                                 ReferenceObjectForEquatableTestScenarios.GroupName,
                                 ReferenceObjectForEquatableTestScenarios.Hidden,
+                                ReferenceObjectForEquatableTestScenarios.Name,
+                                ReferenceObjectForEquatableTestScenarios.DisplayOrder,
+                                ReferenceObjectForEquatableTestScenarios.Label,
+                                ReferenceObjectForEquatableTestScenarios.Type,
+                                ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
+                                ReferenceObjectForEquatableTestScenarios.FieldType,
+                                ReferenceObjectForEquatableTestScenarios.FormField,
                                 A.Dummy<PropertyModel>().Whose(_ => !_.ModificationMetadataModel.IsEqualTo(ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel)).ModificationMetadataModel,
-                                ReferenceObjectForEquatableTestScenarios.Name,
-                                ReferenceObjectForEquatableTestScenarios.DisplayOrder,
-                                ReferenceObjectForEquatableTestScenarios.Options,
-                                ReferenceObjectForEquatableTestScenarios.Label,
-                                ReferenceObjectForEquatableTestScenarios.Type,
-                                ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
-                                ReferenceObjectForEquatableTestScenarios.FieldType,
-                                ReferenceObjectForEquatableTestScenarios.FormField),
+                                ReferenceObjectForEquatableTestScenarios.Options),
                         new PropertyModel(
                                 ReferenceObjectForEquatableTestScenarios.GroupName,
                                 ReferenceObjectForEquatableTestScenarios.Hidden,
-                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
                                 A.Dummy<PropertyModel>().Whose(_ => !_.Name.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Name)).Name,
                                 ReferenceObjectForEquatableTestScenarios.DisplayOrder,
-                                ReferenceObjectForEquatableTestScenarios.Options,
                                 ReferenceObjectForEquatableTestScenarios.Label,
                                 ReferenceObjectForEquatableTestScenarios.Type,
                                 ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
                                 ReferenceObjectForEquatableTestScenarios.FieldType,
-                                ReferenceObjectForEquatableTestScenarios.FormField),
+                                ReferenceObjectForEquatableTestScenarios.FormField,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Options),
                         new PropertyModel(
                                 ReferenceObjectForEquatableTestScenarios.GroupName,
                                 ReferenceObjectForEquatableTestScenarios.Hidden,
-                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
                                 ReferenceObjectForEquatableTestScenarios.Name,
                                 A.Dummy<PropertyModel>().Whose(_ => !_.DisplayOrder.IsEqualTo(ReferenceObjectForEquatableTestScenarios.DisplayOrder)).DisplayOrder,
-                                ReferenceObjectForEquatableTestScenarios.Options,
                                 ReferenceObjectForEquatableTestScenarios.Label,
                                 ReferenceObjectForEquatableTestScenarios.Type,
                                 ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
                                 ReferenceObjectForEquatableTestScenarios.FieldType,
-                                ReferenceObjectForEquatableTestScenarios.FormField),
+                                ReferenceObjectForEquatableTestScenarios.FormField,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Options),
                         new PropertyModel(
                                 ReferenceObjectForEquatableTestScenarios.GroupName,
                                 ReferenceObjectForEquatableTestScenarios.Hidden,
-                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
                                 ReferenceObjectForEquatableTestScenarios.Name,
                                 ReferenceObjectForEquatableTestScenarios.DisplayOrder,
-                                A.Dummy<PropertyModel>().Whose(_ => !_.Options.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Options)).Options,
                                 ReferenceObjectForEquatableTestScenarios.Label,
                                 ReferenceObjectForEquatableTestScenarios.Type,
                                 ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
                                 ReferenceObjectForEquatableTestScenarios.FieldType,
-                                ReferenceObjectForEquatableTestScenarios.FormField),
+                                ReferenceObjectForEquatableTestScenarios.FormField,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                A.Dummy<PropertyModel>().Whose(_ => !_.Options.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Options)).Options),
                         new PropertyModel(
                                 ReferenceObjectForEquatableTestScenarios.GroupName,
                                 ReferenceObjectForEquatableTestScenarios.Hidden,
-                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
                                 ReferenceObjectForEquatableTestScenarios.Name,
                                 ReferenceObjectForEquatableTestScenarios.DisplayOrder,
-                                ReferenceObjectForEquatableTestScenarios.Options,
                                 A.Dummy<PropertyModel>().Whose(_ => !_.Label.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Label)).Label,
                                 ReferenceObjectForEquatableTestScenarios.Type,
                                 ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
                                 ReferenceObjectForEquatableTestScenarios.FieldType,
-                                ReferenceObjectForEquatableTestScenarios.FormField),
+                                ReferenceObjectForEquatableTestScenarios.FormField,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Options),
                         new PropertyModel(
                                 ReferenceObjectForEquatableTestScenarios.GroupName,
                                 ReferenceObjectForEquatableTestScenarios.Hidden,
-                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
                                 ReferenceObjectForEquatableTestScenarios.Name,
                                 ReferenceObjectForEquatableTestScenarios.DisplayOrder,
-                                ReferenceObjectForEquatableTestScenarios.Options,
                                 ReferenceObjectForEquatableTestScenarios.Label,
                                 ReferenceObjectForEquatableTestScenarios.Type,
                                 A.Dummy<PropertyModel>().Whose(_ => !_.HasUniqueValue.IsEqualTo(ReferenceObjectForEquatableTestScenarios.HasUniqueValue)).HasUniqueValue,
                                 ReferenceObjectForEquatableTestScenarios.FieldType,
-                                ReferenceObjectForEquatableTestScenarios.FormField),
+                                ReferenceObjectForEquatableTestScenarios.FormField,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Options),
                         new PropertyModel(
                                 ReferenceObjectForEquatableTestScenarios.GroupName,
                                 ReferenceObjectForEquatableTestScenarios.Hidden,
-                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
                                 ReferenceObjectForEquatableTestScenarios.Name,
                                 ReferenceObjectForEquatableTestScenarios.DisplayOrder,
-                                ReferenceObjectForEquatableTestScenarios.Options,
                                 ReferenceObjectForEquatableTestScenarios.Label,
                                 A.Dummy<PropertyModel>().Whose(_ => !_.Type.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Type)).Type,
                                 ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
                                 ReferenceObjectForEquatableTestScenarios.FieldType,
-                                ReferenceObjectForEquatableTestScenarios.FormField),
+                                ReferenceObjectForEquatableTestScenarios.FormField,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Options),
                         new PropertyModel(
                                 ReferenceObjectForEquatableTestScenarios.GroupName,
                                 ReferenceObjectForEquatableTestScenarios.Hidden,
-                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
                                 ReferenceObjectForEquatableTestScenarios.Name,
                                 ReferenceObjectForEquatableTestScenarios.DisplayOrder,
-                                ReferenceObjectForEquatableTestScenarios.Options,
                                 ReferenceObjectForEquatableTestScenarios.Label,
                                 ReferenceObjectForEquatableTestScenarios.Type,
                                 ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
                                 A.Dummy<PropertyModel>().Whose(_ => !_.FieldType.IsEqualTo(ReferenceObjectForEquatableTestScenarios.FieldType)).FieldType,
-                                ReferenceObjectForEquatableTestScenarios.FormField),
+                                ReferenceObjectForEquatableTestScenarios.FormField,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Options),
                         new PropertyModel(
                                 ReferenceObjectForEquatableTestScenarios.GroupName,
                                 ReferenceObjectForEquatableTestScenarios.Hidden,
-                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
                                 ReferenceObjectForEquatableTestScenarios.Name,
                                 ReferenceObjectForEquatableTestScenarios.DisplayOrder,
-                                ReferenceObjectForEquatableTestScenarios.Options,
                                 ReferenceObjectForEquatableTestScenarios.Label,
                                 ReferenceObjectForEquatableTestScenarios.Type,
                                 ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
                                 ReferenceObjectForEquatableTestScenarios.FieldType,
-                                A.Dummy<PropertyModel>().Whose(_ => !_.FormField.IsEqualTo(ReferenceObjectForEquatableTestScenarios.FormField)).FormField),
+                                A.Dummy<PropertyModel>().Whose(_ => !_.FormField.IsEqualTo(ReferenceObjectForEquatableTestScenarios.FormField)).FormField,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Options),
                     },
                     ObjectsThatAreNotOfTheSameTypeAsReferenceObject = new object[]
                     {

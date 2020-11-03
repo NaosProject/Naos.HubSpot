@@ -91,8 +91,8 @@ namespace Naos.HubSpot.Domain.Test
                         A.Dummy<RemoveContactByHubSpotIdOp>(),
                         A.Dummy<UpdateContactOp>(),
                         A.Dummy<CreatePropertyOp>(),
-                        A.Dummy<GetAllPropertiesV3Op>(),
-                        A.Dummy<RemovePropertyV3Op>(),
+                        A.Dummy<GetAllPropertiesOp>(),
+                        A.Dummy<RemovePropertyOp>(),
                         A.Dummy<SyncWithHubSpotOp>(),
                     },
                 });

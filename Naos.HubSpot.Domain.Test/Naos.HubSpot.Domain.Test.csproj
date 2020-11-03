@@ -320,9 +320,6 @@
       <DependentUpon>CreatePropertyOpTest.cs</DependentUpon>
     </Compile>
     <Compile Include="CreatePropertyV3OpTest.cs" />
-    <Compile Include="CreatePropertyV3OpTest.designer.cs">
-      <DependentUpon>CreatePropertyV3OpTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="GetAllCompaniesOpTest.cs" />
     <Compile Include="GetAllCompaniesOpTest.designer.cs">
       <DependentUpon>GetAllCompaniesOpTest.cs</DependentUpon>
@@ -406,9 +403,6 @@
       <DependentUpon>RemovePropertyOpTest.cs</DependentUpon>
     </Compile>
     <Compile Include="RemovePropertyV3OpTest.cs" />
-    <Compile Include="RemovePropertyV3OpTest.designer.cs">
-      <DependentUpon>RemovePropertyV3OpTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="SearchCompanyTest.cs" />
     <Compile Include="SearchCompanyTest.designer.cs">
       <DependentUpon>SearchCompanyTest.cs</DependentUpon>

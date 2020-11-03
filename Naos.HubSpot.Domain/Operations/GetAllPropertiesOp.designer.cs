@@ -24,15 +24,15 @@ namespace Naos.HubSpot.Domain
     using static global::System.FormattableString;
 
     [Serializable]
-    public partial class GetAllPropertiesV3Op : IModel<GetAllPropertiesV3Op>
+    public partial class GetAllPropertiesOp : IModel<GetAllPropertiesOp>
     {
         /// <summary>
-        /// Determines whether two objects of type <see cref="GetAllPropertiesV3Op"/> are equal.
+        /// Determines whether two objects of type <see cref="GetAllPropertiesOp"/> are equal.
         /// </summary>
         /// <param name="left">The object to the left of the equality operator.</param>
         /// <param name="right">The object to the right of the equality operator.</param>
         /// <returns>true if the two items are equal; otherwise false.</returns>
-        public static bool operator ==(GetAllPropertiesV3Op left, GetAllPropertiesV3Op right)
+        public static bool operator ==(GetAllPropertiesOp left, GetAllPropertiesOp right)
         {
             if (ReferenceEquals(left, right))
             {
@@ -50,15 +50,15 @@ namespace Naos.HubSpot.Domain
         }
 
         /// <summary>
-        /// Determines whether two objects of type <see cref="GetAllPropertiesV3Op"/> are not equal.
+        /// Determines whether two objects of type <see cref="GetAllPropertiesOp"/> are not equal.
         /// </summary>
         /// <param name="left">The object to the left of the equality operator.</param>
         /// <param name="right">The object to the right of the equality operator.</param>
         /// <returns>true if the two items are not equal; otherwise false.</returns>
-        public static bool operator !=(GetAllPropertiesV3Op left, GetAllPropertiesV3Op right) => !(left == right);
+        public static bool operator !=(GetAllPropertiesOp left, GetAllPropertiesOp right) => !(left == right);
 
         /// <inheritdoc />
-        public bool Equals(GetAllPropertiesV3Op other)
+        public bool Equals(GetAllPropertiesOp other)
         {
             if (ReferenceEquals(this, other))
             {
@@ -76,19 +76,19 @@ namespace Naos.HubSpot.Domain
         }
 
         /// <inheritdoc />
-        public override bool Equals(object obj) => this == (obj as GetAllPropertiesV3Op);
+        public override bool Equals(object obj) => this == (obj as GetAllPropertiesOp);
 
         /// <inheritdoc />
         public override int GetHashCode() => HashCodeHelper.Initialize()
             .Value;
 
         /// <inheritdoc />
-        public new GetAllPropertiesV3Op DeepClone() => (GetAllPropertiesV3Op)this.DeepCloneInternal();
+        public new GetAllPropertiesOp DeepClone() => (GetAllPropertiesOp)this.DeepCloneInternal();
 
         /// <inheritdoc />
         protected override OperationBase DeepCloneInternal()
         {
-            var result = new GetAllPropertiesV3Op();
+            var result = new GetAllPropertiesOp();
 
             return result;
         }
@@ -97,7 +97,7 @@ namespace Naos.HubSpot.Domain
         [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         public override string ToString()
         {
-            var result = Invariant($"Naos.HubSpot.Domain.GetAllPropertiesV3Op: <no properties>.");
+            var result = Invariant($"Naos.HubSpot.Domain.GetAllPropertiesOp: <no properties>.");
 
             return result;
         }

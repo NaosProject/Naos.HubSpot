@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="HubSpotProtocol.CreateProperty.cs" company="Naos Project">
+// <copyright file="HubSpotProtocol.RemoveProperty.cs" company="Naos Project">
 //    Copyright (c) Naos Project 2019. All rights reserved.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -16,25 +16,24 @@ namespace Naos.HubSpot.Protocol.Client
     /// <summary>
     /// TODO: Starting point for new project.
     /// </summary>
-    public partial class HubSpotProtocol : ISyncAndAsyncReturningProtocol<CreatePropertyOp, PropModel>
+    public partial class HubSpotProtocol : ISyncAndAsyncVoidProtocol<RemovePropertyOp>
     {
         /// <inheritdoc />
-        public PropModel Execute(CreatePropertyOp operation)
+        public void Execute(RemovePropertyOp operation)
         {
             var task = this.ExecuteAsync(operation);
-            var result = Run.TaskUntilCompletion(task);
-            return result;
+            Run.TaskUntilCompletion(task);
         }
 
         /// <inheritdoc />
-        public async Task<PropModel> ExecuteAsync(CreatePropertyOp operation)
+        public async Task ExecuteAsync(RemovePropertyOp operation)
         {
             var uri = this.baseUri;
             uri = uri.AppendPathSegment("crm/v3/properties");
-            uri = uri.AppendPathSegment(operation.ObjectType.ToString().ToLower());
-            var result = uri.WithBody(operation.ObjectType == HubSpotPropertyObjectType.Company ? operation.CustomPropertyName.ToCompanyPropertyModel() : operation.CustomPropertyName.ToContactPropertyModel()).Post<PropertyModel>();
-            var propertyToReturn = result.ToProperty();
-            return await Task.FromResult(propertyToReturn);
+            uri = uri.AppendPathSegment(operation.PropertyType.ToString().ToLower());
+            uri = uri.AppendPathSegment(operation.PropertyName);
+            uri.Delete();
+            await Task.Factory.StartNew(() => true);
         }
     }
 }

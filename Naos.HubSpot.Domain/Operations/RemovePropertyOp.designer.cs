@@ -15,6 +15,7 @@ namespace Naos.HubSpot.Domain
     using global::System.Globalization;
     using global::System.Linq;
 
+    using global::Naos.HubSpot.Domain.Model;
     using global::Naos.Protocol.Domain;
 
     using global::OBeautifulCode.Equality.Recipes;
@@ -24,15 +25,15 @@ namespace Naos.HubSpot.Domain
     using static global::System.FormattableString;
 
     [Serializable]
-    public partial class RemovePropertyV3Op : IModel<RemovePropertyV3Op>
+    public partial class RemovePropertyOp : IModel<RemovePropertyOp>
     {
         /// <summary>
-        /// Determines whether two objects of type <see cref="RemovePropertyV3Op"/> are equal.
+        /// Determines whether two objects of type <see cref="RemovePropertyOp"/> are equal.
         /// </summary>
         /// <param name="left">The object to the left of the equality operator.</param>
         /// <param name="right">The object to the right of the equality operator.</param>
         /// <returns>true if the two items are equal; otherwise false.</returns>
-        public static bool operator ==(RemovePropertyV3Op left, RemovePropertyV3Op right)
+        public static bool operator ==(RemovePropertyOp left, RemovePropertyOp right)
         {
             if (ReferenceEquals(left, right))
             {
@@ -50,15 +51,15 @@ namespace Naos.HubSpot.Domain
         }
 
         /// <summary>
-        /// Determines whether two objects of type <see cref="RemovePropertyV3Op"/> are not equal.
+        /// Determines whether two objects of type <see cref="RemovePropertyOp"/> are not equal.
         /// </summary>
         /// <param name="left">The object to the left of the equality operator.</param>
         /// <param name="right">The object to the right of the equality operator.</param>
         /// <returns>true if the two items are not equal; otherwise false.</returns>
-        public static bool operator !=(RemovePropertyV3Op left, RemovePropertyV3Op right) => !(left == right);
+        public static bool operator !=(RemovePropertyOp left, RemovePropertyOp right) => !(left == right);
 
         /// <inheritdoc />
-        public bool Equals(RemovePropertyV3Op other)
+        public bool Equals(RemovePropertyOp other)
         {
             if (ReferenceEquals(this, other))
             {
@@ -70,14 +71,14 @@ namespace Naos.HubSpot.Domain
                 return false;
             }
 
-            var result = this.PropertyType.IsEqualTo(other.PropertyType, StringComparer.Ordinal)
+            var result = this.PropertyType.IsEqualTo(other.PropertyType)
                       && this.PropertyName.IsEqualTo(other.PropertyName, StringComparer.Ordinal);
 
             return result;
         }
 
         /// <inheritdoc />
-        public override bool Equals(object obj) => this == (obj as RemovePropertyV3Op);
+        public override bool Equals(object obj) => this == (obj as RemovePropertyOp);
 
         /// <inheritdoc />
         public override int GetHashCode() => HashCodeHelper.Initialize()
@@ -86,13 +87,13 @@ namespace Naos.HubSpot.Domain
             .Value;
 
         /// <inheritdoc />
-        public new RemovePropertyV3Op DeepClone() => (RemovePropertyV3Op)this.DeepCloneInternal();
+        public new RemovePropertyOp DeepClone() => (RemovePropertyOp)this.DeepCloneInternal();
 
         /// <summary>
         /// Deep clones this object with a new <see cref="PropertyType" />.
         /// </summary>
         /// <param name="propertyType">The new <see cref="PropertyType" />.  This object will NOT be deep cloned; it is used as-is.</param>
-        /// <returns>New <see cref="RemovePropertyV3Op" /> using the specified <paramref name="propertyType" /> for <see cref="PropertyType" /> and a deep clone of every other property.</returns>
+        /// <returns>New <see cref="RemovePropertyOp" /> using the specified <paramref name="propertyType" /> for <see cref="PropertyType" /> and a deep clone of every other property.</returns>
         [SuppressMessage("Microsoft.Design", "CA1002: DoNotExposeGenericLists")]
         [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly")]
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly")]
@@ -108,9 +109,9 @@ namespace Naos.HubSpot.Domain
         [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
         [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
-        public RemovePropertyV3Op DeepCloneWithPropertyType(string propertyType)
+        public RemovePropertyOp DeepCloneWithPropertyType(HubSpotPropertyObjectType propertyType)
         {
-            var result = new RemovePropertyV3Op(
+            var result = new RemovePropertyOp(
                                  this.PropertyName?.Clone().ToString(),
                                  propertyType);
 
@@ -121,7 +122,7 @@ namespace Naos.HubSpot.Domain
         /// Deep clones this object with a new <see cref="PropertyName" />.
         /// </summary>
         /// <param name="propertyName">The new <see cref="PropertyName" />.  This object will NOT be deep cloned; it is used as-is.</param>
-        /// <returns>New <see cref="RemovePropertyV3Op" /> using the specified <paramref name="propertyName" /> for <see cref="PropertyName" /> and a deep clone of every other property.</returns>
+        /// <returns>New <see cref="RemovePropertyOp" /> using the specified <paramref name="propertyName" /> for <see cref="PropertyName" /> and a deep clone of every other property.</returns>
         [SuppressMessage("Microsoft.Design", "CA1002: DoNotExposeGenericLists")]
         [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly")]
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly")]
@@ -137,11 +138,11 @@ namespace Naos.HubSpot.Domain
         [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
         [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
-        public RemovePropertyV3Op DeepCloneWithPropertyName(string propertyName)
+        public RemovePropertyOp DeepCloneWithPropertyName(string propertyName)
         {
-            var result = new RemovePropertyV3Op(
+            var result = new RemovePropertyOp(
                                  propertyName,
-                                 this.PropertyType?.Clone().ToString());
+                                 this.PropertyType);
 
             return result;
         }
@@ -149,9 +150,9 @@ namespace Naos.HubSpot.Domain
         /// <inheritdoc />
         protected override OperationBase DeepCloneInternal()
         {
-            var result = new RemovePropertyV3Op(
+            var result = new RemovePropertyOp(
                                  this.PropertyName?.Clone().ToString(),
-                                 this.PropertyType?.Clone().ToString());
+                                 this.PropertyType);
 
             return result;
         }
@@ -160,7 +161,7 @@ namespace Naos.HubSpot.Domain
         [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         public override string ToString()
         {
-            var result = Invariant($"Naos.HubSpot.Domain.RemovePropertyV3Op: PropertyType = {this.PropertyType?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, PropertyName = {this.PropertyName?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}.");
+            var result = Invariant($"Naos.HubSpot.Domain.RemovePropertyOp: PropertyType = {this.PropertyType.ToString() ?? "<null>"}, PropertyName = {this.PropertyName?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}.");
 
             return result;
         }

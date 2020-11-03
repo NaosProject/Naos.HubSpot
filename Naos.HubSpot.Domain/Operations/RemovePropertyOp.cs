@@ -1,23 +1,28 @@
-﻿// <copyright file="RemovePropertyV3Op.cs" company="Naos Project">
+﻿// <copyright file="RemovePropertyOp.cs" company="Naos Project">
 //    Copyright (c) Naos Project 2019. All rights reserved.
 // </copyright>
 namespace Naos.HubSpot.Domain
 {
+    using Naos.HubSpot.Domain.Model;
     using Naos.Protocol.Domain;
+    using OBeautifulCode.Assertion.Recipes;
     using OBeautifulCode.Type;
 
     /// <summary>
-    /// Class RemovePropertyV3Op.
+    /// Class RemovePropertyOp.
     /// </summary>
-    public partial class RemovePropertyV3Op : ReturningOperationBase<PropertyModel>, IModelViaCodeGen
+    public partial class RemovePropertyOp : VoidOperationBase, IModelViaCodeGen
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RemovePropertyV3Op"/> class.
+        /// Initializes a new instance of the <see cref="RemovePropertyOp"/> class.
         /// </summary>
         /// <param name="propertyName">Name of the property.</param>
         /// <param name="propertyType">Type of the property.</param>
-        public RemovePropertyV3Op(string propertyName, string propertyType)
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1308:NormalizeStringsToUppercase", Justification = "Must be lower case for API")]
+        public RemovePropertyOp(string propertyName, HubSpotPropertyObjectType propertyType)
         {
+            propertyName.ToLowerInvariant().MustForArg().BeEqualTo(propertyName);
+            propertyName.Replace("-", string.Empty).MustForArg().BeEqualTo(propertyName);
             this.PropertyName = propertyName;
             this.PropertyType = propertyType;
         }
@@ -26,7 +31,7 @@ namespace Naos.HubSpot.Domain
         /// Gets the type of the property.
         /// </summary>
         /// <value>The type of the property.</value>
-        public string PropertyType { get; private set; }
+        public HubSpotPropertyObjectType PropertyType { get; private set; }
 
         /// <summary>
         /// Gets the name of the property.

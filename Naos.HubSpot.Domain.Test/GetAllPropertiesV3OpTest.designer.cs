@@ -37,38 +37,38 @@ namespace Naos.HubSpot.Domain.Test
 
     public static partial class GetAllPropertiesV3OpTest
     {
-        private static readonly StringRepresentationTestScenarios<GetAllPropertiesV3Op> StringRepresentationTestScenarios = new StringRepresentationTestScenarios<GetAllPropertiesV3Op>()
+        private static readonly StringRepresentationTestScenarios<GetAllPropertiesOp> StringRepresentationTestScenarios = new StringRepresentationTestScenarios<GetAllPropertiesOp>()
             .AddScenario(() =>
-                new StringRepresentationTestScenario<GetAllPropertiesV3Op>
+                new StringRepresentationTestScenario<GetAllPropertiesOp>
                 {
                     Name = "Default Code Generated Scenario",
                     SystemUnderTestExpectedStringRepresentationFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<GetAllPropertiesV3Op>();
+                        var systemUnderTest = A.Dummy<GetAllPropertiesOp>();
 
-                        var result = new SystemUnderTestExpectedStringRepresentation<GetAllPropertiesV3Op>
+                        var result = new SystemUnderTestExpectedStringRepresentation<GetAllPropertiesOp>
                         {
                             SystemUnderTest = systemUnderTest,
-                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.GetAllPropertiesV3Op: <no properties>."),
+                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.GetAllPropertiesOp: <no properties>."),
                         };
 
                         return result;
                     },
                 });
 
-        private static readonly GetAllPropertiesV3Op ReferenceObjectForEquatableTestScenarios = A.Dummy<GetAllPropertiesV3Op>();
+        private static readonly GetAllPropertiesOp ReferenceObjectForEquatableTestScenarios = A.Dummy<GetAllPropertiesOp>();
 
-        private static readonly EquatableTestScenarios<GetAllPropertiesV3Op> EquatableTestScenarios = new EquatableTestScenarios<GetAllPropertiesV3Op>()
+        private static readonly EquatableTestScenarios<GetAllPropertiesOp> EquatableTestScenarios = new EquatableTestScenarios<GetAllPropertiesOp>()
             .AddScenario(() =>
-                new EquatableTestScenario<GetAllPropertiesV3Op>
+                new EquatableTestScenario<GetAllPropertiesOp>
                 {
                     Name = "Default Code Generated Scenario",
                     ReferenceObject = ReferenceObjectForEquatableTestScenarios,
-                    ObjectsThatAreEqualToButNotTheSameAsReferenceObject = new GetAllPropertiesV3Op[]
+                    ObjectsThatAreEqualToButNotTheSameAsReferenceObject = new GetAllPropertiesOp[]
                     {
-                        new GetAllPropertiesV3Op(),
+                        new GetAllPropertiesOp(),
                     },
-                    ObjectsThatAreNotEqualToReferenceObject = new GetAllPropertiesV3Op[]
+                    ObjectsThatAreNotEqualToReferenceObject = new GetAllPropertiesOp[]
                     {
                     },
                     ObjectsThatAreNotOfTheSameTypeAsReferenceObject = new object[]
@@ -92,7 +92,7 @@ namespace Naos.HubSpot.Domain.Test
                         A.Dummy<SearchContactOp>(),
                         A.Dummy<UpdateContactOp>(),
                         A.Dummy<CreatePropertyOp>(),
-                        A.Dummy<RemovePropertyV3Op>(),
+                        A.Dummy<RemovePropertyOp>(),
                         A.Dummy<SyncWithHubSpotOp>(),
                     },
                 });
@@ -118,9 +118,9 @@ namespace Naos.HubSpot.Domain.Test
             public static void GetAllPropertiesV3Op___Should_implement_IModel_of_GetAllPropertiesV3Op___When_reflecting()
             {
                 // Arrange
-                var type = typeof(GetAllPropertiesV3Op);
+                var type = typeof(GetAllPropertiesOp);
 
-                var expectedModelMethods = typeof(IModel<GetAllPropertiesV3Op>).GetInterfaceDeclaredAndImplementedMethods();
+                var expectedModelMethods = typeof(IModel<GetAllPropertiesOp>).GetInterfaceDeclaredAndImplementedMethods();
 
                 var expectedModelMethodHashes = expectedModelMethods.Select(_ => _.GetSignatureHash());
 
@@ -130,7 +130,7 @@ namespace Naos.HubSpot.Domain.Test
                 var actualModelMethodHashes = actualModelMethods.Select(_ => _.GetSignatureHash());
 
                 // Assert
-                actualInterfaces.AsTest().Must().ContainElement(typeof(IModel<GetAllPropertiesV3Op>));
+                actualInterfaces.AsTest().Must().ContainElement(typeof(IModel<GetAllPropertiesOp>));
                 expectedModelMethodHashes.Except(actualModelMethodHashes).AsTest().Must().BeEmptyEnumerable();
             }
 
@@ -151,7 +151,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void GetAllPropertiesV3Op___Should_be_attributed_with_Serializable____When_reflecting()
             {
                 // Arrange
-                var type = typeof(GetAllPropertiesV3Op);
+                var type = typeof(GetAllPropertiesOp);
 
                 // Act
                 var actualAttributes = type.GetCustomAttributes(typeof(SerializableAttribute), false);
@@ -215,10 +215,10 @@ namespace Naos.HubSpot.Domain.Test
             public static void Clone___Should_clone_object___When_called()
             {
                 // Arrange
-                var systemUnderTest = A.Dummy<GetAllPropertiesV3Op>();
+                var systemUnderTest = A.Dummy<GetAllPropertiesOp>();
 
                 // Act
-                var actual = (GetAllPropertiesV3Op)systemUnderTest.Clone();
+                var actual = (GetAllPropertiesOp)systemUnderTest.Clone();
 
                 // Assert
                 actual.AsTest().Must().BeEqualTo(systemUnderTest);
@@ -242,7 +242,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void DeepClone___Should_deep_clone_object___When_called()
             {
                 // Arrange
-                var systemUnderTest = A.Dummy<GetAllPropertiesV3Op>();
+                var systemUnderTest = A.Dummy<GetAllPropertiesOp>();
 
                 // Act
                 var actual = systemUnderTest.DeepClone();
@@ -274,7 +274,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_string_using_ObcBsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<GetAllPropertiesV3Op>();
+                var expected = A.Dummy<GetAllPropertiesOp>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.BsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -303,7 +303,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_bytes_using_ObcBsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<GetAllPropertiesV3Op>();
+                var expected = A.Dummy<GetAllPropertiesOp>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.BsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -332,7 +332,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_string_using_ObcJsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<GetAllPropertiesV3Op>();
+                var expected = A.Dummy<GetAllPropertiesOp>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.JsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -361,7 +361,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_bytes_using_ObcJsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<GetAllPropertiesV3Op>();
+                var expected = A.Dummy<GetAllPropertiesOp>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.JsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -395,8 +395,8 @@ namespace Naos.HubSpot.Domain.Test
             public static void EqualsOperator___Should_return_true___When_both_sides_of_operator_are_null()
             {
                 // Arrange
-                GetAllPropertiesV3Op systemUnderTest1 = null;
-                GetAllPropertiesV3Op systemUnderTest2 = null;
+                GetAllPropertiesOp systemUnderTest1 = null;
+                GetAllPropertiesOp systemUnderTest2 = null;
 
                 // Act
                 var actual = systemUnderTest1 == systemUnderTest2;
@@ -426,7 +426,7 @@ namespace Naos.HubSpot.Domain.Test
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    GetAllPropertiesV3Op systemUnderTest = null;
+                    GetAllPropertiesOp systemUnderTest = null;
 
                     // Act
                     var actual1 = systemUnderTest == scenario.ReferenceObject;
@@ -575,8 +575,8 @@ namespace Naos.HubSpot.Domain.Test
             public static void NotEqualsOperator___Should_return_false___When_both_sides_of_operator_are_null()
             {
                 // Arrange
-                GetAllPropertiesV3Op systemUnderTest1 = null;
-                GetAllPropertiesV3Op systemUnderTest2 = null;
+                GetAllPropertiesOp systemUnderTest1 = null;
+                GetAllPropertiesOp systemUnderTest2 = null;
 
                 // Act
                 var actual = systemUnderTest1 != systemUnderTest2;
@@ -606,7 +606,7 @@ namespace Naos.HubSpot.Domain.Test
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    GetAllPropertiesV3Op systemUnderTest = null;
+                    GetAllPropertiesOp systemUnderTest = null;
 
                     // Act
                     var actual1 = systemUnderTest != scenario.ReferenceObject;
@@ -1045,7 +1045,7 @@ namespace Naos.HubSpot.Domain.Test
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    GetAllPropertiesV3Op systemUnderTest = null;
+                    GetAllPropertiesOp systemUnderTest = null;
 
                     // Act
                     var actual = scenario.ReferenceObject.Equals(systemUnderTest);

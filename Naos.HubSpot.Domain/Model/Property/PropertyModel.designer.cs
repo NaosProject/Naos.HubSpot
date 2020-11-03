@@ -110,15 +110,15 @@ namespace Naos.HubSpot.Domain
             var result = new PropertyModel(
                                  this.GroupName?.Clone().ToString(),
                                  this.Hidden,
-                                 this.ModificationMetadataModel?.DeepClone(),
                                  this.Name?.Clone().ToString(),
                                  this.DisplayOrder,
-                                 this.Options?.Select(i => i?.DeepClone()).ToList(),
                                  this.Label?.Clone().ToString(),
                                  this.Type?.Clone().ToString(),
                                  this.HasUniqueValue,
                                  this.FieldType?.Clone().ToString(),
-                                 this.FormField);
+                                 this.FormField,
+                                 this.ModificationMetadataModel?.DeepClone(),
+                                 this.Options?.Select(i => i?.DeepClone()).ToList());
 
             return result;
         }
@@ -148,15 +148,15 @@ namespace Naos.HubSpot.Domain
             var result = new PropertyModel(
                                  groupName,
                                  this.Hidden,
-                                 this.ModificationMetadataModel?.DeepClone(),
                                  this.Name?.Clone().ToString(),
                                  this.DisplayOrder,
-                                 this.Options?.Select(i => i?.DeepClone()).ToList(),
                                  this.Label?.Clone().ToString(),
                                  this.Type?.Clone().ToString(),
                                  this.HasUniqueValue,
                                  this.FieldType?.Clone().ToString(),
-                                 this.FormField);
+                                 this.FormField,
+                                 this.ModificationMetadataModel?.DeepClone(),
+                                 this.Options?.Select(i => i?.DeepClone()).ToList());
 
             return result;
         }
@@ -186,15 +186,15 @@ namespace Naos.HubSpot.Domain
             var result = new PropertyModel(
                                  this.GroupName?.Clone().ToString(),
                                  hidden,
-                                 this.ModificationMetadataModel?.DeepClone(),
                                  this.Name?.Clone().ToString(),
                                  this.DisplayOrder,
-                                 this.Options?.Select(i => i?.DeepClone()).ToList(),
                                  this.Label?.Clone().ToString(),
                                  this.Type?.Clone().ToString(),
                                  this.HasUniqueValue,
                                  this.FieldType?.Clone().ToString(),
-                                 this.FormField);
+                                 this.FormField,
+                                 this.ModificationMetadataModel?.DeepClone(),
+                                 this.Options?.Select(i => i?.DeepClone()).ToList());
 
             return result;
         }
@@ -224,15 +224,15 @@ namespace Naos.HubSpot.Domain
             var result = new PropertyModel(
                                  this.GroupName?.Clone().ToString(),
                                  this.Hidden,
-                                 modificationMetadataModel,
                                  this.Name?.Clone().ToString(),
                                  this.DisplayOrder,
-                                 this.Options?.Select(i => i?.DeepClone()).ToList(),
                                  this.Label?.Clone().ToString(),
                                  this.Type?.Clone().ToString(),
                                  this.HasUniqueValue,
                                  this.FieldType?.Clone().ToString(),
-                                 this.FormField);
+                                 this.FormField,
+                                 modificationMetadataModel,
+                                 this.Options?.Select(i => i?.DeepClone()).ToList());
 
             return result;
         }
@@ -262,15 +262,15 @@ namespace Naos.HubSpot.Domain
             var result = new PropertyModel(
                                  this.GroupName?.Clone().ToString(),
                                  this.Hidden,
-                                 this.ModificationMetadataModel?.DeepClone(),
                                  name,
                                  this.DisplayOrder,
-                                 this.Options?.Select(i => i?.DeepClone()).ToList(),
                                  this.Label?.Clone().ToString(),
                                  this.Type?.Clone().ToString(),
                                  this.HasUniqueValue,
                                  this.FieldType?.Clone().ToString(),
-                                 this.FormField);
+                                 this.FormField,
+                                 this.ModificationMetadataModel?.DeepClone(),
+                                 this.Options?.Select(i => i?.DeepClone()).ToList());
 
             return result;
         }
@@ -300,15 +300,15 @@ namespace Naos.HubSpot.Domain
             var result = new PropertyModel(
                                  this.GroupName?.Clone().ToString(),
                                  this.Hidden,
-                                 this.ModificationMetadataModel?.DeepClone(),
                                  this.Name?.Clone().ToString(),
                                  displayOrder,
-                                 this.Options?.Select(i => i?.DeepClone()).ToList(),
                                  this.Label?.Clone().ToString(),
                                  this.Type?.Clone().ToString(),
                                  this.HasUniqueValue,
                                  this.FieldType?.Clone().ToString(),
-                                 this.FormField);
+                                 this.FormField,
+                                 this.ModificationMetadataModel?.DeepClone(),
+                                 this.Options?.Select(i => i?.DeepClone()).ToList());
 
             return result;
         }
@@ -338,15 +338,15 @@ namespace Naos.HubSpot.Domain
             var result = new PropertyModel(
                                  this.GroupName?.Clone().ToString(),
                                  this.Hidden,
-                                 this.ModificationMetadataModel?.DeepClone(),
                                  this.Name?.Clone().ToString(),
                                  this.DisplayOrder,
-                                 options,
                                  this.Label?.Clone().ToString(),
                                  this.Type?.Clone().ToString(),
                                  this.HasUniqueValue,
                                  this.FieldType?.Clone().ToString(),
-                                 this.FormField);
+                                 this.FormField,
+                                 this.ModificationMetadataModel?.DeepClone(),
+                                 options);
 
             return result;
         }
@@ -376,15 +376,15 @@ namespace Naos.HubSpot.Domain
             var result = new PropertyModel(
                                  this.GroupName?.Clone().ToString(),
                                  this.Hidden,
-                                 this.ModificationMetadataModel?.DeepClone(),
                                  this.Name?.Clone().ToString(),
                                  this.DisplayOrder,
-                                 this.Options?.Select(i => i?.DeepClone()).ToList(),
                                  label,
                                  this.Type?.Clone().ToString(),
                                  this.HasUniqueValue,
                                  this.FieldType?.Clone().ToString(),
-                                 this.FormField);
+                                 this.FormField,
+                                 this.ModificationMetadataModel?.DeepClone(),
+                                 this.Options?.Select(i => i?.DeepClone()).ToList());
 
             return result;
         }
@@ -414,15 +414,15 @@ namespace Naos.HubSpot.Domain
             var result = new PropertyModel(
                                  this.GroupName?.Clone().ToString(),
                                  this.Hidden,
-                                 this.ModificationMetadataModel?.DeepClone(),
                                  this.Name?.Clone().ToString(),
                                  this.DisplayOrder,
-                                 this.Options?.Select(i => i?.DeepClone()).ToList(),
                                  this.Label?.Clone().ToString(),
                                  this.Type?.Clone().ToString(),
                                  hasUniqueValue,
                                  this.FieldType?.Clone().ToString(),
-                                 this.FormField);
+                                 this.FormField,
+                                 this.ModificationMetadataModel?.DeepClone(),
+                                 this.Options?.Select(i => i?.DeepClone()).ToList());
 
             return result;
         }
@@ -452,15 +452,15 @@ namespace Naos.HubSpot.Domain
             var result = new PropertyModel(
                                  this.GroupName?.Clone().ToString(),
                                  this.Hidden,
-                                 this.ModificationMetadataModel?.DeepClone(),
                                  this.Name?.Clone().ToString(),
                                  this.DisplayOrder,
-                                 this.Options?.Select(i => i?.DeepClone()).ToList(),
                                  this.Label?.Clone().ToString(),
                                  type,
                                  this.HasUniqueValue,
                                  this.FieldType?.Clone().ToString(),
-                                 this.FormField);
+                                 this.FormField,
+                                 this.ModificationMetadataModel?.DeepClone(),
+                                 this.Options?.Select(i => i?.DeepClone()).ToList());
 
             return result;
         }
@@ -490,15 +490,15 @@ namespace Naos.HubSpot.Domain
             var result = new PropertyModel(
                                  this.GroupName?.Clone().ToString(),
                                  this.Hidden,
-                                 this.ModificationMetadataModel?.DeepClone(),
                                  this.Name?.Clone().ToString(),
                                  this.DisplayOrder,
-                                 this.Options?.Select(i => i?.DeepClone()).ToList(),
                                  this.Label?.Clone().ToString(),
                                  this.Type?.Clone().ToString(),
                                  this.HasUniqueValue,
                                  fieldType,
-                                 this.FormField);
+                                 this.FormField,
+                                 this.ModificationMetadataModel?.DeepClone(),
+                                 this.Options?.Select(i => i?.DeepClone()).ToList());
 
             return result;
         }
@@ -528,15 +528,15 @@ namespace Naos.HubSpot.Domain
             var result = new PropertyModel(
                                  this.GroupName?.Clone().ToString(),
                                  this.Hidden,
-                                 this.ModificationMetadataModel?.DeepClone(),
                                  this.Name?.Clone().ToString(),
                                  this.DisplayOrder,
-                                 this.Options?.Select(i => i?.DeepClone()).ToList(),
                                  this.Label?.Clone().ToString(),
                                  this.Type?.Clone().ToString(),
                                  this.HasUniqueValue,
                                  this.FieldType?.Clone().ToString(),
-                                 formField);
+                                 formField,
+                                 this.ModificationMetadataModel?.DeepClone(),
+                                 this.Options?.Select(i => i?.DeepClone()).ToList());
 
             return result;
         }

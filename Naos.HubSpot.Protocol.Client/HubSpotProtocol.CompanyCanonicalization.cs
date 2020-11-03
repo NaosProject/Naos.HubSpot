@@ -170,54 +170,27 @@ namespace Naos.HubSpot.Protocol.Client
         }
 
         /// <summary>
-        /// Converts to ContactPropertyModel.
+        /// Converts to Company Property Model.
         /// </summary>
-        /// <param name="prop">The property.</param>
+        /// <param name="propName">Name of the property.</param>
         /// <returns>PropertyModel.</returns>
-        public static PropertyModel ToContactPropertyModel(this PropModel prop)
-        {
-            var propModel = new PropertyModel(
-                "contactinformation",
-                false,
-                new ModificationMetadataModel(
-                    false,
-                    false,
-                    false,
-                    true),
-                prop.PropertyName,
-                -1,
-                null,
-                prop.PropertyName,
-                "string",
-                false,
-                "text",
-                false);
-            return propModel;
-        }
-
-        /// <summary>
-        /// Converts to CompanyPropertyModel.
-        /// </summary>
-        /// <param name="prop">The property.</param>
-        /// <returns>PropertyModel.</returns>
-        public static PropertyModel ToCompanyPropertyModel(this PropModel prop)
+        public static PropertyModel ToCompanyPropertyModel(this string propName)
         {
             var propModel = new PropertyModel(
                 "companyinformation",
                 false,
+                propName,
+                -1,
+                propName,
+                "string",
+                false,
+                "text",
+                false,
                 new ModificationMetadataModel(
                     false,
                     false,
                     false,
-                    true),
-                prop.PropertyName,
-                -1,
-                null,
-                prop.PropertyName,
-                "string",
-                false,
-                "text",
-                false);
+                    true), null);
             return propModel;
         }
     }

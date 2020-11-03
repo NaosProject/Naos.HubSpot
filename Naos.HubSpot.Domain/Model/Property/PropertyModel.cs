@@ -17,16 +17,27 @@ namespace Naos.HubSpot.Domain
         /// </summary>
         /// <param name="groupName">Name of the group.</param>
         /// <param name="hidden">if set to <c>true</c> [hidden].</param>
-        /// <param name="modificationMetadataModel">The modification metadata model.</param>
         /// <param name="name">The name.</param>
         /// <param name="displayOrder">The display order.</param>
-        /// <param name="options">The options.</param>
         /// <param name="label">The label.</param>
         /// <param name="type">Type of the property.</param>
         /// <param name="hasUniqueValue">if set to <c>true</c> [has unique value].</param>
         /// <param name="fieldType">Type of the field.</param>
         /// <param name="formField">if set to <c>true</c> [form field].</param>
-        public PropertyModel(string groupName, bool hidden, ModificationMetadataModel modificationMetadataModel, string name, long displayOrder, IReadOnlyCollection<OptionModel> options, string label, string type, bool hasUniqueValue, string fieldType, bool formField)
+        /// <param name="modificationMetadataModel">The modification metadata model.</param>
+        /// <param name="options">The options.</param>
+        public PropertyModel(
+            string groupName,
+            bool hidden,
+            string name,
+            long displayOrder,
+            string label,
+            string type,
+            bool hasUniqueValue,
+            string fieldType,
+            bool formField,
+            ModificationMetadataModel modificationMetadataModel = null,
+            IReadOnlyCollection<OptionModel> options = null)
         {
             this.GroupName = groupName;
             this.Hidden = hidden;

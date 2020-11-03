@@ -11,6 +11,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
     using System.Linq;
     using System.Runtime.CompilerServices;
     using Naos.HubSpot.Domain;
+    using Naos.HubSpot.Domain.Model;
     using OBeautifulCode.Assertion.Recipes;
     using Xunit;
 
@@ -192,12 +193,12 @@ namespace Naos.HubSpot.Protocol.Client.Test
             var uniqueGuid = Guid.NewGuid();
             var companyToCreateProps = new Dictionary<string, string>()
             {
-                {StandardCompanyPropertyName.CompanyName.ToString(), "testcompany" + uniqueGuid},
-                {StandardCompanyPropertyName.Domain.ToString(), "testcompanydomain" + uniqueGuid + ".com"},
-                {StandardCompanyPropertyName.Industry.ToString(), "testcompanyindustry" + uniqueGuid},
-                {StandardCompanyPropertyName.PhoneNumber.ToString(), uniqueGuid.ToString() },
-                {StandardCompanyPropertyName.City.ToString(), "San Antonio"},
-                {StandardCompanyPropertyName.State.ToString(), "Texas"},
+                { StandardCompanyPropertyName.CompanyName.ToString(), "testcompany" + uniqueGuid },
+                { StandardCompanyPropertyName.Domain.ToString(), "testcompanydomain" + uniqueGuid + ".com" },
+                { StandardCompanyPropertyName.Industry.ToString(), "testcompanyindustry" + uniqueGuid },
+                { StandardCompanyPropertyName.PhoneNumber.ToString(), uniqueGuid.ToString() },
+                { StandardCompanyPropertyName.City.ToString(), "San Antonio" },
+                { StandardCompanyPropertyName.State.ToString(), "Texas" },
             };
             var contactToAddProps = new Dictionary<string, string>
             {
@@ -215,7 +216,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
             string createdContactId = createdContact.Properties[StandardContactPropertyName.HubSpotId.ToString()];
             string createdCompanyId = createdCompany.Properties[StandardCompanyPropertyName.HubSpotId.ToString()];
 
-            var associationToCreate = new AssociateContactWithCompanyOp(createdContactId, createdCompanyId );
+            var associationToCreate = new AssociateContactWithCompanyOp(createdContactId, createdCompanyId);
             
             // Act 
             var association = protocol.Execute(associationToCreate);
@@ -228,5 +229,46 @@ namespace Naos.HubSpot.Protocol.Client.Test
             protocol.Execute(contactToRemove);
             var companyToRemove = new RemoveCompanyByHubSpotIdOp(createdCompanyId);
             protocol.Execute(companyToRemove);
+        }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1308:NormalizeStringsToUppercase", Justification = "Must be lower case for API")]
+        [Fact(Skip = "Skipping because this uses external resources")]
+        public static void AddCompanyProperty___Returns_valid_company_property___When_Executed()
+        {
+            // Arrange
+            var protocol = new HubSpotProtocol(BaseUri, ApiKey);
+            var uniqueGuid = Guid.NewGuid();
+            var propertyToAdd = new CreatePropertyOp("testproperty" + uniqueGuid.ToString().ToLowerInvariant().Replace("-", string.Empty), HubSpotPropertyObjectType.Company);
+            
+            // Act 
+            var createdProp = protocol.Execute(propertyToAdd);
+
+            // Assert 
+            createdProp.PropertyName.MustForTest().BeNullOrNotWhiteSpace();
+
+            // Clean Up
+            var propToRemove = new RemovePropertyOp(createdProp.PropertyName, HubSpotPropertyObjectType.Company);
+            protocol.Execute(propToRemove);
+        }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1308:NormalizeStringsToUppercase", Justification = "Must be lower case for API")]
+        [Fact(Skip = "Skipping because this uses external resources")]
+        public static void AddContactProperty___Returns_valid_contact_property___When_Executed()
+        {
+            // Arrange
+            var protocol = new HubSpotProtocol(BaseUri, ApiKey);
+            var uniqueGuid = Guid.NewGuid();
+            var propertyToAdd = new CreatePropertyOp("testproperty" + uniqueGuid.ToString().ToLowerInvariant().Replace("-", string.Empty), HubSpotPropertyObjectType.Contact);
+
+            // Act 
+            var createdProp = protocol.Execute(propertyToAdd);
+
+            // Assert 
+            createdProp.PropertyName.MustForTest().BeNullOrNotWhiteSpace();
+
+            // Clean Up
+            var propToRemove = new RemovePropertyOp(createdProp.PropertyName, HubSpotPropertyObjectType.Company);
+            protocol.Execute(propToRemove);
+        }
     }
 }

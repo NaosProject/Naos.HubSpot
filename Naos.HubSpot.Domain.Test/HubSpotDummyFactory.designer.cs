@@ -127,15 +127,15 @@ namespace Naos.HubSpot.Domain.Test
                 () => new PropertyModel(
                                  A.Dummy<string>(),
                                  A.Dummy<bool>(),
-                                 A.Dummy<ModificationMetadataModel>(),
                                  A.Dummy<string>(),
                                  A.Dummy<long>(),
-                                 A.Dummy<IReadOnlyCollection<OptionModel>>(),
                                  A.Dummy<string>(),
                                  A.Dummy<string>(),
                                  A.Dummy<bool>(),
                                  A.Dummy<string>(),
-                                 A.Dummy<bool>()));
+                                 A.Dummy<bool>(),
+                                 A.Dummy<ModificationMetadataModel>(),
+                                 A.Dummy<IReadOnlyCollection<OptionModel>>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
                 () => new PropModel(
@@ -191,17 +191,17 @@ namespace Naos.HubSpot.Domain.Test
                                  A.Dummy<Contact>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new CreatePropertyOp(
-                                 A.Dummy<PropModel>(),
+                () => new GetAllPropertiesOp());
+
+            AutoFixtureBackedDummyFactory.AddDummyCreator(
+                () => new RemovePropertyOp(
+                                 A.Dummy<string>(),
                                  A.Dummy<HubSpotPropertyObjectType>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new GetAllPropertiesV3Op());
-
-            AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new RemovePropertyV3Op(
+                () => new CreatePropertyOp(
                                  A.Dummy<string>(),
-                                 A.Dummy<string>()));
+                                 A.Dummy<HubSpotPropertyObjectType>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
                 () => new SyncWithHubSpotOp());

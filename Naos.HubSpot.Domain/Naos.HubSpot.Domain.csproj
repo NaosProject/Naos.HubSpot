@@ -214,15 +214,15 @@
     <Compile Include="Operations\Contact\UpdateContactOp.designer.cs">
       <DependentUpon>UpdateContactOp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Operations\CreatePropertyV3Op.designer.cs">
-      <DependentUpon>CreatePropertyV3Op.cs</DependentUpon>
+    <Compile Include="Operations\CreatePropertyOp.designer.cs">
+      <DependentUpon>CreatePropertyOp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Operations\GetAllPropertiesV3Op.designer.cs">
-      <DependentUpon>GetAllPropertiesV3Op.cs</DependentUpon>
+    <Compile Include="Operations\GetAllPropertiesOp.designer.cs">
+      <DependentUpon>GetAllPropertiesOp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Operations\RemovePropertyV3Op.cs" />
-    <Compile Include="Operations\GetAllPropertiesV3Op.cs" />
-    <Compile Include="Operations\CreatePropertyV3Op.cs" />
+    <Compile Include="Operations\RemovePropertyOp.cs" />
+    <Compile Include="Operations\GetAllPropertiesOp.cs" />
+    <Compile Include="Operations\CreatePropertyOp.cs" />
     <Compile Include="Operations\Company\CreateCompanyOp.cs" />
     <Compile Include="Operations\Company\GetSingleCompanyByHubSpotIdOp.cs" />
     <Compile Include="Operations\Company\GetAllCompaniesOp.cs" />
@@ -236,8 +236,8 @@
     <Compile Include="Operations\Contact\RemoveContactByHubSpotIdOp.cs" />
     <Compile Include="Operations\Contact\SearchContactOp.cs" />
     <Compile Include="Operations\Contact\UpdateContactOp.cs" />
-    <Compile Include="Operations\RemovePropertyV3Op.designer.cs">
-      <DependentUpon>RemovePropertyV3Op.cs</DependentUpon>
+    <Compile Include="Operations\RemovePropertyOp.designer.cs">
+      <DependentUpon>RemovePropertyOp.cs</DependentUpon>
     </Compile>
     <Compile Include="Operations\SyncWithHubSpot\SyncWithHubSpotOp.cs" />
     <Compile Include="Operations\SyncWithHubSpot\SyncWithHubspotOp.designer.cs">

@@ -136,5 +136,30 @@ namespace Naos.HubSpot.Protocol.Client
             props.Add(StandardContactPropertyName.HubSpotId.ToString(), model.Id);
             return new Contact(props);
         }
+
+        /// <summary>
+        /// Converts to ContactPropertyModel.
+        /// </summary>
+        /// <param name="propName">Name of the property.</param>
+        /// <returns>PropertyModel.</returns>
+        public static PropertyModel ToContactPropertyModel(this string propName)
+        {
+            var propModel = new PropertyModel(
+                "contactinformation",
+                false,
+                propName,
+                -1,
+                propName,
+                "string",
+                false,
+                "text",
+                false,
+                new ModificationMetadataModel(
+                    false,
+                    false,
+                    false,
+                    true), null);
+            return propModel;
+        }
     }
 }

@@ -38,77 +38,94 @@ namespace Naos.HubSpot.Domain.Test
 
     public static partial class CreatePropertyOpTest
     {
-        private static readonly StringRepresentationTestScenarios<CreatePropertyV3Op> StringRepresentationTestScenarios = new StringRepresentationTestScenarios<CreatePropertyV3Op>()
+        private static readonly StringRepresentationTestScenarios<CreatePropertyOp> StringRepresentationTestScenarios = new StringRepresentationTestScenarios<CreatePropertyOp>()
             .AddScenario(() =>
-                new StringRepresentationTestScenario<CreatePropertyV3Op>
+                new StringRepresentationTestScenario<CreatePropertyOp>
                 {
                     Name = "Default Code Generated Scenario",
                     SystemUnderTestExpectedStringRepresentationFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<CreatePropertyV3Op>();
+                        var systemUnderTest = A.Dummy<CreatePropertyOp>();
 
-                        var result = new SystemUnderTestExpectedStringRepresentation<CreatePropertyV3Op>
+                        var result = new SystemUnderTestExpectedStringRepresentation<CreatePropertyOp>
                         {
                             SystemUnderTest = systemUnderTest,
-                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.CreatePropertyV3Op: PropModelToAdd = {systemUnderTest.PropModelToAdd?.ToString() ?? "<null>"}, ObjectType = {systemUnderTest.ObjectType.ToString() ?? "<null>"}."),
+                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.CreatePropertyOp: CustomPropertyName = {systemUnderTest.CustomPropertyName?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, ObjectType = {systemUnderTest.ObjectType.ToString() ?? "<null>"}."),
                         };
 
                         return result;
                     },
                 });
 
-        private static readonly ConstructorArgumentValidationTestScenarios<CreatePropertyV3Op> ConstructorArgumentValidationTestScenarios = new ConstructorArgumentValidationTestScenarios<CreatePropertyV3Op>()
+        private static readonly ConstructorArgumentValidationTestScenarios<CreatePropertyOp> ConstructorArgumentValidationTestScenarios = new ConstructorArgumentValidationTestScenarios<CreatePropertyOp>()
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<CreatePropertyV3Op>
+                new ConstructorArgumentValidationTestScenario<CreatePropertyOp>
                 {
-                    Name = "constructor should throw ArgumentNullException when parameter 'propModelToAdd' is null scenario",
+                    Name = "constructor should throw ArgumentNullException when parameter 'customPropertyName' is null scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<CreatePropertyV3Op>();
+                        var referenceObject = A.Dummy<CreatePropertyOp>();
 
-                        var result = new CreatePropertyV3Op(
+                        var result = new CreatePropertyOp(
                                              null,
                                              referenceObject.ObjectType);
 
                         return result;
                     },
                     ExpectedExceptionType = typeof(ArgumentNullException),
-                    ExpectedExceptionMessageContains = new[] { "propModelToAdd" },
+                    ExpectedExceptionMessageContains = new[] { "customPropertyName" },
+                })
+            .AddScenario(() =>
+                new ConstructorArgumentValidationTestScenario<CreatePropertyOp>
+                {
+                    Name = "constructor should throw ArgumentException when parameter 'customPropertyName' is white space scenario",
+                    ConstructionFunc = () =>
+                    {
+                        var referenceObject = A.Dummy<CreatePropertyOp>();
+
+                        var result = new CreatePropertyOp(
+                                             Invariant($"  {Environment.NewLine}  "),
+                                             referenceObject.ObjectType);
+
+                        return result;
+                    },
+                    ExpectedExceptionType = typeof(ArgumentException),
+                    ExpectedExceptionMessageContains = new[] { "customPropertyName", "white space" },
                 });
 
-        private static readonly ConstructorPropertyAssignmentTestScenarios<CreatePropertyV3Op> ConstructorPropertyAssignmentTestScenarios = new ConstructorPropertyAssignmentTestScenarios<CreatePropertyV3Op>()
+        private static readonly ConstructorPropertyAssignmentTestScenarios<CreatePropertyOp> ConstructorPropertyAssignmentTestScenarios = new ConstructorPropertyAssignmentTestScenarios<CreatePropertyOp>()
             .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<CreatePropertyV3Op>
+                new ConstructorPropertyAssignmentTestScenario<CreatePropertyOp>
                 {
-                    Name = "PropModelToAdd should return same 'propModelToAdd' parameter passed to constructor when getting",
+                    Name = "CustomPropertyName should return same 'customPropertyName' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
-                        var referenceObject = A.Dummy<CreatePropertyV3Op>();
+                        var referenceObject = A.Dummy<CreatePropertyOp>();
 
-                        var result = new SystemUnderTestExpectedPropertyValue<CreatePropertyV3Op>
+                        var result = new SystemUnderTestExpectedPropertyValue<CreatePropertyOp>
                         {
-                            SystemUnderTest = new CreatePropertyV3Op(
-                                                      referenceObject.PropModelToAdd,
+                            SystemUnderTest = new CreatePropertyOp(
+                                                      referenceObject.CustomPropertyName,
                                                       referenceObject.ObjectType),
-                            ExpectedPropertyValue = referenceObject.PropModelToAdd,
+                            ExpectedPropertyValue = referenceObject.CustomPropertyName,
                         };
 
                         return result;
                     },
-                    PropertyName = "PropModelToAdd",
+                    PropertyName = "CustomPropertyName",
                 })
             .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<CreatePropertyV3Op>
+                new ConstructorPropertyAssignmentTestScenario<CreatePropertyOp>
                 {
                     Name = "ObjectType should return same 'objectType' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
-                        var referenceObject = A.Dummy<CreatePropertyV3Op>();
+                        var referenceObject = A.Dummy<CreatePropertyOp>();
 
-                        var result = new SystemUnderTestExpectedPropertyValue<CreatePropertyV3Op>
+                        var result = new SystemUnderTestExpectedPropertyValue<CreatePropertyOp>
                         {
-                            SystemUnderTest = new CreatePropertyV3Op(
-                                                      referenceObject.PropModelToAdd,
+                            SystemUnderTest = new CreatePropertyOp(
+                                                      referenceObject.CustomPropertyName,
                                                       referenceObject.ObjectType),
                             ExpectedPropertyValue = referenceObject.ObjectType,
                         };
@@ -118,39 +135,39 @@ namespace Naos.HubSpot.Domain.Test
                     PropertyName = "ObjectType",
                 });
 
-        private static readonly DeepCloneWithTestScenarios<CreatePropertyV3Op> DeepCloneWithTestScenarios = new DeepCloneWithTestScenarios<CreatePropertyV3Op>()
+        private static readonly DeepCloneWithTestScenarios<CreatePropertyOp> DeepCloneWithTestScenarios = new DeepCloneWithTestScenarios<CreatePropertyOp>()
             .AddScenario(() =>
-                new DeepCloneWithTestScenario<CreatePropertyV3Op>
+                new DeepCloneWithTestScenario<CreatePropertyOp>
                 {
-                    Name = "DeepCloneWithPropertyToAdd should deep clone object and replace PropModelToAdd with the provided propModelToAdd",
-                    WithPropertyName = "PropModelToAdd",
+                    Name = "DeepCloneWithCustomPropertyName should deep clone object and replace CustomPropertyName with the provided customPropertyName",
+                    WithPropertyName = "CustomPropertyName",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<CreatePropertyV3Op>();
+                        var systemUnderTest = A.Dummy<CreatePropertyOp>();
 
-                        var referenceObject = A.Dummy<CreatePropertyV3Op>().ThatIs(_ => !systemUnderTest.PropModelToAdd.IsEqualTo(_.PropModelToAdd));
+                        var referenceObject = A.Dummy<CreatePropertyOp>().ThatIs(_ => !systemUnderTest.CustomPropertyName.IsEqualTo(_.CustomPropertyName));
 
-                        var result = new SystemUnderTestDeepCloneWithValue<CreatePropertyV3Op>
+                        var result = new SystemUnderTestDeepCloneWithValue<CreatePropertyOp>
                         {
                             SystemUnderTest = systemUnderTest,
-                            DeepCloneWithValue = referenceObject.PropModelToAdd,
+                            DeepCloneWithValue = referenceObject.CustomPropertyName,
                         };
 
                         return result;
                     },
                 })
             .AddScenario(() =>
-                new DeepCloneWithTestScenario<CreatePropertyV3Op>
+                new DeepCloneWithTestScenario<CreatePropertyOp>
                 {
                     Name = "DeepCloneWithObjectType should deep clone object and replace ObjectType with the provided objectType",
                     WithPropertyName = "ObjectType",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<CreatePropertyV3Op>();
+                        var systemUnderTest = A.Dummy<CreatePropertyOp>();
 
-                        var referenceObject = A.Dummy<CreatePropertyV3Op>().ThatIs(_ => !systemUnderTest.ObjectType.IsEqualTo(_.ObjectType));
+                        var referenceObject = A.Dummy<CreatePropertyOp>().ThatIs(_ => !systemUnderTest.ObjectType.IsEqualTo(_.ObjectType));
 
-                        var result = new SystemUnderTestDeepCloneWithValue<CreatePropertyV3Op>
+                        var result = new SystemUnderTestDeepCloneWithValue<CreatePropertyOp>
                         {
                             SystemUnderTest = systemUnderTest,
                             DeepCloneWithValue = referenceObject.ObjectType,
@@ -160,28 +177,28 @@ namespace Naos.HubSpot.Domain.Test
                     },
                 });
 
-        private static readonly CreatePropertyV3Op ReferenceObjectForEquatableTestScenarios = A.Dummy<CreatePropertyV3Op>();
+        private static readonly CreatePropertyOp ReferenceObjectForEquatableTestScenarios = A.Dummy<CreatePropertyOp>();
 
-        private static readonly EquatableTestScenarios<CreatePropertyV3Op> EquatableTestScenarios = new EquatableTestScenarios<CreatePropertyV3Op>()
+        private static readonly EquatableTestScenarios<CreatePropertyOp> EquatableTestScenarios = new EquatableTestScenarios<CreatePropertyOp>()
             .AddScenario(() =>
-                new EquatableTestScenario<CreatePropertyV3Op>
+                new EquatableTestScenario<CreatePropertyOp>
                 {
                     Name = "Default Code Generated Scenario",
                     ReferenceObject = ReferenceObjectForEquatableTestScenarios,
-                    ObjectsThatAreEqualToButNotTheSameAsReferenceObject = new CreatePropertyV3Op[]
+                    ObjectsThatAreEqualToButNotTheSameAsReferenceObject = new CreatePropertyOp[]
                     {
-                        new CreatePropertyV3Op(
-                                ReferenceObjectForEquatableTestScenarios.PropModelToAdd,
+                        new CreatePropertyOp(
+                                ReferenceObjectForEquatableTestScenarios.CustomPropertyName,
                                 ReferenceObjectForEquatableTestScenarios.ObjectType),
                     },
-                    ObjectsThatAreNotEqualToReferenceObject = new CreatePropertyV3Op[]
+                    ObjectsThatAreNotEqualToReferenceObject = new CreatePropertyOp[]
                     {
-                        new CreatePropertyV3Op(
-                                A.Dummy<CreatePropertyV3Op>().Whose(_ => !_.PropModelToAdd.IsEqualTo(ReferenceObjectForEquatableTestScenarios.PropModelToAdd)).PropModelToAdd,
+                        new CreatePropertyOp(
+                                A.Dummy<CreatePropertyOp>().Whose(_ => !_.CustomPropertyName.IsEqualTo(ReferenceObjectForEquatableTestScenarios.CustomPropertyName)).CustomPropertyName,
                                 ReferenceObjectForEquatableTestScenarios.ObjectType),
-                        new CreatePropertyV3Op(
-                                ReferenceObjectForEquatableTestScenarios.PropModelToAdd,
-                                A.Dummy<CreatePropertyV3Op>().Whose(_ => !_.ObjectType.IsEqualTo(ReferenceObjectForEquatableTestScenarios.ObjectType)).ObjectType),
+                        new CreatePropertyOp(
+                                ReferenceObjectForEquatableTestScenarios.CustomPropertyName,
+                                A.Dummy<CreatePropertyOp>().Whose(_ => !_.ObjectType.IsEqualTo(ReferenceObjectForEquatableTestScenarios.ObjectType)).ObjectType),
                     },
                     ObjectsThatAreNotOfTheSameTypeAsReferenceObject = new object[]
                     {
@@ -203,8 +220,8 @@ namespace Naos.HubSpot.Domain.Test
                         A.Dummy<RemoveContactByHubSpotIdOp>(),
                         A.Dummy<SearchContactOp>(),
                         A.Dummy<UpdateContactOp>(),
-                        A.Dummy<GetAllPropertiesV3Op>(),
-                        A.Dummy<RemovePropertyV3Op>(),
+                        A.Dummy<GetAllPropertiesOp>(),
+                        A.Dummy<RemovePropertyOp>(),
                         A.Dummy<SyncWithHubSpotOp>(),
                     },
                 });
@@ -227,12 +244,12 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void CreatePropertyV3Op___Should_implement_IModel_of_CreatePropertyV3Op___When_reflecting()
+            public static void CreatePropertyOp___Should_implement_IModel_of_CreatePropertyOp___When_reflecting()
             {
                 // Arrange
-                var type = typeof(CreatePropertyV3Op);
+                var type = typeof(CreatePropertyOp);
 
-                var expectedModelMethods = typeof(IModel<CreatePropertyV3Op>).GetInterfaceDeclaredAndImplementedMethods();
+                var expectedModelMethods = typeof(IModel<CreatePropertyOp>).GetInterfaceDeclaredAndImplementedMethods();
 
                 var expectedModelMethodHashes = expectedModelMethods.Select(_ => _.GetSignatureHash());
 
@@ -242,7 +259,7 @@ namespace Naos.HubSpot.Domain.Test
                 var actualModelMethodHashes = actualModelMethods.Select(_ => _.GetSignatureHash());
 
                 // Assert
-                actualInterfaces.AsTest().Must().ContainElement(typeof(IModel<CreatePropertyV3Op>));
+                actualInterfaces.AsTest().Must().ContainElement(typeof(IModel<CreatePropertyOp>));
                 expectedModelMethodHashes.Except(actualModelMethodHashes).AsTest().Must().BeEmptyEnumerable();
             }
 
@@ -260,10 +277,10 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void CreatePropertyV3Op___Should_be_attributed_with_Serializable____When_reflecting()
+            public static void CreatePropertyOp___Should_be_attributed_with_Serializable____When_reflecting()
             {
                 // Arrange
-                var type = typeof(CreatePropertyV3Op);
+                var type = typeof(CreatePropertyOp);
 
                 // Act
                 var actualAttributes = type.GetCustomAttributes(typeof(SerializableAttribute), false);
@@ -393,7 +410,7 @@ namespace Naos.HubSpot.Domain.Test
                         // Here 'scenario.ExpectedPropertyValue' and 'actual' are declared as typeof(object).
                         // With the exception of some specific boxed types (e.g. value types, string),
                         // BeEqualTo() uses reference equality to compare two objects declared as typeof(object).
-                        // We want to use the property's real type, 'scenario.PropModel.PropertyType'.
+                        // We want to use the property's real type, 'scenario.Property.PropertyType'.
                         // For example, BeEqualTo() returns false for these two dictionaries because their declared type is typeof(object):
                         // object x = Dictionary<string, string>();
                         // object y = Dictionary<string, string>();
@@ -436,10 +453,10 @@ namespace Naos.HubSpot.Domain.Test
             public static void Clone___Should_clone_object___When_called()
             {
                 // Arrange
-                var systemUnderTest = A.Dummy<CreatePropertyV3Op>();
+                var systemUnderTest = A.Dummy<CreatePropertyOp>();
 
                 // Act
-                var actual = (CreatePropertyV3Op)systemUnderTest.Clone();
+                var actual = (CreatePropertyOp)systemUnderTest.Clone();
 
                 // Assert
                 actual.AsTest().Must().BeEqualTo(systemUnderTest);
@@ -463,7 +480,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void DeepClone___Should_deep_clone_object___When_called()
             {
                 // Arrange
-                var systemUnderTest = A.Dummy<CreatePropertyV3Op>();
+                var systemUnderTest = A.Dummy<CreatePropertyOp>();
 
                 // Act
                 var actual = systemUnderTest.DeepClone();
@@ -471,15 +488,6 @@ namespace Naos.HubSpot.Domain.Test
                 // Assert
                 actual.AsTest().Must().BeEqualTo(systemUnderTest);
                 actual.AsTest().Must().NotBeSameReferenceAs(systemUnderTest);
-
-                if (systemUnderTest.PropModelToAdd == null)
-                {
-                    actual.PropModelToAdd.AsTest().Must().BeNull();
-                }
-                else
-                {
-                    actual.PropModelToAdd.AsTest().Must().NotBeSameReferenceAs(systemUnderTest.PropModelToAdd);
-                }
             }
 
             [Fact]
@@ -498,7 +506,7 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
             public static void DeepCloneWith___Should_deep_clone_object_and_replace_the_associated_property_with_the_provided_value___When_called()
             {
-                var propertyNames = new string[] { "PropModelToAdd", "ObjectType" };
+                var propertyNames = new string[] { "CustomPropertyName", "ObjectType" };
 
                 var scenarios = DeepCloneWithTestScenarios.ValidateAndPrepareForTesting();
 
@@ -515,12 +523,12 @@ namespace Naos.HubSpot.Domain.Test
                     }
 
                     // Act
-                    var actual = (CreatePropertyV3Op)scenario.DeepCloneWithMethod.Invoke(scenario.SystemUnderTest, new[] { scenario.WithValue });
+                    var actual = (CreatePropertyOp)scenario.DeepCloneWithMethod.Invoke(scenario.SystemUnderTest, new[] { scenario.WithValue });
 
                     // Assert
                     foreach(var propertyName in propertyNames)
                     {
-                        var propertyInfo = typeof(CreatePropertyV3Op).GetPropertyFiltered(propertyName, MemberRelationships.DeclaredOrInherited, MemberOwners.Instance, MemberAccessModifiers.Public);
+                        var propertyInfo = typeof(CreatePropertyOp).GetPropertyFiltered(propertyName, MemberRelationships.DeclaredOrInherited, MemberOwners.Instance, MemberAccessModifiers.Public);
 
                         var propertyType = propertyInfo.PropertyType;
 
@@ -588,7 +596,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_string_using_ObcBsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<CreatePropertyV3Op>();
+                var expected = A.Dummy<CreatePropertyOp>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.BsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -617,7 +625,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_bytes_using_ObcBsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<CreatePropertyV3Op>();
+                var expected = A.Dummy<CreatePropertyOp>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.BsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -646,7 +654,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_string_using_ObcJsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<CreatePropertyV3Op>();
+                var expected = A.Dummy<CreatePropertyOp>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.JsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -675,7 +683,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_bytes_using_ObcJsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<CreatePropertyV3Op>();
+                var expected = A.Dummy<CreatePropertyOp>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.JsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -709,8 +717,8 @@ namespace Naos.HubSpot.Domain.Test
             public static void EqualsOperator___Should_return_true___When_both_sides_of_operator_are_null()
             {
                 // Arrange
-                CreatePropertyV3Op systemUnderTest1 = null;
-                CreatePropertyV3Op systemUnderTest2 = null;
+                CreatePropertyOp systemUnderTest1 = null;
+                CreatePropertyOp systemUnderTest2 = null;
 
                 // Act
                 var actual = systemUnderTest1 == systemUnderTest2;
@@ -740,7 +748,7 @@ namespace Naos.HubSpot.Domain.Test
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    CreatePropertyV3Op systemUnderTest = null;
+                    CreatePropertyOp systemUnderTest = null;
 
                     // Act
                     var actual1 = systemUnderTest == scenario.ReferenceObject;
@@ -889,8 +897,8 @@ namespace Naos.HubSpot.Domain.Test
             public static void NotEqualsOperator___Should_return_false___When_both_sides_of_operator_are_null()
             {
                 // Arrange
-                CreatePropertyV3Op systemUnderTest1 = null;
-                CreatePropertyV3Op systemUnderTest2 = null;
+                CreatePropertyOp systemUnderTest1 = null;
+                CreatePropertyOp systemUnderTest2 = null;
 
                 // Act
                 var actual = systemUnderTest1 != systemUnderTest2;
@@ -920,7 +928,7 @@ namespace Naos.HubSpot.Domain.Test
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    CreatePropertyV3Op systemUnderTest = null;
+                    CreatePropertyOp systemUnderTest = null;
 
                     // Act
                     var actual1 = systemUnderTest != scenario.ReferenceObject;
@@ -1352,14 +1360,14 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_CreatePropertyV3Op___Should_return_false___When_parameter_other_is_null()
+            public static void Equals_with_CreatePropertyOp___Should_return_false___When_parameter_other_is_null()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    CreatePropertyV3Op systemUnderTest = null;
+                    CreatePropertyOp systemUnderTest = null;
 
                     // Act
                     var actual = scenario.ReferenceObject.Equals(systemUnderTest);
@@ -1383,7 +1391,7 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_CreatePropertyV3Op___Should_return_true___When_parameter_other_is_same_object()
+            public static void Equals_with_CreatePropertyOp___Should_return_true___When_parameter_other_is_same_object()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
@@ -1411,7 +1419,7 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_CreatePropertyV3Op___Should_return_false___When_parameter_other_is_derived_from_the_same_type_but_is_not_of_the_same_type_as_this_object()
+            public static void Equals_with_CreatePropertyOp___Should_return_false___When_parameter_other_is_derived_from_the_same_type_but_is_not_of_the_same_type_as_this_object()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
@@ -1439,7 +1447,7 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_CreatePropertyV3Op___Should_return_false___When_objects_being_compared_have_different_property_values()
+            public static void Equals_with_CreatePropertyOp___Should_return_false___When_objects_being_compared_have_different_property_values()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
@@ -1467,7 +1475,7 @@ namespace Naos.HubSpot.Domain.Test
             [SuppressMessage("Microsoft.Naming", "CA1725:ParameterNamesShouldMatchBaseDeclaration")]
             [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
             [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
-            public static void Equals_with_CreatePropertyV3Op___Should_return_true___When_objects_being_compared_have_same_property_values()
+            public static void Equals_with_CreatePropertyOp___Should_return_true___When_objects_being_compared_have_same_property_values()
             {
                 var scenarios = EquatableTestScenarios.ValidateAndPrepareForTesting();
 
