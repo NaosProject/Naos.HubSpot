@@ -89,7 +89,7 @@ namespace Naos.HubSpot.Protocol.Client
         ///     Attempts to convert a string into a contact property name enumeration.
         /// </summary>
         /// <param name="propertyNameFromHubSpot">The name of a property recognized by HubSpot.</param>
-        /// <returns cref="StandardContactPropertyName">The enumeration of the contact property name.</returns>
+        /// <returns cref="StandardContactPropertyNameV3">The enumeration of the contact property name.</returns>
         public static string ConvertFromContactHubSpotNameToContactStandardNameIfNecessaryV3(this string propertyNameFromHubSpot)
         {
             var isStandard =

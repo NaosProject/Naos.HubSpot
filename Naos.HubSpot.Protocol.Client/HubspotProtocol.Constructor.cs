@@ -10,6 +10,7 @@ namespace Naos.HubSpot.Protocol.Client
     using Naos.CodeAnalysis.Recipes;
     using Naos.FluentUri;
     using Naos.HubSpot.Domain;
+    using Naos.HubSpot.Serialization.Json;
     using Naos.Protocol.Domain;
     using OBeautifulCode.Assertion.Recipes;
     using OBeautifulCode.Serialization.Json;
@@ -18,7 +19,7 @@ namespace Naos.HubSpot.Protocol.Client
     /// TODO: Starting point for new project.
     /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling", Justification = NaosSuppressBecause.CA1506_AvoidExcessiveClassCoupling_DisagreeWithAssessment)]
-    public partial class HubSpotProtocol : ISyncAndAsyncReturningProtocol<SyncWithHubSpotOp, SyncWithHubSpotResult>
+    public partial class HubSpotProtocol
     {
         private readonly Uri baseUri;
         private readonly ObcJsonSerializer bodySerializer;
@@ -34,7 +35,7 @@ namespace Naos.HubSpot.Protocol.Client
             this.baseUri = baseUri;
             apiKey.MustForArg(nameof(apiKey)).NotBeNullNorWhiteSpace();
             this.baseUri = baseUri.AppendQueryStringParam("hapikey", apiKey);
-            this.bodySerializer = new ObcJsonSerializer(typeof(MinimalFormatJsonSerializationConfiguration<NullJsonSerializationConfiguration>).ToJsonSerializationConfigurationType());
+            this.bodySerializer = new ObcJsonSerializer(typeof(MinimalFormatJsonSerializationConfiguration<HubSpotJsonSerializationConfiguration>).ToJsonSerializationConfigurationType());
         }
     }
 }

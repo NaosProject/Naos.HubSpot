@@ -30,18 +30,18 @@ namespace Naos.HubSpot.Domain.Test
                 () =>
                 {
                     var readOnlyDictionary = A.Dummy<Dictionary<string, string>>();
-                    readOnlyDictionary.Add(StandardContactPropertyName.FirstName.ToString(), A.Dummy<string>());
-                    readOnlyDictionary.Add(StandardContactPropertyName.LastName.ToString(), A.Dummy<string>());
-                    readOnlyDictionary.Add(StandardContactPropertyName.Email.ToString(), A.Dummy<string>());
-                    return new Contact(
+                    readOnlyDictionary.Add(StandardContactPropertyNameV3.FirstName.ToString(), A.Dummy<string>());
+                    readOnlyDictionary.Add(StandardContactPropertyNameV3.LastName.ToString(), A.Dummy<string>());
+                    readOnlyDictionary.Add(StandardContactPropertyNameV3.Email.ToString(), A.Dummy<string>());
+                    return new ContactV3(
                         readOnlyDictionary);
                 });
             AutoFixtureBackedDummyFactory.AddDummyCreator(
                 () =>
                 {
                     var readOnlyDictionary = A.Dummy<Dictionary<string, string>>();
-                    readOnlyDictionary.Add(StandardCompanyPropertyName.CompanyName.ToString(), A.Dummy<string>());
-                    return new Company(
+                    readOnlyDictionary.Add(StandardCompanyPropertyNameV3.CompanyName.ToString(), A.Dummy<string>());
+                    return new CompanyV3(
                         readOnlyDictionary);
                 });
         }

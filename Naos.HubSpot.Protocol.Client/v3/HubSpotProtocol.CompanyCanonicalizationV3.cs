@@ -91,7 +91,7 @@ namespace Naos.HubSpot.Protocol.Client
             this string propertyNameFromModel)
         {
             var isStandard =
-                HubSpotProtocol.StandardCompanyPropertyNameStringToHubSpotPropertyNameMap.TryGetValue(
+                HubSpotProtocol.StandardCompanyPropertyNameStringToHubSpotPropertyNameMapV3.TryGetValue(
                     propertyNameFromModel,
                     out var standardResult);
             var result = isStandard ? standardResult : propertyNameFromModel;
@@ -102,12 +102,12 @@ namespace Naos.HubSpot.Protocol.Client
         ///     Attempts to convert a string into a contact property name enumeration.
         /// </summary>
         /// <param name="propertyNameFromHubSpot">The name of a property recognized by HubSpot.</param>
-        /// <returns cref="StandardContactPropertyName">The enumeration of the contact property name.</returns>
+        /// <returns cref="StandardContactPropertyNameV3">The enumeration of the contact property name.</returns>
         public static string ConvertFromCompanyHubSpotHubSpotNameToCompanyStandardNameIfNecessaryV3(
             this string propertyNameFromHubSpot)
         {
             var isStandard =
-                HubSpotProtocol.HubSpotContactPropertyNameToStandardContactPropertyNameStringMap.TryGetValue(
+                HubSpotProtocol.HubSpotContactPropertyNameToStandardContactPropertyNameStringMapV3.TryGetValue(
                     propertyNameFromHubSpot,
                     out var standardResult);
             var result = isStandard ? standardResult : propertyNameFromHubSpot;

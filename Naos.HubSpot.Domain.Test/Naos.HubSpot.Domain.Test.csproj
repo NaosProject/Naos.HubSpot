@@ -262,26 +262,6 @@
     <Compile Include=".recipes\OBeautifulCode.Type\TypeDummyFactory.cs" />
     <Compile Include=".recipes\OBeautifulCode.Type\TypeDummyFactory.designer.cs" />
     <Compile Include=".recipes\OBeautifulCode.Type\TypeExtensions.cs" />
-    <Compile Include="AddCompanyOpTest.cs" />
-    <Compile Include="AddCompanyOpTest.designer.cs">
-      <DependentUpon>AddCompanyOpTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AddCompanyRequestTest.cs" />
-    <Compile Include="AddCompanyRequestTest.designer.cs">
-      <DependentUpon>AddCompanyRequestTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AddOrUpdateContactsOpTest.cs" />
-    <Compile Include="AddOrUpdateContactsOpTest.designer.cs">
-      <DependentUpon>AddOrUpdateContactsOpTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AddOrUpdateContactsRequestTest.cs" />
-    <Compile Include="AddOrUpdateContactsRequestTest.designer.cs">
-      <DependentUpon>AddOrUpdateContactsRequestTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AssociateContactWithCompanyOpTest.cs" />
-    <Compile Include="AssociateContactWithCompanyOpTest.designer.cs">
-      <DependentUpon>AssociateContactWithCompanyOpTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="AssociateContactWithCompanyV3OpTest.cs" />
     <Compile Include="AssociateContactWithCompanyV3OpTest.designer.cs">
       <DependentUpon>AssociateContactWithCompanyV3OpTest.cs</DependentUpon>
@@ -310,10 +290,6 @@
     <Compile Include="CompanyRequestModelV3Test.designer.cs">
       <DependentUpon>CompanyRequestModelV3Test.cs</DependentUpon>
     </Compile>
-    <Compile Include="CompanyTest.cs" />
-    <Compile Include="CompanyTest.designer.cs">
-      <DependentUpon>CompanyTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="CompanyV3Test.cs" />
     <Compile Include="CompanyV3Test.designer.cs">
       <DependentUpon>CompanyV3Test.cs</DependentUpon>
@@ -323,44 +299,17 @@
     <Compile Include="ContactModelV3Test.designer.cs">
       <DependentUpon>ContactModelV3Test.cs</DependentUpon>
     </Compile>
-    <Compile Include="ContactPropertyModelTest.cs" />
-    <Compile Include="ContactPropertyModelTest.designer.cs">
-      <DependentUpon>ContactPropertyModelTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="ContactRequestModelV3Test.cs" />
     <Compile Include="ContactRequestModelV3Test.designer.cs">
       <DependentUpon>ContactRequestModelV3Test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ContactTest.designer.cs">
-      <DependentUpon>ContactTest.cs</DependentUpon>
     </Compile>
     <Compile Include="ContactV3Test.cs" />
     <Compile Include="ContactV3Test.designer.cs">
       <DependentUpon>ContactV3Test.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateAssociationRequestTest.cs" />
-    <Compile Include="CreateAssociationRequestTest.designer.cs">
-      <DependentUpon>CreateAssociationRequestTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CreateCompanyPropertyOpTest.cs" />
-    <Compile Include="CreateCompanyPropertyOpTest.designer.cs">
-      <DependentUpon>CreateCompanyPropertyOpTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CreateCompanyPropertyRequestTest.cs" />
-    <Compile Include="CreateCompanyPropertyRequestTest.designer.cs">
-      <DependentUpon>CreateCompanyPropertyRequestTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="CreateCompanyV3OpTest.cs" />
     <Compile Include="CreateCompanyV3OpTest.designer.cs">
       <DependentUpon>CreateCompanyV3OpTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CreateContactPropertyOpTest.cs" />
-    <Compile Include="CreateContactPropertyOpTest.designer.cs">
-      <DependentUpon>CreateContactPropertyOpTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CreateContactPropertyRequestTest.cs" />
-    <Compile Include="CreateContactPropertyRequestTest.designer.cs">
-      <DependentUpon>CreateContactPropertyRequestTest.cs</DependentUpon>
     </Compile>
     <Compile Include="CreateContactV3OpTest.cs" />
     <Compile Include="CreateContactV3OpTest.designer.cs">
@@ -370,49 +319,9 @@
     <Compile Include="CreatePropertyV3OpTest.designer.cs">
       <DependentUpon>CreatePropertyV3OpTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="DeleteCompanyOpTest.cs" />
-    <Compile Include="DeleteCompanyOpTest.designer.cs">
-      <DependentUpon>DeleteCompanyOpTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DeleteCompanyPropertyOpTest.cs" />
-    <Compile Include="DeleteCompanyPropertyOpTest.designer.cs">
-      <DependentUpon>DeleteCompanyPropertyOpTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DeleteContactOpTest.cs" />
-    <Compile Include="DeleteContactOpTest.designer.cs">
-      <DependentUpon>DeleteContactOpTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DeleteContactPropertyOpTest.cs" />
-    <Compile Include="DeleteContactPropertyOpTest.designer.cs">
-      <DependentUpon>DeleteContactPropertyOpTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DeleteContactResponseTest.cs" />
-    <Compile Include="DeleteContactResponseTest.designer.cs">
-      <DependentUpon>DeleteContactResponseTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GetAllCompaniesOpTest.cs" />
-    <Compile Include="GetAllCompaniesOpTest.designer.cs">
-      <DependentUpon>GetAllCompaniesOpTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="GetAllCompaniesV3OpTest.cs" />
     <Compile Include="GetAllCompaniesV3OpTest.designer.cs">
       <DependentUpon>GetAllCompaniesV3OpTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GetAllCompanyPropertiesOpTest.cs" />
-    <Compile Include="GetAllCompanyPropertiesOpTest.designer.cs">
-      <DependentUpon>GetAllCompanyPropertiesOpTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GetAllCompanyPropertiesResponseTest.cs" />
-    <Compile Include="GetAllCompanyPropertiesResponseTest.designer.cs">
-      <DependentUpon>GetAllCompanyPropertiesResponseTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GetAllContactPropertiesOpTest.cs" />
-    <Compile Include="GetAllContactPropertiesOpTest.designer.cs">
-      <DependentUpon>GetAllContactPropertiesOpTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GetAllContactsOpTest.cs" />
-    <Compile Include="GetAllContactsOpTest.designer.cs">
-      <DependentUpon>GetAllContactsOpTest.cs</DependentUpon>
     </Compile>
     <Compile Include="GetAllContactsV3OpTest.cs" />
     <Compile Include="GetAllContactsV3OpTest.designer.cs">
@@ -430,8 +339,6 @@
     <Compile Include="GetSingleContactByHubSpotIdV3OpTest.designer.cs">
       <DependentUpon>GetSingleContactByHubSpotIdV3OpTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="HubSpotCompanyPropertyNamesTest.cs" />
-    <Compile Include="ContactTest.cs" />
     <Compile Include="HubSpotDummyFactory.cs" />
     <Compile Include="HubSpotDummyFactory.designer.cs">
       <DependentUpon>HubSpotDummyFactory.cs</DependentUpon>
@@ -462,10 +369,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\ProjectInfo.cs" />
-    <Compile Include="PropertyModelTest.cs" />
-    <Compile Include="PropertyModelTest.designer.cs">
-      <DependentUpon>PropertyModelTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="PropertyModelV3Test.cs" />
     <Compile Include="PropertyModelV3Test.designer.cs">
       <DependentUpon>PropertyModelV3Test.cs</DependentUpon>
@@ -497,23 +400,11 @@
     <Compile Include="SerializationConfigurationTypes.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="HubSpotDummyFactoryTest.cs" />
+    <AdditionalFiles Include=".analyzers\stylecop.json" />
     <Compile Include="SyncWithHubSpotOpTest.cs" />
     <Compile Include="SyncWithHubSpotOpTest.designer.cs">
       <DependentUpon>SyncWithHubSpotOpTest.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateCompaniesOpTest.cs" />
-    <Compile Include="UpdateCompaniesOpTest.designer.cs">
-      <DependentUpon>UpdateCompaniesOpTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UpdateCompanyModelTest.cs" />
-    <Compile Include="UpdateCompanyModelTest.designer.cs">
-      <DependentUpon>UpdateCompanyModelTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UpdateCompanyOpTest.cs" />
-    <Compile Include="UpdateCompanyOpTest.designer.cs">
-      <DependentUpon>UpdateCompanyOpTest.cs</DependentUpon>
-    </Compile>
-    <AdditionalFiles Include=".analyzers\stylecop.json" />
     <Compile Include="UpdateCompanyV3OpTest.cs" />
     <Compile Include="UpdateCompanyV3OpTest.designer.cs">
       <DependentUpon>UpdateCompanyV3OpTest.cs</DependentUpon>

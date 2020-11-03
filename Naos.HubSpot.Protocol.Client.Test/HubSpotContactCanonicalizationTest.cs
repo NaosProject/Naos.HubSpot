@@ -21,8 +21,8 @@ namespace Naos.HubSpot.Protocol.Client.Test
         public static void StandardContactPropertyNameStringToHubSpotPropertyNameMap___For_each_standard_property_name___Contains_valid_entry()
         {
             // Arrange
-            var mapUnderTest = HubSpotProtocol.StandardContactPropertyNameStringToHubSpotPropertyNameMap;
-            var allStandardNames = typeof(StandardContactPropertyName).GetDefinedEnumValues().Select(_ => _.ToString()).ToList();
+            var mapUnderTest = HubSpotProtocol.StandardContactPropertyNameStringToHubSpotPropertyNameMapV3;
+            var allStandardNames = typeof(StandardContactPropertyNameV3).GetDefinedEnumValues().Select(_ => _.ToString()).ToList();
 
             // Assert
             allStandardNames.Count().MustForTest()

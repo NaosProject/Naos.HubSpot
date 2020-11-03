@@ -102,55 +102,6 @@
     <Compile Include=".recipes\OBeautifulCode.Type\ToStringReadableOptions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Type\ToStringXmlDocOptions.cs" />
     <Compile Include=".recipes\OBeautifulCode.Type\TypeExtensions.cs" />
-    <Compile Include="Model\AddCompanyRequest.cs" />
-    <Compile Include="Model\AddCompanyRequest.designer.cs">
-      <DependentUpon>AddCompanyRequest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Model\AddOrUpdateContactsRequest.cs" />
-    <Compile Include="Model\AddOrUpdateContactsRequest.designer.cs">
-      <DependentUpon>AddOrUpdateContactsRequest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Company.designer.cs">
-      <DependentUpon>Company.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Contact.designer.cs">
-      <DependentUpon>Contact.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ContactPropertyModel.designer.cs">
-      <DependentUpon>ContactPropertyModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Model\CreateCompanyPropertyRequest.cs" />
-    <Compile Include="Model\CreateCompanyPropertyRequest.designer.cs">
-      <DependentUpon>CreateCompanyPropertyRequest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Model\CreateContactPropertyRequest.cs" />
-    <Compile Include="Model\CreateContactPropertyRequest.designer.cs">
-      <DependentUpon>CreateContactPropertyRequest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Model\GetAllCompanyPropertiesResponse.cs" />
-    <Compile Include="Model\ContactPropertyModel.cs" />
-    <Compile Include="Model\CreateAssociationRequest.cs" />
-    <Compile Include="Model\CreateAssociationRequest.designer.cs">
-      <DependentUpon>CreateAssociationRequest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DeleteCompanyResponse.cs" />
-    <Compile Include="Model\DeleteContactResponse.cs" />
-    <Compile Include="Model\DeleteContactResponse.designer.cs">
-      <DependentUpon>DeleteContactResponse.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Model\GetAllCompanyPropertiesResponse.designer.cs">
-      <DependentUpon>GetAllCompanyPropertiesResponse.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Model\PropertyModel.cs" />
-    <Compile Include="Model\PropertyModel.designer.cs">
-      <DependentUpon>PropertyModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Model\StandardCompanyPropertyName.cs" />
-    <Compile Include="Model\StandardContactPropertyName.cs" />
-    <Compile Include="Model\UpdateCompanyModel.cs" />
-    <Compile Include="Model\UpdateCompanyModel.designer.cs">
-      <DependentUpon>UpdateCompanyModel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Model\v3\Association\AssociationContactsSection.cs" />
     <Compile Include="Model\v3\Association\AssociationContactsSection.designer.cs">
       <DependentUpon>AssociationContactsSection.cs</DependentUpon>
@@ -224,13 +175,6 @@
     </Compile>
     <Compile Include="Model\v3\StandardCompanyPropertyNameV3.cs" />
     <Compile Include="Model\v3\StandardContactPropertyNameV3.cs" />
-    <Compile Include="Operations\Company\AddCompanyOp.designer.cs">
-      <DependentUpon>AddCompanyOp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Operations\Company\CreateCompanyPropertyOp.cs" />
-    <Compile Include="Operations\Company\CreateCompanyPropertyOp.designer.cs">
-      <DependentUpon>CreateCompanyPropertyOp.cs</DependentUpon>
-    </Compile>
     <Compile Include="Operations\Company\v3\CreateCompanyV3Op.designer.cs">
       <DependentUpon>CreateCompanyV3Op.cs</DependentUpon>
     </Compile>
@@ -278,27 +222,6 @@
     </Compile>
     <Compile Include="Operations\RemovePropertyV3Op.cs" />
     <Compile Include="Operations\GetAllPropertiesV3Op.cs" />
-    <Compile Include="Operations\Company\DeleteCompanyOp.cs" />
-    <Compile Include="Operations\Company\DeleteCompanyOp.designer.cs">
-      <DependentUpon>DeleteCompanyOp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Operations\Company\DeleteCompanyPropertyOp.cs" />
-    <Compile Include="Operations\Company\DeleteCompanyPropertyOp.designer.cs">
-      <DependentUpon>DeleteCompanyPropertyOp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Operations\Company\GetAllCompaniesOp.designer.cs">
-      <DependentUpon>GetAllCompaniesOp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Operations\Company\GetAllCompanyPropertiesOp.cs" />
-    <Compile Include="Operations\Company\GetAllCompanyPropertiesOp.designer.cs">
-      <DependentUpon>GetAllCompanyPropertiesOp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Operations\Company\UpdateCompaniesOp.cs" />
-    <Compile Include="Operations\Company\AddCompanyOp.cs" />
-    <Compile Include="Operations\Company\GetAllCompaniesOp.cs" />
-    <Compile Include="Operations\Company\UpdateCompaniesOp.designer.cs">
-      <DependentUpon>UpdateCompaniesOp.cs</DependentUpon>
-    </Compile>
     <Compile Include="Operations\CreatePropertyV3Op.cs" />
     <Compile Include="Operations\Company\v3\CreateCompanyV3Op.cs" />
     <Compile Include="Operations\Company\v3\GetSingleCompanyByHubSpotIdV3Op.cs" />
@@ -306,29 +229,6 @@
     <Compile Include="Operations\Company\v3\RemoveCompanyByHubSpotIdV3Op.cs" />
     <Compile Include="Operations\Company\v3\SearchCompanyV3.cs" />
     <Compile Include="Operations\Company\v3\UpdateCompanyV3Op.cs" />
-    <Compile Include="Operations\Contact\AddOrUpdateContactsOp.cs" />
-    <Compile Include="Operations\Contact\AddOrUpdateContactsOp.designer.cs">
-      <DependentUpon>AddOrUpdateContactsOp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Operations\Contact\CreateContactPropertyOp.designer.cs">
-      <DependentUpon>CreateContactPropertyOp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Operations\Contact\DeleteContactPropertyOp.cs" />
-    <Compile Include="Operations\Contact\DeleteContactOp.cs" />
-    <Compile Include="Operations\Contact\DeleteContactOp.designer.cs">
-      <DependentUpon>DeleteContactOp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Operations\Contact\CreateContactPropertyOp.cs" />
-    <Compile Include="Operations\Contact\DeleteContactPropertyOp.designer.cs">
-      <DependentUpon>DeleteContactPropertyOp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Operations\Contact\GetAllContactPropertiesOp.cs" />
-    <Compile Include="Operations\Contact\GetAllContactPropertiesOp.designer.cs">
-      <DependentUpon>GetAllContactPropertiesOp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Operations\Contact\GetAllContactsOp.designer.cs">
-      <DependentUpon>GetAllContactsOp.cs</DependentUpon>
-    </Compile>
     <Compile Include="Operations\Contact\v3\AssociateContactWithCompanyV3Op.cs" />
     <Compile Include="Operations\Contact\v3\CreateContactV3Op.cs" />
     <Compile Include="Operations\Contact\v3\GetSingleContactByHubSpotIdV3Op.cs" />
@@ -339,18 +239,11 @@
     <Compile Include="Operations\RemovePropertyV3Op.designer.cs">
       <DependentUpon>RemovePropertyV3Op.cs</DependentUpon>
     </Compile>
-    <Compile Include="Operations\SyncWithHubSpot\AssociateContactWithCompanyOp.cs" />
-    <Compile Include="Operations\Contact\GetAllContactsOp.cs" />
-    <Compile Include="Model\Company.cs" />
-    <Compile Include="Operations\SyncWithHubSpot\AssociateContactWithCompanyOp.designer.cs">
-      <DependentUpon>AssociateContactWithCompanyOp.cs</DependentUpon>
-    </Compile>
     <Compile Include="Operations\SyncWithHubSpot\SyncWithHubSpotOp.cs" />
     <Compile Include="Operations\SyncWithHubSpot\SyncWithHubspotOp.designer.cs">
       <DependentUpon>SyncWithHubSpotOp.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Model\Contact.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Operations\SyncWithHubSpot\SyncWithHubSpotResult.cs" />
     <AdditionalFiles Include=".analyzers\stylecop.json" />
