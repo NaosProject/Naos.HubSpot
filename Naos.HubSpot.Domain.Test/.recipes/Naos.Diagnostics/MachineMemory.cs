@@ -34,7 +34,7 @@ namespace Naos.Diagnostics.Recipes
         /// The total memory of this machine in gigabytes.
         /// </returns>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate", Justification = "Don't want to use a property for this kind of active call.")]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Gb", Justification = "Property/spelling is correct.")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Gb", Justification = "PropModel/spelling is correct.")]
         public static IReadOnlyDictionary<MachineMemoryKind, decimal> GetMachineMemoryInGb()
         {
             // this is only in VisualBasic...

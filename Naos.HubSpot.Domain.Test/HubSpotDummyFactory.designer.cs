@@ -47,7 +47,7 @@ namespace Naos.HubSpot.Domain.Test
                                  A.Dummy<string>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new AssociationResultV3(
+                () => new AssociationResult(
                                  A.Dummy<string>(),
                                  A.Dummy<bool>(),
                                  A.Dummy<string>(),
@@ -60,7 +60,7 @@ namespace Naos.HubSpot.Domain.Test
                                  A.Dummy<AssociationContactsSection>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new CompanyModelV3(
+                () => new CompanyModel(
                                  A.Dummy<string>(),
                                  A.Dummy<string>(),
                                  A.Dummy<string>(),
@@ -68,16 +68,16 @@ namespace Naos.HubSpot.Domain.Test
                                  A.Dummy<bool>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new CompanyRequestModelV3(
+                () => new CompanyRequestModel(
                                  A.Dummy<string>(),
                                  A.Dummy<IReadOnlyDictionary<string, string>>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new CompanyV3(
+                () => new Company(
                                  A.Dummy<IReadOnlyDictionary<string, string>>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new ContactModelV3(
+                () => new ContactModel(
                                  A.Dummy<string>(),
                                  A.Dummy<string>(),
                                  A.Dummy<string>(),
@@ -85,12 +85,12 @@ namespace Naos.HubSpot.Domain.Test
                                  A.Dummy<bool>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new ContactRequestModelV3(
+                () => new ContactRequestModel(
                                  A.Dummy<string>(),
                                  A.Dummy<IReadOnlyDictionary<string, string>>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new ContactV3(
+                () => new Contact(
                                  A.Dummy<IReadOnlyDictionary<string, string>>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
@@ -124,7 +124,7 @@ namespace Naos.HubSpot.Domain.Test
                                  A.Dummy<bool>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new PropertyModelV3(
+                () => new PropertyModel(
                                  A.Dummy<string>(),
                                  A.Dummy<bool>(),
                                  A.Dummy<ModificationMetadataModel>(),
@@ -138,61 +138,61 @@ namespace Naos.HubSpot.Domain.Test
                                  A.Dummy<bool>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new PropertyV3(
+                () => new PropModel(
                                  A.Dummy<string>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new CreateCompanyV3Op(
-                                 A.Dummy<CompanyV3>()));
+                () => new CreateCompanyOp(
+                                 A.Dummy<Company>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new GetAllCompaniesV3Op());
+                () => new GetAllCompaniesOp());
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new GetSingleCompanyByHubSpotIdV3Op(
+                () => new GetSingleCompanyByHubSpotIdOp(
                                  A.Dummy<string>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new RemoveCompanyByHubSpotIdV3Op(
+                () => new RemoveCompanyByHubSpotIdOp(
                                  A.Dummy<string>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new SearchCompanyV3());
+                () => new SearchCompany());
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new UpdateCompanyV3Op(
-                                 A.Dummy<CompanyV3>()));
+                () => new UpdateCompanyOp(
+                                 A.Dummy<Company>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new AssociateContactWithCompanyV3Op(
+                () => new AssociateContactWithCompanyOp(
                                  A.Dummy<string>(),
                                  A.Dummy<string>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new CreateContactV3Op(
-                                 A.Dummy<ContactV3>()));
+                () => new CreateContactOp(
+                                 A.Dummy<Contact>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new GetAllContactsV3Op());
+                () => new GetAllContactsOp());
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new GetSingleContactByHubSpotIdV3Op(
+                () => new GetSingleContactByHubSpotIdOp(
                                  A.Dummy<string>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new RemoveContactByHubSpotIdV3Op(
+                () => new RemoveContactByHubSpotIdOp(
                                  A.Dummy<string>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new SearchContactV3());
+                () => new SearchContactOp());
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new UpdateContactV3Op(
-                                 A.Dummy<ContactV3>()));
+                () => new UpdateContactOp(
+                                 A.Dummy<Contact>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
                 () => new CreatePropertyV3Op(
-                                 A.Dummy<PropertyV3>(),
+                                 A.Dummy<PropModel>(),
                                  A.Dummy<HubSpotPropertyObjectType>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(

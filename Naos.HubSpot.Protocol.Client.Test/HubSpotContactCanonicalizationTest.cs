@@ -22,7 +22,7 @@ namespace Naos.HubSpot.Protocol.Client.Test
         {
             // Arrange
             var mapUnderTest = HubSpotProtocol.StandardContactPropertyNameStringToHubSpotPropertyNameMapV3;
-            var allStandardNames = typeof(StandardContactPropertyNameV3).GetDefinedEnumValues().Select(_ => _.ToString()).ToList();
+            var allStandardNames = typeof(StandardContactPropertyName).GetDefinedEnumValues().Select(_ => _.ToString()).ToList();
 
             // Assert
             allStandardNames.Count().MustForTest()

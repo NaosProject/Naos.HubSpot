@@ -10,7 +10,7 @@ namespace Naos.HubSpot.Domain
     /// <summary>
     /// Class GetAllPropertiesV3Op.
     /// </summary>
-    public partial class GetAllPropertiesV3Op : ReturningOperationBase<IReadOnlyCollection<PropertyModelV3>>, IModelViaCodeGen
+    public partial class GetAllPropertiesV3Op : ReturningOperationBase<IReadOnlyCollection<PropertyModel>>, IModelViaCodeGen
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAllPropertiesV3Op"/> class.

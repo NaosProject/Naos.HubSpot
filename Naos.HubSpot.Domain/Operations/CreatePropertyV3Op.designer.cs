@@ -71,7 +71,7 @@ namespace Naos.HubSpot.Domain
                 return false;
             }
 
-            var result = this.PropertyToAdd.IsEqualTo(other.PropertyToAdd)
+            var result = this.PropModelToAdd.IsEqualTo(other.PropModelToAdd)
                       && this.ObjectType.IsEqualTo(other.ObjectType);
 
             return result;
@@ -82,7 +82,7 @@ namespace Naos.HubSpot.Domain
 
         /// <inheritdoc />
         public override int GetHashCode() => HashCodeHelper.Initialize()
-            .Hash(this.PropertyToAdd)
+            .Hash(this.PropModelToAdd)
             .Hash(this.ObjectType)
             .Value;
 
@@ -90,10 +90,10 @@ namespace Naos.HubSpot.Domain
         public new CreatePropertyV3Op DeepClone() => (CreatePropertyV3Op)this.DeepCloneInternal();
 
         /// <summary>
-        /// Deep clones this object with a new <see cref="PropertyToAdd" />.
+        /// Deep clones this object with a new <see cref="PropModelToAdd" />.
         /// </summary>
-        /// <param name="propertyToAdd">The new <see cref="PropertyToAdd" />.  This object will NOT be deep cloned; it is used as-is.</param>
-        /// <returns>New <see cref="CreatePropertyV3Op" /> using the specified <paramref name="propertyToAdd" /> for <see cref="PropertyToAdd" /> and a deep clone of every other property.</returns>
+        /// <param name="propModelToAdd">The new <see cref="PropModelToAdd" />.  This object will NOT be deep cloned; it is used as-is.</param>
+        /// <returns>New <see cref="CreatePropertyV3Op" /> using the specified <paramref name="propModelToAdd" /> for <see cref="PropModelToAdd" /> and a deep clone of every other property.</returns>
         [SuppressMessage("Microsoft.Design", "CA1002: DoNotExposeGenericLists")]
         [SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly")]
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly")]
@@ -109,10 +109,10 @@ namespace Naos.HubSpot.Domain
         [SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms")]
         [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly")]
         [SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
-        public CreatePropertyV3Op DeepCloneWithPropertyToAdd(PropertyV3 propertyToAdd)
+        public CreatePropertyV3Op DeepCloneWithPropertyToAdd(PropModel propModelToAdd)
         {
             var result = new CreatePropertyV3Op(
-                                 propertyToAdd,
+                                 propModelToAdd,
                                  this.ObjectType);
 
             return result;
@@ -141,7 +141,7 @@ namespace Naos.HubSpot.Domain
         public CreatePropertyV3Op DeepCloneWithObjectType(HubSpotPropertyObjectType objectType)
         {
             var result = new CreatePropertyV3Op(
-                                 this.PropertyToAdd?.DeepClone(),
+                                 this.PropModelToAdd?.DeepClone(),
                                  objectType);
 
             return result;
@@ -151,7 +151,7 @@ namespace Naos.HubSpot.Domain
         protected override OperationBase DeepCloneInternal()
         {
             var result = new CreatePropertyV3Op(
-                                 this.PropertyToAdd?.DeepClone(),
+                                 this.PropModelToAdd?.DeepClone(),
                                  this.ObjectType);
 
             return result;
@@ -161,7 +161,7 @@ namespace Naos.HubSpot.Domain
         [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         public override string ToString()
         {
-            var result = Invariant($"Naos.HubSpot.Domain.CreatePropertyV3Op: PropertyToAdd = {this.PropertyToAdd?.ToString() ?? "<null>"}, ObjectType = {this.ObjectType.ToString() ?? "<null>"}.");
+            var result = Invariant($"Naos.HubSpot.Domain.CreatePropertyV3Op: PropModelToAdd = {this.PropModelToAdd?.ToString() ?? "<null>"}, ObjectType = {this.ObjectType.ToString() ?? "<null>"}.");
 
             return result;
         }

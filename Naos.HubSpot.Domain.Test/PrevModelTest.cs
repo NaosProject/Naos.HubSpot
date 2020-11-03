@@ -6,15 +6,9 @@
 
 namespace Naos.HubSpot.Domain.Test
 {
-    using System;
     using System.Diagnostics.CodeAnalysis;
-
-    using FakeItEasy;
     using Naos.CodeAnalysis.Recipes;
-    using OBeautifulCode.AutoFakeItEasy;
     using OBeautifulCode.CodeAnalysis.Recipes;
-
-    using Xunit;
 
     [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Prev", Justification = NaosSuppressBecause.CA1704_IdentifiersShouldBeSpelledCorrectly_SpellingIsCorrectInContextOfTheDomain)]
     public static partial class PrevModelTest

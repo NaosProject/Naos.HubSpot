@@ -9,9 +9,7 @@ namespace Naos.HubSpot.Protocol.Client
     using System;
     using Naos.CodeAnalysis.Recipes;
     using Naos.FluentUri;
-    using Naos.HubSpot.Domain;
     using Naos.HubSpot.Serialization.Json;
-    using Naos.Protocol.Domain;
     using OBeautifulCode.Assertion.Recipes;
     using OBeautifulCode.Serialization.Json;
 

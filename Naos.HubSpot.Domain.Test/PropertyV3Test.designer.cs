@@ -35,33 +35,33 @@ namespace Naos.HubSpot.Domain.Test
 
     public static partial class PropertyV3Test
     {
-        private static readonly StringRepresentationTestScenarios<PropertyV3> StringRepresentationTestScenarios = new StringRepresentationTestScenarios<PropertyV3>()
+        private static readonly StringRepresentationTestScenarios<PropModel> StringRepresentationTestScenarios = new StringRepresentationTestScenarios<PropModel>()
             .AddScenario(() =>
-                new StringRepresentationTestScenario<PropertyV3>
+                new StringRepresentationTestScenario<PropModel>
                 {
                     Name = "Default Code Generated Scenario",
                     SystemUnderTestExpectedStringRepresentationFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<PropertyV3>();
+                        var systemUnderTest = A.Dummy<PropModel>();
 
-                        var result = new SystemUnderTestExpectedStringRepresentation<PropertyV3>
+                        var result = new SystemUnderTestExpectedStringRepresentation<PropModel>
                         {
                             SystemUnderTest = systemUnderTest,
-                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.PropertyV3: PropertyName = {systemUnderTest.PropertyName?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}."),
+                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.PropModel: PropertyName = {systemUnderTest.PropertyName?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}."),
                         };
 
                         return result;
                     },
                 });
 
-        private static readonly ConstructorArgumentValidationTestScenarios<PropertyV3> ConstructorArgumentValidationTestScenarios = new ConstructorArgumentValidationTestScenarios<PropertyV3>()
+        private static readonly ConstructorArgumentValidationTestScenarios<PropModel> ConstructorArgumentValidationTestScenarios = new ConstructorArgumentValidationTestScenarios<PropModel>()
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<PropertyV3>
+                new ConstructorArgumentValidationTestScenario<PropModel>
                 {
                     Name = "constructor should throw ArgumentNullException when parameter 'propertyName' is null scenario",
                     ConstructionFunc = () =>
                     {
-                        var result = new PropertyV3(
+                        var result = new PropModel(
                                              null);
 
                         return result;
@@ -70,12 +70,12 @@ namespace Naos.HubSpot.Domain.Test
                     ExpectedExceptionMessageContains = new[] { "propertyName" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<PropertyV3>
+                new ConstructorArgumentValidationTestScenario<PropModel>
                 {
                     Name = "constructor should throw ArgumentException when parameter 'propertyName' is white space scenario",
                     ConstructionFunc = () =>
                     {
-                        var result = new PropertyV3(
+                        var result = new PropModel(
                                              Invariant($"  {Environment.NewLine}  "));
 
                         return result;
@@ -84,18 +84,18 @@ namespace Naos.HubSpot.Domain.Test
                     ExpectedExceptionMessageContains = new[] { "propertyName", "white space" },
                 });
 
-        private static readonly ConstructorPropertyAssignmentTestScenarios<PropertyV3> ConstructorPropertyAssignmentTestScenarios = new ConstructorPropertyAssignmentTestScenarios<PropertyV3>()
+        private static readonly ConstructorPropertyAssignmentTestScenarios<PropModel> ConstructorPropertyAssignmentTestScenarios = new ConstructorPropertyAssignmentTestScenarios<PropModel>()
             .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<PropertyV3>
+                new ConstructorPropertyAssignmentTestScenario<PropModel>
                 {
                     Name = "PropertyName should return same 'propertyName' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyV3>();
+                        var referenceObject = A.Dummy<PropModel>();
 
-                        var result = new SystemUnderTestExpectedPropertyValue<PropertyV3>
+                        var result = new SystemUnderTestExpectedPropertyValue<PropModel>
                         {
-                            SystemUnderTest = new PropertyV3(
+                            SystemUnderTest = new PropModel(
                                                       referenceObject.PropertyName),
                             ExpectedPropertyValue = referenceObject.PropertyName,
                         };
@@ -105,19 +105,19 @@ namespace Naos.HubSpot.Domain.Test
                     PropertyName = "PropertyName",
                 });
 
-        private static readonly DeepCloneWithTestScenarios<PropertyV3> DeepCloneWithTestScenarios = new DeepCloneWithTestScenarios<PropertyV3>()
+        private static readonly DeepCloneWithTestScenarios<PropModel> DeepCloneWithTestScenarios = new DeepCloneWithTestScenarios<PropModel>()
             .AddScenario(() =>
-                new DeepCloneWithTestScenario<PropertyV3>
+                new DeepCloneWithTestScenario<PropModel>
                 {
                     Name = "DeepCloneWithPropertyName should deep clone object and replace PropertyName with the provided propertyName",
                     WithPropertyName = "PropertyName",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<PropertyV3>();
+                        var systemUnderTest = A.Dummy<PropModel>();
 
-                        var referenceObject = A.Dummy<PropertyV3>().ThatIs(_ => !systemUnderTest.PropertyName.IsEqualTo(_.PropertyName));
+                        var referenceObject = A.Dummy<PropModel>().ThatIs(_ => !systemUnderTest.PropertyName.IsEqualTo(_.PropertyName));
 
-                        var result = new SystemUnderTestDeepCloneWithValue<PropertyV3>
+                        var result = new SystemUnderTestDeepCloneWithValue<PropModel>
                         {
                             SystemUnderTest = systemUnderTest,
                             DeepCloneWithValue = referenceObject.PropertyName,
@@ -127,23 +127,23 @@ namespace Naos.HubSpot.Domain.Test
                     },
                 });
 
-        private static readonly PropertyV3 ReferenceObjectForEquatableTestScenarios = A.Dummy<PropertyV3>();
+        private static readonly PropModel ReferenceObjectForEquatableTestScenarios = A.Dummy<PropModel>();
 
-        private static readonly EquatableTestScenarios<PropertyV3> EquatableTestScenarios = new EquatableTestScenarios<PropertyV3>()
+        private static readonly EquatableTestScenarios<PropModel> EquatableTestScenarios = new EquatableTestScenarios<PropModel>()
             .AddScenario(() =>
-                new EquatableTestScenario<PropertyV3>
+                new EquatableTestScenario<PropModel>
                 {
                     Name = "Default Code Generated Scenario",
                     ReferenceObject = ReferenceObjectForEquatableTestScenarios,
-                    ObjectsThatAreEqualToButNotTheSameAsReferenceObject = new PropertyV3[]
+                    ObjectsThatAreEqualToButNotTheSameAsReferenceObject = new PropModel[]
                     {
-                        new PropertyV3(
+                        new PropModel(
                                 ReferenceObjectForEquatableTestScenarios.PropertyName),
                     },
-                    ObjectsThatAreNotEqualToReferenceObject = new PropertyV3[]
+                    ObjectsThatAreNotEqualToReferenceObject = new PropModel[]
                     {
-                        new PropertyV3(
-                                A.Dummy<PropertyV3>().Whose(_ => !_.PropertyName.IsEqualTo(ReferenceObjectForEquatableTestScenarios.PropertyName)).PropertyName),
+                        new PropModel(
+                                A.Dummy<PropModel>().Whose(_ => !_.PropertyName.IsEqualTo(ReferenceObjectForEquatableTestScenarios.PropertyName)).PropertyName),
                     },
                     ObjectsThatAreNotOfTheSameTypeAsReferenceObject = new object[]
                     {
@@ -176,9 +176,9 @@ namespace Naos.HubSpot.Domain.Test
             public static void PropertyV3___Should_implement_IModel_of_PropertyV3___When_reflecting()
             {
                 // Arrange
-                var type = typeof(PropertyV3);
+                var type = typeof(PropModel);
 
-                var expectedModelMethods = typeof(IModel<PropertyV3>).GetInterfaceDeclaredAndImplementedMethods();
+                var expectedModelMethods = typeof(IModel<PropModel>).GetInterfaceDeclaredAndImplementedMethods();
 
                 var expectedModelMethodHashes = expectedModelMethods.Select(_ => _.GetSignatureHash());
 
@@ -188,7 +188,7 @@ namespace Naos.HubSpot.Domain.Test
                 var actualModelMethodHashes = actualModelMethods.Select(_ => _.GetSignatureHash());
 
                 // Assert
-                actualInterfaces.AsTest().Must().ContainElement(typeof(IModel<PropertyV3>));
+                actualInterfaces.AsTest().Must().ContainElement(typeof(IModel<PropModel>));
                 expectedModelMethodHashes.Except(actualModelMethodHashes).AsTest().Must().BeEmptyEnumerable();
             }
 
@@ -209,7 +209,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void PropertyV3___Should_be_attributed_with_Serializable____When_reflecting()
             {
                 // Arrange
-                var type = typeof(PropertyV3);
+                var type = typeof(PropModel);
 
                 // Act
                 var actualAttributes = type.GetCustomAttributes(typeof(SerializableAttribute), false);
@@ -339,7 +339,7 @@ namespace Naos.HubSpot.Domain.Test
                         // Here 'scenario.ExpectedPropertyValue' and 'actual' are declared as typeof(object).
                         // With the exception of some specific boxed types (e.g. value types, string),
                         // BeEqualTo() uses reference equality to compare two objects declared as typeof(object).
-                        // We want to use the property's real type, 'scenario.Property.PropertyType'.
+                        // We want to use the property's real type, 'scenario.PropModel.PropertyType'.
                         // For example, BeEqualTo() returns false for these two dictionaries because their declared type is typeof(object):
                         // object x = Dictionary<string, string>();
                         // object y = Dictionary<string, string>();
@@ -382,10 +382,10 @@ namespace Naos.HubSpot.Domain.Test
             public static void Clone___Should_clone_object___When_called()
             {
                 // Arrange
-                var systemUnderTest = A.Dummy<PropertyV3>();
+                var systemUnderTest = A.Dummy<PropModel>();
 
                 // Act
-                var actual = (PropertyV3)systemUnderTest.Clone();
+                var actual = (PropModel)systemUnderTest.Clone();
 
                 // Assert
                 actual.AsTest().Must().BeEqualTo(systemUnderTest);
@@ -409,7 +409,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void DeepClone___Should_deep_clone_object___When_called()
             {
                 // Arrange
-                var systemUnderTest = A.Dummy<PropertyV3>();
+                var systemUnderTest = A.Dummy<PropModel>();
 
                 // Act
                 var actual = systemUnderTest.DeepClone();
@@ -452,12 +452,12 @@ namespace Naos.HubSpot.Domain.Test
                     }
 
                     // Act
-                    var actual = (PropertyV3)scenario.DeepCloneWithMethod.Invoke(scenario.SystemUnderTest, new[] { scenario.WithValue });
+                    var actual = (PropModel)scenario.DeepCloneWithMethod.Invoke(scenario.SystemUnderTest, new[] { scenario.WithValue });
 
                     // Assert
                     foreach(var propertyName in propertyNames)
                     {
-                        var propertyInfo = typeof(PropertyV3).GetPropertyFiltered(propertyName, MemberRelationships.DeclaredOrInherited, MemberOwners.Instance, MemberAccessModifiers.Public);
+                        var propertyInfo = typeof(PropModel).GetPropertyFiltered(propertyName, MemberRelationships.DeclaredOrInherited, MemberOwners.Instance, MemberAccessModifiers.Public);
 
                         var propertyType = propertyInfo.PropertyType;
 
@@ -525,7 +525,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_string_using_ObcBsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<PropertyV3>();
+                var expected = A.Dummy<PropModel>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.BsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -554,7 +554,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_bytes_using_ObcBsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<PropertyV3>();
+                var expected = A.Dummy<PropModel>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.BsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -583,7 +583,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_string_using_ObcJsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<PropertyV3>();
+                var expected = A.Dummy<PropModel>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.JsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -612,7 +612,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_bytes_using_ObcJsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<PropertyV3>();
+                var expected = A.Dummy<PropModel>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.JsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -646,8 +646,8 @@ namespace Naos.HubSpot.Domain.Test
             public static void EqualsOperator___Should_return_true___When_both_sides_of_operator_are_null()
             {
                 // Arrange
-                PropertyV3 systemUnderTest1 = null;
-                PropertyV3 systemUnderTest2 = null;
+                PropModel systemUnderTest1 = null;
+                PropModel systemUnderTest2 = null;
 
                 // Act
                 var actual = systemUnderTest1 == systemUnderTest2;
@@ -677,7 +677,7 @@ namespace Naos.HubSpot.Domain.Test
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    PropertyV3 systemUnderTest = null;
+                    PropModel systemUnderTest = null;
 
                     // Act
                     var actual1 = systemUnderTest == scenario.ReferenceObject;
@@ -826,8 +826,8 @@ namespace Naos.HubSpot.Domain.Test
             public static void NotEqualsOperator___Should_return_false___When_both_sides_of_operator_are_null()
             {
                 // Arrange
-                PropertyV3 systemUnderTest1 = null;
-                PropertyV3 systemUnderTest2 = null;
+                PropModel systemUnderTest1 = null;
+                PropModel systemUnderTest2 = null;
 
                 // Act
                 var actual = systemUnderTest1 != systemUnderTest2;
@@ -857,7 +857,7 @@ namespace Naos.HubSpot.Domain.Test
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    PropertyV3 systemUnderTest = null;
+                    PropModel systemUnderTest = null;
 
                     // Act
                     var actual1 = systemUnderTest != scenario.ReferenceObject;
@@ -1010,7 +1010,7 @@ namespace Naos.HubSpot.Domain.Test
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    PropertyV3 systemUnderTest = null;
+                    PropModel systemUnderTest = null;
 
                     // Act
                     var actual = scenario.ReferenceObject.Equals(systemUnderTest);

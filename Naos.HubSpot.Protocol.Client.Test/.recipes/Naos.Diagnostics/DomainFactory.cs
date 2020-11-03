@@ -124,7 +124,7 @@ namespace Naos.Diagnostics.Recipes
         /// </summary>
         /// <param name="machineDetails">Machine details to use.</param>
         /// <returns>Typed dictionary.</returns>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Gb", Justification = "Property/spelling is correct.")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Gb", Justification = "PropModel/spelling is correct.")]
         public static IReadOnlyDictionary<MachineMemoryKind, decimal> GetTypedMemoryKindToValueInGbMap(this MachineDetails machineDetails)
         {
             if (machineDetails == null)

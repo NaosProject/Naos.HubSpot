@@ -8,7 +8,6 @@ namespace Naos.HubSpot.Protocol.Client.Test
 {
     using System;
     using System.Collections.Generic;
-    using System.Globalization;
     using System.Linq;
     using Naos.HubSpot.Domain;
     using OBeautifulCode.Assertion.Recipes;
@@ -27,17 +26,17 @@ namespace Naos.HubSpot.Protocol.Client.Test
         {
             // Arrange
             var protocol = new HubSpotProtocol(BaseUri, ApiKey);
-            var op = new GetAllContactsV3Op();
+            var op = new GetAllContactsOp();
             var contactToAddProps = new Dictionary<string, string>
             {
-                { StandardContactPropertyNameV3.Email.ToString(), "addcontacttest@testemail.com" },
-                { StandardContactPropertyNameV3.FirstName.ToString(), "testContactFirst" },
-                { StandardContactPropertyNameV3.LastName.ToString(), "testcontactLast" },
-                { StandardContactPropertyNameV3.CompanyName.ToString(), "testCompany" },
-                { StandardContactPropertyNameV3.Website.ToString(), "www.testwebsite.com" },
+                { StandardContactPropertyName.Email.ToString(), "addcontacttest@testemail.com" },
+                { StandardContactPropertyName.FirstName.ToString(), "testContactFirst" },
+                { StandardContactPropertyName.LastName.ToString(), "testcontactLast" },
+                { StandardContactPropertyName.CompanyName.ToString(), "testCompany" },
+                { StandardContactPropertyName.Website.ToString(), "www.testwebsite.com" },
             };
-            var contactToCreate = new ContactV3(contactToAddProps);
-            var createContactOp = new CreateContactV3Op(contactToCreate);
+            var contactToCreate = new Contact(contactToAddProps);
+            var createContactOp = new CreateContactOp(contactToCreate);
             var createdContact = protocol.Execute(createContactOp);
 
             // Act
@@ -47,8 +46,8 @@ namespace Naos.HubSpot.Protocol.Client.Test
             contacts.MustForTest().NotBeNullNorEmptyEnumerableNorContainAnyNulls();
             
             //Clean Up
-            createdContact.Properties.TryGetValue(StandardContactPropertyNameV3.HubSpotId.ToString(), out var createdId);
-            var removeContactOp = new RemoveContactByHubSpotIdV3Op(createdId);
+            createdContact.Properties.TryGetValue(StandardContactPropertyName.HubSpotId.ToString(), out var createdId);
+            var removeContactOp = new RemoveContactByHubSpotIdOp(createdId);
             protocol.Execute(removeContactOp);
         }
 
@@ -60,24 +59,24 @@ namespace Naos.HubSpot.Protocol.Client.Test
             var guid = Guid.NewGuid();
             var contactToAddProps = new Dictionary<string, string>
             {
-                { StandardContactPropertyNameV3.FirstName.ToString(), "firstName" + guid },
-                { StandardContactPropertyNameV3.LastName.ToString(), "lastName" + guid },
-                { StandardContactPropertyNameV3.Website.ToString(), "www.testwebsite" + guid + ".com" },
-                { StandardContactPropertyNameV3.PhoneNumber.ToString(), guid.ToString() },
+                { StandardContactPropertyName.FirstName.ToString(), "firstName" + guid },
+                { StandardContactPropertyName.LastName.ToString(), "lastName" + guid },
+                { StandardContactPropertyName.Website.ToString(), "www.testwebsite" + guid + ".com" },
+                { StandardContactPropertyName.PhoneNumber.ToString(), guid.ToString() },
             };
-            var contactToCreate = new ContactV3(contactToAddProps);
-            var createContactOp = new CreateContactV3Op(contactToCreate);
+            var contactToCreate = new Contact(contactToAddProps);
+            var createContactOp = new CreateContactOp(contactToCreate);
 
             // Act
             var createdContact = protocol.Execute(createContactOp);
 
             // Assert
             createdContact.MustForTest().NotBeNull();
-            createdContact.Properties.TryGetValue(StandardContactPropertyNameV3.HubSpotId.ToString(), out var createdId).MustForTest().BeTrue();
+            createdContact.Properties.TryGetValue(StandardContactPropertyName.HubSpotId.ToString(), out var createdId).MustForTest().BeTrue();
 
             // Clean Up
 
-            var removeContactOp = new RemoveContactByHubSpotIdV3Op(createdId);
+            var removeContactOp = new RemoveContactByHubSpotIdOp(createdId);
             protocol.Execute(removeContactOp);
         }
 
@@ -88,26 +87,26 @@ namespace Naos.HubSpot.Protocol.Client.Test
             var protocol = new HubSpotProtocol(BaseUri, ApiKey);
             var companyToCreateProps = new Dictionary<string, string>()
             {
-                { StandardCompanyPropertyNameV3.CompanyName.ToString(), "testcompany" },
-                { StandardCompanyPropertyNameV3.Domain.ToString(), "testcompanydomain.com" },
-                { StandardCompanyPropertyNameV3.Industry.ToString(), "testcompanyindustry" },
-                { StandardCompanyPropertyNameV3.PhoneNumber.ToString(), "18001231234" },
-                { StandardCompanyPropertyNameV3.City.ToString(), "San Antonio" },
-                { StandardCompanyPropertyNameV3.State.ToString(), "Texas" },
+                { StandardCompanyPropertyName.CompanyName.ToString(), "testcompany" },
+                { StandardCompanyPropertyName.Domain.ToString(), "testcompanydomain.com" },
+                { StandardCompanyPropertyName.Industry.ToString(), "testcompanyindustry" },
+                { StandardCompanyPropertyName.PhoneNumber.ToString(), "18001231234" },
+                { StandardCompanyPropertyName.City.ToString(), "San Antonio" },
+                { StandardCompanyPropertyName.State.ToString(), "Texas" },
             };
 
-            var companyToCreate = new CompanyV3(companyToCreateProps);
-            var createCompanyOp = new CreateCompanyV3Op(companyToCreate);
+            var companyToCreate = new Company(companyToCreateProps);
+            var createCompanyOp = new CreateCompanyOp(companyToCreate);
 
             // Act
             var createdCompany = protocol.Execute(createCompanyOp);
 
             // Assert 
             createdCompany.MustForTest().NotBeNull();
-            createdCompany.Properties.TryGetValue(StandardCompanyPropertyNameV3.HubSpotId.ToString(), out var createdId).MustForTest().BeTrue();
+            createdCompany.Properties.TryGetValue(StandardCompanyPropertyName.HubSpotId.ToString(), out var createdId).MustForTest().BeTrue();
 
             //Clean Up
-            var removeCompanyOp = new RemoveContactByHubSpotIdV3Op(createdId);
+            var removeCompanyOp = new RemoveContactByHubSpotIdOp(createdId);
             protocol.Execute(removeCompanyOp);
         }
 
@@ -118,31 +117,31 @@ namespace Naos.HubSpot.Protocol.Client.Test
             var protocol = new HubSpotProtocol(BaseUri, ApiKey);
             var contactToAddProps = new Dictionary<string, string>
             {
-                { StandardContactPropertyNameV3.Email.ToString(), "addcontacttest@testemail.com" },
-                { StandardContactPropertyNameV3.FirstName.ToString(), "testContactFirst" },
-                { StandardContactPropertyNameV3.LastName.ToString(), "testcontactLast" },
-                { StandardContactPropertyNameV3.CompanyName.ToString(), "testCompany" },
-                { StandardContactPropertyNameV3.Website.ToString(), "www.testwebsite.com" },
+                { StandardContactPropertyName.Email.ToString(), "addcontacttest@testemail.com" },
+                { StandardContactPropertyName.FirstName.ToString(), "testContactFirst" },
+                { StandardContactPropertyName.LastName.ToString(), "testcontactLast" },
+                { StandardContactPropertyName.CompanyName.ToString(), "testCompany" },
+                { StandardContactPropertyName.Website.ToString(), "www.testwebsite.com" },
             };
-            var contactToCreate = new ContactV3(contactToAddProps);
-            var createContactOp = new CreateContactV3Op(contactToCreate);
+            var contactToCreate = new Contact(contactToAddProps);
+            var createContactOp = new CreateContactOp(contactToCreate);
             var createdContact = protocol.Execute(createContactOp);
 
             var propsToUpdate = createdContact.Properties.ToDictionary(k => k.Key, v => v.Value);
-            propsToUpdate[StandardContactPropertyNameV3.LastName.ToString()] = "updatedContactLastName";
-            var contactToUpdate = new ContactV3(propsToUpdate);
+            propsToUpdate[StandardContactPropertyName.LastName.ToString()] = "updatedContactLastName";
+            var contactToUpdate = new Contact(propsToUpdate);
 
             // Act
-            var updatedContact = protocol.Execute(new UpdateContactV3Op(contactToUpdate));
+            var updatedContact = protocol.Execute(new UpdateContactOp(contactToUpdate));
 
             // Assert
-            updatedContact.Properties.TryGetValue(StandardContactPropertyNameV3.HubSpotId.ToString(), out var createdId).MustForTest().BeTrue();
-            updatedContact.Properties[StandardContactPropertyNameV3.LastName.ToString()].MustForTest()
-                .NotBeEqualTo(updatedContact.Properties[StandardContactPropertyNameV3.LastName.ToString()]);
+            updatedContact.Properties.TryGetValue(StandardContactPropertyName.HubSpotId.ToString(), out var createdId).MustForTest().BeTrue();
+            updatedContact.Properties[StandardContactPropertyName.LastName.ToString()].MustForTest()
+                .NotBeEqualTo(updatedContact.Properties[StandardContactPropertyName.LastName.ToString()]);
 
             // Clean Up
 
-            var removeContactOp = new RemoveCompanyByHubSpotIdV3Op(createdId);
+            var removeContactOp = new RemoveCompanyByHubSpotIdOp(createdId);
             protocol.Execute(removeContactOp);
         }
 
@@ -153,32 +152,32 @@ namespace Naos.HubSpot.Protocol.Client.Test
             var protocol = new HubSpotProtocol(BaseUri, ApiKey);
             var companyToCreateProps = new Dictionary<string, string>()
             {
-                { StandardCompanyPropertyNameV3.CompanyName.ToString(), "testcompany" },
-                { StandardCompanyPropertyNameV3.Domain.ToString(), "testcompanydomain.com" },
-                { StandardCompanyPropertyNameV3.Industry.ToString(), "testcompanyindustry" },
-                { StandardCompanyPropertyNameV3.PhoneNumber.ToString(), "18001231234" },
-                { StandardCompanyPropertyNameV3.City.ToString(), "San Antonio" },
-                { StandardCompanyPropertyNameV3.State.ToString(), "Texas" },
+                { StandardCompanyPropertyName.CompanyName.ToString(), "testcompany" },
+                { StandardCompanyPropertyName.Domain.ToString(), "testcompanydomain.com" },
+                { StandardCompanyPropertyName.Industry.ToString(), "testcompanyindustry" },
+                { StandardCompanyPropertyName.PhoneNumber.ToString(), "18001231234" },
+                { StandardCompanyPropertyName.City.ToString(), "San Antonio" },
+                { StandardCompanyPropertyName.State.ToString(), "Texas" },
             };
 
-            var companyToCreate = new CompanyV3(companyToCreateProps);
-            var createCompanyOp = new CreateCompanyV3Op(companyToCreate);
+            var companyToCreate = new Company(companyToCreateProps);
+            var createCompanyOp = new CreateCompanyOp(companyToCreate);
             var createdCompany = protocol.Execute(createCompanyOp);
             var companyToUpdateProps = createdCompany.Properties.ToDictionary(k => k.Key, v => v.Value);
-            companyToUpdateProps[StandardCompanyPropertyNameV3.CompanyName.ToString()] = "updatedCompanyName"; 
-            var companyToUpdate = new CompanyV3(companyToUpdateProps);
-            var updateCompanyOp = new UpdateCompanyV3Op(companyToUpdate);
+            companyToUpdateProps[StandardCompanyPropertyName.CompanyName.ToString()] = "updatedCompanyName"; 
+            var companyToUpdate = new Company(companyToUpdateProps);
+            var updateCompanyOp = new UpdateCompanyOp(companyToUpdate);
 
             // Act
             var updatedCompany = protocol.Execute(updateCompanyOp);
 
             // Assert 
-            updatedCompany.Properties.TryGetValue(StandardCompanyPropertyNameV3.HubSpotId.ToString(), out var updatedId).MustForTest().BeTrue();
-            updatedCompany.Properties[StandardCompanyPropertyNameV3.Domain.ToString()].MustForTest()
-                .NotBeEqualTo(updatedCompany.Properties[StandardCompanyPropertyNameV3.Domain.ToString()]);
+            updatedCompany.Properties.TryGetValue(StandardCompanyPropertyName.HubSpotId.ToString(), out var updatedId).MustForTest().BeTrue();
+            updatedCompany.Properties[StandardCompanyPropertyName.Domain.ToString()].MustForTest()
+                .NotBeEqualTo(updatedCompany.Properties[StandardCompanyPropertyName.Domain.ToString()]);
 
             // Clean Up
-            var removeCompanyOp = new RemoveCompanyByHubSpotIdV3Op(updatedId);
+            var removeCompanyOp = new RemoveCompanyByHubSpotIdOp(updatedId);
             protocol.Execute(removeCompanyOp);
         }
     }

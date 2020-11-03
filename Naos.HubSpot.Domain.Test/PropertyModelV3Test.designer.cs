@@ -35,35 +35,35 @@ namespace Naos.HubSpot.Domain.Test
 
     public static partial class PropertyModelV3Test
     {
-        private static readonly StringRepresentationTestScenarios<PropertyModelV3> StringRepresentationTestScenarios = new StringRepresentationTestScenarios<PropertyModelV3>()
+        private static readonly StringRepresentationTestScenarios<PropertyModel> StringRepresentationTestScenarios = new StringRepresentationTestScenarios<PropertyModel>()
             .AddScenario(() =>
-                new StringRepresentationTestScenario<PropertyModelV3>
+                new StringRepresentationTestScenario<PropertyModel>
                 {
                     Name = "Default Code Generated Scenario",
                     SystemUnderTestExpectedStringRepresentationFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<PropertyModelV3>();
+                        var systemUnderTest = A.Dummy<PropertyModel>();
 
-                        var result = new SystemUnderTestExpectedStringRepresentation<PropertyModelV3>
+                        var result = new SystemUnderTestExpectedStringRepresentation<PropertyModel>
                         {
                             SystemUnderTest = systemUnderTest,
-                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.PropertyModelV3: GroupName = {systemUnderTest.GroupName?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Hidden = {systemUnderTest.Hidden.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, ModificationMetadataModel = {systemUnderTest.ModificationMetadataModel?.ToString() ?? "<null>"}, Name = {systemUnderTest.Name?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, DisplayOrder = {systemUnderTest.DisplayOrder.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Options = {systemUnderTest.Options?.ToString() ?? "<null>"}, Label = {systemUnderTest.Label?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, HasUniqueValue = {systemUnderTest.HasUniqueValue.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Type = {systemUnderTest.Type?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, FieldType = {systemUnderTest.FieldType?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, FormField = {systemUnderTest.FormField.ToString(CultureInfo.InvariantCulture) ?? "<null>"}."),
+                            ExpectedStringRepresentation = Invariant($"Naos.HubSpot.Domain.PropertyModel: GroupName = {systemUnderTest.GroupName?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Hidden = {systemUnderTest.Hidden.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, ModificationMetadataModel = {systemUnderTest.ModificationMetadataModel?.ToString() ?? "<null>"}, Name = {systemUnderTest.Name?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, DisplayOrder = {systemUnderTest.DisplayOrder.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Options = {systemUnderTest.Options?.ToString() ?? "<null>"}, Label = {systemUnderTest.Label?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, HasUniqueValue = {systemUnderTest.HasUniqueValue.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, Type = {systemUnderTest.Type?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, FieldType = {systemUnderTest.FieldType?.ToString(CultureInfo.InvariantCulture) ?? "<null>"}, FormField = {systemUnderTest.FormField.ToString(CultureInfo.InvariantCulture) ?? "<null>"}."),
                         };
 
                         return result;
                     },
                 });
 
-        private static readonly ConstructorArgumentValidationTestScenarios<PropertyModelV3> ConstructorArgumentValidationTestScenarios = new ConstructorArgumentValidationTestScenarios<PropertyModelV3>()
+        private static readonly ConstructorArgumentValidationTestScenarios<PropertyModel> ConstructorArgumentValidationTestScenarios = new ConstructorArgumentValidationTestScenarios<PropertyModel>()
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<PropertyModelV3>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
                 {
                     Name = "constructor should throw ArgumentNullException when parameter 'groupName' is null scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new PropertyModelV3(
+                        var result = new PropertyModel(
                                              null,
                                              referenceObject.Hidden,
                                              referenceObject.ModificationMetadataModel,
@@ -82,14 +82,14 @@ namespace Naos.HubSpot.Domain.Test
                     ExpectedExceptionMessageContains = new[] { "groupName" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<PropertyModelV3>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
                 {
                     Name = "constructor should throw ArgumentException when parameter 'groupName' is white space scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new PropertyModelV3(
+                        var result = new PropertyModel(
                                              Invariant($"  {Environment.NewLine}  "),
                                              referenceObject.Hidden,
                                              referenceObject.ModificationMetadataModel,
@@ -108,14 +108,14 @@ namespace Naos.HubSpot.Domain.Test
                     ExpectedExceptionMessageContains = new[] { "groupName", "white space" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<PropertyModelV3>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
                 {
                     Name = "constructor should throw ArgumentNullException when parameter 'modificationMetadataModel' is null scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new PropertyModelV3(
+                        var result = new PropertyModel(
                                              referenceObject.GroupName,
                                              referenceObject.Hidden,
                                              null,
@@ -134,14 +134,14 @@ namespace Naos.HubSpot.Domain.Test
                     ExpectedExceptionMessageContains = new[] { "modificationMetadataModel" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<PropertyModelV3>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
                 {
                     Name = "constructor should throw ArgumentNullException when parameter 'name' is null scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new PropertyModelV3(
+                        var result = new PropertyModel(
                                              referenceObject.GroupName,
                                              referenceObject.Hidden,
                                              referenceObject.ModificationMetadataModel,
@@ -160,14 +160,14 @@ namespace Naos.HubSpot.Domain.Test
                     ExpectedExceptionMessageContains = new[] { "name" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<PropertyModelV3>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
                 {
                     Name = "constructor should throw ArgumentException when parameter 'name' is white space scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new PropertyModelV3(
+                        var result = new PropertyModel(
                                              referenceObject.GroupName,
                                              referenceObject.Hidden,
                                              referenceObject.ModificationMetadataModel,
@@ -186,14 +186,14 @@ namespace Naos.HubSpot.Domain.Test
                     ExpectedExceptionMessageContains = new[] { "name", "white space" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<PropertyModelV3>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
                 {
                     Name = "constructor should throw ArgumentNullException when parameter 'options' is null scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new PropertyModelV3(
+                        var result = new PropertyModel(
                                              referenceObject.GroupName,
                                              referenceObject.Hidden,
                                              referenceObject.ModificationMetadataModel,
@@ -212,14 +212,14 @@ namespace Naos.HubSpot.Domain.Test
                     ExpectedExceptionMessageContains = new[] { "options" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<PropertyModelV3>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
                 {
                     Name = "constructor should throw ArgumentException when parameter 'options' is an empty enumerable scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new PropertyModelV3(
+                        var result = new PropertyModel(
                                              referenceObject.GroupName,
                                              referenceObject.Hidden,
                                              referenceObject.ModificationMetadataModel,
@@ -238,14 +238,14 @@ namespace Naos.HubSpot.Domain.Test
                     ExpectedExceptionMessageContains = new[] { "options", "is an empty enumerable" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<PropertyModelV3>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
                 {
                     Name = "constructor should throw ArgumentException when parameter 'options' contains a null element scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new PropertyModelV3(
+                        var result = new PropertyModel(
                                              referenceObject.GroupName,
                                              referenceObject.Hidden,
                                              referenceObject.ModificationMetadataModel,
@@ -264,14 +264,14 @@ namespace Naos.HubSpot.Domain.Test
                     ExpectedExceptionMessageContains = new[] { "options", "contains at least one null element" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<PropertyModelV3>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
                 {
                     Name = "constructor should throw ArgumentNullException when parameter 'label' is null scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new PropertyModelV3(
+                        var result = new PropertyModel(
                                              referenceObject.GroupName,
                                              referenceObject.Hidden,
                                              referenceObject.ModificationMetadataModel,
@@ -290,14 +290,14 @@ namespace Naos.HubSpot.Domain.Test
                     ExpectedExceptionMessageContains = new[] { "label" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<PropertyModelV3>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
                 {
                     Name = "constructor should throw ArgumentException when parameter 'label' is white space scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new PropertyModelV3(
+                        var result = new PropertyModel(
                                              referenceObject.GroupName,
                                              referenceObject.Hidden,
                                              referenceObject.ModificationMetadataModel,
@@ -316,14 +316,14 @@ namespace Naos.HubSpot.Domain.Test
                     ExpectedExceptionMessageContains = new[] { "label", "white space" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<PropertyModelV3>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
                 {
                     Name = "constructor should throw ArgumentNullException when parameter 'type' is null scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new PropertyModelV3(
+                        var result = new PropertyModel(
                                              referenceObject.GroupName,
                                              referenceObject.Hidden,
                                              referenceObject.ModificationMetadataModel,
@@ -342,14 +342,14 @@ namespace Naos.HubSpot.Domain.Test
                     ExpectedExceptionMessageContains = new[] { "type" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<PropertyModelV3>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
                 {
                     Name = "constructor should throw ArgumentException when parameter 'type' is white space scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new PropertyModelV3(
+                        var result = new PropertyModel(
                                              referenceObject.GroupName,
                                              referenceObject.Hidden,
                                              referenceObject.ModificationMetadataModel,
@@ -368,14 +368,14 @@ namespace Naos.HubSpot.Domain.Test
                     ExpectedExceptionMessageContains = new[] { "type", "white space" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<PropertyModelV3>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
                 {
                     Name = "constructor should throw ArgumentNullException when parameter 'fieldType' is null scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new PropertyModelV3(
+                        var result = new PropertyModel(
                                              referenceObject.GroupName,
                                              referenceObject.Hidden,
                                              referenceObject.ModificationMetadataModel,
@@ -394,14 +394,14 @@ namespace Naos.HubSpot.Domain.Test
                     ExpectedExceptionMessageContains = new[] { "fieldType" },
                 })
             .AddScenario(() =>
-                new ConstructorArgumentValidationTestScenario<PropertyModelV3>
+                new ConstructorArgumentValidationTestScenario<PropertyModel>
                 {
                     Name = "constructor should throw ArgumentException when parameter 'fieldType' is white space scenario",
                     ConstructionFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new PropertyModelV3(
+                        var result = new PropertyModel(
                                              referenceObject.GroupName,
                                              referenceObject.Hidden,
                                              referenceObject.ModificationMetadataModel,
@@ -420,18 +420,18 @@ namespace Naos.HubSpot.Domain.Test
                     ExpectedExceptionMessageContains = new[] { "fieldType", "white space" },
                 });
 
-        private static readonly ConstructorPropertyAssignmentTestScenarios<PropertyModelV3> ConstructorPropertyAssignmentTestScenarios = new ConstructorPropertyAssignmentTestScenarios<PropertyModelV3>()
+        private static readonly ConstructorPropertyAssignmentTestScenarios<PropertyModel> ConstructorPropertyAssignmentTestScenarios = new ConstructorPropertyAssignmentTestScenarios<PropertyModel>()
             .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<PropertyModelV3>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
                 {
                     Name = "GroupName should return same 'groupName' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModelV3>
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
                         {
-                            SystemUnderTest = new PropertyModelV3(
+                            SystemUnderTest = new PropertyModel(
                                                       referenceObject.GroupName,
                                                       referenceObject.Hidden,
                                                       referenceObject.ModificationMetadataModel,
@@ -451,16 +451,16 @@ namespace Naos.HubSpot.Domain.Test
                     PropertyName = "GroupName",
                 })
             .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<PropertyModelV3>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
                 {
                     Name = "Hidden should return same 'hidden' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModelV3>
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
                         {
-                            SystemUnderTest = new PropertyModelV3(
+                            SystemUnderTest = new PropertyModel(
                                                       referenceObject.GroupName,
                                                       referenceObject.Hidden,
                                                       referenceObject.ModificationMetadataModel,
@@ -480,16 +480,16 @@ namespace Naos.HubSpot.Domain.Test
                     PropertyName = "Hidden",
                 })
             .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<PropertyModelV3>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
                 {
                     Name = "ModificationMetadataModel should return same 'modificationMetadataModel' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModelV3>
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
                         {
-                            SystemUnderTest = new PropertyModelV3(
+                            SystemUnderTest = new PropertyModel(
                                                       referenceObject.GroupName,
                                                       referenceObject.Hidden,
                                                       referenceObject.ModificationMetadataModel,
@@ -509,16 +509,16 @@ namespace Naos.HubSpot.Domain.Test
                     PropertyName = "ModificationMetadataModel",
                 })
             .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<PropertyModelV3>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
                 {
                     Name = "Name should return same 'name' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModelV3>
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
                         {
-                            SystemUnderTest = new PropertyModelV3(
+                            SystemUnderTest = new PropertyModel(
                                                       referenceObject.GroupName,
                                                       referenceObject.Hidden,
                                                       referenceObject.ModificationMetadataModel,
@@ -538,16 +538,16 @@ namespace Naos.HubSpot.Domain.Test
                     PropertyName = "Name",
                 })
             .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<PropertyModelV3>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
                 {
                     Name = "DisplayOrder should return same 'displayOrder' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModelV3>
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
                         {
-                            SystemUnderTest = new PropertyModelV3(
+                            SystemUnderTest = new PropertyModel(
                                                       referenceObject.GroupName,
                                                       referenceObject.Hidden,
                                                       referenceObject.ModificationMetadataModel,
@@ -567,16 +567,16 @@ namespace Naos.HubSpot.Domain.Test
                     PropertyName = "DisplayOrder",
                 })
             .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<PropertyModelV3>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
                 {
                     Name = "Options should return same 'options' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModelV3>
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
                         {
-                            SystemUnderTest = new PropertyModelV3(
+                            SystemUnderTest = new PropertyModel(
                                                       referenceObject.GroupName,
                                                       referenceObject.Hidden,
                                                       referenceObject.ModificationMetadataModel,
@@ -596,16 +596,16 @@ namespace Naos.HubSpot.Domain.Test
                     PropertyName = "Options",
                 })
             .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<PropertyModelV3>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
                 {
                     Name = "Label should return same 'label' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModelV3>
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
                         {
-                            SystemUnderTest = new PropertyModelV3(
+                            SystemUnderTest = new PropertyModel(
                                                       referenceObject.GroupName,
                                                       referenceObject.Hidden,
                                                       referenceObject.ModificationMetadataModel,
@@ -625,16 +625,16 @@ namespace Naos.HubSpot.Domain.Test
                     PropertyName = "Label",
                 })
             .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<PropertyModelV3>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
                 {
                     Name = "Type should return same 'type' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModelV3>
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
                         {
-                            SystemUnderTest = new PropertyModelV3(
+                            SystemUnderTest = new PropertyModel(
                                                       referenceObject.GroupName,
                                                       referenceObject.Hidden,
                                                       referenceObject.ModificationMetadataModel,
@@ -654,16 +654,16 @@ namespace Naos.HubSpot.Domain.Test
                     PropertyName = "Type",
                 })
             .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<PropertyModelV3>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
                 {
                     Name = "HasUniqueValue should return same 'hasUniqueValue' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModelV3>
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
                         {
-                            SystemUnderTest = new PropertyModelV3(
+                            SystemUnderTest = new PropertyModel(
                                                       referenceObject.GroupName,
                                                       referenceObject.Hidden,
                                                       referenceObject.ModificationMetadataModel,
@@ -683,16 +683,16 @@ namespace Naos.HubSpot.Domain.Test
                     PropertyName = "HasUniqueValue",
                 })
             .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<PropertyModelV3>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
                 {
                     Name = "FieldType should return same 'fieldType' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModelV3>
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
                         {
-                            SystemUnderTest = new PropertyModelV3(
+                            SystemUnderTest = new PropertyModel(
                                                       referenceObject.GroupName,
                                                       referenceObject.Hidden,
                                                       referenceObject.ModificationMetadataModel,
@@ -712,16 +712,16 @@ namespace Naos.HubSpot.Domain.Test
                     PropertyName = "FieldType",
                 })
             .AddScenario(() =>
-                new ConstructorPropertyAssignmentTestScenario<PropertyModelV3>
+                new ConstructorPropertyAssignmentTestScenario<PropertyModel>
                 {
                     Name = "FormField should return same 'formField' parameter passed to constructor when getting",
                     SystemUnderTestExpectedPropertyValueFunc = () =>
                     {
-                        var referenceObject = A.Dummy<PropertyModelV3>();
+                        var referenceObject = A.Dummy<PropertyModel>();
 
-                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModelV3>
+                        var result = new SystemUnderTestExpectedPropertyValue<PropertyModel>
                         {
-                            SystemUnderTest = new PropertyModelV3(
+                            SystemUnderTest = new PropertyModel(
                                                       referenceObject.GroupName,
                                                       referenceObject.Hidden,
                                                       referenceObject.ModificationMetadataModel,
@@ -741,19 +741,19 @@ namespace Naos.HubSpot.Domain.Test
                     PropertyName = "FormField",
                 });
 
-        private static readonly DeepCloneWithTestScenarios<PropertyModelV3> DeepCloneWithTestScenarios = new DeepCloneWithTestScenarios<PropertyModelV3>()
+        private static readonly DeepCloneWithTestScenarios<PropertyModel> DeepCloneWithTestScenarios = new DeepCloneWithTestScenarios<PropertyModel>()
             .AddScenario(() =>
-                new DeepCloneWithTestScenario<PropertyModelV3>
+                new DeepCloneWithTestScenario<PropertyModel>
                 {
                     Name = "DeepCloneWithGroupName should deep clone object and replace GroupName with the provided groupName",
                     WithPropertyName = "GroupName",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<PropertyModelV3>();
+                        var systemUnderTest = A.Dummy<PropertyModel>();
 
-                        var referenceObject = A.Dummy<PropertyModelV3>().ThatIs(_ => !systemUnderTest.GroupName.IsEqualTo(_.GroupName));
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.GroupName.IsEqualTo(_.GroupName));
 
-                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModelV3>
+                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
                         {
                             SystemUnderTest = systemUnderTest,
                             DeepCloneWithValue = referenceObject.GroupName,
@@ -763,17 +763,17 @@ namespace Naos.HubSpot.Domain.Test
                     },
                 })
             .AddScenario(() =>
-                new DeepCloneWithTestScenario<PropertyModelV3>
+                new DeepCloneWithTestScenario<PropertyModel>
                 {
                     Name = "DeepCloneWithHidden should deep clone object and replace Hidden with the provided hidden",
                     WithPropertyName = "Hidden",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<PropertyModelV3>();
+                        var systemUnderTest = A.Dummy<PropertyModel>();
 
-                        var referenceObject = A.Dummy<PropertyModelV3>().ThatIs(_ => !systemUnderTest.Hidden.IsEqualTo(_.Hidden));
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.Hidden.IsEqualTo(_.Hidden));
 
-                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModelV3>
+                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
                         {
                             SystemUnderTest = systemUnderTest,
                             DeepCloneWithValue = referenceObject.Hidden,
@@ -783,17 +783,17 @@ namespace Naos.HubSpot.Domain.Test
                     },
                 })
             .AddScenario(() =>
-                new DeepCloneWithTestScenario<PropertyModelV3>
+                new DeepCloneWithTestScenario<PropertyModel>
                 {
                     Name = "DeepCloneWithModificationMetadataModel should deep clone object and replace ModificationMetadataModel with the provided modificationMetadataModel",
                     WithPropertyName = "ModificationMetadataModel",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<PropertyModelV3>();
+                        var systemUnderTest = A.Dummy<PropertyModel>();
 
-                        var referenceObject = A.Dummy<PropertyModelV3>().ThatIs(_ => !systemUnderTest.ModificationMetadataModel.IsEqualTo(_.ModificationMetadataModel));
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.ModificationMetadataModel.IsEqualTo(_.ModificationMetadataModel));
 
-                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModelV3>
+                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
                         {
                             SystemUnderTest = systemUnderTest,
                             DeepCloneWithValue = referenceObject.ModificationMetadataModel,
@@ -803,17 +803,17 @@ namespace Naos.HubSpot.Domain.Test
                     },
                 })
             .AddScenario(() =>
-                new DeepCloneWithTestScenario<PropertyModelV3>
+                new DeepCloneWithTestScenario<PropertyModel>
                 {
                     Name = "DeepCloneWithName should deep clone object and replace Name with the provided name",
                     WithPropertyName = "Name",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<PropertyModelV3>();
+                        var systemUnderTest = A.Dummy<PropertyModel>();
 
-                        var referenceObject = A.Dummy<PropertyModelV3>().ThatIs(_ => !systemUnderTest.Name.IsEqualTo(_.Name));
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.Name.IsEqualTo(_.Name));
 
-                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModelV3>
+                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
                         {
                             SystemUnderTest = systemUnderTest,
                             DeepCloneWithValue = referenceObject.Name,
@@ -823,17 +823,17 @@ namespace Naos.HubSpot.Domain.Test
                     },
                 })
             .AddScenario(() =>
-                new DeepCloneWithTestScenario<PropertyModelV3>
+                new DeepCloneWithTestScenario<PropertyModel>
                 {
                     Name = "DeepCloneWithDisplayOrder should deep clone object and replace DisplayOrder with the provided displayOrder",
                     WithPropertyName = "DisplayOrder",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<PropertyModelV3>();
+                        var systemUnderTest = A.Dummy<PropertyModel>();
 
-                        var referenceObject = A.Dummy<PropertyModelV3>().ThatIs(_ => !systemUnderTest.DisplayOrder.IsEqualTo(_.DisplayOrder));
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.DisplayOrder.IsEqualTo(_.DisplayOrder));
 
-                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModelV3>
+                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
                         {
                             SystemUnderTest = systemUnderTest,
                             DeepCloneWithValue = referenceObject.DisplayOrder,
@@ -843,17 +843,17 @@ namespace Naos.HubSpot.Domain.Test
                     },
                 })
             .AddScenario(() =>
-                new DeepCloneWithTestScenario<PropertyModelV3>
+                new DeepCloneWithTestScenario<PropertyModel>
                 {
                     Name = "DeepCloneWithOptions should deep clone object and replace Options with the provided options",
                     WithPropertyName = "Options",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<PropertyModelV3>();
+                        var systemUnderTest = A.Dummy<PropertyModel>();
 
-                        var referenceObject = A.Dummy<PropertyModelV3>().ThatIs(_ => !systemUnderTest.Options.IsEqualTo(_.Options));
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.Options.IsEqualTo(_.Options));
 
-                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModelV3>
+                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
                         {
                             SystemUnderTest = systemUnderTest,
                             DeepCloneWithValue = referenceObject.Options,
@@ -863,17 +863,17 @@ namespace Naos.HubSpot.Domain.Test
                     },
                 })
             .AddScenario(() =>
-                new DeepCloneWithTestScenario<PropertyModelV3>
+                new DeepCloneWithTestScenario<PropertyModel>
                 {
                     Name = "DeepCloneWithLabel should deep clone object and replace Label with the provided label",
                     WithPropertyName = "Label",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<PropertyModelV3>();
+                        var systemUnderTest = A.Dummy<PropertyModel>();
 
-                        var referenceObject = A.Dummy<PropertyModelV3>().ThatIs(_ => !systemUnderTest.Label.IsEqualTo(_.Label));
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.Label.IsEqualTo(_.Label));
 
-                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModelV3>
+                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
                         {
                             SystemUnderTest = systemUnderTest,
                             DeepCloneWithValue = referenceObject.Label,
@@ -883,17 +883,17 @@ namespace Naos.HubSpot.Domain.Test
                     },
                 })
             .AddScenario(() =>
-                new DeepCloneWithTestScenario<PropertyModelV3>
+                new DeepCloneWithTestScenario<PropertyModel>
                 {
                     Name = "DeepCloneWithHasUniqueValue should deep clone object and replace HasUniqueValue with the provided hasUniqueValue",
                     WithPropertyName = "HasUniqueValue",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<PropertyModelV3>();
+                        var systemUnderTest = A.Dummy<PropertyModel>();
 
-                        var referenceObject = A.Dummy<PropertyModelV3>().ThatIs(_ => !systemUnderTest.HasUniqueValue.IsEqualTo(_.HasUniqueValue));
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.HasUniqueValue.IsEqualTo(_.HasUniqueValue));
 
-                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModelV3>
+                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
                         {
                             SystemUnderTest = systemUnderTest,
                             DeepCloneWithValue = referenceObject.HasUniqueValue,
@@ -903,17 +903,17 @@ namespace Naos.HubSpot.Domain.Test
                     },
                 })
             .AddScenario(() =>
-                new DeepCloneWithTestScenario<PropertyModelV3>
+                new DeepCloneWithTestScenario<PropertyModel>
                 {
                     Name = "DeepCloneWithType should deep clone object and replace Type with the provided type",
                     WithPropertyName = "Type",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<PropertyModelV3>();
+                        var systemUnderTest = A.Dummy<PropertyModel>();
 
-                        var referenceObject = A.Dummy<PropertyModelV3>().ThatIs(_ => !systemUnderTest.Type.IsEqualTo(_.Type));
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.Type.IsEqualTo(_.Type));
 
-                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModelV3>
+                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
                         {
                             SystemUnderTest = systemUnderTest,
                             DeepCloneWithValue = referenceObject.Type,
@@ -923,17 +923,17 @@ namespace Naos.HubSpot.Domain.Test
                     },
                 })
             .AddScenario(() =>
-                new DeepCloneWithTestScenario<PropertyModelV3>
+                new DeepCloneWithTestScenario<PropertyModel>
                 {
                     Name = "DeepCloneWithFieldType should deep clone object and replace FieldType with the provided fieldType",
                     WithPropertyName = "FieldType",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<PropertyModelV3>();
+                        var systemUnderTest = A.Dummy<PropertyModel>();
 
-                        var referenceObject = A.Dummy<PropertyModelV3>().ThatIs(_ => !systemUnderTest.FieldType.IsEqualTo(_.FieldType));
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.FieldType.IsEqualTo(_.FieldType));
 
-                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModelV3>
+                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
                         {
                             SystemUnderTest = systemUnderTest,
                             DeepCloneWithValue = referenceObject.FieldType,
@@ -943,17 +943,17 @@ namespace Naos.HubSpot.Domain.Test
                     },
                 })
             .AddScenario(() =>
-                new DeepCloneWithTestScenario<PropertyModelV3>
+                new DeepCloneWithTestScenario<PropertyModel>
                 {
                     Name = "DeepCloneWithFormField should deep clone object and replace FormField with the provided formField",
                     WithPropertyName = "FormField",
                     SystemUnderTestDeepCloneWithValueFunc = () =>
                     {
-                        var systemUnderTest = A.Dummy<PropertyModelV3>();
+                        var systemUnderTest = A.Dummy<PropertyModel>();
 
-                        var referenceObject = A.Dummy<PropertyModelV3>().ThatIs(_ => !systemUnderTest.FormField.IsEqualTo(_.FormField));
+                        var referenceObject = A.Dummy<PropertyModel>().ThatIs(_ => !systemUnderTest.FormField.IsEqualTo(_.FormField));
 
-                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModelV3>
+                        var result = new SystemUnderTestDeepCloneWithValue<PropertyModel>
                         {
                             SystemUnderTest = systemUnderTest,
                             DeepCloneWithValue = referenceObject.FormField,
@@ -963,17 +963,17 @@ namespace Naos.HubSpot.Domain.Test
                     },
                 });
 
-        private static readonly PropertyModelV3 ReferenceObjectForEquatableTestScenarios = A.Dummy<PropertyModelV3>();
+        private static readonly PropertyModel ReferenceObjectForEquatableTestScenarios = A.Dummy<PropertyModel>();
 
-        private static readonly EquatableTestScenarios<PropertyModelV3> EquatableTestScenarios = new EquatableTestScenarios<PropertyModelV3>()
+        private static readonly EquatableTestScenarios<PropertyModel> EquatableTestScenarios = new EquatableTestScenarios<PropertyModel>()
             .AddScenario(() =>
-                new EquatableTestScenario<PropertyModelV3>
+                new EquatableTestScenario<PropertyModel>
                 {
                     Name = "Default Code Generated Scenario",
                     ReferenceObject = ReferenceObjectForEquatableTestScenarios,
-                    ObjectsThatAreEqualToButNotTheSameAsReferenceObject = new PropertyModelV3[]
+                    ObjectsThatAreEqualToButNotTheSameAsReferenceObject = new PropertyModel[]
                     {
-                        new PropertyModelV3(
+                        new PropertyModel(
                                 ReferenceObjectForEquatableTestScenarios.GroupName,
                                 ReferenceObjectForEquatableTestScenarios.Hidden,
                                 ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
@@ -986,10 +986,10 @@ namespace Naos.HubSpot.Domain.Test
                                 ReferenceObjectForEquatableTestScenarios.FieldType,
                                 ReferenceObjectForEquatableTestScenarios.FormField),
                     },
-                    ObjectsThatAreNotEqualToReferenceObject = new PropertyModelV3[]
+                    ObjectsThatAreNotEqualToReferenceObject = new PropertyModel[]
                     {
-                        new PropertyModelV3(
-                                A.Dummy<PropertyModelV3>().Whose(_ => !_.GroupName.IsEqualTo(ReferenceObjectForEquatableTestScenarios.GroupName)).GroupName,
+                        new PropertyModel(
+                                A.Dummy<PropertyModel>().Whose(_ => !_.GroupName.IsEqualTo(ReferenceObjectForEquatableTestScenarios.GroupName)).GroupName,
                                 ReferenceObjectForEquatableTestScenarios.Hidden,
                                 ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
                                 ReferenceObjectForEquatableTestScenarios.Name,
@@ -1000,9 +1000,9 @@ namespace Naos.HubSpot.Domain.Test
                                 ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
                                 ReferenceObjectForEquatableTestScenarios.FieldType,
                                 ReferenceObjectForEquatableTestScenarios.FormField),
-                        new PropertyModelV3(
+                        new PropertyModel(
                                 ReferenceObjectForEquatableTestScenarios.GroupName,
-                                A.Dummy<PropertyModelV3>().Whose(_ => !_.Hidden.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Hidden)).Hidden,
+                                A.Dummy<PropertyModel>().Whose(_ => !_.Hidden.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Hidden)).Hidden,
                                 ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
                                 ReferenceObjectForEquatableTestScenarios.Name,
                                 ReferenceObjectForEquatableTestScenarios.DisplayOrder,
@@ -1012,10 +1012,10 @@ namespace Naos.HubSpot.Domain.Test
                                 ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
                                 ReferenceObjectForEquatableTestScenarios.FieldType,
                                 ReferenceObjectForEquatableTestScenarios.FormField),
-                        new PropertyModelV3(
+                        new PropertyModel(
                                 ReferenceObjectForEquatableTestScenarios.GroupName,
                                 ReferenceObjectForEquatableTestScenarios.Hidden,
-                                A.Dummy<PropertyModelV3>().Whose(_ => !_.ModificationMetadataModel.IsEqualTo(ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel)).ModificationMetadataModel,
+                                A.Dummy<PropertyModel>().Whose(_ => !_.ModificationMetadataModel.IsEqualTo(ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel)).ModificationMetadataModel,
                                 ReferenceObjectForEquatableTestScenarios.Name,
                                 ReferenceObjectForEquatableTestScenarios.DisplayOrder,
                                 ReferenceObjectForEquatableTestScenarios.Options,
@@ -1024,11 +1024,11 @@ namespace Naos.HubSpot.Domain.Test
                                 ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
                                 ReferenceObjectForEquatableTestScenarios.FieldType,
                                 ReferenceObjectForEquatableTestScenarios.FormField),
-                        new PropertyModelV3(
+                        new PropertyModel(
                                 ReferenceObjectForEquatableTestScenarios.GroupName,
                                 ReferenceObjectForEquatableTestScenarios.Hidden,
                                 ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
-                                A.Dummy<PropertyModelV3>().Whose(_ => !_.Name.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Name)).Name,
+                                A.Dummy<PropertyModel>().Whose(_ => !_.Name.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Name)).Name,
                                 ReferenceObjectForEquatableTestScenarios.DisplayOrder,
                                 ReferenceObjectForEquatableTestScenarios.Options,
                                 ReferenceObjectForEquatableTestScenarios.Label,
@@ -1036,67 +1036,43 @@ namespace Naos.HubSpot.Domain.Test
                                 ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
                                 ReferenceObjectForEquatableTestScenarios.FieldType,
                                 ReferenceObjectForEquatableTestScenarios.FormField),
-                        new PropertyModelV3(
+                        new PropertyModel(
                                 ReferenceObjectForEquatableTestScenarios.GroupName,
                                 ReferenceObjectForEquatableTestScenarios.Hidden,
                                 ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
                                 ReferenceObjectForEquatableTestScenarios.Name,
-                                A.Dummy<PropertyModelV3>().Whose(_ => !_.DisplayOrder.IsEqualTo(ReferenceObjectForEquatableTestScenarios.DisplayOrder)).DisplayOrder,
+                                A.Dummy<PropertyModel>().Whose(_ => !_.DisplayOrder.IsEqualTo(ReferenceObjectForEquatableTestScenarios.DisplayOrder)).DisplayOrder,
                                 ReferenceObjectForEquatableTestScenarios.Options,
                                 ReferenceObjectForEquatableTestScenarios.Label,
                                 ReferenceObjectForEquatableTestScenarios.Type,
                                 ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
                                 ReferenceObjectForEquatableTestScenarios.FieldType,
                                 ReferenceObjectForEquatableTestScenarios.FormField),
-                        new PropertyModelV3(
+                        new PropertyModel(
                                 ReferenceObjectForEquatableTestScenarios.GroupName,
                                 ReferenceObjectForEquatableTestScenarios.Hidden,
                                 ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
                                 ReferenceObjectForEquatableTestScenarios.Name,
                                 ReferenceObjectForEquatableTestScenarios.DisplayOrder,
-                                A.Dummy<PropertyModelV3>().Whose(_ => !_.Options.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Options)).Options,
+                                A.Dummy<PropertyModel>().Whose(_ => !_.Options.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Options)).Options,
                                 ReferenceObjectForEquatableTestScenarios.Label,
                                 ReferenceObjectForEquatableTestScenarios.Type,
                                 ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
                                 ReferenceObjectForEquatableTestScenarios.FieldType,
                                 ReferenceObjectForEquatableTestScenarios.FormField),
-                        new PropertyModelV3(
+                        new PropertyModel(
                                 ReferenceObjectForEquatableTestScenarios.GroupName,
                                 ReferenceObjectForEquatableTestScenarios.Hidden,
                                 ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
                                 ReferenceObjectForEquatableTestScenarios.Name,
                                 ReferenceObjectForEquatableTestScenarios.DisplayOrder,
                                 ReferenceObjectForEquatableTestScenarios.Options,
-                                A.Dummy<PropertyModelV3>().Whose(_ => !_.Label.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Label)).Label,
+                                A.Dummy<PropertyModel>().Whose(_ => !_.Label.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Label)).Label,
                                 ReferenceObjectForEquatableTestScenarios.Type,
                                 ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
                                 ReferenceObjectForEquatableTestScenarios.FieldType,
                                 ReferenceObjectForEquatableTestScenarios.FormField),
-                        new PropertyModelV3(
-                                ReferenceObjectForEquatableTestScenarios.GroupName,
-                                ReferenceObjectForEquatableTestScenarios.Hidden,
-                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
-                                ReferenceObjectForEquatableTestScenarios.Name,
-                                ReferenceObjectForEquatableTestScenarios.DisplayOrder,
-                                ReferenceObjectForEquatableTestScenarios.Options,
-                                ReferenceObjectForEquatableTestScenarios.Label,
-                                ReferenceObjectForEquatableTestScenarios.Type,
-                                A.Dummy<PropertyModelV3>().Whose(_ => !_.HasUniqueValue.IsEqualTo(ReferenceObjectForEquatableTestScenarios.HasUniqueValue)).HasUniqueValue,
-                                ReferenceObjectForEquatableTestScenarios.FieldType,
-                                ReferenceObjectForEquatableTestScenarios.FormField),
-                        new PropertyModelV3(
-                                ReferenceObjectForEquatableTestScenarios.GroupName,
-                                ReferenceObjectForEquatableTestScenarios.Hidden,
-                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
-                                ReferenceObjectForEquatableTestScenarios.Name,
-                                ReferenceObjectForEquatableTestScenarios.DisplayOrder,
-                                ReferenceObjectForEquatableTestScenarios.Options,
-                                ReferenceObjectForEquatableTestScenarios.Label,
-                                A.Dummy<PropertyModelV3>().Whose(_ => !_.Type.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Type)).Type,
-                                ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
-                                ReferenceObjectForEquatableTestScenarios.FieldType,
-                                ReferenceObjectForEquatableTestScenarios.FormField),
-                        new PropertyModelV3(
+                        new PropertyModel(
                                 ReferenceObjectForEquatableTestScenarios.GroupName,
                                 ReferenceObjectForEquatableTestScenarios.Hidden,
                                 ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
@@ -1105,10 +1081,22 @@ namespace Naos.HubSpot.Domain.Test
                                 ReferenceObjectForEquatableTestScenarios.Options,
                                 ReferenceObjectForEquatableTestScenarios.Label,
                                 ReferenceObjectForEquatableTestScenarios.Type,
-                                ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
-                                A.Dummy<PropertyModelV3>().Whose(_ => !_.FieldType.IsEqualTo(ReferenceObjectForEquatableTestScenarios.FieldType)).FieldType,
+                                A.Dummy<PropertyModel>().Whose(_ => !_.HasUniqueValue.IsEqualTo(ReferenceObjectForEquatableTestScenarios.HasUniqueValue)).HasUniqueValue,
+                                ReferenceObjectForEquatableTestScenarios.FieldType,
                                 ReferenceObjectForEquatableTestScenarios.FormField),
-                        new PropertyModelV3(
+                        new PropertyModel(
+                                ReferenceObjectForEquatableTestScenarios.GroupName,
+                                ReferenceObjectForEquatableTestScenarios.Hidden,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Name,
+                                ReferenceObjectForEquatableTestScenarios.DisplayOrder,
+                                ReferenceObjectForEquatableTestScenarios.Options,
+                                ReferenceObjectForEquatableTestScenarios.Label,
+                                A.Dummy<PropertyModel>().Whose(_ => !_.Type.IsEqualTo(ReferenceObjectForEquatableTestScenarios.Type)).Type,
+                                ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
+                                ReferenceObjectForEquatableTestScenarios.FieldType,
+                                ReferenceObjectForEquatableTestScenarios.FormField),
+                        new PropertyModel(
                                 ReferenceObjectForEquatableTestScenarios.GroupName,
                                 ReferenceObjectForEquatableTestScenarios.Hidden,
                                 ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
@@ -1118,8 +1106,20 @@ namespace Naos.HubSpot.Domain.Test
                                 ReferenceObjectForEquatableTestScenarios.Label,
                                 ReferenceObjectForEquatableTestScenarios.Type,
                                 ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
+                                A.Dummy<PropertyModel>().Whose(_ => !_.FieldType.IsEqualTo(ReferenceObjectForEquatableTestScenarios.FieldType)).FieldType,
+                                ReferenceObjectForEquatableTestScenarios.FormField),
+                        new PropertyModel(
+                                ReferenceObjectForEquatableTestScenarios.GroupName,
+                                ReferenceObjectForEquatableTestScenarios.Hidden,
+                                ReferenceObjectForEquatableTestScenarios.ModificationMetadataModel,
+                                ReferenceObjectForEquatableTestScenarios.Name,
+                                ReferenceObjectForEquatableTestScenarios.DisplayOrder,
+                                ReferenceObjectForEquatableTestScenarios.Options,
+                                ReferenceObjectForEquatableTestScenarios.Label,
+                                ReferenceObjectForEquatableTestScenarios.Type,
+                                ReferenceObjectForEquatableTestScenarios.HasUniqueValue,
                                 ReferenceObjectForEquatableTestScenarios.FieldType,
-                                A.Dummy<PropertyModelV3>().Whose(_ => !_.FormField.IsEqualTo(ReferenceObjectForEquatableTestScenarios.FormField)).FormField),
+                                A.Dummy<PropertyModel>().Whose(_ => !_.FormField.IsEqualTo(ReferenceObjectForEquatableTestScenarios.FormField)).FormField),
                     },
                     ObjectsThatAreNotOfTheSameTypeAsReferenceObject = new object[]
                     {
@@ -1152,9 +1152,9 @@ namespace Naos.HubSpot.Domain.Test
             public static void PropertyModelV3___Should_implement_IModel_of_PropertyModelV3___When_reflecting()
             {
                 // Arrange
-                var type = typeof(PropertyModelV3);
+                var type = typeof(PropertyModel);
 
-                var expectedModelMethods = typeof(IModel<PropertyModelV3>).GetInterfaceDeclaredAndImplementedMethods();
+                var expectedModelMethods = typeof(IModel<PropertyModel>).GetInterfaceDeclaredAndImplementedMethods();
 
                 var expectedModelMethodHashes = expectedModelMethods.Select(_ => _.GetSignatureHash());
 
@@ -1164,7 +1164,7 @@ namespace Naos.HubSpot.Domain.Test
                 var actualModelMethodHashes = actualModelMethods.Select(_ => _.GetSignatureHash());
 
                 // Assert
-                actualInterfaces.AsTest().Must().ContainElement(typeof(IModel<PropertyModelV3>));
+                actualInterfaces.AsTest().Must().ContainElement(typeof(IModel<PropertyModel>));
                 expectedModelMethodHashes.Except(actualModelMethodHashes).AsTest().Must().BeEmptyEnumerable();
             }
 
@@ -1185,7 +1185,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void PropertyModelV3___Should_be_attributed_with_Serializable____When_reflecting()
             {
                 // Arrange
-                var type = typeof(PropertyModelV3);
+                var type = typeof(PropertyModel);
 
                 // Act
                 var actualAttributes = type.GetCustomAttributes(typeof(SerializableAttribute), false);
@@ -1315,7 +1315,7 @@ namespace Naos.HubSpot.Domain.Test
                         // Here 'scenario.ExpectedPropertyValue' and 'actual' are declared as typeof(object).
                         // With the exception of some specific boxed types (e.g. value types, string),
                         // BeEqualTo() uses reference equality to compare two objects declared as typeof(object).
-                        // We want to use the property's real type, 'scenario.Property.PropertyType'.
+                        // We want to use the property's real type, 'scenario.PropModel.PropertyType'.
                         // For example, BeEqualTo() returns false for these two dictionaries because their declared type is typeof(object):
                         // object x = Dictionary<string, string>();
                         // object y = Dictionary<string, string>();
@@ -1358,10 +1358,10 @@ namespace Naos.HubSpot.Domain.Test
             public static void Clone___Should_clone_object___When_called()
             {
                 // Arrange
-                var systemUnderTest = A.Dummy<PropertyModelV3>();
+                var systemUnderTest = A.Dummy<PropertyModel>();
 
                 // Act
-                var actual = (PropertyModelV3)systemUnderTest.Clone();
+                var actual = (PropertyModel)systemUnderTest.Clone();
 
                 // Assert
                 actual.AsTest().Must().BeEqualTo(systemUnderTest);
@@ -1385,7 +1385,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void DeepClone___Should_deep_clone_object___When_called()
             {
                 // Arrange
-                var systemUnderTest = A.Dummy<PropertyModelV3>();
+                var systemUnderTest = A.Dummy<PropertyModel>();
 
                 // Act
                 var actual = systemUnderTest.DeepClone();
@@ -1446,12 +1446,12 @@ namespace Naos.HubSpot.Domain.Test
                     }
 
                     // Act
-                    var actual = (PropertyModelV3)scenario.DeepCloneWithMethod.Invoke(scenario.SystemUnderTest, new[] { scenario.WithValue });
+                    var actual = (PropertyModel)scenario.DeepCloneWithMethod.Invoke(scenario.SystemUnderTest, new[] { scenario.WithValue });
 
                     // Assert
                     foreach(var propertyName in propertyNames)
                     {
-                        var propertyInfo = typeof(PropertyModelV3).GetPropertyFiltered(propertyName, MemberRelationships.DeclaredOrInherited, MemberOwners.Instance, MemberAccessModifiers.Public);
+                        var propertyInfo = typeof(PropertyModel).GetPropertyFiltered(propertyName, MemberRelationships.DeclaredOrInherited, MemberOwners.Instance, MemberAccessModifiers.Public);
 
                         var propertyType = propertyInfo.PropertyType;
 
@@ -1519,7 +1519,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_string_using_ObcBsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<PropertyModelV3>();
+                var expected = A.Dummy<PropertyModel>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.BsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -1548,7 +1548,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_bytes_using_ObcBsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<PropertyModelV3>();
+                var expected = A.Dummy<PropertyModel>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.BsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -1577,7 +1577,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_string_using_ObcJsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<PropertyModelV3>();
+                var expected = A.Dummy<PropertyModel>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.JsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -1606,7 +1606,7 @@ namespace Naos.HubSpot.Domain.Test
             public static void Deserialize___Should_roundtrip_object___When_serializing_to_and_deserializing_from_bytes_using_ObcJsonSerializer()
             {
                 // Arrange
-                var expected = A.Dummy<PropertyModelV3>();
+                var expected = A.Dummy<PropertyModel>();
 
                 var serializationConfigurationType = SerializationConfigurationTypes.JsonSerializationConfigurationType.ConcreteSerializationConfigurationDerivativeType;
 
@@ -1640,8 +1640,8 @@ namespace Naos.HubSpot.Domain.Test
             public static void EqualsOperator___Should_return_true___When_both_sides_of_operator_are_null()
             {
                 // Arrange
-                PropertyModelV3 systemUnderTest1 = null;
-                PropertyModelV3 systemUnderTest2 = null;
+                PropertyModel systemUnderTest1 = null;
+                PropertyModel systemUnderTest2 = null;
 
                 // Act
                 var actual = systemUnderTest1 == systemUnderTest2;
@@ -1671,7 +1671,7 @@ namespace Naos.HubSpot.Domain.Test
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    PropertyModelV3 systemUnderTest = null;
+                    PropertyModel systemUnderTest = null;
 
                     // Act
                     var actual1 = systemUnderTest == scenario.ReferenceObject;
@@ -1820,8 +1820,8 @@ namespace Naos.HubSpot.Domain.Test
             public static void NotEqualsOperator___Should_return_false___When_both_sides_of_operator_are_null()
             {
                 // Arrange
-                PropertyModelV3 systemUnderTest1 = null;
-                PropertyModelV3 systemUnderTest2 = null;
+                PropertyModel systemUnderTest1 = null;
+                PropertyModel systemUnderTest2 = null;
 
                 // Act
                 var actual = systemUnderTest1 != systemUnderTest2;
@@ -1851,7 +1851,7 @@ namespace Naos.HubSpot.Domain.Test
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    PropertyModelV3 systemUnderTest = null;
+                    PropertyModel systemUnderTest = null;
 
                     // Act
                     var actual1 = systemUnderTest != scenario.ReferenceObject;
@@ -2004,7 +2004,7 @@ namespace Naos.HubSpot.Domain.Test
                 foreach (var scenario in scenarios)
                 {
                     // Arrange
-                    PropertyModelV3 systemUnderTest = null;
+                    PropertyModel systemUnderTest = null;
 
                     // Act
                     var actual = scenario.ReferenceObject.Equals(systemUnderTest);

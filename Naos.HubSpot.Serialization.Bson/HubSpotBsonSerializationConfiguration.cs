@@ -9,8 +9,6 @@ namespace Naos.HubSpot.Serialization.Bson
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Naos.HubSpot.Domain;
-    using Naos.Protocol.Domain;
     using Naos.Protocol.Serialization.Bson;
     using OBeautifulCode.Serialization.Bson;
     using OBeautifulCode.Type;

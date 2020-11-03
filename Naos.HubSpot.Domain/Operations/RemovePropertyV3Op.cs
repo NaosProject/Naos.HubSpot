@@ -9,7 +9,7 @@ namespace Naos.HubSpot.Domain
     /// <summary>
     /// Class RemovePropertyV3Op.
     /// </summary>
-    public partial class RemovePropertyV3Op : ReturningOperationBase<PropertyModelV3>, IModelViaCodeGen
+    public partial class RemovePropertyV3Op : ReturningOperationBase<PropertyModel>, IModelViaCodeGen
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="RemovePropertyV3Op"/> class.

@@ -14,16 +14,16 @@ namespace Naos.HubSpot.Domain
     /// </summary>
     /// <seealso cref="ReturningOperationBase{PropertyModel}" />
     /// <seealso cref="IModelViaCodeGen" />
-    public partial class CreatePropertyV3Op : ReturningOperationBase<PropertyV3>, IModelViaCodeGen
+    public partial class CreatePropertyV3Op : ReturningOperationBase<PropModel>, IModelViaCodeGen
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CreatePropertyV3Op"/> class.
         /// </summary>
-        /// <param name="propertyToAdd">The property to add.</param>
+        /// <param name="propModelToAdd">The property to add.</param>
         /// <param name="objectType">Type of the property.</param>
-        public CreatePropertyV3Op(PropertyV3 propertyToAdd, HubSpotPropertyObjectType objectType)
+        public CreatePropertyV3Op(PropModel propModelToAdd, HubSpotPropertyObjectType objectType)
         {
-            this.PropertyToAdd = propertyToAdd;
+            this.PropModelToAdd = propModelToAdd;
             this.ObjectType = objectType;
         }
 
@@ -31,7 +31,7 @@ namespace Naos.HubSpot.Domain
         /// Gets the property to add.
         /// </summary>
         /// <value>The property to add.</value>
-        public PropertyV3 PropertyToAdd { get; private set; }
+        public PropModel PropModelToAdd { get; private set; }
 
         /// <summary>
         /// Gets the type of the property.
