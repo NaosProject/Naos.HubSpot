@@ -7,6 +7,7 @@
 namespace Naos.HubSpot.Protocol.Client
 {
     using System;
+    using Naos.CodeAnalysis.Recipes;
     using Naos.FluentUri;
     using Naos.HubSpot.Domain;
     using Naos.Protocol.Domain;
@@ -16,6 +17,7 @@ namespace Naos.HubSpot.Protocol.Client
     /// <summary>
     /// TODO: Starting point for new project.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling", Justification = NaosSuppressBecause.CA1506_AvoidExcessiveClassCoupling_DisagreeWithAssessment)]
     public partial class HubSpotProtocol : ISyncAndAsyncReturningProtocol<SyncWithHubSpotOp, SyncWithHubSpotResult>
     {
         private readonly Uri baseUri;

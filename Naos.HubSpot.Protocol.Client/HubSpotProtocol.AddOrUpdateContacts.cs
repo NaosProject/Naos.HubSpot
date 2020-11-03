@@ -7,6 +7,7 @@
 namespace Naos.HubSpot.Protocol.Client
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.Linq;
     using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace Naos.HubSpot.Protocol.Client
     /// <summary>
     /// TODO: Starting point for new project.
     /// </summary>
+    // ReSharper disable once InconsistentNaming -- not sure why this is complaining...
     public partial class HubSpotProtocol : ISyncAndAsyncVoidProtocol<AddOrUpdateContactsOp>
     {
         /// <inheritdoc />
@@ -46,6 +48,8 @@ namespace Naos.HubSpot.Protocol.Client
     /// <summary>
     /// Extension methods to create AddOrUpdateContactsRequests.
     /// </summary>
+    [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single type", Justification = "Prefer this location.")]
+    [SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1204:Static elements should appear before instance elements", Justification = "Prefer this location.")]
     public static class AddOrUpdateContactsRequestBuilder
     {
         /// <summary>

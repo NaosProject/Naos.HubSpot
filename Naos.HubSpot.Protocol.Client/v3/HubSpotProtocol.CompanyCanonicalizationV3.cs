@@ -7,6 +7,7 @@
 namespace Naos.HubSpot.Protocol.Client
 {
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Runtime.CompilerServices;
     using Naos.CodeAnalysis.Recipes;
@@ -77,6 +78,8 @@ namespace Naos.HubSpot.Protocol.Client
     /// <summary>
     ///     Class provides extension methods with which to convert enum values to text and from text to enum values.
     /// </summary>
+    [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single type", Justification = "Prefer this location.")]
+    [SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1204:Static elements should appear before instance elements", Justification = "Prefer this location.")]
     public static partial class PropertyNameCanonicalizationExtensions
     {
         /// <summary>
@@ -124,15 +127,14 @@ namespace Naos.HubSpot.Protocol.Client
         }
 
         /// <summary>
-        /// Converts to companyrequestmodelv3.
+        /// Converts to company request model for v3.
         /// </summary>
         /// <param name="company">The company.</param>
         /// <returns>CompanyRequestModelV3.</returns>
         public static CompanyRequestModelV3 ToCompanyRequestModelV3(this CompanyV3 company)
         {
-            string id;
-            if (!company.Properties.TryGetValue(StandardCompanyPropertyNameV3.HubSpotId.ToString(), out id) ||
-                id == string.Empty)
+            var hasId = company.Properties.TryGetValue(StandardCompanyPropertyNameV3.HubSpotId.ToString(), out var id);
+            if (hasId && string.IsNullOrWhiteSpace(id))
             {
                 id = null;
             }

@@ -4,7 +4,7 @@
 
 namespace Naos.HubSpot.Domain
 {
-    using Newtonsoft.Json;
+    using Naos.CodeAnalysis.Recipes;
     using OBeautifulCode.Type;
 
     /// <summary>
@@ -33,6 +33,7 @@ namespace Naos.HubSpot.Domain
         /// Gets the type of the association.
         /// </summary>
         /// <value>The type of the association.</value>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1721:PropertyNamesShouldNotMatchGetMethods", Justification = "Must match return from API.")]
         public string Type { get; private set; }
     }
 }

@@ -7,8 +7,8 @@
 namespace Naos.HubSpot.Protocol.Client
 {
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
-    using System.Runtime.InteropServices;
     using Naos.CodeAnalysis.Recipes;
     using Naos.HubSpot.Domain;
 
@@ -65,6 +65,8 @@ namespace Naos.HubSpot.Protocol.Client
     /// <summary>
     ///     Class provides extension methods with which to convert enum values to text and from text to enum values.
     /// </summary>
+    [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single type", Justification = "Prefer this location.")]
+    [SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1204:Static elements should appear before instance elements", Justification = "Prefer this location.")]
     public static partial class PropertyNameCanonicalizationExtensions
     {
         /// <summary>
@@ -105,8 +107,8 @@ namespace Naos.HubSpot.Protocol.Client
         /// <returns>ContactRequestModelV3.</returns>
         public static ContactRequestModelV3 ToContactRequestModel(this ContactV3 contact)
         {
-            string id;
-            if (!contact.Properties.TryGetValue(StandardContactPropertyNameV3.HubSpotId.ToString(), out id) || id == string.Empty)
+            var hasId = contact.Properties.TryGetValue(StandardContactPropertyNameV3.HubSpotId.ToString(), out var id);
+            if (hasId && string.IsNullOrWhiteSpace(id))
             {
                 id = null;
             }
