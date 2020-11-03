@@ -15,7 +15,7 @@ namespace Naos.HubSpot.Domain
         /// Initializes a new instance of the <see cref="AssociationsAssociationsSection"/> class.
         /// </summary>
         /// <param name="contacts">The contacts.</param>
-        public AssociationsAssociationsSection(AssociationContactsSection contacts)
+        public AssociationsAssociationsSection(AssociationContactsSection contacts = null)
         {
             this.Contacts = contacts;
         }

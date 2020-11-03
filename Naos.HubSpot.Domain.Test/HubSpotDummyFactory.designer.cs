@@ -191,7 +191,7 @@ namespace Naos.HubSpot.Domain.Test
                                  A.Dummy<Contact>()));
 
             AutoFixtureBackedDummyFactory.AddDummyCreator(
-                () => new CreatePropertyV3Op(
+                () => new CreatePropertyOp(
                                  A.Dummy<PropModel>(),
                                  A.Dummy<HubSpotPropertyObjectType>()));
 

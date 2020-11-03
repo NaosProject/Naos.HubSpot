@@ -31,7 +31,7 @@ namespace Naos.HubSpot.Protocol.Client
             var uri = this.baseUri;
             uri = uri.AppendPathSegment("crm/v3/objects/contacts");
             uri = uri.AppendPathSegment(operation.ContactId);
-            uri = uri.AppendPathSegment("associations");
+            uri = uri.AppendPathSegment("associations/company");
             uri = uri.AppendPathSegment(operation.CompanyId);
             uri = uri.AppendPathSegment("contact_to_company");
             var result = uri.Put<AssociationResult>();
