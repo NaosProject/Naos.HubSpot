@@ -10,6 +10,7 @@
 namespace OBeautifulCode.CodeGen.ModelObject.Recipes
 {
     using global::System;
+    using global::System.Linq;
     using global::System.Reflection;
 
     using OBeautifulCode.Assertion.Recipes;

@@ -67,7 +67,7 @@ namespace OBeautifulCode.Serialization.Recipes
         /// <param name="expected">The value to serialize, which should be equal to the resulting deserialized object.</param>
         /// <param name="testBson">Optional value indicating whether to test serialization to/from BSON.  DEFAULT is true.</param>
         /// <param name="testJson">Optional value indicating whether to test serialization to/from JSON.  DEFAULT is true.</param>
-        /// <param name="testPropertyBag">Optional value indicating whether to test serialization to/from a PropModel Bag.  DEFAULT is false.</param>
+        /// <param name="testPropertyBag">Optional value indicating whether to test serialization to/from a Property Bag.  DEFAULT is false.</param>
         /// <param name="formats">The serialization formats to test.</param>
         /// <param name="appDomainScenarios">Optional value that specifies various scenarios of serializing and de-serializing in the current App Domain or a new App Domain.  DEFAULT is test the roundtrip in a new App Domain and also to serialize in a new App Domain and de-serialize in a new, but different App Domain.</param>
         public static void RoundtripSerializeUsingTypesToRegisterConfigWithBeEqualToAssertion<T>(
@@ -98,10 +98,10 @@ namespace OBeautifulCode.Serialization.Recipes
         /// <param name="expected">The value to serialize, which should be equal to the resulting deserialized object.</param>
         /// <param name="bsonSerializationConfigurationType">Optional type of the serialization configuration to use for BSON testing.  DEFAULT is null; <see cref="NullBsonSerializationConfiguration"/> will be used.</param>
         /// <param name="jsonSerializationConfigurationType">Optional type of the serialization configuration to use for JSON testing.  DEFAULT is null; <see cref="NullJsonSerializationConfiguration"/> will be used.</param>
-        /// <param name="propertyBagSerializationConfigurationType">Optional type of the serialization configuration to use for PropModel Bag testing.  DEFAULT is null; <see cref="NullPropertyBagSerializationConfiguration"/> will be used.</param>
+        /// <param name="propertyBagSerializationConfigurationType">Optional type of the serialization configuration to use for Property Bag testing.  DEFAULT is null; <see cref="NullPropertyBagSerializationConfiguration"/> will be used.</param>
         /// <param name="testBson">Optional value indicating whether to test serialization to/from BSON.  DEFAULT is true.</param>
         /// <param name="testJson">Optional value indicating whether to test serialization to/from JSON.  DEFAULT is true.</param>
-        /// <param name="testPropertyBag">Optional value indicating whether to test serialization to/from a PropModel Bag.  DEFAULT is false.</param>
+        /// <param name="testPropertyBag">Optional value indicating whether to test serialization to/from a Property Bag.  DEFAULT is false.</param>
         /// <param name="formats">The serialization formats to test.</param>
         /// <param name="appDomainScenarios">Optional value that specifies various scenarios of serializing and de-serializing in the current App Domain or a new App Domain.  DEFAULT is test the roundtrip in a new App Domain and also to serialize in a new App Domain and de-serialize in a new, but different App Domain.</param>
         public static void RoundtripSerializeWithBeEqualToAssertion<T>(
@@ -137,10 +137,10 @@ namespace OBeautifulCode.Serialization.Recipes
         /// <param name="verificationCallback">Callback to verify that the expected/provided value is equal to the deserialized value.</param>
         /// <param name="bsonSerializationConfigurationType">Optional type of the serialization configuration to use for BSON testing.  DEFAULT is null; <see cref="NullBsonSerializationConfiguration"/> will be used.</param>
         /// <param name="jsonSerializationConfigurationType">Optional type of the serialization configuration to use for JSON testing.  DEFAULT is null; <see cref="NullJsonSerializationConfiguration"/> will be used.</param>
-        /// <param name="propertyBagSerializationConfigurationType">Optional type of the serialization configuration to use for PropModel Bag testing.  DEFAULT is null; <see cref="NullPropertyBagSerializationConfiguration"/> will be used.</param>
+        /// <param name="propertyBagSerializationConfigurationType">Optional type of the serialization configuration to use for Property Bag testing.  DEFAULT is null; <see cref="NullPropertyBagSerializationConfiguration"/> will be used.</param>
         /// <param name="testBson">Optional value indicating whether to test serialization to/from BSON.  DEFAULT is true.</param>
         /// <param name="testJson">Optional value indicating whether to test serialization to/from JSON.  DEFAULT is true.</param>
-        /// <param name="testPropertyBag">Optional value indicating whether to test serialization to/from a PropModel Bag.  DEFAULT is false.</param>
+        /// <param name="testPropertyBag">Optional value indicating whether to test serialization to/from a Property Bag.  DEFAULT is false.</param>
         /// <param name="formats">The serialization formats to test.</param>
         /// <param name="appDomainScenarios">Optional value that specifies various scenarios of serializing and de-serializing in the current App Domain or a new App Domain.  DEFAULT is test the roundtrip in a new App Domain and also to serialize in a new App Domain and de-serialize in a new, but different App Domain.</param>
         public static void RoundtripSerializeWithCallbackVerification<T>(
